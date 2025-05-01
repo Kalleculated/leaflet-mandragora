@@ -6,7 +6,7 @@ const GroupManager = (function() {
       entrance: 'assets/pins/pin.png', // Replace with actual group-specific pins
       herb: 'assets/pins/pin_Herb.png',
       landmark: 'assets/pins/pin.png',
-      ore: 'assets/pins/pin_ore',
+      ore: 'assets/pins/pin_ore.png',
       shop: 'assets/pins/pin.png',
       waypoint: 'assets/pins/pin.png',
       // Add more groups and their icon paths here
