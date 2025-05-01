@@ -1,7 +1,7 @@
 // js/markers/waypoint.js - Update marker definitions
 const WaypointMarkers = [
   {
-    name: 'Sage', 
+    name: 'Calendula', 
     coords: [1132, 3869], 
     group: 'herb',
     layer: 'layer1'  // Specify layer
