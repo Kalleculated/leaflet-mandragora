@@ -1,5 +1,5 @@
 // js/markers/waypoint.js - Update marker definitions
-const WaypointMarkers = [
+const HerbMarkers = [
   {
     name: 'Calendula', 
     coords: [1132, 3869], 
