@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Custom Map with Leaflet</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    html, body, #map {
+      height: 100%;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Set image bounds (adjust to your image's width/height ratio)
+    const mapBounds = [[0, 0], [9639, 4639]]; // [y,x] top-left and bottom-right
+
+    // Create the map
+    const map = L.map('map', {
+      crs: L.CRS.Simple,
+      minZoom: -5
+    });
+
+    // Load and display the image
+    const image = L.imageOverlay('map.png', mapBounds).addTo(map);
+    map.fitBounds(mapBounds);
+
+    // Add a custom icon marker
+    const customIcon = L.icon({
+      iconUrl: 'marker-icon.png',
+      iconSize: [32, 32], // adjust as needed
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -32]
+    });
+
+    // Example marker
+    L.marker([500, 500], { icon: customIcon }).addTo(map)
+      .bindPopup('Center of the map');
+
+  </script>
+</body>
+</html>
