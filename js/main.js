@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const allMarkers = [
       ...WaypointMarkers,
       ...HerbMarkers,
+      ...OreMarkers,
       // Add any additional group markers
     ];
     
