@@ -2,11 +2,15 @@
 const CONFIG = {
     // Map configuration
     map: {
-      imagePath: 'assets/maps/Mandragora-full-map.jpg',
-      bounds: [[0, 0], [4639, 9639]],
+      layers: [
+        { id: 'layer1', name: 'Layer 1', imagePath: 'assets/maps/Layer1.jpg' },
+        { id: 'layer2', name: 'Layer 2', imagePath: 'assets/maps/Layer2.jpg' }
+      ],
+      bounds: [[0, 0], [2265, 9639]],
       initialZoom: -2,
       minZoom: -5,
-      maxZoom: 5
+      maxZoom: 5,
+      defaultLayer: 'layer1'
     },
     
     // Search configuration

@@ -29,7 +29,7 @@ const MarkerManager = (function() {
     
     // Add a marker to the map
     function addMarker(data) {
-      const { name, coords, group = 'default', imageUrl = null } = data;
+      const { name, coords, group = 'default', imageUrl = null, layer = CONFIG.map.defaultLayer } = data;
       
       if (!name || !coords) {
         console.warn("Skipping marker: Missing name or coords.", data);
@@ -45,20 +45,23 @@ const MarkerManager = (function() {
       // Get the icon for the group
       const markerIcon = GroupManager.getIcon(group);
       
-      // Create and add the marker
+      // Create marker
       const marker = L.marker(coords, {
         icon: markerIcon,
         title: name
-      }).addTo(MapManager.getMarkerLayer());
+      });
+      
+      // Add to appropriate layer
+      marker.addTo(MapManager.getMarkerLayer(layer));
       
       // Create and bind popup content
       marker.bindPopup(createPopupContent(name, imageUrl));
       
       // Store marker data for search
-      marker.feature = { properties: { name: name } };
-      markersMap.set(name.toLowerCase(), marker);
+      marker.feature = { properties: { name, layer } };
+      markersMap.set(name.toLowerCase(), { marker, data: {...data, layer} });
       
-      console.log(`Marker added: ${name} (Group: ${group}) at ${coords}`);
+      console.log(`Marker added: ${name} (Group: ${group}, Layer: ${layer}) at ${coords}`);
       return marker;
     }
     
@@ -73,15 +76,28 @@ const MarkerManager = (function() {
       addMarker: addMarker,
       
       getMarker: function(name) {
-        return markersMap.get(name.toLowerCase());
+        const entry = markersMap.get(name.toLowerCase());
+        return entry ? entry.marker : null;
+      },
+      
+      getMarkerData: function(name) {
+        const entry = markersMap.get(name.toLowerCase());
+        return entry ? entry.data : null;
       },
       
       getAllMarkers: function() {
-        return markerData;
+        return Array.from(markersMap.values()).map(entry => entry.data);
       },
       
       getMarkersMap: function() {
         return markersMap;
+      },
+
+      // Get all markers for a specific layer
+      getLayerMarkers: function(layerId) {
+        return Array.from(markersMap.values())
+          .filter(entry => entry.data.layer === layerId)
+          .map(entry => entry.data);
       }
     };
-  })();
+})();

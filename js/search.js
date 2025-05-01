@@ -40,20 +40,32 @@ const SearchManager = (function() {
       if (matchingMarkers.length > 0) {
         matchingMarkers.forEach(item => {
           const resultItem = document.createElement('div');
-          resultItem.textContent = item.name;
           resultItem.className = 'search-result-item';
           
+          // Add layer information to the search result
+          resultItem.innerHTML = `
+            <span>${item.name}</span>
+            <span class="layer-label">(${CONFIG.map.layers.find(l => l.id === item.layer)?.name || 'Unknown Layer'})</span>
+          `;
+          
           resultItem.addEventListener('click', function() {
-            const marker = MarkerManager.getMarker(item.name.toLowerCase());
-            if (marker) {
-              MapManager.setView(marker.getLatLng(), CONFIG.search.resultZoomLevel);
-              marker.openPopup();
-              customSearchInput.value = item.name;
-              removeResultsContainer();
-            } else {
-              console.error("Marker data found but marker instance not in map for:", item.name);
-              MapManager.setView(item.coords, CONFIG.search.resultZoomLevel);
-              removeResultsContainer();
+            const markerData = MarkerManager.getMarkerData(item.name);
+            if (markerData) {
+              // Activate the layer for this marker
+              MapManager.setActiveLayer(markerData.layer);
+              
+              // Find the marker and open its popup
+              const marker = MarkerManager.getMarker(item.name);
+              if (marker) {
+                MapManager.setView(marker.getLatLng(), CONFIG.search.resultZoomLevel);
+                marker.openPopup();
+                customSearchInput.value = item.name;
+                removeResultsContainer();
+              } else {
+                console.error("Marker data found but marker instance not in map for:", item.name);
+                MapManager.setView(markerData.coords, CONFIG.search.resultZoomLevel);
+                removeResultsContainer();
+              }
             }
           });
           
@@ -112,6 +124,14 @@ const SearchManager = (function() {
   return {
     init: function() {
       initializeEventListeners();
+    },
+    
+    // Search in specific layer only
+    searchInLayer: function(text, layerId) {
+      const layerMarkers = MarkerManager.getLayerMarkers(layerId);
+      return layerMarkers.filter(item => 
+        item.name.toLowerCase().includes(text.toLowerCase())
+      );
     }
   };
 })();

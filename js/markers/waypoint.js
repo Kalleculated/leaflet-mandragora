@@ -1,9 +1,10 @@
-// Entrance marker definitions
+// js/markers/waypoint.js - Update marker definitions
 const WaypointMarkers = [
-    {
-      name: 'Lakeshore', 
-      coords: [3727, 7824], 
-      group: 'waypoint', 
-    },
-    // Add more markers as needed
-  ];
+  {
+    name: 'Lakeshore', 
+    coords: [1360, 7824], 
+    group: 'waypoint',
+    layer: 'layer1'  // Specify layer
+  },
+  // Add more markers as needed
+];
