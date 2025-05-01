@@ -1,47 +1,232 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Custom Map with Leaflet</title>
+  <title>Custom Leaflet Map with Search</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- Leaflet Search plugin CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-search/dist/leaflet-search.min.css" />
   <style>
     html, body, #map {
       height: 100%;
       margin: 0;
     }
+    
+    /* Custom search field styling */
+    .leaflet-control-search .search-input {
+      width: 200px;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    
+    .leaflet-control-search .search-button {
+      background-color: #4CAF50;
+      color: white;
+    }
+    
+    .leaflet-control-search .search-tooltip {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .leaflet-control-search .search-tip {
+      padding: 8px;
+      cursor: pointer;
+    }
+    
+    .leaflet-control-search .search-tip:hover {
+      background-color: #f0f0f0;
+    }
+    
+    /* Custom position for search control */
+    .search-container {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      width: 400px;
+      background: white;
+      padding: 15px;
+      border-radius: 6px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+    }
+    
+    #custom-search-input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
+  <!-- Custom search container -->
+  <div class="search-container">
+    <input type="text" id="custom-search-input" placeholder="Search locations..." />
+  </div>
+  
   <div id="map"></div>
-
+  
+  <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- Leaflet Search plugin JS -->
+  <script src="https://unpkg.com/leaflet-control-search/dist/leaflet-search.min.js"></script>
   <script>
-    // Set image bounds (adjust to your image's width/height ratio)
-    const mapBounds = [[0, 0], [9639, 4639]]; // [y,x] top-left and bottom-right
-
-    // Create the map
+    // Define the bounds based on your image dimensions
+    const mapBounds = [[0, 0], [4639, 9639]]; // [y, x] format
+    
+    // Initialize map with simple CRS for flat image
     const map = L.map('map', {
       crs: L.CRS.Simple,
       minZoom: -5
     });
-
-    // Load and display the image
+    
+    // Add your image map
     const image = L.imageOverlay('Mandragora-full-map.jpg', mapBounds).addTo(map);
     map.fitBounds(mapBounds);
-
-    // Add a custom icon marker
+    
+    // Define a custom icon (optional)
     const customIcon = L.icon({
-      iconUrl: 'pin.png',
-      iconSize: [32, 32], // adjust as needed
+      iconUrl: 'pin.png', // your custom pin image
+      iconSize: [32, 32],
       iconAnchor: [16, 32],
       popupAnchor: [0, -32]
     });
-
-    // Example marker
-    L.marker([500, 500], { icon: customIcon }).addTo(map)
-      .bindPopup('Center of the map');
-
+    
+    // Marker data with labels and coordinates
+    const markerData = [
+      { name: 'Main Gate', coords: [800, 200] },
+      { name: 'Center Plaza', coords: [500, 500] },
+      { name: 'North Tower', coords: [100, 900] },
+      { name: 'South Garden', coords: [900, 300] },
+      { name: 'East Wing', coords: [600, 1200] },
+      { name: 'West Entrance', coords: [700, 100] }
+    ];
+    
+    // Create a layer group for searchable markers
+    const markerLayer = L.layerGroup();
+    const markersMap = new Map(); // To store markers by name
+    
+    // Add markers to the map and searchable layer
+    markerData.forEach(item => {
+      const marker = L.marker(item.coords, { icon: customIcon })
+        .bindPopup(item.name)
+        .addTo(markerLayer);
+      marker.feature = { properties: { name: item.name } }; // Required for search
+      markersMap.set(item.name.toLowerCase(), marker);
+    });
+    
+    markerLayer.addTo(map);
+    
+    // Initialize the built-in Leaflet search control
+    const searchControl = new L.Control.Search({
+      layer: markerLayer,
+      propertyName: 'name',
+      marker: false,
+      zoom: 0,
+      initial: false,
+      collapsed: false,
+      textPlaceholder: 'Search locations...',
+      moveToLocation: function(latlng, title, map) {
+        map.setView(latlng, map.getZoom());
+      }
+    });
+    
+    map.addControl(searchControl);
+    
+    // Hide the default search control if using custom search field
+    document.querySelector('.leaflet-control-search').style.display = 'none';
+    
+    // Add event listener to custom search input
+    const customSearchInput = document.getElementById('custom-search-input');
+    
+    customSearchInput.addEventListener('input', function(e) {
+      const searchText = e.target.value.toLowerCase();
+      
+      if (searchText.length >= 2) {
+        // Create search results container if it doesn't exist
+        let resultsContainer = document.getElementById('search-results');
+        if (!resultsContainer) {
+          resultsContainer = document.createElement('div');
+          resultsContainer.id = 'search-results';
+          resultsContainer.style.maxHeight = '200px';
+          resultsContainer.style.overflowY = 'auto';
+          resultsContainer.style.marginTop = '5px';
+          document.querySelector('.search-container').appendChild(resultsContainer);
+        }
+        
+        // Clear previous results
+        resultsContainer.innerHTML = '';
+        
+        // Filter markers based on search text
+        const matchingMarkers = [];
+        markerData.forEach(item => {
+          if (item.name.toLowerCase().includes(searchText)) {
+            matchingMarkers.push(item);
+          }
+        });
+        
+        // Display matching results
+        if (matchingMarkers.length > 0) {
+          matchingMarkers.forEach(item => {
+            const resultItem = document.createElement('div');
+            resultItem.textContent = item.name;
+            resultItem.style.padding = '8px';
+            resultItem.style.cursor = 'pointer';
+            resultItem.style.borderBottom = '1px solid #eee';
+            
+            resultItem.addEventListener('mouseover', function() {
+              this.style.backgroundColor = '#f0f0f0';
+            });
+            
+            resultItem.addEventListener('mouseout', function() {
+              this.style.backgroundColor = 'transparent';
+            });
+            
+            resultItem.addEventListener('click', function() {
+              const marker = markersMap.get(item.name.toLowerCase());
+              if (marker) {
+                map.setView(marker.getLatLng(), map.getZoom());
+                marker.openPopup();
+                resultsContainer.innerHTML = '';
+                customSearchInput.value = item.name;
+              }
+            });
+            
+            resultsContainer.appendChild(resultItem);
+          });
+        } else {
+          const noResults = document.createElement('div');
+          noResults.textContent = 'No locations found';
+          noResults.style.padding = '8px';
+          noResults.style.color = '#999';
+          resultsContainer.appendChild(noResults);
+        }
+      } else {
+        // Remove results container when search text is too short
+        const resultsContainer = document.getElementById('search-results');
+        if (resultsContainer) {
+          resultsContainer.remove();
+        }
+      }
+    });
+    
+    // Close search results when clicking outside
+    document.addEventListener('click', function(e) {
+      const searchContainer = document.querySelector('.search-container');
+      const resultsContainer = document.getElementById('search-results');
+      
+      if (!searchContainer.contains(e.target) && resultsContainer) {
+        resultsContainer.remove();
+      }
+    });
   </script>
 </body>
 </html>
