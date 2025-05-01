@@ -5,7 +5,8 @@ const GroupManager = (function() {
       default: 'assets/pins/pin.png',
       entrance: 'assets/pins/pin.png', // Replace with actual group-specific pins
       landmark: 'assets/pins/pin.png',
-      shop: 'assets/pins/pin.png'
+      shop: 'assets/pins/pin.png',
+      waypoint: 'assets/pins/pin.png',
       // Add more groups and their icon paths here
     };
   

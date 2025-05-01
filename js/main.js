@@ -10,9 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 3. Combine all marker data
     const allMarkers = [
-      ...EntranceMarkers,
-      ...LandmarkMarkers,
-      ...ShopMarkers
+      ...WaypointMarkers,
       // Add any additional group markers
     ];
     
