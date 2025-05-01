@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 3. Combine all marker data
     const allMarkers = [
       ...WaypointMarkers,
+      ...HerbMarkers,
       // Add any additional group markers
     ];
     
