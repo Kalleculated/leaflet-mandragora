@@ -1,232 +1,295 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Custom Leaflet Map with Search</title>
+  <title>Custom Leaflet Map with Search & Zoom</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Leaflet CSS -->
+
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <!-- Leaflet Search plugin CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-search/dist/leaflet-search.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-control-search@3.0.2/dist/leaflet-search.min.css" />
+
   <style>
+    /* Basic map container styling */
     html, body, #map {
       height: 100%;
       margin: 0;
+      padding: 0;
     }
-    
-    /* Custom search field styling */
-    .leaflet-control-search .search-input {
-      width: 200px;
-      padding: 8px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-    }
-    
-    .leaflet-control-search .search-button {
-      background-color: #4CAF50;
-      color: white;
-    }
-    
-    .leaflet-control-search .search-tooltip {
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 4px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    }
-    
-    .leaflet-control-search .search-tip {
-      padding: 8px;
-      cursor: pointer;
-    }
-    
-    .leaflet-control-search .search-tip:hover {
-      background-color: #f0f0f0;
-    }
-    
-    /* Custom position for search control */
+
+    /* Custom search container styling */
     .search-container {
-      position: absolute;
-      top: 10px;
+      position: absolute; /* Position relative to the viewport/map container */
+      top: 20px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 1000;
-      width: 400px;
+      z-index: 1000; /* Ensure it's above map layers */
+      width: 90%; /* Responsive width */
+      max-width: 400px; /* Max width for larger screens */
       background: white;
-      padding: 15px;
-      border-radius: 6px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      font-family: sans-serif;
     }
-    
+
+    /* Custom search input field */
     #custom-search-input {
       width: 100%;
-      padding: 8px;
-      border-radius: 4px;
+      padding: 10px;
+      border-radius: 6px;
       border: 1px solid #ccc;
       font-size: 14px;
+      box-sizing: border-box; /* Include padding in width */
+    }
+
+    /* Search results dropdown container */
+    #search-results {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-top: none;
+        border-radius: 0 0 6px 6px;
+        max-height: 200px;
+        overflow-y: auto;
+        margin-top: -1px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        position: absolute;
+        width: 100%;
+        left: 0;
+        box-sizing: border-box;
+    }
+
+    /* Individual search result item */
+    .search-result-item {
+      padding: 10px;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+    }
+
+    /* Last item no border */
+    .search-result-item:last-child {
+        border-bottom: none;
+    }
+
+    /* Hover effect for result items */
+    .search-result-item:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Style for 'No results' message */
+    .no-results {
+        padding: 10px;
+        color: #888;
+        font-style: italic;
+    }
+
+    /* Hide the default Leaflet search control UI */
+    .leaflet-control-search {
+        display: none !important;
     }
   </style>
 </head>
 <body>
-  <!-- Custom search container -->
   <div class="search-container">
-    <input type="text" id="custom-search-input" placeholder="Search locations..." />
-  </div>
-  
+    <input type="text" id="custom-search-input" placeholder="Search locations..." autocomplete="off" />
+    </div>
+
   <div id="map"></div>
-  
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <!-- Leaflet Search plugin JS -->
-  <script src="https://unpkg.com/leaflet-control-search/dist/leaflet-search.min.js"></script>
-  <script>
-    // Define the bounds based on your image dimensions
-    const mapBounds = [[0, 0], [4639, 9639]]; // [y, x] format
-    
-    // Initialize map with simple CRS for flat image
-    const map = L.map('map', {
-      crs: L.CRS.Simple,
-      minZoom: -5
-    });
-    
-    // Add your image map
-    const image = L.imageOverlay('Mandragora-full-map.jpg', mapBounds).addTo(map);
-    map.fitBounds(mapBounds);
-    
-    // Define a custom icon (optional)
-    const customIcon = L.icon({
-      iconUrl: 'pin.png', // your custom pin image
-      iconSize: [32, 32],
-      iconAnchor: [16, 32],
-      popupAnchor: [0, -32]
-    });
-    
-    // Marker data with labels and coordinates
-    const markerData = [
-      { name: 'Main Gate', coords: [800, 200] },
-      { name: 'Center Plaza', coords: [500, 500] },
-      { name: 'North Tower', coords: [100, 900] },
-      { name: 'South Garden', coords: [900, 300] },
-      { name: 'East Wing', coords: [600, 1200] },
-      { name: 'West Entrance', coords: [700, 100] }
-    ];
-    
-    // Create a layer group for searchable markers
-    const markerLayer = L.layerGroup();
-    const markersMap = new Map(); // To store markers by name
-    
-    // Add markers to the map and searchable layer
-    markerData.forEach(item => {
-      const marker = L.marker(item.coords, { icon: customIcon })
-        .bindPopup(item.name)
-        .addTo(markerLayer);
-      marker.feature = { properties: { name: item.name } }; // Required for search
-      markersMap.set(item.name.toLowerCase(), marker);
-    });
-    
-    markerLayer.addTo(map);
-    
-    // Initialize the built-in Leaflet search control
-    const searchControl = new L.Control.Search({
-      layer: markerLayer,
-      propertyName: 'name',
-      marker: false,
-      zoom: 0,
-      initial: false,
-      collapsed: false,
-      textPlaceholder: 'Search locations...',
-      moveToLocation: function(latlng, title, map) {
-        map.setView(latlng, map.getZoom());
-      }
-    });
-    
-    map.addControl(searchControl);
-    
-    // Hide the default search control if using custom search field
-    document.querySelector('.leaflet-control-search').style.display = 'none';
-    
-    // Add event listener to custom search input
-    const customSearchInput = document.getElementById('custom-search-input');
-    
-    customSearchInput.addEventListener('input', function(e) {
-      const searchText = e.target.value.toLowerCase();
-      
-      if (searchText.length >= 2) {
-        // Create search results container if it doesn't exist
-        let resultsContainer = document.getElementById('search-results');
-        if (!resultsContainer) {
-          resultsContainer = document.createElement('div');
-          resultsContainer.id = 'search-results';
-          resultsContainer.style.maxHeight = '200px';
-          resultsContainer.style.overflowY = 'auto';
-          resultsContainer.style.marginTop = '5px';
-          document.querySelector('.search-container').appendChild(resultsContainer);
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet-control-search@3.0.2/dist/leaflet-search.min.js" defer></script>
+
+  <script defer>
+    // Wait for the DOM and external scripts to be fully loaded
+    window.onload = function() {
+
+      // --- Configuration ---
+      const imagePath = 'Mandragora-full-map.jpg'; // UPDATE if needed
+      const iconPath = 'pin.png'; // UPDATE if needed, ensure this file exists
+      const mapBounds = [[0, 0], [4639, 9639]]; // Image dimensions [y, x] or [height, width]
+      const initialZoom = -2; // Adjust as needed for initial view
+      const searchMinLength = 2; // Minimum characters to trigger search
+      const searchResultZoomLevel = 0; // Zoom level when clicking a search result (ADJUST AS NEEDED)
+
+      // Marker data: { name: 'Location Name', coords: [y, x] }
+      const markerData = [
+        { name: 'Pin1', coords: [800, 200] },
+        { name: 'Pin2', coords: [500, 500] },
+        { name: 'Pin3', coords: [100, 900] },
+        // Add more markers here
+      ];
+      // --- End Configuration ---
+
+
+      // --- Map Initialization ---
+      const map = L.map('map', {
+        crs: L.CRS.Simple, // Use simple coordinates for flat image
+        minZoom: -5, // Adjust minZoom as needed
+        maxZoom: 5   // Optional: Set a max zoom level
+      });
+
+      // Add the image overlay
+      const image = L.imageOverlay(imagePath, mapBounds, {
+          errorOverlayUrl: `https://placehold.co/${mapBounds[1][1]}x${mapBounds[1][0]}/EEE/CCC?text=Image+Not+Found`, // Placeholder on error
+          alt: 'Map Image' // Add alt text
+      }).addTo(map);
+
+      // Fit map view to the image bounds
+      map.fitBounds(mapBounds);
+      map.setZoom(initialZoom); // Set a specific initial zoom level
+
+
+      // --- Custom Marker Icon ---
+      // Ensure 'pin.png' exists or remove/comment out 'icon: customIcon' below
+      const customIcon = L.icon({
+        iconUrl: iconPath,
+        iconSize: [32, 32],    // Size of the icon
+        iconAnchor: [16, 32],   // Point of the icon which will correspond to marker's location
+        popupAnchor: [0, -32]  // Point from which the popup should open relative to the iconAnchor
+      });
+
+
+      // --- Markers Setup ---
+      const markerLayer = L.layerGroup(); // Layer to hold searchable markers
+      const markersMap = new Map(); // Map for quick marker lookup by name (lowercase)
+
+      markerData.forEach(item => {
+        if (!Array.isArray(item.coords) || item.coords.length !== 2 || typeof item.coords[0] !== 'number' || typeof item.coords[1] !== 'number') {
+            console.warn(`Invalid coordinates for marker: ${item.name}`, item.coords);
+            return; // Skip this marker
         }
-        
-        // Clear previous results
-        resultsContainer.innerHTML = '';
-        
-        // Filter markers based on search text
-        const matchingMarkers = [];
-        markerData.forEach(item => {
-          if (item.name.toLowerCase().includes(searchText)) {
-            matchingMarkers.push(item);
-          }
-        });
-        
-        // Display matching results
-        if (matchingMarkers.length > 0) {
-          matchingMarkers.forEach(item => {
-            const resultItem = document.createElement('div');
-            resultItem.textContent = item.name;
-            resultItem.style.padding = '8px';
-            resultItem.style.cursor = 'pointer';
-            resultItem.style.borderBottom = '1px solid #eee';
-            
-            resultItem.addEventListener('mouseover', function() {
-              this.style.backgroundColor = '#f0f0f0';
-            });
-            
-            resultItem.addEventListener('mouseout', function() {
-              this.style.backgroundColor = 'transparent';
-            });
-            
-            resultItem.addEventListener('click', function() {
-              const marker = markersMap.get(item.name.toLowerCase());
-              if (marker) {
-                map.setView(marker.getLatLng(), map.getZoom());
-                marker.openPopup();
-                resultsContainer.innerHTML = '';
-                customSearchInput.value = item.name;
-              }
-            });
-            
-            resultsContainer.appendChild(resultItem);
+
+        const marker = L.marker(item.coords, {
+            icon: customIcon, // Use custom icon - REMOVE this line if pin.png doesn't exist
+            title: item.name // Add title for hover tooltip (optional)
+         })
+          .bindPopup(`<b>${item.name}</b>`) // Add popup content
+          .addTo(markerLayer); // Add to the layer group
+
+        marker.feature = { properties: { name: item.name } };
+        markersMap.set(item.name.toLowerCase(), marker);
+      });
+
+      markerLayer.addTo(map); // Add the layer group to the map
+
+
+      // --- Leaflet Search Control (Initialized but UI Hidden) ---
+      // Check if L.Control.Search is available before trying to use it
+      if (L.Control.Search) {
+          const searchControl = new L.Control.Search({
+            layer: markerLayer,
+            propertyName: 'name',
+            marker: false,
+            zoom: searchResultZoomLevel, // Use the defined zoom level here too (though not directly used by custom search)
+            initial: false,
+            collapsed: true,
+            textPlaceholder: 'Search...',
+            moveToLocation: function(latlng, title, mapRef) {
+              // Custom search handles moving the map view
+            }
           });
-        } else {
-          const noResults = document.createElement('div');
-          noResults.textContent = 'No locations found';
-          noResults.style.padding = '8px';
-          noResults.style.color = '#999';
-          resultsContainer.appendChild(noResults);
-        }
+          // map.addControl(searchControl); // Control is hidden by CSS, adding it is optional
       } else {
-        // Remove results container when search text is too short
-        const resultsContainer = document.getElementById('search-results');
-        if (resultsContainer) {
-          resultsContainer.remove();
-        }
+          console.warn("Leaflet Control Search library not loaded correctly.");
+          // Fallback or notification if the plugin failed to load entirely
       }
-    });
-    
-    // Close search results when clicking outside
-    document.addEventListener('click', function(e) {
+
+
+      // --- Custom Search Implementation ---
+      const customSearchInput = document.getElementById('custom-search-input');
       const searchContainer = document.querySelector('.search-container');
-      const resultsContainer = document.getElementById('search-results');
-      
-      if (!searchContainer.contains(e.target) && resultsContainer) {
-        resultsContainer.remove();
+      let resultsContainer = null;
+
+      function getResultsContainer() {
+          if (!resultsContainer) {
+              resultsContainer = document.createElement('div');
+              resultsContainer.id = 'search-results';
+              searchContainer.appendChild(resultsContainer);
+          }
+          return resultsContainer;
       }
-    });
+
+      function removeResultsContainer() {
+          if (resultsContainer) {
+              resultsContainer.remove();
+              resultsContainer = null;
+          }
+      }
+
+      customSearchInput.addEventListener('input', function(e) {
+        const searchText = e.target.value.trim().toLowerCase();
+        const currentResultsContainer = getResultsContainer();
+        currentResultsContainer.innerHTML = '';
+
+        if (searchText.length >= searchMinLength) {
+          const matchingMarkers = markerData.filter(item =>
+            item.name.toLowerCase().includes(searchText)
+          );
+
+          if (matchingMarkers.length > 0) {
+            matchingMarkers.forEach(item => {
+              const resultItem = document.createElement('div');
+              resultItem.textContent = item.name;
+              resultItem.className = 'search-result-item';
+
+              // Event listener for clicking a result item
+              resultItem.addEventListener('click', function() {
+                const marker = markersMap.get(item.name.toLowerCase());
+                if (marker) {
+                  // *** MODIFIED HERE: Set view with specific zoom level ***
+                  map.setView(marker.getLatLng(), searchResultZoomLevel); // Center map and ZOOM IN
+                  marker.openPopup(); // Open the marker's popup
+                  customSearchInput.value = item.name; // Fill input with selected name
+                  removeResultsContainer(); // Hide results
+                } else {
+                    console.error("Marker not found in markersMap for:", item.name);
+                }
+              });
+
+              currentResultsContainer.appendChild(resultItem);
+            });
+          } else {
+            // Display 'No results' message
+            const noResults = document.createElement('div');
+            noResults.textContent = 'No locations found';
+            noResults.className = 'no-results';
+            currentResultsContainer.appendChild(noResults);
+          }
+        } else {
+          // If search text is too short, clear/hide results
+          removeResultsContainer();
+        }
+      });
+
+      // Event listener to clear input and results if Escape key is pressed
+      customSearchInput.addEventListener('keydown', function(e) {
+          if (e.key === "Escape") {
+              removeResultsContainer();
+          }
+      });
+
+      // Event listener to close search results when clicking outside the search container
+      document.addEventListener('click', function(e) {
+        // Check if the click was outside the search container
+        if (!searchContainer.contains(e.target)) {
+          removeResultsContainer();
+        }
+      });
+
+       // Event listener to handle Enter key press in search input
+       customSearchInput.addEventListener('keypress', function(e) {
+           if (e.key === 'Enter') {
+               e.preventDefault(); // Stop Enter key from submitting forms etc.
+               // Trigger click on the first result if available
+               const firstResult = resultsContainer?.querySelector('.search-result-item');
+               if (firstResult) {
+                   firstResult.click();
+               }
+           }
+       });
+
+    }; // End window.onload
   </script>
 </body>
 </html>
+```
