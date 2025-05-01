@@ -6,5 +6,11 @@ const WaypointMarkers = [
     group: 'waypoint',
     layer: 'layer1'  // Specify layer
   },
+  {
+    name: 'Witch Tree', 
+    coords: [1167, 4944],
+    group: 'waypoint',
+    layer: 'layer1'  // Specify layer
+  }
   // Add more markers as needed
 ];
