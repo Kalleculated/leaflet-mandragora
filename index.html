@@ -27,12 +27,12 @@
     });
 
     // Load and display the image
-    const image = L.imageOverlay('map.png', mapBounds).addTo(map);
+    const image = L.imageOverlay('Mandragora-full-map.jpg', mapBounds).addTo(map);
     map.fitBounds(mapBounds);
 
     // Add a custom icon marker
     const customIcon = L.icon({
-      iconUrl: 'marker-icon.png',
+      iconUrl: 'pin.png',
       iconSize: [32, 32], // adjust as needed
       iconAnchor: [16, 32],
       popupAnchor: [0, -32]
