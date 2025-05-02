@@ -3,7 +3,10 @@ const GroupManager = (function() {
     // Define paths for different pin images
     const iconPaths = {
       default: 'assets/pins/pin.png',
+      diagram: 'assets/pins/pin_diagram.png',
       herb: 'assets/pins/pin_Herb.png',
+      lockpick: 'assets/pins/pin_lockpick.png',
+      map: 'assets/pins/pin_map.png',
       ore: 'assets/pins/pin_ore.png',
       waypoint: 'assets/pins/pin.png',
       // Add more groups and their icon paths here
