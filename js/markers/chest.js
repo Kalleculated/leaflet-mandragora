@@ -15,15 +15,6 @@ const ChestMarkers = [
             weight: 3.5
           }
         },
-        {
-          name: 'Health Potion',
-          type: 'consumable',
-          image: 'assets/items/health_potion.jpg',
-          stats: {
-            healing: 50,
-            weight: 0.5
-          }
-        }
       ]
     },
     {

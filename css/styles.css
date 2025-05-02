@@ -149,6 +149,10 @@ body {
   padding: 15px;
 }
 
+.right-sidebar h3 {
+    color: rgba(198, 158, 0, 0.896) !important;
+}
+
 /* Search container in sidebar */
 .search-container {
   width: 100%;

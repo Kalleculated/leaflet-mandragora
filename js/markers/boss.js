@@ -6,8 +6,8 @@ const BossMarkers = [
       layer: 'layer1',
       items: [
         {
-          name: 'Iron Sword',
-          type: 'weapon',
+          name: 'Super Skill',
+          type: 'skill',
           image: 'assets/items/iron_sword.jpg',
           price: 150,
           stats: {

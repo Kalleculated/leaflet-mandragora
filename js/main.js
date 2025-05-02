@@ -11,40 +11,40 @@ document.addEventListener('DOMContentLoaded', function() {
     MapManager.init();
     console.log('[Main] Map initialized');
     
-    // 2. Initialize group icons
+    // 2. Combine all marker data first
+    if (typeof WaypointMarkers === 'undefined' || 
+        typeof HerbMarkers === 'undefined' || 
+        typeof LockpickMarkers === 'undefined' || 
+        typeof DiagramMarkers === 'undefined' || 
+        typeof MapMarkers === 'undefined' || 
+        typeof OreMarkers === 'undefined' ||
+        typeof ChestMarkers === 'undefined' ||
+        typeof VendorMarkers === 'undefined' ||
+        typeof BossMarkers === 'undefined') {
+      throw new Error('One or more marker data arrays are not defined');
+    }
+
+    const allMarkers = [
+      ...WaypointMarkers,
+      ...HerbMarkers,
+      ...OreMarkers,
+      ...MapMarkers,
+      ...LockpickMarkers,
+      ...DiagramMarkers,
+      ...ChestMarkers,
+      ...VendorMarkers,
+      ...BossMarkers
+      // Add any additional group markers
+    ];
+    console.log(`[Main] Combined ${allMarkers.length} markers`);
+    
+    // 3. Initialize group icons with all markers
     if (typeof GroupManager === 'undefined') {
       throw new Error('GroupManager is not defined');
     }
     
-    GroupManager.init();
-    console.log('[Main] Group manager initialized');
-    
-    // 3. Combine all marker data
-    if (typeof WaypointMarkers === 'undefined' || 
-      typeof HerbMarkers === 'undefined' || 
-      typeof LockpickMarkers === 'undefined' || 
-      typeof DiagramMarkers === 'undefined' || 
-      typeof MapMarkers === 'undefined' || 
-      typeof OreMarkers === 'undefined' ||
-      typeof ChestMarkers === 'undefined' ||
-      typeof VendorMarkers === 'undefined' ||
-      typeof BossMarkers === 'undefined') {
-    throw new Error('One or more marker data arrays are not defined');
-    }
-
-    const allMarkers = [
-    ...WaypointMarkers,
-    ...HerbMarkers,
-    ...OreMarkers,
-    ...MapMarkers,
-    ...LockpickMarkers,
-    ...DiagramMarkers,
-    ...ChestMarkers,
-    ...VendorMarkers,
-    ...BossMarkers
-    // Add any additional group markers
-    ];
-    console.log(`[Main] Combined ${allMarkers.length} markers`);
+    GroupManager.init(allMarkers);
+    console.log('[Main] Group manager initialized with all markers');
     
     // 4. Initialize markers with combined data
     if (typeof MarkerManager === 'undefined') {

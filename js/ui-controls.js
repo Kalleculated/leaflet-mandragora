@@ -133,129 +133,49 @@ const UIControls = (function() {
       console.log('[UI] Layer buttons initialized');
     }
     
-    // Initialize filter groups
-    function initializeFilterGroups() {
-      const groupsContainer = document.getElementById('group-filters');
-      if (!groupsContainer) {
-        console.error('[UI] Group filters container not found');
-        return;
-      }
-      
-      console.log('[UI] Initializing filter groups');
-      
-      // Clear existing filters
-      groupsContainer.innerHTML = '';
-      
-      // Add buttons to the top of the filter list, right under the header
-      const filterControls = document.createElement('div');
-      filterControls.className = 'filter-controls';
-      filterControls.style.display = 'flex';
-      filterControls.style.justifyContent = 'center';
-      filterControls.style.gap = '10px';
-      filterControls.style.marginBottom = '15px';
-      filterControls.style.borderBottom = '1px solid #444';
-      filterControls.style.paddingBottom = '20px';
-      
-      // Create "All" button
-      const allButton = document.createElement('button');
-      allButton.textContent = 'All';
-      allButton.style.fontStyle = 'italic';
-      allButton.style.padding = '6px 12px';
-      allButton.style.backgroundColor = 'rgba(26,26,26,255)';
-      allButton.style.color = 'white';
-      allButton.style.border = '1px solid #444';
-      allButton.style.borderRadius = '4px';
-      allButton.style.cursor = 'pointer';
-      
-      // Create "None" button
-      const noneButton = document.createElement('button');
-      noneButton.textContent = 'None';
-      noneButton.style.fontStyle = 'italic';
-      noneButton.style.padding = '6px 12px';
-      noneButton.style.backgroundColor = 'rgba(26,26,26,255)';
-      noneButton.style.color = 'white';
-      noneButton.style.border = '1px solid #444';
-      noneButton.style.borderRadius = '4px';
-      noneButton.style.cursor = 'pointer';
-      
-      // Add hover effect
-      allButton.addEventListener('mouseover', function() {
-        this.style.backgroundColor = 'rgba(198, 158, 0, 0.896)';
-      });
-      allButton.addEventListener('mouseout', function() {
-        this.style.backgroundColor = 'rgba(26,26,26,255)';
-      });
-      noneButton.addEventListener('mouseover', function() {
-        this.style.backgroundColor = 'rgba(198, 158, 0, 0.896)';
-      });
-      noneButton.addEventListener('mouseout', function() {
-        this.style.backgroundColor = 'rgba(26,26,26,255)';
-      });
-      
-      // Add buttons to the filter controls
-      filterControls.appendChild(allButton);
-      filterControls.appendChild(noneButton);
-      
-      // Insert filter controls at the top of the group filters
-      groupsContainer.appendChild(filterControls);
-      
-      // Check if GroupManager is available
-      if (typeof GroupManager === 'undefined' || !GroupManager.getAllGroups) {
-        console.error('[UI] GroupManager not available or missing getAllGroups method');
-        return;
-      }
-      
-      const allGroups = GroupManager.getAllGroups();
-      const visibleGroups = {};
-      
-      // Filter out the default group
-      const filterableGroups = allGroups.filter(group => group !== 'default');
-      
-      // Initialize all groups as visible
-      allGroups.forEach(group => {
-        visibleGroups[group] = true;
-      });
-      
-      // Create filter checkboxes for filterable groups only
-      filterableGroups.forEach(group => {
+    // Helper to create filter checkboxes
+    function createFilterCheckboxes(container, items, isGroup = true, isItemType = false) {
+        items.forEach(item => {
         const filterItem = document.createElement('div');
         filterItem.className = 'filter-group-item';
         
         // Create checkbox
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.id = `filter-${group}`;
+        checkbox.id = isItemType ? `filter-itemtype-${item}` : `filter-${item}`;
         checkbox.checked = true;
         
-        // Try to get the icon path
+        // Try to get the icon path (only for groups)
         let iconPath = '';
-        try {
-          if (GroupManager.getIcon) {
-            const icon = GroupManager.getIcon(group);
-            if (icon && icon.options && icon.options.iconUrl) {
-              iconPath = icon.options.iconUrl;
+        if (isGroup) {
+            try {
+            if (GroupManager.getIcon) {
+                const icon = GroupManager.getIcon(item);
+                if (icon && icon.options && icon.options.iconUrl) {
+                iconPath = icon.options.iconUrl;
+                }
             }
-          }
-        } catch (e) {
-          console.warn(`[UI] Could not get icon for group: ${group}`, e);
+            } catch (e) {
+            console.warn(`[UI] Could not get icon for group: ${item}`, e);
+            }
         }
         
-        // Create icon image if available
+        // Create icon image if available (for groups only)
         if (iconPath) {
-          const iconImg = document.createElement('img');
-          iconImg.src = iconPath;
-          iconImg.alt = group;
-          iconImg.onerror = function() {
-            console.warn(`[UI] Failed to load icon for ${group}: ${iconPath}`);
+            const iconImg = document.createElement('img');
+            iconImg.src = iconPath;
+            iconImg.alt = item;
+            iconImg.onerror = function() {
+            console.warn(`[UI] Failed to load icon for ${item}: ${iconPath}`);
             this.style.display = 'none';
-          };
-          filterItem.appendChild(iconImg);
+            };
+            filterItem.appendChild(iconImg);
         }
         
-        // Create label
+        // Create label with capitalized text
         const label = document.createElement('label');
-        label.htmlFor = `filter-${group}`;
-        label.textContent = group.charAt(0).toUpperCase() + group.slice(1); // Capitalize first letter
+        label.htmlFor = checkbox.id;
+        label.textContent = item.charAt(0).toUpperCase() + item.slice(1); // Capitalize first letter
         
         // Add checkbox and label to filter item
         filterItem.appendChild(checkbox);
@@ -263,89 +183,240 @@ const UIControls = (function() {
         
         // Add event listener to checkbox
         checkbox.addEventListener('change', function() {
-          console.log(`[UI] Filter toggled for ${group}: ${this.checked}`);
-          visibleGroups[group] = this.checked;
-          updateVisibleMarkers(visibleGroups);
+            console.log(`[UI] Filter toggled for ${isItemType ? 'item type' : 'group'} ${item}: ${this.checked}`);
+            
+            if (isItemType) {
+            visibleItemTypes[item] = this.checked;
+            } else {
+            visibleGroups[item] = this.checked;
+            }
+            
+            updateVisibleMarkers(visibleGroups, visibleItemTypes);
         });
         
         // Add filter item to container
-        groupsContainer.appendChild(filterItem);
-      });
-      
-      // Add event listeners to the All/None buttons
-      allButton.addEventListener('click', function() {
+        container.appendChild(filterItem);
+        });
+    }
+
+    // Store visibility state for groups and item types
+    let visibleGroups = {};
+    let visibleItemTypes = {};
+    
+    // Initialize filter groups
+    function initializeFilterGroups() {
+        const groupsContainer = document.getElementById('group-filters');
+        if (!groupsContainer) {
+        console.error('[UI] Group filters container not found');
+        return;
+        }
+        
+        console.log('[UI] Initializing filter groups');
+        
+        // Clear existing filters
+        groupsContainer.innerHTML = '';
+        
+        // Add control buttons at the top
+        const filterControls = document.createElement('div');
+        filterControls.className = 'filter-controls';
+        filterControls.style.display = 'flex';
+        filterControls.style.justifyContent = 'center';
+        filterControls.style.gap = '10px';
+        filterControls.style.marginBottom = '15px';
+        filterControls.style.borderBottom = '1px solid #444';
+        filterControls.style.paddingBottom = '20px';
+        
+        // Create "All" and "None" buttons (keep existing implementation)
+        const allButton = document.createElement('button');
+        allButton.textContent = 'All';
+        allButton.style.fontStyle = 'italic';
+        allButton.style.padding = '6px 12px';
+        allButton.style.backgroundColor = 'rgba(26,26,26,255)';
+        allButton.style.color = 'white';
+        allButton.style.border = '1px solid #444';
+        allButton.style.borderRadius = '4px';
+        allButton.style.cursor = 'pointer';
+        
+        const noneButton = document.createElement('button');
+        noneButton.textContent = 'None';
+        noneButton.style.fontStyle = 'italic';
+        noneButton.style.padding = '6px 12px';
+        noneButton.style.backgroundColor = 'rgba(26,26,26,255)';
+        noneButton.style.color = 'white';
+        noneButton.style.border = '1px solid #444';
+        noneButton.style.borderRadius = '4px';
+        noneButton.style.cursor = 'pointer';
+        
+        // Add hover effects (keep existing implementation)
+        allButton.addEventListener('mouseover', function() {
+        this.style.backgroundColor = 'rgba(198, 158, 0, 0.896)';
+        });
+        allButton.addEventListener('mouseout', function() {
+        this.style.backgroundColor = 'rgba(26,26,26,255)';
+        });
+        noneButton.addEventListener('mouseover', function() {
+        this.style.backgroundColor = 'rgba(198, 158, 0, 0.896)';
+        });
+        noneButton.addEventListener('mouseout', function() {
+        this.style.backgroundColor = 'rgba(26,26,26,255)';
+        });
+        
+        // Add buttons to filter controls
+        filterControls.appendChild(allButton);
+        filterControls.appendChild(noneButton);
+        
+        // Insert filter controls at the top
+        groupsContainer.appendChild(filterControls);
+        
+        // Check if GroupManager is available
+        if (typeof GroupManager === 'undefined' || !GroupManager.getAllGroups) {
+        console.error('[UI] GroupManager not available or missing getAllGroups method');
+        return;
+        }
+        
+        // Create section header for Groups
+        const groupHeader = document.createElement('h4');
+        groupHeader.textContent = 'MAP PINS';
+        groupHeader.style.marginTop = '30px';
+        groupHeader.style.color = 'rgba(198, 158, 0, 0.896)';
+        groupHeader.style.borderBottom = '1px solid #444';
+        groupHeader.style.paddingBottom = '5px';
+        groupsContainer.appendChild(groupHeader);
+        
+        const allGroups = GroupManager.getAllGroups();
+        
+        // Filter out the default group
+        const filterableGroups = allGroups.filter(group => group !== 'default');
+        
+        // Initialize all groups as visible
+        filterableGroups.forEach(group => {
+        visibleGroups[group] = true;
+        });
+        
+        // Create filter checkboxes for groups
+        createFilterCheckboxes(groupsContainer, filterableGroups, true);
+        
+        // Add a section for item types if available
+        if (typeof GroupManager.getAllItemTypes === 'function') {
+        const itemTypes = GroupManager.getAllItemTypes();
+        
+        if (itemTypes && itemTypes.length > 0) {
+            // Create section header for Item Types
+            const itemHeader = document.createElement('h4');
+            itemHeader.textContent = 'ITEM TYPES';
+            itemHeader.style.marginTop = '30px';
+            itemHeader.style.color = 'rgba(198, 158, 0, 0.896)';
+            itemHeader.style.borderBottom = '1px solid #444';
+            itemHeader.style.paddingBottom = '5px';
+            groupsContainer.appendChild(itemHeader);
+            
+            // Initialize all item types as visible
+            itemTypes.forEach(type => {
+            visibleItemTypes[type] = true;
+            });
+            
+            // Create filter checkboxes for item types
+            createFilterCheckboxes(groupsContainer, itemTypes, false, true);
+        }
+        }
+        
+        // Add event listeners to the All/None buttons
+        allButton.addEventListener('click', function() {
         console.log('[UI] Select All filters clicked');
         document.querySelectorAll('#group-filters input[type="checkbox"]').forEach(checkbox => {
-          checkbox.checked = true;
+            checkbox.checked = true;
         });
         
-        // Update all groups to be visible
+        // Update all groups and item types to be visible
         Object.keys(visibleGroups).forEach(group => {
-          visibleGroups[group] = true;
+            visibleGroups[group] = true;
+        });
+        
+        Object.keys(visibleItemTypes).forEach(type => {
+            visibleItemTypes[type] = true;
         });
         
         // Update markers visibility
-        updateVisibleMarkers(visibleGroups);
-      });
-      
-      noneButton.addEventListener('click', function() {
+        updateVisibleMarkers(visibleGroups, visibleItemTypes);
+        });
+        
+        noneButton.addEventListener('click', function() {
         console.log('[UI] Select None filters clicked');
         document.querySelectorAll('#group-filters input[type="checkbox"]').forEach(checkbox => {
-          checkbox.checked = false;
+            checkbox.checked = false;
         });
         
-        // Update all groups to be hidden
+        // Update all groups and item types to be hidden
         Object.keys(visibleGroups).forEach(group => {
-          visibleGroups[group] = false;
+            visibleGroups[group] = false;
+        });
+        
+        Object.keys(visibleItemTypes).forEach(type => {
+            visibleItemTypes[type] = false;
         });
         
         // Update markers visibility
-        updateVisibleMarkers(visibleGroups);
-      });
-      
-      console.log('[UI] Filter groups initialized');
+        updateVisibleMarkers(visibleGroups, visibleItemTypes);
+        });
+        
+        console.log('[UI] Filter groups initialized');
     }
     
     // Update marker visibility based on filters
-    function updateVisibleMarkers(visibleGroups) {
-      if (typeof MarkerManager === 'undefined' || !MarkerManager.getMarkersMap) {
-        console.error('[UI] MarkerManager not available or missing getMarkersMap method');
-        return;
-      }
-      
-      const markersMap = MarkerManager.getMarkersMap();
-      
-      // Loop through all markers and update visibility
-      markersMap.forEach((entry, key) => {
-        const marker = entry.marker;
-        const group = entry.data.group;
-        
-        if (visibleGroups[group]) {
-          // Make marker visible
-          marker.setOpacity(1);
-          marker.options.interactive = true;
-        } else {
-          // Hide marker
-          marker.setOpacity(0);
-          marker.options.interactive = false;
+    function updateVisibleMarkers(visibleGroups, visibleItemTypes) {
+        if (typeof MarkerManager === 'undefined' || !MarkerManager.getMarkersMap) {
+            console.error('[UI] MarkerManager not available or missing getMarkersMap method');
+            return;
         }
-      });
-    }
+        
+        const markersMap = MarkerManager.getMarkersMap();
+        
+        // Loop through all markers and update visibility
+        markersMap.forEach((entry, key) => {
+            const marker = entry.marker;
+            const data = entry.data;
+            const group = data.group;
+            
+            let shouldBeVisible = visibleGroups[group];
+            
+            // If marker has items, check if any item type matches the visible item types
+            if (data.items && Array.isArray(data.items) && !shouldBeVisible) {
+            // Check if any of the marker's items have a type that's visible
+            const hasVisibleItemType = data.items.some(item => 
+                item.type && visibleItemTypes[item.type]
+            );
+            
+            // If marker has an item with a visible type, it should be visible
+            shouldBeVisible = hasVisibleItemType;
+            }
+            
+            if (shouldBeVisible) {
+            // Make marker visible
+            marker.setOpacity(1);
+            marker.options.interactive = true;
+            } else {
+            // Hide marker
+            marker.setOpacity(0);
+            marker.options.interactive = false;
+            }
+        });
+    }    
     
     // Public API
     return {
-      init: function() {
-        // Wait for DOM to be ready
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', initialize);
-        } else {
-          // DOM already loaded, initialize immediately
-          initialize();
+        init: function() {
+          // Wait for DOM to be ready
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initialize);
+          } else {
+            // DOM already loaded, initialize immediately
+            initialize();
+          }
+        },
+        
+        closeSidebars: function() {
+          closeSidebars();
         }
-      },
-      
-      closeSidebars: function() {
-        closeSidebars();
-      }
-    };
+      };
 })();
+    
