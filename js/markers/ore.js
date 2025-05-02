@@ -1,22 +1,20 @@
-// js/markers/waypoint.js - Update marker definitions
+// js/markers/ore.js - Sample with both single and multi-coordinates
 const OreMarkers = [
-  {
-    name: 'Copper', 
-    coords: [1250, 4166], 
-    group: 'ore',
-    layer: 'layer1'  // Specify layer
-  },
+  // Single coordinate format
   {
     name: 'Tinstone', 
     coords: [1058, 2900], 
     group: 'ore',
-    layer: 'layer1'  // Specify layer
+    layer: 'layer1'
   },
+  // Multiple coordinates format for the same resource
   {
     name: 'Copper', 
-    coords: [981, 3592], 
+    coords: [
+      [1250, 4166],
+      [981, 3592]
+    ], 
     group: 'ore',
-    layer: 'layer1'  // Specify layer
-  },
-  // Add more markers as needed
+    layer: 'layer1'
+  }
 ];

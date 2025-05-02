@@ -117,14 +117,6 @@ const MarkerManager = (function() {
         itemEntry.appendChild(itemType);
         itemEntry.appendChild(viewButton);
         
-        // Add price for vendor items
-        // if (group === 'vendor' && item.price) {
-        //   const priceSpan = document.createElement('span');
-        //   priceSpan.className = 'item-price';
-        //   priceSpan.textContent = item.price + ' coins';
-        //   itemEntry.appendChild(priceSpan);
-        // }
-        
         // Add to popup
         popupItems.appendChild(itemEntry);
       });
@@ -506,6 +498,44 @@ const MarkerManager = (function() {
     return marker;
   }
   
+  // Process markers including multi-coordinate markers
+  function processMarkers(markers) {
+    console.log(`[Marker] Processing ${markers.length} marker entries`);
+    
+    // Clear existing markers
+    markersMap.clear();
+    nameToIdMap.clear();
+    
+    let successCount = 0;
+    markers.forEach(data => {
+      const { name, coords, group = 'default', layer = CONFIG.map.defaultLayer } = data;
+      
+      // Check if we have a multi-coordinate marker (array of coordinate pairs)
+      if (Array.isArray(coords) && Array.isArray(coords[0]) && 
+          coords[0].length === 2 && typeof coords[0][0] === 'number' && 
+          (coords.length === 1 || Array.isArray(coords[1]))) {
+        // Multiple coordinates for the same marker name
+        coords.forEach(coordPair => {
+          const singleMarker = {
+            ...data,
+            coords: coordPair
+          };
+          
+          if (addMarker(singleMarker)) {
+            successCount++;
+          }
+        });
+      } else {
+        // Standard single coordinate marker
+        if (addMarker(data)) {
+          successCount++;
+        }
+      }
+    });
+    
+    console.log(`[Marker] Successfully added ${successCount} markers`);
+    return successCount;
+  }
   
   // Initialize event listeners for the popup
   function initPopupListeners() {
@@ -544,34 +574,22 @@ const MarkerManager = (function() {
     init: function(initialMarkers) {
       console.log(`[Marker] Initializing with ${initialMarkers ? initialMarkers.length : 0} markers`);
       
-      // Clear existing markers
-      markersMap.clear();
+      // Save marker data reference
       markerData = initialMarkers || [];
       
-      // Add initial markers from data
-      let successCount = 0;
-      markerData.forEach(item => {
-        if (addMarker(item)) {
-          successCount++;
-        }
-      });
-      
-      console.log(`[Marker] Successfully added ${successCount} of ${markerData.length} markers`);
+      // Process all markers
+      processMarkers(markerData);
       
       // Setup popup event listeners
       initPopupListeners();
-
       initItemDetailModal();
-      console.log('[Marker] Item detail modal initialized');
       
-      // Debug: List all markers
-      console.log('[Marker] Available markers:');
-      markersMap.forEach((entry, key) => {
-        console.log(`  - ${entry.data.name} (${entry.data.group})`);
-      });
+      console.log('[Marker] Marker manager initialized');
     },
     
     addMarker: addMarker,
+    
+    processMarkers: processMarkers,
     
     getMarker: function(nameOrId) {
       if (!nameOrId) {
