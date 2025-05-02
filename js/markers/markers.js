@@ -57,7 +57,7 @@ const MarkerManager = (function() {
       } else if (group === 'boss') {
         popupRegion.textContent = 'placeholder';  // Added specific text for boss
       } else {
-        popupRegion.textContent = group.charAt(0).toUpperCase() + group.slice(1);
+        popupRegion.textContent = 'placeholder';
       }
     }
     
