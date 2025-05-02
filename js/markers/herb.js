@@ -5,6 +5,12 @@ const HerbMarkers = [
     coords: [1211, 3937], 
     group: 'herb',
     layer: 'layer1'  // Specify layer
+  },
+  {
+    name: 'Umbral Mushroom', 
+    coords: [1212, 3476], 
+    group: 'herb',
+    layer: 'layer1'  // Specify layer
   }
   // Add more markers as needed
 ];
