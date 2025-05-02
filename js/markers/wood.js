@@ -2,7 +2,10 @@
 const WoodMarkers = [
     {
       name: 'Wood', // umbral mushroom
-      coords: [1785, 1250],
+      coords: [
+        [1785, 1250],
+        [825, 3784],
+      ],
       group: 'wood',
       layer: 'layer1'  // Specify layer
     },
