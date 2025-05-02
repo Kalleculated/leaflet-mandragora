@@ -8,13 +8,31 @@ const HerbMarkers = [
   },
   {
     name: 'Umbral Mushroom', 
-    coords: [1212, 3476], 
+    coords: [
+      [1212, 3476],
+      [670, 4859],
+      [825, 4975],
+      [1400, 5819],
+      [1401, 6357],
+      [1440, 7281],
+    ],
     group: 'herb',
     layer: 'layer1'  // Specify layer
   },
   {
+    name: 'Umbral Mushroom', 
+    coords: [
+      [1442, 6587],
+    ],
+    group: 'herb',
+    layer: 'layer2'  // Specify layer
+  },
+  {
     name: 'Cardinal Leaf', 
-    coords: [1173, 2861], 
+    coords: [
+      [1173, 2861], 
+      [1054, 3938],
+    ],
     group: 'herb',
     layer: 'layer1'  // Specify layer
   },
@@ -26,13 +44,11 @@ const HerbMarkers = [
   },
   {
     name: 'Wolfsbane', 
-    coords: [1096, 1553], 
-    group: 'herb',
-    layer: 'layer1'  // Specify layer
-  },
-  {
-    name: 'Wolfsbane', 
-    coords: [1134, 826], 
+    coords: [
+      [1096, 1553], 
+      [1441, 7396],
+      [1134, 826],
+    ],
     group: 'herb',
     layer: 'layer1'  // Specify layer
   },
@@ -47,7 +63,10 @@ const HerbMarkers = [
   },
   {
     name: 'Mist Fern', 
-    coords: [749, 788], 
+    coords: [
+      [749, 788], 
+      [636, 1096],
+    ],
     group: 'herb',
     layer: 'layer1'  // Specify layer
   },
@@ -61,8 +80,49 @@ const HerbMarkers = [
     layer: 'layer1'  // Specify layer
   },
   {
-    name: 'Mist Fern', 
-    coords: [636, 1096], 
+    name: 'Unknown Herb', 
+    coords: [
+      [1210, 1097], 
+      [1440, 8393],
+    ],
+    group: 'herb',
+    layer: 'layer1'  // Specify layer
+  },
+  {
+    name: 'Deadly Nightshade', 
+    coords: [
+      [825, 4438], 
+      [1016, 5051],
+    ],
+    group: 'herb',
+    layer: 'layer1'  // Specify layer
+  },
+  {
+    name: 'Bog Berry', 
+    coords: [
+      [1016, 4513], 
+      [1056, 5436],
+    ],
+    group: 'herb',
+    layer: 'layer1'  // Specify layer
+  },
+  {
+    name: 'Bloodmoss', 
+    coords: [
+      [1400, 5743], 
+      [1362, 6052],
+      [1401, 6051],
+      [1439, 6280],
+    ],
+    group: 'herb',
+    layer: 'layer1'  // Specify layer
+  },
+  {
+    name: 'Frost Lichen', 
+    coords: [
+      [1671, 7586], 
+      [1479, 9238],
+    ],
     group: 'herb',
     layer: 'layer1'  // Specify layer
   },
