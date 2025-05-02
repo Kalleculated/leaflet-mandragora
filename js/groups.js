@@ -11,6 +11,7 @@ const GroupManager = (function() {
       waypoint: 'assets/pins/pin.png',
       chest: 'assets/pins/pin.png',
       vendor: 'assets/pins/pin.png',
+      boss: 'assets/pins/pin.png'
       // Add more groups and their icon paths here
     };
   

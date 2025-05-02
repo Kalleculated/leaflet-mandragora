@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
       typeof MapMarkers === 'undefined' || 
       typeof OreMarkers === 'undefined' ||
       typeof ChestMarkers === 'undefined' ||
-      typeof VendorMarkers === 'undefined') {
+      typeof VendorMarkers === 'undefined' ||
+      typeof BossMarkers === 'undefined') {
     throw new Error('One or more marker data arrays are not defined');
     }
 
@@ -39,7 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
     ...LockpickMarkers,
     ...DiagramMarkers,
     ...ChestMarkers,
-    ...VendorMarkers
+    ...VendorMarkers,
+    ...BossMarkers
     // Add any additional group markers
     ];
     console.log(`[Main] Combined ${allMarkers.length} markers`);
