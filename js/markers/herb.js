@@ -54,5 +54,11 @@ const HerbMarkers = [
     group: 'herb',
     layer: 'layer1'  // Specify layer
   },
+  {
+    name: 'Mist Fern', 
+    coords: [636, 1096], 
+    group: 'herb',
+    layer: 'layer1'  // Specify layer
+  },
   // Add more markers as needed
 ];
