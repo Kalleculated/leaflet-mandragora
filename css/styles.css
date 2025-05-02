@@ -108,6 +108,7 @@ body {
   cursor: pointer;
   color: rgba(198, 158, 0, 0.896);
   transition: all 0.3s;
+  font-weight: bold;
 }
 
 .layer-toggle-btn.active {
