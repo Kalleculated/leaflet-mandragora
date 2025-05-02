@@ -56,12 +56,6 @@ const UIControls = (function() {
         filterToggleBtn.classList.toggle('active');
       });
       
-      // Close sidebars when clicking on map
-      document.getElementById('map').addEventListener('click', function() {
-        console.log('[UI] Map clicked, closing sidebars');
-        closeSidebars(searchSidebar, filterSidebar, searchToggleBtn, filterToggleBtn);
-      });
-      
       // Initialize layer buttons in the top navbar
       initializeLayerButtons(layerButtonsContainer);
       

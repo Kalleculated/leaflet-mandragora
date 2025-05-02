@@ -197,12 +197,12 @@ const SearchManager = (function() {
         MapManager.setView(markerData.coords, CONFIG.search.resultZoomLevel);
       }
       
-      // Close sidebars
-      closeSidebars();
+      // REMOVED: closeSidebars() call
     } catch (e) {
       console.error("[SM] Error handling result click:", e);
     }
   }
+  
   
   // Close all sidebars
   function closeSidebars() {
