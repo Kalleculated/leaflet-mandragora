@@ -146,6 +146,59 @@ const UIControls = (function() {
       // Clear existing filters
       groupsContainer.innerHTML = '';
       
+      // Add buttons to the top of the filter list, right under the header
+      const filterControls = document.createElement('div');
+      filterControls.className = 'filter-controls';
+      filterControls.style.display = 'flex';
+      filterControls.style.justifyContent = 'center';
+      filterControls.style.gap = '10px';
+      filterControls.style.marginBottom = '15px';
+      filterControls.style.borderBottom = '1px solid #444';
+      filterControls.style.paddingBottom = '20px';
+      
+      // Create "All" button
+      const allButton = document.createElement('button');
+      allButton.textContent = 'All';
+      allButton.style.fontStyle = 'italic';
+      allButton.style.padding = '6px 12px';
+      allButton.style.backgroundColor = 'rgba(26,26,26,255)';
+      allButton.style.color = 'white';
+      allButton.style.border = '1px solid #444';
+      allButton.style.borderRadius = '4px';
+      allButton.style.cursor = 'pointer';
+      
+      // Create "None" button
+      const noneButton = document.createElement('button');
+      noneButton.textContent = 'None';
+      noneButton.style.fontStyle = 'italic';
+      noneButton.style.padding = '6px 12px';
+      noneButton.style.backgroundColor = 'rgba(26,26,26,255)';
+      noneButton.style.color = 'white';
+      noneButton.style.border = '1px solid #444';
+      noneButton.style.borderRadius = '4px';
+      noneButton.style.cursor = 'pointer';
+      
+      // Add hover effect
+      allButton.addEventListener('mouseover', function() {
+        this.style.backgroundColor = 'rgba(198, 158, 0, 0.896)';
+      });
+      allButton.addEventListener('mouseout', function() {
+        this.style.backgroundColor = 'rgba(26,26,26,255)';
+      });
+      noneButton.addEventListener('mouseover', function() {
+        this.style.backgroundColor = 'rgba(198, 158, 0, 0.896)';
+      });
+      noneButton.addEventListener('mouseout', function() {
+        this.style.backgroundColor = 'rgba(26,26,26,255)';
+      });
+      
+      // Add buttons to the filter controls
+      filterControls.appendChild(allButton);
+      filterControls.appendChild(noneButton);
+      
+      // Insert filter controls at the top of the group filters
+      groupsContainer.appendChild(filterControls);
+      
       // Check if GroupManager is available
       if (typeof GroupManager === 'undefined' || !GroupManager.getAllGroups) {
         console.error('[UI] GroupManager not available or missing getAllGroups method');
@@ -217,6 +270,37 @@ const UIControls = (function() {
         
         // Add filter item to container
         groupsContainer.appendChild(filterItem);
+      });
+      
+      // Add event listeners to the All/None buttons
+      allButton.addEventListener('click', function() {
+        console.log('[UI] Select All filters clicked');
+        document.querySelectorAll('#group-filters input[type="checkbox"]').forEach(checkbox => {
+          checkbox.checked = true;
+        });
+        
+        // Update all groups to be visible
+        Object.keys(visibleGroups).forEach(group => {
+          visibleGroups[group] = true;
+        });
+        
+        // Update markers visibility
+        updateVisibleMarkers(visibleGroups);
+      });
+      
+      noneButton.addEventListener('click', function() {
+        console.log('[UI] Select None filters clicked');
+        document.querySelectorAll('#group-filters input[type="checkbox"]').forEach(checkbox => {
+          checkbox.checked = false;
+        });
+        
+        // Update all groups to be hidden
+        Object.keys(visibleGroups).forEach(group => {
+          visibleGroups[group] = false;
+        });
+        
+        // Update markers visibility
+        updateVisibleMarkers(visibleGroups);
       });
       
       console.log('[UI] Filter groups initialized');
