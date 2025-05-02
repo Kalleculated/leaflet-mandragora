@@ -213,7 +213,7 @@ body {
 }
 
 .search-result-item:hover {
-  background-color: rgba(26,26,26,255);
+  background-color: rgba(80, 80, 80, 0.8);
 }
 
 .search-result-item img {
@@ -365,44 +365,46 @@ body {
 div.search-result-item,
 .search-result-item,
 .sidebar div.search-result-item {
-  background-color: rgba(10,10,10,255) !important;
-  border-bottom: 1px solid #444 !important;
-  color: white !important;
+  background-color: rgba(10,10,10,255);
+  border-bottom: 1px solid #444;
+  color: white;
 }
 
 /* Override all inline background colors */
 .search-result-item[style*="background-color"],
 div[class="search-result-item"][style*="background-color"] {
-  background-color: rgba(26,26,26,255) !important;
+  background-color: rgba(26,26,26,255);
 }
 
 /* Target all divs inside search results */
 .search-result-item div,
 #search-results .search-result-item div {
-  background-color: transparent !important;
+  background-color: transparent;
 }
 
 /* Force all text in search result items to be visible */
 .search-result-item div[style*="font-weight:500;"],
 .search-result-item div[style*="font-weight"] {
-  color: white !important;
-  background-color: transparent !important;
+  color: white;
+  background-color: transparent;
 }
 
 /* Target specifically the color:#666 style that's applied inline */
 .search-result-item div[style*="color:#666"],
 .search-result-item div[style*="color: #666"] {
-  color: #aaa !important;
-  background-color: transparent !important;
+  color: #aaa;
+  background-color: transparent;
 }
 
 /* Additional override for any element with inline styles */
 div[style] {
-  background-color: inherit !important;
+  background-color: inherit;
 }
 
-/* Result item hover state with !important */
-.search-result-item:hover {
+/* Result item hover state */
+.search-result-item:hover,
+#search-results .search-result-item:hover,
+.sidebar .search-result-item:hover {
   background-color: rgba(80, 80, 80, 0.8) !important;
 }
 
@@ -411,7 +413,7 @@ div[style] {
 /* Reset search results styling to match filter sidebar */
 #search-results {
   width: 100%;
-  background-color: transparent !important;
+  background-color: transparent;
   border-radius: 0;
   box-shadow: none;
   overflow: hidden;
@@ -439,8 +441,7 @@ div[style] {
   cursor: pointer;
   transition: background-color 0.2s;
   color: white;
-  background: rgba(10,10,10,255);
-  background-color: transparent !important;
+  background-color: rgba(10,10,10,255);
 }
 
 .search-result-item:last-child {
@@ -462,16 +463,16 @@ div[style] {
 .search-result-item[style],
 .search-result-item div[style],
 #search-results .search-result-item div[style] {
-  background-color: transparent !important;
+  background-color: transparent;
 }
 
 /* Ensure proper text colors */
 .search-result-item div[style*="font-weight"] {
-  color: white !important;
-  background-color: transparent !important;
+  color: white;
+  background-color: transparent;
 }
 
 .search-result-item div[style*="color:#"] {
-  color: #aaa !important;
-  background-color: transparent !important;
+  color: #aaa;
+  background-color: transparent;
 }

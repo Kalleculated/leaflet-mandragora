@@ -182,10 +182,6 @@ const SearchManager = (function() {
         MapManager.setView(marker.getLatLng(), CONFIG.search.resultZoomLevel);
         marker.openPopup();
         
-        // Update search input
-        if (searchInput) {
-          searchInput.value = item.name;
-        }
       } else {
         console.warn(`[SM] Marker not found for ${item.name}`);
         MapManager.setView(markerData.coords, CONFIG.search.resultZoomLevel);
