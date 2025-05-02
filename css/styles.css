@@ -729,49 +729,9 @@ div[style] {
     }
   }
 
-/* Craftable items styling */
-.item-entry.craftable {
-    background-color: rgba(46, 46, 46, 0.7);
-    border-left: 3px solid #4caf50;
-  }
-  
-  .item-entry.craftable:hover {
-    background-color: rgba(60, 60, 60, 0.8);
-  }
-  
-  .craft-btn {
-    background-color: rgba(76, 175, 80, 0.7) !important;
-  }
-  
-  .craft-btn:hover {
-    background-color: rgba(76, 175, 80, 1) !important;
-  }
-  
-  /* Materials list in item detail */
-  .material-entry {
-    background-color: rgba(50, 50, 50, 0.5);
-    margin-bottom: 5px;
-    padding: 5px 8px;
-    border-radius: 3px;
-  }
-  
-  .craft-item-btn {
-    transition: background-color 0.2s;
-  }
-  
-  /* Section headers in popup */
-  .items-section-header {
-    border-bottom: 1px solid #444;
-    margin-top: 15px;
-    padding-bottom: 5px;
-    color: #aaa;
-    font-size: 14px;
-    font-weight: bold;
-  }
-
 /* Sale item styling */
 .item-entry.sale-item {
-    background-color: rgba(46, 46, 46, 0.7);
+    background-color: rgba(26,26,26,0.95);
     border-left: 3px solid rgba(198, 158, 0, 0.896); /* Yellow border */
   }
   
@@ -781,7 +741,7 @@ div[style] {
   
   /* Craftable items styling */
   .item-entry.craftable {
-    background-color: rgba(46, 46, 46, 0.7);
+    background-color: rgba(26,26,26,0.95);
     border-left: 3px solid #4caf50; /* Green border */
   }
   

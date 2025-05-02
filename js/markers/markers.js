@@ -46,14 +46,16 @@ const MarkerManager = (function() {
       popupIcon.alt = 'Icon';
     }
     
-    // Set region based on group
+    // Set type/region based on group
     if (popupRegion) {
       if (group === 'chest') {
-        popupRegion.textContent = 'Chest Contents:';
+        popupRegion.textContent = 'Chest';  // Changed from 'Chest Contents:'
       } else if (group === 'vendor') {
         popupRegion.textContent = 'Items for Sale:';
       } else if (group === 'waypoint') {
         popupRegion.textContent = 'Waypoint';
+      } else if (group === 'boss') {
+        popupRegion.textContent = 'Boss';  // Added specific text for boss
       } else {
         popupRegion.textContent = group.charAt(0).toUpperCase() + group.slice(1);
       }
@@ -64,12 +66,21 @@ const MarkerManager = (function() {
       popupItems.innerHTML = '';
     }
     
-      // Add items if present (for chests and vendors) and container exists
+    // Add items if present (for chests and vendors) and container exists
     if (popupItems && data && data.items && Array.isArray(data.items) && data.items.length > 0) {
-      // Add header for items
+      // Add header for items with text based on group type
       const itemsHeader = document.createElement('div');
       itemsHeader.className = 'items-section-header';
-      itemsHeader.textContent = 'Items for Sale';
+      
+      // Set header text based on group type
+      if (group === 'chest') {
+        itemsHeader.textContent = 'Contains:';
+      } else if (group === 'boss') {
+        itemsHeader.textContent = 'Drops:';
+      } else {
+        itemsHeader.textContent = 'Items for Sale';
+      }
+      
       itemsHeader.style.color = '#aaa';
       itemsHeader.style.fontSize = '14px';
       itemsHeader.style.fontWeight = 'bold';
