@@ -2,7 +2,7 @@
 const OreMarkers = [
   {
     name: 'Copper', 
-    coords: [1171, 4099], 
+    coords: [1186, 4118], 
     group: 'ore',
     layer: 'layer1'  // Specify layer
   }
