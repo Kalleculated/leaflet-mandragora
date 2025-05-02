@@ -302,6 +302,11 @@ const MarkerManager = (function() {
     // Clear previous stats
     modalStats.innerHTML = '';
     
+    // Create stats container with consistent styling
+    const statsContainer = document.createElement('div');
+    statsContainer.className = 'stats-container';
+    modalStats.appendChild(statsContainer);
+    
     // Add price for vendor items
     if (isVendor && item.price) {
       const priceEntry = document.createElement('div');
@@ -318,7 +323,7 @@ const MarkerManager = (function() {
       
       priceEntry.appendChild(priceName);
       priceEntry.appendChild(priceValue);
-      modalStats.appendChild(priceEntry);
+      statsContainer.appendChild(priceEntry);
     }
     
     // Add all stats if available
@@ -337,7 +342,7 @@ const MarkerManager = (function() {
         
         statEntry.appendChild(statNameElem);
         statEntry.appendChild(statValueElem);
-        modalStats.appendChild(statEntry);
+        statsContainer.appendChild(statEntry);
       });
     }
     

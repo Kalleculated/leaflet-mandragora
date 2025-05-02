@@ -777,3 +777,29 @@ div[style] {
     font-size: 14px;
     font-weight: bold;
   }
+
+  
+/* Update material entries */
+.material-entry {
+    background-color: rgba(26, 26, 26, 0.95);
+    margin-bottom: 5px;
+    padding: 5px 8px;
+    border-radius: 3px;
+  }
+  
+  /* Update stat entries to match material entries */
+  .stat-entry {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    padding: 5px 8px;
+    border-radius: 3px;
+    background-color: rgba(26, 26, 26, 0.95);
+    border-bottom: none;
+  }
+  
+  /* Update modal stats container */
+  .modal-stats {
+    background-color: transparent;
+    padding: 0;
+  }
