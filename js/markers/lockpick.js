@@ -1,5 +1,5 @@
 // js/markers/waypoint.js - Update marker definitions
-const DiagramMarkers = [
+const LockpickMarkers = [
   {
     name: 'Placeholder', 
     coords: [0, 10], 
