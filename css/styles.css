@@ -5,6 +5,18 @@ html, body, #map {
     padding: 0;
 }
 
+body,
+.leaflet-container,
+.leaflet-popup-content,
+.top-navbar,
+.sidebar,
+#custom-search-input,
+.layer-toggle-btn,
+h3,
+.search-result-item {
+  font-family: 'Roboto', sans-serif;
+}
+
 /* Background image styling */
 body {
   background-image: url('background/mandragora_background.jpg');
