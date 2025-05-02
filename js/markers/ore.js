@@ -23,5 +23,11 @@ const OreMarkers = [
     group: 'ore',
     layer: 'layer1'  // Specify layer
   },
+  {
+    name: 'Adamantite', 
+    coords: [403, 826], 
+    group: 'ore',
+    layer: 'layer1'  // Specify layer
+  },
   // Add more markers as needed
 ];
