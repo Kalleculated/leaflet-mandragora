@@ -81,28 +81,22 @@ const SearchManager = (function() {
     // Clear and prepare container
     clearResults();
     
-    // Insert debugging element to verify rendering
-    const debugElement = document.createElement('div');
-    debugElement.textContent = `Found ${items.length} locations`;
-    debugElement.style.padding = '5px';
-    debugElement.style.backgroundColor = '#f0f0f0';
-    debugElement.style.borderBottom = '1px solid #ddd';
-    debugElement.style.fontSize = '12px';
-    resultsContainer.appendChild(debugElement);
+    // Insert header with result count
+    const headerElement = document.createElement('div');
+    headerElement.textContent = `Found ${items.length} locations`;
+    headerElement.style.padding = '5px';
+    headerElement.style.backgroundColor = 'rgba(26,26,26,255)';
+    headerElement.style.borderBottom = '1px solid #444';
+    headerElement.style.fontSize = '12px';
+    headerElement.style.color = '#ccc';
+    headerElement.style.marginBottom = '10px';
+    resultsContainer.appendChild(headerElement);
     
     // Create results
     items.forEach(item => {
       // Create result item
       const resultItem = document.createElement('div');
       resultItem.className = 'search-result-item';
-      
-      // Essential styling
-      resultItem.style.display = 'flex';
-      resultItem.style.alignItems = 'center';
-      resultItem.style.padding = '10px';
-      resultItem.style.cursor = 'pointer';
-      resultItem.style.borderBottom = '1px solid #eee';
-      resultItem.style.backgroundColor = '#ffffff';
       
       // Get icon
       let iconHTML = '';
@@ -122,9 +116,9 @@ const SearchManager = (function() {
       
       resultItem.innerHTML = `
         ${iconHTML}
-        <div style="flex:1;">
+        <div>
           <div style="font-weight:500;">${item.name}</div>
-          <div style="color:#666;font-size:0.9em;">(${layerName})</div>
+          <div style="color:#aaa;font-size:0.9em;">(${layerName})</div>
         </div>
       `;
       
@@ -146,7 +140,7 @@ const SearchManager = (function() {
     noResults.className = 'no-results';
     noResults.textContent = 'No locations found';
     noResults.style.padding = '15px';
-    noResults.style.color = '#666';
+    noResults.style.color = '#bbb';
     noResults.style.textAlign = 'center';
     noResults.style.fontStyle = 'italic';
     
