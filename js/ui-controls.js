@@ -155,13 +155,16 @@ const UIControls = (function() {
       const allGroups = GroupManager.getAllGroups();
       const visibleGroups = {};
       
+      // Filter out the default group
+      const filterableGroups = allGroups.filter(group => group !== 'default');
+      
       // Initialize all groups as visible
       allGroups.forEach(group => {
         visibleGroups[group] = true;
       });
       
-      // Create filter checkboxes for each group
-      allGroups.forEach(group => {
+      // Create filter checkboxes for filterable groups only
+      filterableGroups.forEach(group => {
         const filterItem = document.createElement('div');
         filterItem.className = 'filter-group-item';
         
@@ -261,4 +264,4 @@ const UIControls = (function() {
         closeSidebars();
       }
     };
-  })();
+})();
