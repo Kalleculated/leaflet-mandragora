@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // 3. Combine all marker data
     if (typeof WaypointMarkers === 'undefined' || 
         typeof HerbMarkers === 'undefined' || 
+        typeof LockpickMarkers === 'undefined' || 
+        typeof DiagramMarkers === 'undefined' || 
+        typeof MapMarkers === 'undefined' || 
         typeof OreMarkers === 'undefined') {
       throw new Error('One or more marker data arrays are not defined');
     }
