@@ -3,8 +3,70 @@ const MarkerManager = (function() {
   // Store all markers for quick lookup
   const markersMap = new Map();
   let markerData = [];
+  let activePopupMarker = null;
   
-  // Create popup content
+  // Handle custom popup display
+  function showBottomPopup(name, group, imageUrl = null) {
+    console.log(`[Marker] Showing bottom popup for: ${name}`);
+    
+    // Get DOM elements
+    const popup = document.getElementById('bottom-popup');
+    const popupTitle = document.getElementById('popup-title');
+    const popupIcon = document.getElementById('popup-icon');
+    const popupRegion = document.getElementById('popup-region');
+    
+    if (!popup || !popupTitle || !popupIcon) {
+      console.error('[Marker] Bottom popup elements not found in DOM');
+      return;
+    }
+    
+    // Set popup content
+    popupTitle.textContent = name;
+    
+    // Set icon
+    try {
+      if (typeof GroupManager !== 'undefined' && GroupManager.getIcon) {
+        const icon = GroupManager.getIcon(group);
+        if (icon && icon.options && icon.options.iconUrl) {
+          popupIcon.src = icon.options.iconUrl;
+          popupIcon.alt = group;
+        } else {
+          popupIcon.src = CONFIG.fallbacks.markerImage;
+          popupIcon.alt = 'Icon';
+        }
+      } else {
+        popupIcon.src = CONFIG.fallbacks.markerImage;
+        popupIcon.alt = 'Icon';
+      }
+    } catch (error) {
+      console.error(`[Marker] Error getting icon for group ${group}:`, error);
+      popupIcon.src = CONFIG.fallbacks.markerImage;
+      popupIcon.alt = 'Icon';
+    }
+    
+    // Show popup
+    popup.classList.add('active');
+    
+    // Setup close button
+    const closeBtn = document.getElementById('close-popup');
+    if (closeBtn) {
+      closeBtn.onclick = hideBottomPopup;
+    }
+  }
+  
+  // Hide bottom popup
+  function hideBottomPopup() {
+    console.log('[Marker] Hiding bottom popup');
+    
+    const popup = document.getElementById('bottom-popup');
+    if (popup) {
+      popup.classList.remove('active');
+    }
+    
+    activePopupMarker = null;
+  }
+  
+  // Create popup content (for legacy popup support)
   function createPopupContent(name, imageUrl = null) {
     const container = document.createElement('div');
     container.innerHTML = `<b>${name}</b><br>`;
@@ -84,12 +146,17 @@ const MarkerManager = (function() {
       return null;
     }
     
-    // Create and bind popup content
-    try {
-      marker.bindPopup(createPopupContent(name, imageUrl));
-    } catch (error) {
-      console.error(`[Marker] Error binding popup for ${name}:`, error);
-    }
+    // Use custom popup behavior instead of default Leaflet popup
+    marker.on('click', function() {
+      // Hide previous popup if exists
+      if (activePopupMarker && activePopupMarker !== marker) {
+        hideBottomPopup();
+      }
+      
+      // Show bottom popup
+      showBottomPopup(name, group, imageUrl);
+      activePopupMarker = marker;
+    });
     
     // Store marker data for search
     marker.feature = { properties: { name, layer, group } };
@@ -103,6 +170,38 @@ const MarkerManager = (function() {
     console.log(`[Marker] Added: ${name} (Group: ${group}, Layer: ${layer}) at ${coords}`);
     return marker;
   }
+  
+  // Initialize event listeners for the popup
+  function initPopupListeners() {
+    // Setup close button
+    const closeBtn = document.getElementById('close-popup');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', hideBottomPopup);
+    }
+    
+    // Close popup when clicking outside
+    document.addEventListener('click', function(event) {
+      const popup = document.getElementById('bottom-popup');
+      if (!popup) return;
+      
+      // Check if click is outside the popup and not on a marker or search result
+      const isMarkerClick = event.target.closest('.leaflet-marker-icon');
+      const isPopupClick = event.target.closest('#bottom-popup');
+      const isSearchResultClick = event.target.closest('.search-result-item');
+      
+      if (!isMarkerClick && !isPopupClick && !isSearchResultClick && popup.classList.contains('active')) {
+        hideBottomPopup();
+      }
+    });
+    
+    // Close popup when pressing escape
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        hideBottomPopup();
+      }
+    });
+  }
+  
   
   // Public API
   return {
@@ -122,6 +221,9 @@ const MarkerManager = (function() {
       });
       
       console.log(`[Marker] Successfully added ${successCount} of ${markerData.length} markers`);
+      
+      // Setup popup event listeners
+      initPopupListeners();
       
       // Debug: List all markers
       console.log('[Marker] Available markers:');
@@ -181,6 +283,30 @@ const MarkerManager = (function() {
         .filter(entry => entry.data.layer === layerId)
         .map(entry => entry.data);
     },
+    
+    // Show popup programmatically (for search results)
+    showPopupForMarker: function(name) {
+      const markerData = this.getMarkerData(name);
+      if (!markerData) return;
+      
+      // Reference to document click handler
+      const existingClickHandler = document.onmousedown;
+      
+      // Temporarily disable document click handler
+      document.onmousedown = null;
+      
+      // Show popup
+      showBottomPopup(markerData.name, markerData.group, markerData.imageUrl);
+      activePopupMarker = this.getMarker(name);
+      
+      // Restore click handler after a delay
+      setTimeout(() => {
+        document.onmousedown = existingClickHandler;
+      }, 100);
+    },
+    
+    // Hide popup programmatically
+    hidePopup: hideBottomPopup,
     
     // Debug function
     debugMarkers: function() {

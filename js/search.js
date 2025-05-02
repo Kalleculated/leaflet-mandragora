@@ -180,14 +180,14 @@ const SearchManager = (function() {
       const marker = MarkerManager.getMarker(item.name);
       if (marker) {
         MapManager.setView(marker.getLatLng(), CONFIG.search.resultZoomLevel);
-        marker.openPopup();
+        
+        // Show popup for marker (no sidebar closing)
+        MarkerManager.showPopupForMarker(item.name);
         
       } else {
         console.warn(`[SM] Marker not found for ${item.name}`);
         MapManager.setView(markerData.coords, CONFIG.search.resultZoomLevel);
       }
-      
-      // REMOVED: closeSidebars() call
     } catch (e) {
       console.error("[SM] Error handling result click:", e);
     }
