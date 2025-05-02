@@ -30,5 +30,17 @@ const HerbMarkers = [
     group: 'herb',
     layer: 'layer1'  // Specify layer
   },
+  {
+    name: 'Wolfsbane', 
+    coords: [1134, 826], 
+    group: 'herb',
+    layer: 'layer1'  // Specify layer
+  },
+  {
+    name: 'Raven Claw', 
+    coords: [1211, 635], 
+    group: 'herb',
+    layer: 'layer1'  // Specify layer
+  },
   // Add more markers as needed
 ];
