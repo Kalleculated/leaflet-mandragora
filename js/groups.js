@@ -1,26 +1,29 @@
 // Group management module
 const GroupManager = (function() {
-    // Define paths for different pin images
-    const iconPaths = {
-      default: 'assets/pins/pin.png',
-      diagram: 'assets/pins/pin_diagram.png',
-      herb: 'assets/pins/pin_Herb.png',
-      lockpick: 'assets/pins/pin_lockpick.png',
-      map: 'assets/pins/pin_map.png',
-      ore: 'assets/pins/pin_ore.png',
-      waypoint: 'assets/pins/pin.png',
-      chest: 'assets/pins/pin.png',
-      vendor: 'assets/pins/pin.png',
-      boss: 'assets/pins/pin.png'
-      // Add more groups and their icon paths here
-    };
+  // Define paths for different pin images
+  const iconPaths = {
+    default: 'assets/pins/pin.png',
+    diagram: 'assets/pins/pin_diagram.png',
+    herb: 'assets/pins/pin_Herb.png',
+    lockpick: 'assets/pins/pin_lockpick.png',
+    map: 'assets/pins/pin_map.png',
+    ore: 'assets/pins/pin_ore.png',
+    waypoint: 'assets/pins/pin.png',
+    chest: 'assets/pins/pin.png',
+    vendor: 'assets/pins/pin.png',
+    boss: 'assets/pins/pin.png'
+    // Add more groups and their icon paths here
+  };
+
+  // Container for Leaflet Icon objects
+  const groupIcons = {};
   
-    // Container for Leaflet Icon objects
-    const groupIcons = {};
-    
-    // Add item types tracking
+  // Add item types tracking
   const itemTypes = new Set();
   
+  // Add craftable item tracking
+  const craftableItems = new Set();
+
   // Update to collect all item types
   function collectItemTypes(allMarkers) {
     allMarkers.forEach(marker => {
@@ -35,6 +38,16 @@ const GroupManager = (function() {
     console.log('[Group] Collected item types:', Array.from(itemTypes));
   }
   
+  // Update to collect all craftable items
+  function collectCraftableItems(allMarkers) {
+    allMarkers.forEach(marker => {
+      if (marker.craftableItems && Array.isArray(marker.craftableItems)) {
+        craftableItems.add('craftable');
+      }
+    });
+    console.log('[Group] Collected craftable items');
+  }
+
   // Initialize all group icons
   function initializeIcons() {
     // Keep existing implementation
@@ -57,13 +70,14 @@ const GroupManager = (function() {
       groupIcons.default = new L.Icon.Default();
     }
   }
-  
+
   // Public API
   return {
     init: function(allMarkers) {
       initializeIcons();
       if (allMarkers) {
         collectItemTypes(allMarkers);
+        collectCraftableItems(allMarkers);
       }
     },
     
@@ -77,6 +91,6 @@ const GroupManager = (function() {
     
     getAllItemTypes: function() {
       return Array.from(itemTypes);
-    }
+    },
   };
 })();

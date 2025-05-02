@@ -355,16 +355,28 @@ body {
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
   z-index: 1000;
   transition: bottom 0.3s ease-in-out;
+  max-height: 80vh;
+  overflow: hidden;
 }
 
 .bottom-popup.active {
   bottom: 0;
 }
 
+/* Ensure popup completely hides when inactive */
+.bottom-popup:not(.active) {
+    bottom: -200vh !important; /* Force completely off-screen */
+    transition: bottom 0.3s ease-in-out;
+    pointer-events: none; /* Prevent interaction when hidden */
+}
+
 .popup-content {
   padding: 15px;
   color: white;
   position: relative;
+  max-height: calc(80vh - 20px);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .popup-header {
@@ -556,6 +568,7 @@ div[style] {
     margin-top: 10px;
     max-height: 150px;
     overflow-y: auto;
+    max-height: 60vh;
   }
   
   .item-entry {
@@ -714,4 +727,93 @@ div[style] {
     .modal-body {
       flex-direction: column;
     }
+  }
+
+/* Craftable items styling */
+.item-entry.craftable {
+    background-color: rgba(46, 46, 46, 0.7);
+    border-left: 3px solid #4caf50;
+  }
+  
+  .item-entry.craftable:hover {
+    background-color: rgba(60, 60, 60, 0.8);
+  }
+  
+  .craft-btn {
+    background-color: rgba(76, 175, 80, 0.7) !important;
+  }
+  
+  .craft-btn:hover {
+    background-color: rgba(76, 175, 80, 1) !important;
+  }
+  
+  /* Materials list in item detail */
+  .material-entry {
+    background-color: rgba(50, 50, 50, 0.5);
+    margin-bottom: 5px;
+    padding: 5px 8px;
+    border-radius: 3px;
+  }
+  
+  .craft-item-btn {
+    transition: background-color 0.2s;
+  }
+  
+  /* Section headers in popup */
+  .items-section-header {
+    border-bottom: 1px solid #444;
+    margin-top: 15px;
+    padding-bottom: 5px;
+    color: #aaa;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+/* Sale item styling */
+.item-entry.sale-item {
+    background-color: rgba(46, 46, 46, 0.7);
+    border-left: 3px solid rgba(198, 158, 0, 0.896); /* Yellow border */
+  }
+  
+  .item-entry.sale-item:hover {
+    background-color: rgba(60, 60, 60, 0.8);
+  }
+  
+  /* Craftable items styling */
+  .item-entry.craftable {
+    background-color: rgba(46, 46, 46, 0.7);
+    border-left: 3px solid #4caf50; /* Green border */
+  }
+  
+  .item-entry.craftable:hover {
+    background-color: rgba(60, 60, 60, 0.8);
+  }
+  
+  /* Stat headings in item detail */
+  .stat-heading {
+    color: #aaa;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+  }
+  
+  /* Materials list in item detail */
+  .material-entry {
+    background-color: rgba(50, 50, 50, 0.5);
+    margin-bottom: 5px;
+    padding: 5px 8px;
+    border-radius: 3px;
+  }
+  
+  /* Section headers in popup */
+  .items-section-header {
+    border-bottom: 1px solid #444;
+    margin-top: 15px;
+    padding-bottom: 5px;
+    color: #aaa;
+    font-size: 14px;
+    font-weight: bold;
   }

@@ -64,12 +64,23 @@ const MarkerManager = (function() {
       popupItems.innerHTML = '';
     }
     
-    // Add items if present (for chests and vendors) and container exists
+      // Add items if present (for chests and vendors) and container exists
     if (popupItems && data && data.items && Array.isArray(data.items) && data.items.length > 0) {
+      // Add header for items
+      const itemsHeader = document.createElement('div');
+      itemsHeader.className = 'items-section-header';
+      itemsHeader.textContent = 'Items for Sale';
+      itemsHeader.style.color = '#aaa';
+      itemsHeader.style.fontSize = '14px';
+      itemsHeader.style.fontWeight = 'bold';
+      itemsHeader.style.marginTop = '10px';
+      itemsHeader.style.marginBottom = '5px';
+      popupItems.appendChild(itemsHeader);
+      
       // Create an item entry for each item
       data.items.forEach(item => {
         const itemEntry = document.createElement('div');
-        itemEntry.className = 'item-entry';
+        itemEntry.className = 'item-entry sale-item';
         
         // Create item name span
         const itemName = document.createElement('span');
@@ -108,6 +119,53 @@ const MarkerManager = (function() {
       });
     }
     
+    // Add craftable items if present
+    if (popupItems && data && data.craftableItems && Array.isArray(data.craftableItems) && data.craftableItems.length > 0) {
+      // Add header for craftable items
+      const craftableHeader = document.createElement('div');
+      craftableHeader.className = 'items-section-header';
+      craftableHeader.textContent = 'Craftable Items';
+      craftableHeader.style.color = '#aaa';
+      craftableHeader.style.fontSize = '14px';
+      craftableHeader.style.fontWeight = 'bold';
+      craftableHeader.style.marginTop = '20px';
+      craftableHeader.style.marginBottom = '5px';
+      popupItems.appendChild(craftableHeader);
+      
+      // Create an item entry for each craftable item
+      data.craftableItems.forEach(item => {
+        const itemEntry = document.createElement('div');
+        itemEntry.className = 'item-entry craftable';
+        
+        // Create item name span
+        const itemName = document.createElement('span');
+        itemName.className = 'item-name';
+        itemName.textContent = item.name;
+        
+        // Create item type span if available
+        const itemType = document.createElement('span');
+        itemType.className = 'item-type';
+        itemType.textContent = item.type || '';
+        
+        // Create view button
+        const viewButton = document.createElement('button');
+        viewButton.className = 'view-item-btn';
+        viewButton.textContent = 'View';
+        viewButton.addEventListener('click', function(e) {
+          e.stopPropagation(); // Prevent event bubbling
+          showCraftableItemDetail(item);
+        });
+        
+        // Assemble item entry
+        itemEntry.appendChild(itemName);
+        itemEntry.appendChild(itemType);
+        itemEntry.appendChild(viewButton);
+        
+        // Add to popup
+        popupItems.appendChild(itemEntry);
+      });
+    }
+    
     // Show popup
     popup.classList.add('active');
     
@@ -116,6 +174,92 @@ const MarkerManager = (function() {
     if (closeBtn) {
       closeBtn.onclick = hideBottomPopup;
     }
+  }
+
+  function showCraftableItemDetail(item) {
+    // Get modal elements
+    const modal = document.getElementById('item-detail-modal');
+    const modalName = document.getElementById('modal-item-name');
+    const modalImage = document.getElementById('modal-item-image');
+    const modalStats = document.getElementById('modal-item-stats');
+    
+    // Set modal content
+    modalName.textContent = item.name;
+    
+    // Set image with proper fallback
+    modalImage.src = item.image || CONFIG.fallbacks.markerImage;
+    modalImage.alt = item.name;
+    modalImage.onerror = function() {
+      this.onerror = null;
+      this.src = CONFIG.fallbacks.markerImage;
+      console.warn(`[Marker] Failed to load image: ${item.image}. Using placeholder.`);
+    };
+    
+    // Clear previous stats
+    modalStats.innerHTML = '';
+    
+    // Add required materials heading
+    const materialsHeading = document.createElement('div');
+    materialsHeading.className = 'stat-heading';
+    materialsHeading.textContent = 'Required Materials:';
+    materialsHeading.style.marginTop = '15px';
+    materialsHeading.style.marginBottom = '8px';
+    materialsHeading.style.fontWeight = 'bold';
+    materialsHeading.style.color = '#aaa';
+    modalStats.appendChild(materialsHeading);
+    
+    // Add materials list
+    if (item.materials && Array.isArray(item.materials)) {
+      item.materials.forEach(material => {
+        const materialEntry = document.createElement('div');
+        materialEntry.className = 'stat-entry material-entry';
+        
+        const materialName = document.createElement('span');
+        materialName.className = 'stat-name';
+        materialName.textContent = material.name;
+        
+        const materialValue = document.createElement('span');
+        materialValue.className = 'stat-value';
+        materialValue.textContent = `x${material.quantity}`;
+        
+        materialEntry.appendChild(materialName);
+        materialEntry.appendChild(materialValue);
+        modalStats.appendChild(materialEntry);
+      });
+    }
+    
+    // Add stats heading
+    const statsHeading = document.createElement('div');
+    statsHeading.className = 'stat-heading';
+    statsHeading.textContent = 'Item Stats:';
+    statsHeading.style.marginTop = '15px';
+    statsHeading.style.marginBottom = '8px';
+    statsHeading.style.fontWeight = 'bold';
+    statsHeading.style.color = '#aaa';
+    modalStats.appendChild(statsHeading);
+    
+    // Add item stats
+    if (item.stats) {
+      Object.entries(item.stats).forEach(([statName, statValue]) => {
+        const statEntry = document.createElement('div');
+        statEntry.className = 'stat-entry';
+        
+        const statNameElem = document.createElement('span');
+        statNameElem.className = 'stat-name';
+        statNameElem.textContent = statName.charAt(0).toUpperCase() + statName.slice(1);
+        
+        const statValueElem = document.createElement('span');
+        statValueElem.className = 'stat-value';
+        statValueElem.textContent = statValue;
+        
+        statEntry.appendChild(statNameElem);
+        statEntry.appendChild(statValueElem);
+        modalStats.appendChild(statEntry);
+      });
+    }
+    
+    // Show modal
+    modal.style.display = 'flex';
   }
 
   function showItemDetail(item, isVendor = false) {

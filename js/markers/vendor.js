@@ -26,7 +26,22 @@ const VendorMarkers = [
           weight: 8
         }
       }
+    ],
+    craftableItems: [
+      {
+        name: 'Steel Greatsword',
+        type: 'weapon',
+        image: 'assets/items/steel_greatsword.jpg',
+        materials: [
+          { name: 'Steel Ingot', quantity: 2 },
+          { name: 'Leather Strips', quantity: 1 }
+        ],
+        stats: {
+          damage: 40,
+          weight: 6
+        }
+      }
     ]
-  }
+  },
   // Add more vendor markers as needed
 ];

@@ -55,20 +55,43 @@ const SearchManager = (function() {
       
       // Check items within marker
       if (item.items && Array.isArray(item.items)) {
-        return item.items.some(subItem => 
+        if (item.items.some(subItem => 
           subItem.name.toLowerCase().includes(searchText)
-        );
+        )) {
+          return true;
+        }
+      }
+      
+      // Check craftable items within marker
+      if (item.craftableItems && Array.isArray(item.craftableItems)) {
+        if (item.craftableItems.some(subItem => 
+          subItem.name.toLowerCase().includes(searchText) ||
+          (subItem.type && subItem.type.toLowerCase().includes(searchText))
+        )) {
+          return true;
+        }
+        
+        // Check materials within craftable items
+        for (const craftable of item.craftableItems) {
+          if (craftable.materials && Array.isArray(craftable.materials)) {
+            if (craftable.materials.some(material => 
+              material.name.toLowerCase().includes(searchText)
+            )) {
+              return true;
+            }
+          }
+        }
       }
       
       return false;
     });
-    
+
     console.log(`[SM] Found ${matches.length} matches for "${searchText}"`);
     matches.forEach(m => console.log(`  - ${m.name}`));
     
     // Display results or no-results message
     if (matches.length > 0) {
-      displayResults(matches);
+      displayResults(matches, searchText);
     } else {
       displayNoResults();
     }
@@ -83,15 +106,17 @@ const SearchManager = (function() {
   
   // Display search results
   // Display search results
-  function displayResults(items) {
+  function displayResults(items, searchText) {
     // Ensure container exists
     if (!resultsContainer) {
       console.error("[SM] Results container missing");
       return;
     }
     
-    // Get current search text
-    const searchText = searchInput ? searchInput.value.trim().toLowerCase() : '';
+    // Get current search text if not provided
+    if (!searchText && searchInput) {
+      searchText = searchInput.value.trim().toLowerCase();
+    }
     
     // Clear and prepare container
     clearResults();
@@ -126,7 +151,7 @@ const SearchManager = (function() {
         console.warn(`[SM] Icon error for ${item.group}:`, e);
       }
       
-      // Check if match is for contained item
+      // Check if match is for contained item (regular items)
       let matchedItemName = '';
       if (searchText && item.items && Array.isArray(item.items)) {
         const matchedItem = item.items.find(subItem => 
@@ -136,20 +161,45 @@ const SearchManager = (function() {
         }
       }
       
+      // Check if match is for craftable item
+      let matchedCraftableItemName = '';
+      if (searchText && item.craftableItems && Array.isArray(item.craftableItems)) {
+        const matchedCraftable = item.craftableItems.find(subItem => 
+          subItem.name.toLowerCase().includes(searchText));
+        
+        if (matchedCraftable) {
+          matchedCraftableItemName = matchedCraftable.name;
+        } else {
+          // Check materials in craftable items
+          for (const craftable of item.craftableItems) {
+            if (craftable.materials && Array.isArray(craftable.materials)) {
+              const matchedMaterial = craftable.materials.find(material => 
+                material.name.toLowerCase().includes(searchText));
+              
+              if (matchedMaterial) {
+                matchedCraftableItemName = `${craftable.name} (needs ${matchedMaterial.name})`;
+                break;
+              }
+            }
+          }
+        }
+      }
+      
       // Create content
       const layerName = CONFIG.map.layers.find(l => l.id === item.layer)?.name || 'Unknown';
       const coordStr = `[${item.coords[0]}, ${item.coords[1]}]`;
       
-      resultItem.innerHTML = `
-        ${iconHTML}
-        <div>
-          <div style="font-weight:500;">${item.name}</div>
-          <div style="color:#aaa;font-size:0.9em;">
-            ${coordStr} (${layerName})
-            ${matchedItemName ? `<br>Contains: <span style="color:#c9a100">${matchedItemName}</span>` : ''}
-          </div>
+      // Build HTML content
+      let contentHTML = `
+        <div style="font-weight:500;">${item.name}</div>
+        <div style="color:#aaa;font-size:0.9em;">
+          ${coordStr} (${layerName})
+          ${matchedItemName ? `<br>Sells: <span style="color:#c9a100">${matchedItemName}</span>` : ''}
+          ${matchedCraftableItemName ? `<br>Crafts: <span style="color:#4caf50">${matchedCraftableItemName}</span>` : ''}
         </div>
       `;
+      
+      resultItem.innerHTML = iconHTML + `<div>${contentHTML}</div>`;
       
       // Add click handler with specific ID
       resultItem.addEventListener('click', function() {
@@ -159,8 +209,7 @@ const SearchManager = (function() {
       // Add to container
       resultsContainer.appendChild(resultItem);
     });
-  }
-  
+  }  
   
   // Display no results message
   function displayNoResults() {

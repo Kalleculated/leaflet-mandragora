@@ -320,6 +320,7 @@ const UIControls = (function() {
         }
         }
         
+        
         // Add event listeners to the All/None buttons
         allButton.addEventListener('click', function() {
         console.log('[UI] Select All filters clicked');
@@ -379,28 +380,33 @@ const UIControls = (function() {
             
             let shouldBeVisible = visibleGroups[group];
             
-            // If marker has items, check if any item type matches the visible item types
-            if (data.items && Array.isArray(data.items) && !shouldBeVisible) {
-            // Check if any of the marker's items have a type that's visible
-            const hasVisibleItemType = data.items.some(item => 
-                item.type && visibleItemTypes[item.type]
-            );
+            // If marker has regular items, check if any item type matches visible types
+            if (!shouldBeVisible && data.items && Array.isArray(data.items)) {
+                const hasVisibleItemType = data.items.some(item => 
+                    item.type && visibleItemTypes[item.type]
+                );
+                shouldBeVisible = hasVisibleItemType;
+            }
             
-            // If marker has an item with a visible type, it should be visible
-            shouldBeVisible = hasVisibleItemType;
+            // If marker has craftable items, check if any item type matches visible types
+            if (!shouldBeVisible && data.craftableItems && Array.isArray(data.craftableItems)) {
+                const hasVisibleCraftableType = data.craftableItems.some(item =>
+                    item.type && visibleItemTypes[item.type]
+                );
+                shouldBeVisible = hasVisibleCraftableType;
             }
             
             if (shouldBeVisible) {
-            // Make marker visible
-            marker.setOpacity(1);
-            marker.options.interactive = true;
+                // Make marker visible
+                marker.setOpacity(1);
+                marker.options.interactive = true;
             } else {
-            // Hide marker
-            marker.setOpacity(0);
-            marker.options.interactive = false;
+                // Hide marker
+                marker.setOpacity(0);
+                marker.options.interactive = false;
             }
         });
-    }    
+    }
     
     // Public API
     return {
@@ -419,4 +425,3 @@ const UIControls = (function() {
         }
       };
 })();
-    
