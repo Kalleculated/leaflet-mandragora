@@ -18,5 +18,11 @@ const OreMarkers = [
     group: 'ore',
     layer: 'layer1'  // Specify layer
   },
+  {
+    name: 'Silver', 
+    coords: [1096, 1209], 
+    group: 'ore',
+    layer: 'layer1'  // Specify layer
+  },
   // Add more markers as needed
 ];
