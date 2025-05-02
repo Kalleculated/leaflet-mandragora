@@ -1,118 +1,261 @@
-// Search functionality
+// Independent search functionality with direct DOM control
 const SearchManager = (function() {
+  // Store references to DOM elements
+  let searchInput = null;
   let resultsContainer = null;
-  const searchContainer = document.querySelector('.search-container');
-  const customSearchInput = document.getElementById('custom-search-input');
   
-  // Get or create results container
-  function getResultsContainer() {
-    if (!resultsContainer) {
-      resultsContainer = document.createElement('div');
-      resultsContainer.id = 'search-results';
-      searchContainer.appendChild(resultsContainer);
-    }
-    return resultsContainer;
-  }
-  
-  // Remove results container
-  function removeResultsContainer() {
-    if (resultsContainer) {
-      resultsContainer.remove();
-      resultsContainer = null;
-    }
-  }
-  
-  // Handle search input
-  function handleSearchInput(e) {
-    const searchText = e.target.value.trim().toLowerCase();
-    const currentResultsContainer = getResultsContainer();
-    currentResultsContainer.innerHTML = '';
+  // Initialize DOM references
+  function initDOMReferences() {
+    searchInput = document.getElementById('custom-search-input');
+    resultsContainer = document.getElementById('search-results');
     
-    if (searchText.length >= CONFIG.search.minLength) {
-      // Get all markers from MarkerManager
-      const allMarkers = MarkerManager.getAllMarkers();
-      
-      // Filter matching markers
-      const matchingMarkers = allMarkers.filter(item =>
-        item.name.toLowerCase().includes(searchText)
-      );
-      
-      if (matchingMarkers.length > 0) {
-        matchingMarkers.forEach(item => {
-          const resultItem = document.createElement('div');
-          resultItem.className = 'search-result-item';
-          
-          // Add layer information to the search result
-          resultItem.innerHTML = `
-            <span>${item.name}</span>
-            <span class="layer-label">(${CONFIG.map.layers.find(l => l.id === item.layer)?.name || 'Unknown Layer'})</span>
-          `;
-          
-          resultItem.addEventListener('click', function() {
-            const markerData = MarkerManager.getMarkerData(item.name);
-            if (markerData) {
-              // Activate the layer for this marker
-              MapManager.setActiveLayer(markerData.layer);
-              
-              // Find the marker and open its popup
-              const marker = MarkerManager.getMarker(item.name);
-              if (marker) {
-                MapManager.setView(marker.getLatLng(), CONFIG.search.resultZoomLevel);
-                marker.openPopup();
-                customSearchInput.value = item.name;
-                removeResultsContainer();
-              } else {
-                console.error("Marker data found but marker instance not in map for:", item.name);
-                MapManager.setView(markerData.coords, CONFIG.search.resultZoomLevel);
-                removeResultsContainer();
-              }
-            }
-          });
-          
-          currentResultsContainer.appendChild(resultItem);
-        });
-      } else {
-        const noResults = document.createElement('div');
-        noResults.textContent = 'No locations found';
-        noResults.className = 'no-results';
-        currentResultsContainer.appendChild(noResults);
-      }
-    } else {
-      removeResultsContainer();
+    if (!searchInput || !resultsContainer) {
+      console.error("[SM] Critical DOM elements missing");
+      return false;
     }
+    return true;
   }
   
-  // Initialize search event listeners
-  function initializeEventListeners() {
-    // Input handler
-    customSearchInput.addEventListener('input', handleSearchInput);
+  // Process search input and display results
+  function processSearch(searchText) {
+    // Validate input
+    if (!searchText || typeof searchText !== 'string') {
+      clearResults();
+      return;
+    }
     
-    // Escape key handler
-    customSearchInput.addEventListener('keydown', function(e) {
-      if (e.key === "Escape") {
-        removeResultsContainer();
-      }
+    // Normalize search text
+    searchText = searchText.trim().toLowerCase();
+    
+    // Clear previous results
+    clearResults();
+    
+    // Check minimum length
+    if (searchText.length < CONFIG.search.minLength) {
+      return;
+    }
+    
+    // Get all markers
+    let allMarkers = [];
+    try {
+      allMarkers = MarkerManager.getAllMarkers();
+      console.log(`[SM] Total markers: ${allMarkers.length}`);
+    } catch (e) {
+      console.error("[SM] Failed to get markers:", e);
+      displayError("Cannot access marker data");
+      return;
+    }
+    
+    // Filter matching markers
+    const matches = allMarkers.filter(item => {
+      const name = (item.name || "").toLowerCase();
+      return name.includes(searchText);
     });
     
-    // Click outside handler
-    document.addEventListener('click', function(e) {
-      const isClickInSearch = searchContainer.contains(e.target);
-      const isClickInPopup = e.target.closest('.leaflet-popup');
-      const mapContainer = MapManager.getMap().getContainer();
-      const isClickOnMapOrChildren = mapContainer.contains(e.target) && 
-                                    !isClickInPopup && 
-                                    !isClickInSearch;
+    console.log(`[SM] Found ${matches.length} matches for "${searchText}"`);
+    matches.forEach(m => console.log(`  - ${m.name}`));
+    
+    // Display results or no-results message
+    if (matches.length > 0) {
+      displayResults(matches);
+    } else {
+      displayNoResults();
+    }
+  }
+  
+  // Clear all search results
+  function clearResults() {
+    if (resultsContainer) {
+      resultsContainer.innerHTML = '';
+    }
+  }
+  
+  // Display search results
+  function displayResults(items) {
+    // Ensure container exists
+    if (!resultsContainer) {
+      console.error("[SM] Results container missing");
+      return;
+    }
+    
+    // Clear and prepare container
+    clearResults();
+    
+    // Insert debugging element to verify rendering
+    const debugElement = document.createElement('div');
+    debugElement.textContent = `Found ${items.length} locations`;
+    debugElement.style.padding = '5px';
+    debugElement.style.backgroundColor = '#f0f0f0';
+    debugElement.style.borderBottom = '1px solid #ddd';
+    debugElement.style.fontSize = '12px';
+    resultsContainer.appendChild(debugElement);
+    
+    // Create results
+    items.forEach(item => {
+      // Create result item
+      const resultItem = document.createElement('div');
+      resultItem.className = 'search-result-item';
       
-      if (!isClickInSearch && !isClickInPopup && !isClickOnMapOrChildren) {
-        removeResultsContainer();
+      // Essential styling
+      resultItem.style.display = 'flex';
+      resultItem.style.alignItems = 'center';
+      resultItem.style.padding = '10px';
+      resultItem.style.cursor = 'pointer';
+      resultItem.style.borderBottom = '1px solid #eee';
+      resultItem.style.backgroundColor = '#ffffff';
+      
+      // Get icon
+      let iconHTML = '';
+      try {
+        if (GroupManager && GroupManager.getIcon) {
+          const icon = GroupManager.getIcon(item.group);
+          if (icon && icon.options && icon.options.iconUrl) {
+            iconHTML = `<img src="${icon.options.iconUrl}" alt="${item.group}" style="width:24px;height:24px;margin-right:10px;">`;
+          }
+        }
+      } catch (e) {
+        console.warn(`[SM] Icon error for ${item.group}:`, e);
+      }
+      
+      // Create content
+      const layerName = CONFIG.map.layers.find(l => l.id === item.layer)?.name || 'Unknown';
+      
+      resultItem.innerHTML = `
+        ${iconHTML}
+        <div style="flex:1;">
+          <div style="font-weight:500;">${item.name}</div>
+          <div style="color:#666;font-size:0.9em;">(${layerName})</div>
+        </div>
+      `;
+      
+      // Add click handler
+      resultItem.addEventListener('click', function() {
+        resultItemClicked(item);
+      });
+      
+      // Add to container
+      resultsContainer.appendChild(resultItem);
+    });
+  }
+  
+  // Display no results message
+  function displayNoResults() {
+    if (!resultsContainer) return;
+    
+    const noResults = document.createElement('div');
+    noResults.className = 'no-results';
+    noResults.textContent = 'No locations found';
+    noResults.style.padding = '15px';
+    noResults.style.color = '#666';
+    noResults.style.textAlign = 'center';
+    noResults.style.fontStyle = 'italic';
+    
+    resultsContainer.appendChild(noResults);
+  }
+  
+  // Display error message
+  function displayError(message) {
+    if (!resultsContainer) return;
+    
+    const errorMsg = document.createElement('div');
+    errorMsg.className = 'search-error';
+    errorMsg.textContent = message || 'Error processing search';
+    errorMsg.style.padding = '15px';
+    errorMsg.style.color = '#c00';
+    errorMsg.style.textAlign = 'center';
+    
+    resultsContainer.appendChild(errorMsg);
+  }
+  
+  // Handle result item click
+  function resultItemClicked(item) {
+    console.log(`[SM] Result clicked: ${item.name}`);
+    
+    try {
+      // Get marker data
+      const markerData = MarkerManager.getMarkerData(item.name);
+      if (!markerData) {
+        console.error(`[SM] Marker data not found for ${item.name}`);
+        return;
+      }
+      
+      // Set active layer
+      MapManager.setActiveLayer(markerData.layer);
+      
+      // Get marker and set view
+      const marker = MarkerManager.getMarker(item.name);
+      if (marker) {
+        MapManager.setView(marker.getLatLng(), CONFIG.search.resultZoomLevel);
+        marker.openPopup();
+        
+        // Update search input
+        if (searchInput) {
+          searchInput.value = item.name;
+        }
+      } else {
+        console.warn(`[SM] Marker not found for ${item.name}`);
+        MapManager.setView(markerData.coords, CONFIG.search.resultZoomLevel);
+      }
+      
+      // Close sidebars
+      closeSidebars();
+    } catch (e) {
+      console.error("[SM] Error handling result click:", e);
+    }
+  }
+  
+  // Close all sidebars
+  function closeSidebars() {
+    try {
+      // Try UIControls method if available
+      if (typeof UIControls !== 'undefined' && UIControls.closeSidebars) {
+        UIControls.closeSidebars();
+        return;
+      }
+    } catch (e) {
+      console.warn("[SM] UIControls not available:", e);
+    }
+    
+    // Direct sidebar closing
+    const elements = {
+      searchSidebar: document.getElementById('search-sidebar'),
+      filterSidebar: document.getElementById('filter-sidebar'),
+      searchToggleBtn: document.getElementById('search-toggle-btn'),
+      filterToggleBtn: document.getElementById('filter-toggle-btn')
+    };
+    
+    // Remove classes
+    if (elements.searchSidebar) elements.searchSidebar.classList.remove('open');
+    if (elements.filterSidebar) elements.filterSidebar.classList.remove('open');
+    if (elements.searchToggleBtn) elements.searchToggleBtn.classList.remove('active');
+    if (elements.filterToggleBtn) elements.filterToggleBtn.classList.remove('active');
+  }
+  
+  // Setup event listeners
+  function setupEventListeners() {
+    if (!searchInput) return;
+    
+    // Input handler with debounce
+    let debounceTimer;
+    searchInput.addEventListener('input', function(e) {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        processSearch(e.target.value);
+      }, 200);
+    });
+    
+    // Escape key handler
+    searchInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeSidebars();
       }
     });
     
     // Enter key handler
-    customSearchInput.addEventListener('keypress', function(e) {
+    searchInput.addEventListener('keypress', function(e) {
       if (e.key === 'Enter') {
         e.preventDefault();
-        const firstResult = resultsContainer?.querySelector('.search-result-item');
+        const firstResult = resultsContainer.querySelector('.search-result-item');
         if (firstResult) {
           firstResult.click();
         }
@@ -120,18 +263,60 @@ const SearchManager = (function() {
     });
   }
   
+  // Initialize the search manager
+  function initialize() {
+    console.log("[SM] Initializing search manager");
+    
+    // Initialize DOM references
+    if (!initDOMReferences()) {
+      console.error("[SM] Cannot initialize - DOM elements missing");
+      return;
+    }
+    
+    // Setup event listeners
+    setupEventListeners();
+    
+    console.log("[SM] Search manager initialized");
+    
+    // Force a debug test if needed
+    // setTimeout(() => testSearch("la"), 2000);
+  }
+  
   // Public API
   return {
     init: function() {
-      initializeEventListeners();
+      // Initialize after DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initialize);
+      } else {
+        initialize();
+      }
     },
     
-    // Search in specific layer only
+    // Manual search trigger for testing
+    testSearch: function(text) {
+      console.log(`[SM] Test search: "${text}"`);
+      
+      // Ensure DOM references
+      initDOMReferences();
+      
+      // Process search
+      processSearch(text);
+    },
+    
+    // Search in specific layer
     searchInLayer: function(text, layerId) {
-      const layerMarkers = MarkerManager.getLayerMarkers(layerId);
-      return layerMarkers.filter(item => 
-        item.name.toLowerCase().includes(text.toLowerCase())
-      );
+      if (!text || !layerId) return [];
+      
+      try {
+        const layerMarkers = MarkerManager.getLayerMarkers(layerId);
+        return layerMarkers.filter(item => 
+          item.name.toLowerCase().includes(text.toLowerCase())
+        );
+      } catch (e) {
+        console.error("[SM] Error in searchInLayer:", e);
+        return [];
+      }
     }
   };
 })();

@@ -12,139 +12,315 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
 }
 
 #map {
-  position: relative;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 1;
   background: transparent;
 }
-  
-/* Custom search container styling */
-.search-container {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    width: 90%;
-    max-width: 400px;
-    background: white;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    font-family: sans-serif;
-}
-  
-/* Custom search input field */
-#custom-search-input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    box-sizing: border-box;
-}
-  
-/* Search results dropdown container */
-#search-results {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-top: none;
-    border-radius: 0 0 6px 6px;
-    max-height: 200px;
-    overflow-y: auto;
-    margin-top: -1px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    position: absolute;
-    width: 100%;
-    left: 0;
-    box-sizing: border-box;
-}
-  
-/* Individual search result item */
-.search-result-item {
-    padding: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #eee;
-    font-size: 14px;
-}
-  
-/* Last item no border */
-.search-result-item:last-child {
-    border-bottom: none;
-}
-  
-/* Hover effect for result items */
-.search-result-item:hover {
-    background-color: #f0f0f0;
-}
-  
-/* Style for 'No results' message */
-.no-results {
-    padding: 10px;
-    color: #888;
-    font-style: italic;
-}
-  
-/* Hide the default Leaflet search control UI */
-.leaflet-control-search {
-    display: none !important;
-}
-  
-/* Style for images within popups */
-.leaflet-popup-content img {
-    max-width: 100%;
-    min-width: 150px;
-    height: auto;
-    margin-top: 10px;
-    border-radius: 4px;
-    display: block;
-}
-  
-.leaflet-popup-content {
-    min-width: 250px;
-    max-width: 400px;
-    width: auto;
-}
-  
-/* Override Leaflet's default popup constraints */
-.leaflet-popup {
-    max-width: none;
-}
-  
-.leaflet-popup-content-wrapper {
-    padding: 12px;
+
+/* Top Navigation Bar */
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: rgba(51, 51, 51, 0.9);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* css/styles.css - Add layer control styles */
-.custom-layer-control {
-    background: white;
-    padding: 5px;
-    border-radius: 4px;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+.nav-section {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.nav-section.left, .nav-section.right {
+  width: 100px;
+}
+
+.nav-section.center {
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.layer-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-btn.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Layer toggle buttons */
+.layer-toggle-btn {
+  display: block;
+  padding: 8px 15px;
+  margin: 2px 0;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  transition: all 0.3s;
+}
+
+.layer-toggle-btn.active {
+  background: #4285F4;
+  color: white;
+  border-color: #3367d6;
+}
+
+/* Sidebars */
+.sidebar {
+  position: fixed;
+  height: calc(100% - 60px);
+  top: 60px;
+  width: 300px;
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 900;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+}
+
+.left-sidebar {
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.right-sidebar {
+  right: 0;
+  transform: translateX(100%);
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar-content {
+  padding: 15px;
+}
+
+/* Search container in sidebar */
+.search-container {
+  width: 100%;
+  background: transparent;
+  margin-bottom: 15px;
+}
+
+/* Search input field */
+#custom-search-input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#custom-search-input:focus {
+  outline: none;
+  border-color: #4285F4;
+  box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.25);
+}
+
+/* Search results container */
+#search-results {
+  width: 100%;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-top: 10px;
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
+}
+
+/* Debug info header */
+#search-results > div:first-child {
+  background-color: #f8f9fa;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #555;
+  border-bottom: 1px solid #eee;
+}
+
+/* Search result items */
+.search-result-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover {
+  background-color: #f5f8ff;
+}
+
+.search-result-item img {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  object-fit: contain;
+}
+
+/* Message states */
+.no-results, .search-error {
+  padding: 20px;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+}
+
+.search-error {
+  color: #d32f2f;
+}
+
+/* Filter group styling */
+.filter-group-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.filter-group-item:hover {
+  background-color: #f5f8ff;
+}
+
+.filter-group-item label {
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.filter-group-item img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  object-fit: contain;
+}
+
+.filter-group-item input[type="checkbox"] {
+  cursor: pointer;
+}
+
+/* Filter sidebar header */
+.right-sidebar h3 {
+  margin-top: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  color: #333;
+}
+
+/* Result icon */
+.result-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  object-fit: contain;
+}
+
+/* Layer label in search results */
+.layer-label {
+  color: #666;
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+/* Style for images within popups */
+.leaflet-popup-content img {
+  max-width: 100%;
+  min-width: 150px;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 4px;
+  display: block;
+}
+
+.leaflet-popup-content {
+  min-width: 250px;
+  max-width: 400px;
+  width: auto;
+}
+
+/* Override Leaflet's default popup constraints */
+.leaflet-popup {
+  max-width: none;
+}
+
+.leaflet-popup-content-wrapper {
+  padding: 12px;
+}
+
+/* Hide the default Leaflet search control UI */
+.leaflet-control-search {
+  display: none !important;
+}
+
+/* Hide the default layer control since we're using our own */
+.leaflet-control-layers, .custom-layer-control {
+  display: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 250px;
+  }
+  
+  .nav-section.left, .nav-section.right {
+    width: 80px;
+  }
+  
+  .layer-buttons {
+    gap: 5px;
   }
   
   .layer-toggle-btn {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    margin: 2px 0;
-    text-align: center;
-    background: #f8f8f8;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
+    padding: 6px 10px;
+    font-size: 13px;
   }
-  
-  .layer-toggle-btn.active {
-    background: #4285F4;
-    color: white;
-    border-color: #3367d6;
-  }
-  
-  .layer-label {
-    color: #666;
-    font-style: italic;
-    font-size: 0.9em;
-  }
+}
