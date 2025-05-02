@@ -2,13 +2,13 @@
 const WaypointMarkers = [
   {
     name: 'Lakeshore', 
-    coords: [1360, 7824], 
+    coords: [1365, 7797], 
     group: 'waypoint',
     layer: 'layer1'  // Specify layer
   },
   {
     name: 'Witch Tree', 
-    coords: [1167, 4944],
+    coords: [1182, 4952],
     group: 'waypoint',
     layer: 'layer1'  // Specify layer
   }
