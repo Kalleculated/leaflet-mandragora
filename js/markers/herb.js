@@ -11,7 +11,6 @@ const HerbMarkers = [
     coords: [1212, 3476], 
     group: 'herb',
     layer: 'layer1'  // Specify layer
-  }
   },
   {
     name: 'Cardinal Leaf', 
