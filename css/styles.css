@@ -310,6 +310,9 @@ body {
 
 .leaflet-popup-content-wrapper {
   padding: 12px;
+  background: rgba(26,26,26,255);
+  color: white;
+  border: 1px solid #444;
 }
 
 /* Hide the default Leaflet search control UI */
