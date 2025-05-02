@@ -6,5 +6,11 @@ const OreMarkers = [
     group: 'ore',
     layer: 'layer1'  // Specify layer
   },
+  {
+    name: 'Tinstone', 
+    coords: [1058, 2900], 
+    group: 'ore',
+    layer: 'layer1'  // Specify layer
+  },
   // Add more markers as needed
 ];
