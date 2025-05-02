@@ -11,7 +11,10 @@ const GroupManager = (function() {
     witchstone: 'assets/pins/pin.png',
     chest: 'assets/pins/pin.png',
     vendor: 'assets/pins/pin.png',
-    boss: 'assets/pins/pin.png'
+    boss: 'assets/pins/pin.png',
+    wood: 'assets/pins/pin.png',
+    nest: 'assets/pins/pin.png',
+    altar: 'assets/pins/pin.png',
     // Add more groups and their icon paths here
   };
 

@@ -20,18 +20,19 @@ const OreMarkers = [
   {
     name: 'Silver', 
     coords: [
-      [1096, 1209],
+      [1096, 1209], 
       [1019, 826],
-  ],
+    ],
     group: 'ore',
     layer: 'layer1'  // Specify layer
   },
   {
-    name: 'Adamantite', 
+    name: 'Adamantite', //diamond
     coords: [
-        [403, 826], 
-        [327, 1209],
-        ],
+      [403, 826], 
+      [327, 1209],
+      [1748, 2249],
+    ],
     group: 'ore',
     layer: 'layer1'  // Specify layer
   },

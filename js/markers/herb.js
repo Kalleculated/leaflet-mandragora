@@ -38,7 +38,10 @@ const HerbMarkers = [
   },
   {
     name: 'Raven Claw', 
-    coords: [1211, 635], 
+    coords: [
+      [1211, 635], 
+      [1785, 2286],
+    ],
     group: 'herb',
     layer: 'layer1'  // Specify layer
   },
@@ -49,8 +52,11 @@ const HerbMarkers = [
     layer: 'layer1'  // Specify layer
   },
   {
-    name: 'Shade Thistle', 
-    coords: [711, 977], 
+    name: 'Shade Thistle', //carrot
+    coords: [
+      [711, 977],
+      [1745, 1403]
+    ], 
     group: 'herb',
     layer: 'layer1'  // Specify layer
   },

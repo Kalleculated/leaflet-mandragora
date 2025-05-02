@@ -20,7 +20,10 @@ document.addEventListener('DOMContentLoaded', function() {
         typeof OreMarkers === 'undefined' ||
         typeof ChestMarkers === 'undefined' ||
         typeof VendorMarkers === 'undefined' ||
-        typeof BossMarkers === 'undefined') {
+        typeof BossMarkers === 'undefined' ||
+        typeof WoodMarkers === 'undefined' ||
+        typeof NestMarkers === 'undefined' ||
+        typeof AltarMarkers === 'undefined') {
       throw new Error('One or more marker data arrays are not defined');
     }
 
@@ -33,7 +36,10 @@ document.addEventListener('DOMContentLoaded', function() {
       ...DiagramMarkers,
       ...ChestMarkers,
       ...VendorMarkers,
-      ...BossMarkers
+      ...BossMarkers,
+      ...WoodMarkers,
+      ...NestMarkers,
+      ...AltarMarkers
       // Add any additional group markers
     ];
     console.log(`[Main] Combined ${allMarkers.length} markers`);
