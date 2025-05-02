@@ -1,7 +1,7 @@
 // js/markers/waypoint.js - Update marker definitions
 const LockpickMarkers = [
   {
-    name: 'Placeholder', 
+    name: 'Lp1', 
     coords: [0, 10], 
     group: 'lockpick',
     layer: 'layer1'  // Specify layer

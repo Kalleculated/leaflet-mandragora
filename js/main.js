@@ -33,6 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
       ...WaypointMarkers,
       ...HerbMarkers,
       ...OreMarkers,
+      ...MapMarkers,
+      ...LockpickMarkers,
+      ...DiagramMarkers
       // Add any additional group markers
     ];
     console.log(`[Main] Combined ${allMarkers.length} markers`);

@@ -1,8 +1,8 @@
 // js/markers/waypoint.js - Update marker definitions
 const DiagramMarkers = [
   {
-    name: 'Placeholder', 
-    coords: [0, 0], 
+    name: 'DM1', 
+    coords: [300, 0], 
     group: 'diagram',
     layer: 'layer1'  // Specify layer
   }
