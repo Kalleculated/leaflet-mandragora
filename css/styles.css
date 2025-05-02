@@ -312,7 +312,19 @@ body {
   padding: 12px;
   background: rgba(26,26,26,255);
   color: white;
-  border: 1px solid #444;
+  border: 1px solid rgba(198, 158, 0, 0.896);
+}
+
+.leaflet-popup-tip {
+    background: rgba(198, 158, 0, 0.896)
+}
+
+.leaflet-popup-close-button {
+    color: rgba(198, 158, 0, 0.896) !important
+}
+
+.leaflet-popup-close-button:hover {
+    color: rgba(198, 158, 0, 1) !important;
 }
 
 /* Hide the default Leaflet search control UI */
