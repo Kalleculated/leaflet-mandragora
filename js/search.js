@@ -49,7 +49,18 @@ const SearchManager = (function() {
     // Filter matching markers
     const matches = allMarkers.filter(item => {
       const name = (item.name || "").toLowerCase();
-      return name.includes(searchText);
+      
+      // Check marker name
+      if (name.includes(searchText)) return true;
+      
+      // Check items within marker
+      if (item.items && Array.isArray(item.items)) {
+        return item.items.some(subItem => 
+          subItem.name.toLowerCase().includes(searchText)
+        );
+      }
+      
+      return false;
     });
     
     console.log(`[SM] Found ${matches.length} matches for "${searchText}"`);
@@ -71,12 +82,16 @@ const SearchManager = (function() {
   }
   
   // Display search results
+  // Display search results
   function displayResults(items) {
     // Ensure container exists
     if (!resultsContainer) {
       console.error("[SM] Results container missing");
       return;
     }
+    
+    // Get current search text
+    const searchText = searchInput ? searchInput.value.trim().toLowerCase() : '';
     
     // Clear and prepare container
     clearResults();
@@ -111,6 +126,16 @@ const SearchManager = (function() {
         console.warn(`[SM] Icon error for ${item.group}:`, e);
       }
       
+      // Check if match is for contained item
+      let matchedItemName = '';
+      if (searchText && item.items && Array.isArray(item.items)) {
+        const matchedItem = item.items.find(subItem => 
+          subItem.name.toLowerCase().includes(searchText));
+        if (matchedItem) {
+          matchedItemName = matchedItem.name;
+        }
+      }
+      
       // Create content
       const layerName = CONFIG.map.layers.find(l => l.id === item.layer)?.name || 'Unknown';
       const coordStr = `[${item.coords[0]}, ${item.coords[1]}]`;
@@ -119,7 +144,10 @@ const SearchManager = (function() {
         ${iconHTML}
         <div>
           <div style="font-weight:500;">${item.name}</div>
-          <div style="color:#aaa;font-size:0.9em;">${coordStr} (${layerName})</div>
+          <div style="color:#aaa;font-size:0.9em;">
+            ${coordStr} (${layerName})
+            ${matchedItemName ? `<br>Contains: <span style="color:#c9a100">${matchedItemName}</span>` : ''}
+          </div>
         </div>
       `;
       

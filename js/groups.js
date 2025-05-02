@@ -9,6 +9,8 @@ const GroupManager = (function() {
       map: 'assets/pins/pin_map.png',
       ore: 'assets/pins/pin_ore.png',
       waypoint: 'assets/pins/pin.png',
+      chest: 'assets/pins/pin.png',
+      vendor: 'assets/pins/pin.png',
       // Add more groups and their icon paths here
     };
   

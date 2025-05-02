@@ -7,7 +7,7 @@ const MarkerManager = (function() {
   let activePopupMarker = null;
   
   // Handle custom popup display
-  function showBottomPopup(name, group, imageUrl = null) {
+  function showBottomPopup(name, group, data) {
     console.log(`[Marker] Showing bottom popup for: ${name}`);
     
     // Get DOM elements
@@ -15,6 +15,7 @@ const MarkerManager = (function() {
     const popupTitle = document.getElementById('popup-title');
     const popupIcon = document.getElementById('popup-icon');
     const popupRegion = document.getElementById('popup-region');
+    const popupItems = document.getElementById('popup-items');
     
     if (!popup || !popupTitle || !popupIcon) {
       console.error('[Marker] Bottom popup elements not found in DOM');
@@ -45,6 +46,68 @@ const MarkerManager = (function() {
       popupIcon.alt = 'Icon';
     }
     
+    // Set region based on group
+    if (popupRegion) {
+      if (group === 'chest') {
+        popupRegion.textContent = 'Chest Contents:';
+      } else if (group === 'vendor') {
+        popupRegion.textContent = 'Items for Sale:';
+      } else if (group === 'waypoint') {
+        popupRegion.textContent = 'Waypoint';
+      } else {
+        popupRegion.textContent = group.charAt(0).toUpperCase() + group.slice(1);
+      }
+    }
+    
+    // Clear existing items if element exists
+    if (popupItems) {
+      popupItems.innerHTML = '';
+    }
+    
+    // Add items if present (for chests and vendors) and container exists
+    if (popupItems && data && data.items && Array.isArray(data.items) && data.items.length > 0) {
+      // Create an item entry for each item
+      data.items.forEach(item => {
+        const itemEntry = document.createElement('div');
+        itemEntry.className = 'item-entry';
+        
+        // Create item name span
+        const itemName = document.createElement('span');
+        itemName.className = 'item-name';
+        itemName.textContent = item.name;
+        
+        // Create item type span if available
+        const itemType = document.createElement('span');
+        itemType.className = 'item-type';
+        itemType.textContent = item.type || '';
+        
+        // Create view button
+        const viewButton = document.createElement('button');
+        viewButton.className = 'view-item-btn';
+        viewButton.textContent = 'View';
+        viewButton.addEventListener('click', function(e) {
+          e.stopPropagation(); // Prevent event bubbling
+          showItemDetail(item, group === 'vendor');
+        });
+        
+        // Assemble item entry
+        itemEntry.appendChild(itemName);
+        itemEntry.appendChild(itemType);
+        itemEntry.appendChild(viewButton);
+        
+        // Add price for vendor items
+        if (group === 'vendor' && item.price) {
+          const priceSpan = document.createElement('span');
+          priceSpan.className = 'item-price';
+          priceSpan.textContent = item.price + ' coins';
+          itemEntry.appendChild(priceSpan);
+        }
+        
+        // Add to popup
+        popupItems.appendChild(itemEntry);
+      });
+    }
+    
     // Show popup
     popup.classList.add('active');
     
@@ -52,6 +115,117 @@ const MarkerManager = (function() {
     const closeBtn = document.getElementById('close-popup');
     if (closeBtn) {
       closeBtn.onclick = hideBottomPopup;
+    }
+  }
+
+  function showItemDetail(item, isVendor = false) {
+    console.log(`[Marker] Showing details for item: ${item.name}`);
+    
+    // Get modal elements
+    const modal = document.getElementById('item-detail-modal');
+    const modalName = document.getElementById('modal-item-name');
+    const modalImage = document.getElementById('modal-item-image');
+    const modalStats = document.getElementById('modal-item-stats');
+    
+    if (!modal || !modalName || !modalImage || !modalStats) {
+      console.error('[Marker] Modal elements not found in DOM');
+      return;
+    }
+    
+    // Set modal content
+    modalName.textContent = item.name;
+    
+    // Set image
+    modalImage.src = item.image || CONFIG.fallbacks.markerImage;
+    modalImage.alt = item.name;
+    modalImage.onerror = function() {
+      this.onerror = null;
+      this.src = CONFIG.fallbacks.markerImage;
+      console.warn(`[Marker] Failed to load image: ${item.image}. Using placeholder.`);
+    };
+    
+    // Clear previous stats
+    modalStats.innerHTML = '';
+    
+    // Add price for vendor items
+    if (isVendor && item.price) {
+      const priceEntry = document.createElement('div');
+      priceEntry.className = 'stat-entry';
+      
+      const priceName = document.createElement('span');
+      priceName.className = 'stat-name';
+      priceName.textContent = 'Price';
+      
+      const priceValue = document.createElement('span');
+      priceValue.className = 'stat-value';
+      priceValue.style.color = '#4caf50'; // Green for price
+      priceValue.textContent = item.price + ' coins';
+      
+      priceEntry.appendChild(priceName);
+      priceEntry.appendChild(priceValue);
+      modalStats.appendChild(priceEntry);
+    }
+    
+    // Add all stats if available
+    if (item.stats) {
+      Object.entries(item.stats).forEach(([statName, statValue]) => {
+        const statEntry = document.createElement('div');
+        statEntry.className = 'stat-entry';
+        
+        const statNameElem = document.createElement('span');
+        statNameElem.className = 'stat-name';
+        statNameElem.textContent = statName.charAt(0).toUpperCase() + statName.slice(1); // Capitalize
+        
+        const statValueElem = document.createElement('span');
+        statValueElem.className = 'stat-value';
+        statValueElem.textContent = statValue;
+        
+        statEntry.appendChild(statNameElem);
+        statEntry.appendChild(statValueElem);
+        modalStats.appendChild(statEntry);
+      });
+    }
+    
+    // Show modal
+    modal.style.display = 'flex';
+    
+    // Setup close button
+    const closeBtn = modal.querySelector('.close-modal');
+    if (closeBtn) {
+      closeBtn.onclick = function() {
+        modal.style.display = 'none';
+      };
+    }
+    
+    // Close on outside click
+    window.onclick = function(event) {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    };
+  }
+
+  function initItemDetailModal() {
+    const modal = document.getElementById('item-detail-modal');
+    const closeBtn = document.querySelector('.close-modal');
+    
+    if (modal && closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+      });
+      
+      window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+      
+      // Close with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
+          modal.style.display = 'none';
+        }
+      });
     }
   }
   
@@ -148,8 +322,8 @@ const MarkerManager = (function() {
         hideBottomPopup();
       }
       
-      // Show bottom popup
-      showBottomPopup(name, group, imageUrl);
+      // Show bottom popup with full data object
+      showBottomPopup(name, group, data);
       activePopupMarker = marker;
     });
     
@@ -226,6 +400,9 @@ const MarkerManager = (function() {
       
       // Setup popup event listeners
       initPopupListeners();
+
+      initItemDetailModal();
+      console.log('[Marker] Item detail modal initialized');
       
       // Debug: List all markers
       console.log('[Marker] Available markers:');
@@ -328,8 +505,7 @@ const MarkerManager = (function() {
       // Temporarily disable document click handler
       document.onmousedown = null;
       
-      // Show popup
-      showBottomPopup(markerData.name, markerData.group, markerData.imageUrl);
+      showBottomPopup(markerData.name, markerData.group, markerData);
       activePopupMarker = this.getMarker(name);
       
       // Restore click handler after a delay

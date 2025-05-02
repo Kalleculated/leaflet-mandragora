@@ -21,22 +21,26 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 3. Combine all marker data
     if (typeof WaypointMarkers === 'undefined' || 
-        typeof HerbMarkers === 'undefined' || 
-        typeof LockpickMarkers === 'undefined' || 
-        typeof DiagramMarkers === 'undefined' || 
-        typeof MapMarkers === 'undefined' || 
-        typeof OreMarkers === 'undefined') {
-      throw new Error('One or more marker data arrays are not defined');
+      typeof HerbMarkers === 'undefined' || 
+      typeof LockpickMarkers === 'undefined' || 
+      typeof DiagramMarkers === 'undefined' || 
+      typeof MapMarkers === 'undefined' || 
+      typeof OreMarkers === 'undefined' ||
+      typeof ChestMarkers === 'undefined' ||
+      typeof VendorMarkers === 'undefined') {
+    throw new Error('One or more marker data arrays are not defined');
     }
-    
+
     const allMarkers = [
-      ...WaypointMarkers,
-      ...HerbMarkers,
-      ...OreMarkers,
-      ...MapMarkers,
-      ...LockpickMarkers,
-      ...DiagramMarkers
-      // Add any additional group markers
+    ...WaypointMarkers,
+    ...HerbMarkers,
+    ...OreMarkers,
+    ...MapMarkers,
+    ...LockpickMarkers,
+    ...DiagramMarkers,
+    ...ChestMarkers,
+    ...VendorMarkers
+    // Add any additional group markers
     ];
     console.log(`[Main] Combined ${allMarkers.length} markers`);
     
