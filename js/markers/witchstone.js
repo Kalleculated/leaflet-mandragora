@@ -1,5 +1,5 @@
 // js/markers/waypoint.js - Update marker definitions
-const WaypointMarkers = [
+const WitchstoneMarkers = [
   {
     name: 'Lakeshore', 
     coords: [1440, 7895], 

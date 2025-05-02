@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('[Main] Map initialized');
     
     // 2. Combine all marker data first
-    if (typeof WaypointMarkers === 'undefined' || 
+    if (typeof WitchstoneMarkers === 'undefined' || 
         typeof HerbMarkers === 'undefined' || 
         typeof LockpickMarkers === 'undefined' || 
         typeof DiagramMarkers === 'undefined' || 
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const allMarkers = [
-      ...WaypointMarkers,
+      ...WitchstoneMarkers,
       ...HerbMarkers,
       ...OreMarkers,
       ...MapMarkers,

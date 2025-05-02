@@ -118,12 +118,12 @@ const MarkerManager = (function() {
         itemEntry.appendChild(viewButton);
         
         // Add price for vendor items
-        if (group === 'vendor' && item.price) {
-          const priceSpan = document.createElement('span');
-          priceSpan.className = 'item-price';
-          priceSpan.textContent = item.price + ' coins';
-          itemEntry.appendChild(priceSpan);
-        }
+        // if (group === 'vendor' && item.price) {
+        //   const priceSpan = document.createElement('span');
+        //   priceSpan.className = 'item-price';
+        //   priceSpan.textContent = item.price + ' coins';
+        //   itemEntry.appendChild(priceSpan);
+        // }
         
         // Add to popup
         popupItems.appendChild(itemEntry);

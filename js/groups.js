@@ -8,7 +8,7 @@ const GroupManager = (function() {
     lockpick: 'assets/pins/pin_lockpick.png',
     map: 'assets/pins/pin_map.png',
     ore: 'assets/pins/pin_ore.png',
-    waypoint: 'assets/pins/pin.png',
+    witchstone: 'assets/pins/pin.png',
     chest: 'assets/pins/pin.png',
     vendor: 'assets/pins/pin.png',
     boss: 'assets/pins/pin.png'
