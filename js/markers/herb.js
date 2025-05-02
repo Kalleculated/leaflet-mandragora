@@ -12,5 +12,12 @@ const HerbMarkers = [
     group: 'herb',
     layer: 'layer1'  // Specify layer
   }
+  },
+  {
+    name: 'Cardinal Leaf', 
+    coords: [1173, 2861], 
+    group: 'herb',
+    layer: 'layer1'  // Specify layer
+  }
   // Add more markers as needed
 ];
