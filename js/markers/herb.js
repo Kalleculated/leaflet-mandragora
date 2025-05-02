@@ -2,7 +2,7 @@
 const HerbMarkers = [
   {
     name: 'Calendula', 
-    coords: [1147, 3889], 
+    coords: [1211, 3937], 
     group: 'herb',
     layer: 'layer1'  // Specify layer
   }
