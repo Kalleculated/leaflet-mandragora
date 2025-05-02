@@ -49,13 +49,13 @@ const MarkerManager = (function() {
     // Set type/region based on group
     if (popupRegion) {
       if (group === 'chest') {
-        popupRegion.textContent = 'region';  // Changed from 'Chest Contents:'
+        popupRegion.textContent = 'placeholder';  // Changed from 'Chest Contents:'
       } else if (group === 'vendor') {
-        popupRegion.textContent = 'region';
+        popupRegion.textContent = 'placeholder';
       } else if (group === 'waypoint') {
-        popupRegion.textContent = 'region';
+        popupRegion.textContent = 'placeholder';
       } else if (group === 'boss') {
-        popupRegion.textContent = 'region';  // Added specific text for boss
+        popupRegion.textContent = 'placeholder';  // Added specific text for boss
       } else {
         popupRegion.textContent = group.charAt(0).toUpperCase() + group.slice(1);
       }
