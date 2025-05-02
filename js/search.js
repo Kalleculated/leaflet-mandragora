@@ -113,24 +113,26 @@ const SearchManager = (function() {
       
       // Create content
       const layerName = CONFIG.map.layers.find(l => l.id === item.layer)?.name || 'Unknown';
+      const coordStr = `[${item.coords[0]}, ${item.coords[1]}]`;
       
       resultItem.innerHTML = `
         ${iconHTML}
         <div>
           <div style="font-weight:500;">${item.name}</div>
-          <div style="color:#aaa;font-size:0.9em;">(${layerName})</div>
+          <div style="color:#aaa;font-size:0.9em;">${coordStr} (${layerName})</div>
         </div>
       `;
       
-      // Add click handler
+      // Add click handler with specific ID
       resultItem.addEventListener('click', function() {
-        resultItemClicked(item);
+        resultItemClicked(item.markerId || item.name);
       });
       
       // Add to container
       resultsContainer.appendChild(resultItem);
     });
   }
+  
   
   // Display no results message
   function displayNoResults() {
@@ -162,36 +164,36 @@ const SearchManager = (function() {
   }
   
   // Handle result item click
-  function resultItemClicked(item) {
-    console.log(`[SM] Result clicked: ${item.name}`);
+  function resultItemClicked(idOrName) {
+    console.log(`[SM] Result clicked: ${idOrName}`);
     
     try {
       // Get marker data
-      const markerData = MarkerManager.getMarkerData(item.name);
+      const markerData = MarkerManager.getMarkerData(idOrName);
       if (!markerData) {
-        console.error(`[SM] Marker data not found for ${item.name}`);
+        console.error(`[SM] Marker data not found for ${idOrName}`);
         return;
       }
       
       // Set active layer
       MapManager.setActiveLayer(markerData.layer);
       
-      // Get marker and set view
-      const marker = MarkerManager.getMarker(item.name);
+      // Get marker and set view 
+      const marker = MarkerManager.getMarker(idOrName);
       if (marker) {
         MapManager.setView(marker.getLatLng(), CONFIG.search.resultZoomLevel);
         
         // Show popup for marker (no sidebar closing)
-        MarkerManager.showPopupForMarker(item.name);
-        
+        MarkerManager.showPopupForMarker(idOrName);
       } else {
-        console.warn(`[SM] Marker not found for ${item.name}`);
+        console.warn(`[SM] Marker not found for ${idOrName}`);
         MapManager.setView(markerData.coords, CONFIG.search.resultZoomLevel);
       }
     } catch (e) {
       console.error("[SM] Error handling result click:", e);
     }
   }
+  
   
   
   // Close all sidebars

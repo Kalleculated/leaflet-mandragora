@@ -1,7 +1,8 @@
 // Core marker management
 const MarkerManager = (function() {
   // Store all markers for quick lookup
-  const markersMap = new Map();
+  const markersMap = new Map(); // Keeps unique ID -> marker mapping
+  const nameToIdMap = new Map(); // Keeps name -> [list of IDs] mapping
   let markerData = [];
   let activePopupMarker = null;
   
@@ -98,16 +99,10 @@ const MarkerManager = (function() {
       return null;
     }
     
-    // Normalize marker name for lookup
-    const normalizedName = name.toLowerCase();
+    // Generate a unique ID using coordinates and name
+    const markerId = `${name}_${coords[0]}_${coords[1]}`;
     
-    // Prevent adding duplicate names
-    if (markersMap.has(normalizedName)) {
-      console.warn(`[Marker] Marker with name "${name}" already exists.`);
-      return null;
-    }
-    
-    // Get the icon for the group
+    // Create marker
     let markerIcon;
     try {
       if (typeof GroupManager !== 'undefined' && GroupManager.getIcon) {
@@ -159,17 +154,24 @@ const MarkerManager = (function() {
     });
     
     // Store marker data for search
-    marker.feature = { properties: { name, layer, group } };
+    marker.feature = { properties: { name, layer, group, markerId } };
     
-    // Store in map with normalized (lowercase) key for case-insensitive lookup
-    markersMap.set(normalizedName, { 
+    // Store in map with generated unique ID
+    markersMap.set(markerId, { 
       marker, 
-      data: {...data, layer} 
+      data: {...data, layer, markerId} 
     });
     
-    console.log(`[Marker] Added: ${name} (Group: ${group}, Layer: ${layer}) at ${coords}`);
+    // Create/update name-based lookup index for search
+    // This allows multiple markers with same name to be found
+    const nameIndex = nameToIdMap.get(name.toLowerCase()) || [];
+    nameIndex.push(markerId);
+    nameToIdMap.set(name.toLowerCase(), nameIndex);
+    
+    console.log(`[Marker] Added: ${name} (ID: ${markerId}, Group: ${group}, Layer: ${layer}) at ${coords}`);
     return marker;
   }
+  
   
   // Initialize event listeners for the popup
   function initPopupListeners() {
@@ -234,43 +236,74 @@ const MarkerManager = (function() {
     
     addMarker: addMarker,
     
-    getMarker: function(name) {
-      if (!name) {
-        console.warn('[Marker] getMarker called with empty name');
+    getMarker: function(nameOrId) {
+      if (!nameOrId) {
+        console.warn('[Marker] getMarker called with empty identifier');
         return null;
       }
       
-      // Normalize name for lookup
-      const normalizedName = name.toLowerCase();
-      const entry = markersMap.get(normalizedName);
-      
-      if (!entry) {
-        console.warn(`[Marker] Marker not found: ${name}`);
-        console.log('[Marker] Available markers:', Array.from(markersMap.keys()));
+      // Direct lookup if ID is provided
+      if (markersMap.has(nameOrId)) {
+        return markersMap.get(nameOrId).marker;
       }
       
-      return entry ? entry.marker : null;
+      // Name-based lookup (returns first match)
+      const normalizedName = nameOrId.toLowerCase();
+      const ids = nameToIdMap.get(normalizedName);
+      
+      if (!ids || ids.length === 0) {
+        console.warn(`[Marker] Marker not found: ${nameOrId}`);
+        return null;
+      }
+      
+      // Return the first matching marker
+      return markersMap.get(ids[0]).marker;
+    },
+
+    getMarkersWithName: function(name) {
+      if (!name) return [];
+      
+      const normalizedName = name.toLowerCase();
+      const ids = nameToIdMap.get(normalizedName) || [];
+      
+      return ids.map(id => markersMap.get(id).marker);
     },
     
-    getMarkerData: function(name) {
-      if (!name) {
-        console.warn('[Marker] getMarkerData called with empty name');
+    getMarkerData: function(nameOrId) {
+      if (!nameOrId) {
+        console.warn('[Marker] getMarkerData called with empty identifier');
         return null;
       }
       
-      // Normalize name for lookup
-      const normalizedName = name.toLowerCase();
-      const entry = markersMap.get(normalizedName);
-      
-      if (!entry) {
-        console.warn(`[Marker] Marker data not found: ${name}`);
+      // Direct lookup if ID is provided
+      if (markersMap.has(nameOrId)) {
+        return markersMap.get(nameOrId).data;
       }
       
-      return entry ? entry.data : null;
+      // Name-based lookup (returns first match)
+      const normalizedName = nameOrId.toLowerCase();
+      const ids = nameToIdMap.get(normalizedName);
+      
+      if (!ids || ids.length === 0) {
+        console.warn(`[Marker] Marker data not found: ${nameOrId}`);
+        return null;
+      }
+      
+      // Return the first matching marker data
+      return markersMap.get(ids[0]).data;
     },
     
     getAllMarkers: function() {
       return Array.from(markersMap.values()).map(entry => entry.data);
+    },
+
+    getAllMarkersWithName: function(name) {
+      if (!name) return [];
+      
+      const normalizedName = name.toLowerCase();
+      const ids = nameToIdMap.get(normalizedName) || [];
+      
+      return ids.map(id => markersMap.get(id).data);
     },
     
     getMarkersMap: function() {
