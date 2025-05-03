@@ -1,5 +1,5 @@
 // js/markers/waypoint.js - Update marker definitions
-const MapMarkers = [
+export const MapMarkers = [
   {
     name: 'Braer Castle Dungeon', 
     coords: [1439, 5743], 

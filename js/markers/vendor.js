@@ -1,5 +1,6 @@
-// js/markers/vendor.js
-const VendorMarkers = [
+import { ItemData } from '../constants/item-data.js';
+
+export const VendorMarkers = [
   {
     name: 'Deeydre and Aille', 
     coords: [1786, 1940], 

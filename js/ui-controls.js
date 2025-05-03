@@ -1,5 +1,10 @@
+import { CONFIG } from './config.js';
+import { MapManager } from './map.js';
+import { MarkerManager } from './markers/markers.js'; 
+import { GroupManager } from './groups.js';
+
 // UI Controls for navigation, search and filters
-const UIControls = (function() {
+export const UIControls = (() => {
     // Initialize UI elements and event listeners
     function initialize() {
       console.log('[UI] Initializing UI controls');
@@ -120,7 +125,7 @@ const UIControls = (function() {
           });
           this.classList.add('active');
           
-          if (typeof MapManager !== 'undefined' && MapManager.setActiveLayer) {
+          if (MapManager && MapManager.setActiveLayer) {
             MapManager.setActiveLayer(layerConfig.id);
           } else {
             console.error('[UI] MapManager not available or missing setActiveLayer method');
@@ -269,7 +274,7 @@ const UIControls = (function() {
         groupsContainer.appendChild(filterControls);
         
         // Check if GroupManager is available
-        if (typeof GroupManager === 'undefined' || !GroupManager.getAllGroups) {
+        if (!GroupManager || !GroupManager.getAllGroups) {
         console.error('[UI] GroupManager not available or missing getAllGroups method');
         return;
         }
@@ -364,9 +369,8 @@ const UIControls = (function() {
     }
     
     // Update marker visibility based on filters
-    // Update marker visibility based on filters
     function updateVisibleMarkers(visibleGroups, visibleItemTypes) {
-      if (typeof MarkerManager === 'undefined' || !MarkerManager.getMarkersMap) {
+      if (!MarkerManager || !MarkerManager.getMarkersMap) {
           console.error('[UI] MarkerManager not available or missing getMarkersMap method');
           return;
       }

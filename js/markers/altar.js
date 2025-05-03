@@ -1,5 +1,5 @@
 // js/markers/altar.js - Update marker definitions
-const AltarMarkers = [
+export const AltarMarkers = [
     {
       name: 'Altar',
       coords: [1748, 1903],

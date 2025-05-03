@@ -1,5 +1,7 @@
+import { CONFIG } from './config.js';
+
 // Group management module
-const GroupManager = (function() {
+export const GroupManager = (() => {
   // Define paths for different pin images
   const iconPaths = {
     default: 'assets/pins/pin.png',

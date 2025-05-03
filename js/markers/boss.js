@@ -1,4 +1,4 @@
-const BossMarkers = [
+export const BossMarkers = [
     // {
     //   name: 'Mega Boss', 
     //   coords: [2018, 9502], 

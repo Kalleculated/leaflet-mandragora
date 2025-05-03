@@ -1,5 +1,5 @@
 // js/markers/ore.js - Sample with both single and multi-coordinates
-const OreMarkers = [
+export const OreMarkers = [
   // Single coordinate format
   {
     name: 'Tinstone', 
