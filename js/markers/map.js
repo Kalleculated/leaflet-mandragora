@@ -11,6 +11,12 @@ export const MapMarkers = [
     coords: [1095, 3480], 
     group: 'map',
     layer: 'layer2'  // Specify layer
-  }
+  },
+  {
+    name: 'Braer Castle Garden', 
+    coords: [1437, 7123], 
+    group: 'map',
+    layer: 'layer2'  // Specify layer
+  },
   // Add more markers as needed
 ];
