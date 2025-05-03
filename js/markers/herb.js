@@ -40,7 +40,10 @@ export const HerbMarkers = [
   },
   {
     name: 'Sage', 
-    coords: [1057, 2976], 
+    coords: [
+      [1057, 2976],
+      [1400, 3590]
+    ], 
     group: 'herb',
     layer: 'layer1'  // Specify layer
   },
