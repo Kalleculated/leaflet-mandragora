@@ -803,3 +803,25 @@ div[style] {
     background-color: transparent;
     padding: 0;
   }
+
+/* Add styles for requirement items */
+.item-entry.requirement-item {
+  background-color: rgba(26,26,26,0.95);
+  border-left: 3px solid #00bfc9; /* Golden border */
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 0 3px 3px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-entry.requirement-item:hover {
+  background-color: rgba(60, 60, 60, 0.8);
+}
+
+.item-quantity {
+  color: #c9a100;
+  font-weight: bold;
+  margin-left: 10px;
+}

@@ -56,6 +56,8 @@ const MarkerManager = (function() {
         popupRegion.textContent = 'placeholder';
       } else if (group === 'boss') {
         popupRegion.textContent = 'placeholder';  // Added specific text for boss
+      } else if (group === 'altar') {
+        popupRegion.textContent = 'Offers powerful blessings';
       } else {
         popupRegion.textContent = 'placeholder';
       }
@@ -167,6 +169,44 @@ const MarkerManager = (function() {
         // Add to popup
         popupItems.appendChild(itemEntry);
       });
+    }
+    
+    // Add requirements for altars if present
+    if (popupItems && group === 'altar' && data && data.requires) {
+      // Add header for requirements
+      const requirementsHeader = document.createElement('div');
+      requirementsHeader.className = 'items-section-header';
+      requirementsHeader.textContent = 'Requirements';
+      requirementsHeader.style.color = '#aaa';
+      requirementsHeader.style.fontSize = '14px';
+      requirementsHeader.style.fontWeight = 'bold';
+      requirementsHeader.style.marginTop = '20px';
+      requirementsHeader.style.marginBottom = '5px';
+      popupItems.appendChild(requirementsHeader);
+      
+      // Create an item entry for the requirement
+      const requirementEntry = document.createElement('div');
+      requirementEntry.className = 'item-entry requirement-item';
+      
+      // Create item name span
+      const itemName = document.createElement('span');
+      itemName.className = 'item-name';
+      itemName.textContent = data.requires.item || 'Unknown';
+      
+      // Create quantity span
+      const quantitySpan = document.createElement('span');
+      quantitySpan.className = 'item-quantity';
+      quantitySpan.textContent = `x${data.requires.quantity || 1}`;
+      quantitySpan.style.color = '#c9a100';
+      quantitySpan.style.marginLeft = '10px';
+      quantitySpan.style.fontWeight = 'bold';
+      
+      // Assemble requirement entry
+      requirementEntry.appendChild(itemName);
+      requirementEntry.appendChild(quantitySpan);
+      
+      // Add to popup
+      popupItems.appendChild(requirementEntry);
     }
     
     // Show popup
