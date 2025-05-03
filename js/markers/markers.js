@@ -486,7 +486,7 @@ const MarkerManager = (function() {
     
     switch(damageType.toLowerCase()) {
       case 'physical': iconPath = `${BASE_URL}/assets/icons/damage_type/physical.png`; break;
-      case 'wyld': iconPath = `${BASE_URL}/assets/icons/damage_type/wyld.png`; break;
+      case 'wyld': iconPath = `assets/icons/damage_type/wyld.png`; break;
       case 'light': iconPath = `${BASE_URL}/assets/icons/damage_type/light.png`; break;
       case 'void': iconPath = `${BASE_URL}/assets/icons/damage_type/void.png`; break;
       case 'ice': iconPath = `${BASE_URL}/assets/icons/damage_type/ice.png`; break;
