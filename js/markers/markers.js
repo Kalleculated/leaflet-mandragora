@@ -479,14 +479,14 @@ const MarkerManager = (function() {
   function getDamageIcon(damageType) {
     let iconPath;
     switch(damageType.toLowerCase()) {
-      case 'physical': iconPath = '../../assets/icons/damage_type/physical.png'; break;
-      case 'wyld': iconPath = '../../assets/icons/damage_type/wyld.png'; break;
-      case 'light': iconPath = '../../assets/icons/damage_type/light.png'; break;
-      case 'void': iconPath = '../../assets/icons/damage_type/void.png'; break;
-      case 'ice': iconPath = '../../assets/icons/damage_type/ice.png'; break;
-      case 'fire': iconPath = '../../assets/icons/damage_type/fire.png'; break;
-      case 'void': iconPath = '../../assets/icons/damage_type/void.png'; break;
-      default: iconPath = '../../assets/icons/damage_type/physical.png';
+      case 'physical': iconPath = '/assets/icons/damage_type/physical.png'; break;
+      case 'wyld': iconPath = '/assets/icons/damage_type/wyld.png'; break;
+      case 'light': iconPath = '/assets/icons/damage_type/light.png'; break;
+      case 'void': iconPath = '/assets/icons/damage_type/void.png'; break;
+      case 'ice': iconPath = '/assets/icons/damage_type/ice.png'; break;
+      case 'fire': iconPath = '/assets/icons/damage_type/fire.png'; break;
+      case 'void': iconPath = '/assets/icons/damage_type/void.png'; break;
+      default: iconPath = '/assets/icons/damage_type/physical.png';
     }
     return `<img src="${iconPath}" alt="${damageType}" class="stat-icon" width="24" height="24">`;
   }
@@ -494,11 +494,11 @@ const MarkerManager = (function() {
   function getScalingIcon(attributeType) {
     let iconPath;
     switch(attributeType.toLowerCase()) {
-      case 'strength': iconPath = '../../assets/icons/scaling/strength.webp'; break;
-      case 'dexterity': iconPath = '../../assets/icons/scaling/dexterity.webp'; break;
-      case 'spirit': iconPath = '../../assets/icons/scaling/spirit.webp'; break;
-      case 'power': iconPath = '../../assets/icons/scaling/power.webp'; break;
-      default: iconPath = '../../assets/icons/scaling/strength.webp';
+      case 'strength': iconPath = '/assets/icons/scaling/strength.webp'; break;
+      case 'dexterity': iconPath = '/assets/icons/scaling/dexterity.webp'; break;
+      case 'spirit': iconPath = '/assets/icons/scaling/spirit.webp'; break;
+      case 'power': iconPath = '/assets/icons/scaling/power.webp'; break;
+      default: iconPath = '/assets/icons/scaling/strength.webp';
     }
     return `<img src="${iconPath}" alt="${attributeType}" class="stat-icon" width="24" height="24">`;
   }
