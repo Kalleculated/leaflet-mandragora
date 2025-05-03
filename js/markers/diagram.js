@@ -1,10 +1,16 @@
 // js/markers/waypoint.js - Update marker definitions
 const DiagramMarkers = [
-  // {
-  //   name: 'DM1', 
-  //   coords: [300, 0], 
-  //   group: 'diagram',
-  //   layer: 'layer1'  // Specify layer
-  // }
+  {
+    name: 'Apple Tart', 
+    coords: [1709, 6010], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
+  {
+    name: 'Blade of Despair', 
+    coords: [1477, 5666], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
   // Add more markers as needed
 ];
