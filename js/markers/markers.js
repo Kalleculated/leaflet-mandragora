@@ -1,3 +1,7 @@
+// dynamic solution for vscode and gh pages
+const BASE_URL = window.location.hostname.includes('github.io') ? 
+  '/leaflet-mandragora' : '';
+
 // Core marker management
 const MarkerManager = (function() {
   // Store all markers for quick lookup
@@ -478,29 +482,34 @@ const MarkerManager = (function() {
   
   function getDamageIcon(damageType) {
     let iconPath;
+    let damageText = damageType.charAt(0).toUpperCase() + damageType.slice(1);
+    
     switch(damageType.toLowerCase()) {
-      case 'physical': iconPath = '../../assets/icons/damage_type/physical.png'; break;
-      case 'wyld': iconPath = '../../assets/icons/damage_type/wyld.png'; break;
-      case 'light': iconPath = '../../assets/icons/damage_type/light.png'; break;
-      case 'void': iconPath = '../../assets/icons/damage_type/void.png'; break;
-      case 'ice': iconPath = '../../assets/icons/damage_type/ice.png'; break;
-      case 'fire': iconPath = '../../assets/icons/damage_type/fire.png'; break;
-      case 'void': iconPath = '../../assets/icons/damage_type/void.png'; break;
-      default: iconPath = '../../assets/icons/damage_type/physical.png';
+      case 'physical': iconPath = `${BASE_URL}/assets/icons/damage_type/physical.png`; break;
+      case 'wyld': iconPath = `${BASE_URL}/assets/icons/damage_type/wyld.png`; break;
+      case 'light': iconPath = `${BASE_URL}/assets/icons/damage_type/light.png`; break;
+      case 'void': iconPath = `${BASE_URL}/assets/icons/damage_type/void.png`; break;
+      case 'ice': iconPath = `${BASE_URL}/assets/icons/damage_type/ice.png`; break;
+      case 'fire': iconPath = `${BASE_URL}/assets/icons/damage_type/fire.png`; break;
+      default: iconPath = `${BASE_URL}/assets/icons/damage_type/physical.png`;
     }
-    return `<img src="${iconPath}" alt="${damageType}" class="stat-icon" width="24" height="24">`;
+    
+    return `<img src="${iconPath}" alt="${damageText}" class="stat-icon" width="24" height="24" onerror="this.onerror=null; this.replaceWith(document.createTextNode('${damageText}'));">`;
   }
   
   function getScalingIcon(attributeType) {
     let iconPath;
+    let attrText = attributeType.charAt(0).toUpperCase() + attributeType.slice(1);
+    
     switch(attributeType.toLowerCase()) {
-      case 'strength': iconPath = '../../assets/icons/scaling/strength.webp'; break;
-      case 'dexterity': iconPath = '../../assets/icons/scaling/dexterity.webp'; break;
-      case 'spirit': iconPath = '../../assets/icons/scaling/spirit.webp'; break;
-      case 'power': iconPath = '../../assets/icons/scaling/power.webp'; break;
-      default: iconPath = '../../assets/icons/scaling/strength.webp';
+      case 'strength': iconPath = `${BASE_URL}/assets/icons/scaling/strength.webp`; break;
+      case 'dexterity': iconPath = `${BASE_URL}/assets/icons/scaling/dexterity.webp`; break;
+      case 'spirit': iconPath = `${BASE_URL}/assets/icons/scaling/spirit.webp`; break;
+      case 'power': iconPath = `${BASE_URL}/assets/icons/scaling/power.webp`; break;
+      default: iconPath = `${BASE_URL}/assets/icons/scaling/strength.webp`;
     }
-    return `<img src="${iconPath}" alt="${attributeType}" class="stat-icon" width="24" height="24">`;
+    
+    return `<img src="${iconPath}" alt="${attrText}" class="stat-icon" width="24" height="24" onerror="this.onerror=null; this.replaceWith(document.createTextNode('${attrText}'));">`;
   }
   
 
