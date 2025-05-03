@@ -5,6 +5,12 @@ export const MapMarkers = [
     coords: [1439, 5743], 
     group: 'map',
     layer: 'layer1'  // Specify layer
+  },
+  {
+    name: 'Hinterlands', 
+    coords: [1095, 3480], 
+    group: 'map',
+    layer: 'layer2'  // Specify layer
   }
   // Add more markers as needed
 ];
