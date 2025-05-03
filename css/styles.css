@@ -19,7 +19,7 @@ h3,
 
 /* Background image styling */
 body {
-  background-image: url('background/mandragora_background.jpg');
+  background-image: url('../assets/background/mandragora_background.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

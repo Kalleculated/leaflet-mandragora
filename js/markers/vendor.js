@@ -63,7 +63,7 @@ const VendorMarkers = [
           scaling: {
             strength: "A",
             dexterity: "B",
-            light: "S"
+            spirit: "S"
           },
           ability: "Resonance",
           abilityDescription: "Increases damage by 10% for each enemy hit, up to 50%.",

@@ -477,22 +477,27 @@ const MarkerManager = (function() {
   }
   
   function getDamageIcon(damageType) {
+    let iconPath;
     switch(damageType.toLowerCase()) {
-      case 'physical': return '<i class="fas fa-hammer"></i>';
-      case 'wyld': return '<i class="fas fa-leaf"></i>';
-      case 'light': return '<i class="fas fa-sun"></i>';
-      case 'crit': return '<i class="fas fa-bolt"></i>';
-      default: return '<i class="fas fa-question"></i>';
+      case 'physical': iconPath = 'assets/icons/physical.png'; break;
+      case 'wyld': iconPath = 'assets/icons/wyld.png'; break;
+      case 'light': iconPath = 'assets/icons/light.png'; break;
+      case 'crit': iconPath = 'assets/icons/crit.png'; break;
+      default: iconPath = 'assets/icons/unknown.png';
     }
+    return `<img src="${iconPath}" alt="${damageType}" class="stat-icon" width="16" height="16">`;
   }
   
   function getScalingIcon(attributeType) {
+    let iconPath;
     switch(attributeType.toLowerCase()) {
-      case 'strength': return '<i class="fas fa-dumbbell"></i>';
-      case 'dexterity': return '<i class="fas fa-running"></i>';
-      case 'light': return '<i class="fas fa-lightbulb"></i>';
-      default: return '<i class="fas fa-question"></i>';
+      case 'strength': iconPath = '../../assets/icons/strength.webp'; break;
+      case 'dexterity': iconPath = '../../assets/icons/dexterity.webp'; break;
+      case 'spirit': iconPath = '../../assets/icons/spirit.webp'; break;
+      case 'power': iconPath = '../../assets/icons/power.webp'; break;
+      default: iconPath = 'assets/icons/unknown.png';
     }
+    return `<img src="${iconPath}" alt="${attributeType}" class="stat-icon" width="24" height="24">`;
   }
   
 
