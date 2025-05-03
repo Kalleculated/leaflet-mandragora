@@ -807,7 +807,7 @@ div[style] {
 /* Add styles for requirement items */
 .item-entry.requirement-item {
   background-color: rgba(26,26,26,0.95);
-  border-left: 3px solid #c9a100; /* Golden border */
+  border-left: 3px solid #00bfc9; /* Golden border */
   padding: 10px;
   margin-bottom: 5px;
   border-radius: 0 3px 3px 0;
