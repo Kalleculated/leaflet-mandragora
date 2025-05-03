@@ -17,6 +17,7 @@ import { BossMarkers } from './markers/boss.js';
 import { WoodMarkers } from './markers/wood.js';
 import { NestMarkers } from './markers/nest.js';
 import { AltarMarkers } from './markers/altar.js';
+import { CatMarkers } from './markers/altar.js';
 
 // Main application initialization
 document.addEventListener('DOMContentLoaded', function() {
