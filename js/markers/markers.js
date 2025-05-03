@@ -364,16 +364,25 @@ const MarkerManager = (function() {
         const statEntry = document.createElement('div');
         statEntry.className = 'stat-entry';
         
-        const statNameElem = document.createElement('span');
-        statNameElem.className = 'stat-name';
-        statNameElem.textContent = statName.charAt(0).toUpperCase() + statName.slice(1); // Capitalize
+        // Handle special case for damage and scaling objects
+        if (statName === 'damage' && typeof statValue === 'object') {
+          handleDamageStats(statEntry, statValue);
+        } else if (statName === 'scaling' && typeof statValue === 'object') {
+          handleScalingStats(statEntry, statValue);
+        } else {
+          // Standard stat display
+          const statNameElem = document.createElement('span');
+          statNameElem.className = 'stat-name';
+          statNameElem.textContent = statName.charAt(0).toUpperCase() + statName.slice(1);
+          
+          const statValueElem = document.createElement('span');
+          statValueElem.className = 'stat-value';
+          statValueElem.textContent = statValue;
+          
+          statEntry.appendChild(statNameElem);
+          statEntry.appendChild(statValueElem);
+        }
         
-        const statValueElem = document.createElement('span');
-        statValueElem.className = 'stat-value';
-        statValueElem.textContent = statValue;
-        
-        statEntry.appendChild(statNameElem);
-        statEntry.appendChild(statValueElem);
         statsContainer.appendChild(statEntry);
       });
     }
@@ -396,6 +405,96 @@ const MarkerManager = (function() {
       }
     };
   }
+
+  function handleDamageStats(container, damageObj) {
+    const damageHeader = document.createElement('div');
+    damageHeader.className = 'stat-name';
+    damageHeader.textContent = 'Damage';
+    container.appendChild(damageHeader);
+    
+    const damageValuesContainer = document.createElement('div');
+    damageValuesContainer.className = 'stat-value damage-values';
+    damageValuesContainer.style.display = 'flex';
+    damageValuesContainer.style.flexDirection = 'row';
+    damageValuesContainer.style.gap = '12px';
+    damageValuesContainer.style.flexWrap = 'wrap';
+    
+    Object.entries(damageObj).forEach(([damageType, damageValue]) => {
+      const damageEntry = document.createElement('div');
+      damageEntry.style.display = 'flex';
+      damageEntry.style.alignItems = 'center';
+      
+      const iconSpan = document.createElement('span');
+      iconSpan.className = `damage-icon`;
+      iconSpan.innerHTML = getDamageIcon(damageType);
+      iconSpan.style.marginRight = '4px';
+      
+      const valueSpan = document.createElement('span');
+      valueSpan.textContent = damageValue;
+      valueSpan.style.fontWeight = 'bold';
+      
+      damageEntry.appendChild(iconSpan);
+      damageEntry.appendChild(valueSpan);
+      damageValuesContainer.appendChild(damageEntry);
+    });
+    
+    container.appendChild(damageValuesContainer);
+  }
+  
+  function handleScalingStats(container, scalingObj) {
+    const scalingHeader = document.createElement('div');
+    scalingHeader.className = 'stat-name';
+    scalingHeader.textContent = 'Scaling';
+    container.appendChild(scalingHeader);
+    
+    const scalingValuesContainer = document.createElement('div');
+    scalingValuesContainer.className = 'stat-value scaling-values';
+    scalingValuesContainer.style.display = 'flex';
+    scalingValuesContainer.style.flexDirection = 'row';
+    scalingValuesContainer.style.gap = '12px';
+    scalingValuesContainer.style.flexWrap = 'wrap';
+    
+    Object.entries(scalingObj).forEach(([attributeType, scalingValue]) => {
+      const scalingEntry = document.createElement('div');
+      scalingEntry.style.display = 'flex';
+      scalingEntry.style.alignItems = 'center';
+      
+      const iconSpan = document.createElement('span');
+      iconSpan.className = `scaling-icon`;
+      iconSpan.innerHTML = getScalingIcon(attributeType);
+      iconSpan.style.marginRight = '4px';
+      
+      const valueSpan = document.createElement('span');
+      valueSpan.textContent = scalingValue;
+      valueSpan.style.fontWeight = 'bold';
+      
+      scalingEntry.appendChild(iconSpan);
+      scalingEntry.appendChild(valueSpan);
+      scalingValuesContainer.appendChild(scalingEntry);
+    });
+    
+    container.appendChild(scalingValuesContainer);
+  }
+  
+  function getDamageIcon(damageType) {
+    switch(damageType.toLowerCase()) {
+      case 'physical': return '<i class="fas fa-hammer"></i>';
+      case 'wyld': return '<i class="fas fa-leaf"></i>';
+      case 'light': return '<i class="fas fa-sun"></i>';
+      case 'crit': return '<i class="fas fa-bolt"></i>';
+      default: return '<i class="fas fa-question"></i>';
+    }
+  }
+  
+  function getScalingIcon(attributeType) {
+    switch(attributeType.toLowerCase()) {
+      case 'strength': return '<i class="fas fa-dumbbell"></i>';
+      case 'dexterity': return '<i class="fas fa-running"></i>';
+      case 'light': return '<i class="fas fa-lightbulb"></i>';
+      default: return '<i class="fas fa-question"></i>';
+    }
+  }
+  
 
   function initItemDetailModal() {
     const modal = document.getElementById('item-detail-modal');
