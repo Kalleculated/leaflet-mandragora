@@ -9,11 +9,6 @@ export const ChestMarkers = [
         {
           name: 'Copper Sword',
           type: 'diagram',
-          image: 'assets/items/silver_sword.jpg',
-          stats: {
-            damage: 45,
-            weight: 3.5
-          }
         },
       ]
     },
