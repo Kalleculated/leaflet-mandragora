@@ -89,13 +89,12 @@ const VendorMarkers = [
           damage: {
             physical: 175,
             wyld: 80,
-            light: 50,
-            crit: 603
+            light: 50
           },
           scaling: {
             strength: "B",
             dexterity: "S",
-            light: "S+"
+            spirit: "S+"
           },
         },
         ability: "Resonance",
