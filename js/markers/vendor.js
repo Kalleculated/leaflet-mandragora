@@ -57,8 +57,7 @@ const VendorMarkers = [
         stats: {
           damage: {
             physical: 215,
-            wyld: 110,
-            crit: 620
+            wyld: 110
           },
           scaling: {
             strength: "A",
