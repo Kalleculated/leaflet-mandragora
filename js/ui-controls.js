@@ -364,48 +364,55 @@ const UIControls = (function() {
     }
     
     // Update marker visibility based on filters
+    // Update marker visibility based on filters
     function updateVisibleMarkers(visibleGroups, visibleItemTypes) {
-        if (typeof MarkerManager === 'undefined' || !MarkerManager.getMarkersMap) {
-            console.error('[UI] MarkerManager not available or missing getMarkersMap method');
-            return;
-        }
-        
-        const markersMap = MarkerManager.getMarkersMap();
-        
-        // Loop through all markers and update visibility
-        markersMap.forEach((entry, key) => {
-            const marker = entry.marker;
-            const data = entry.data;
-            const group = data.group;
-            
-            let shouldBeVisible = visibleGroups[group];
-            
-            // If marker has regular items, check if any item type matches visible types
-            if (!shouldBeVisible && data.items && Array.isArray(data.items)) {
-                const hasVisibleItemType = data.items.some(item => 
-                    item.type && visibleItemTypes[item.type]
-                );
-                shouldBeVisible = hasVisibleItemType;
-            }
-            
-            // If marker has craftable items, check if any item type matches visible types
-            if (!shouldBeVisible && data.craftableItems && Array.isArray(data.craftableItems)) {
-                const hasVisibleCraftableType = data.craftableItems.some(item =>
-                    item.type && visibleItemTypes[item.type]
-                );
-                shouldBeVisible = hasVisibleCraftableType;
-            }
-            
-            if (shouldBeVisible) {
-                // Make marker visible
-                marker.setOpacity(1);
-                marker.options.interactive = true;
-            } else {
-                // Hide marker
-                marker.setOpacity(0);
-                marker.options.interactive = false;
-            }
-        });
+      if (typeof MarkerManager === 'undefined' || !MarkerManager.getMarkersMap) {
+          console.error('[UI] MarkerManager not available or missing getMarkersMap method');
+          return;
+      }
+      
+      const markersMap = MarkerManager.getMarkersMap();
+      const activeLayer = MapManager.getActiveLayerId();
+      
+      // Loop through all markers and update visibility
+      markersMap.forEach((entry, key) => {
+          const marker = entry.marker;
+          const data = entry.data;
+          const group = data.group;
+          
+          let shouldBeVisible = visibleGroups[group];
+          
+          // If marker has regular items, check if any item type matches visible types
+          if (!shouldBeVisible && data.items && Array.isArray(data.items)) {
+              const hasVisibleItemType = data.items.some(item => 
+                  item.type && visibleItemTypes[item.type]
+              );
+              shouldBeVisible = hasVisibleItemType;
+          }
+          
+          // If marker has craftable items, check if any item type matches visible types
+          if (!shouldBeVisible && data.craftableItems && Array.isArray(data.craftableItems)) {
+              const hasVisibleCraftableType = data.craftableItems.some(item =>
+                  item.type && visibleItemTypes[item.type]
+              );
+              shouldBeVisible = hasVisibleCraftableType;
+          }
+          
+          if (shouldBeVisible) {
+              // Get current layer
+              const markerLayer = MapManager.getMarkerLayer(data.layer);
+              
+              // Only add marker if it's not already on the map
+              if (!marker._map && data.layer === activeLayer) {
+                  marker.addTo(markerLayer);
+              }
+          } else {
+              // Completely remove marker from map
+              if (marker._map) {
+                  marker.removeFrom(marker._map);
+              }
+          }
+      });
     }
     
     // Public API
