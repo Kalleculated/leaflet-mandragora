@@ -1,5 +1,11 @@
+import { CONFIG } from './config.js';
+import { MarkerManager } from './markers/markers.js';
+import { MapManager } from './map.js';
+import { GroupManager } from './groups.js';
+import { UIControls } from './ui-controls.js';
+
 // Independent search functionality with direct DOM control
-const SearchManager = (function() {
+export const SearchManager = (() => {
   // Store references to DOM elements
   let searchInput = null;
   let resultsContainer = null;
@@ -104,7 +110,6 @@ const SearchManager = (function() {
     }
   }
   
-  // Display search results
   // Display search results
   function displayResults(items, searchText) {
     // Ensure container exists
@@ -271,13 +276,11 @@ const SearchManager = (function() {
     }
   }
   
-  
-  
   // Close all sidebars
   function closeSidebars() {
     try {
       // Try UIControls method if available
-      if (typeof UIControls !== 'undefined' && UIControls.closeSidebars) {
+      if (UIControls && UIControls.closeSidebars) {
         UIControls.closeSidebars();
         return;
       }

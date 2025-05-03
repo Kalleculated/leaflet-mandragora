@@ -1,5 +1,9 @@
 // Core marker management
-const MarkerManager = (function() {
+import { CONFIG } from '../config.js';
+import { GroupManager } from '../groups.js';
+import { MapManager } from '../map.js';
+
+export const MarkerManager = (() => {
   // Store all markers for quick lookup
   const markersMap = new Map(); // Keeps unique ID -> marker mapping
   const nameToIdMap = new Map(); // Keeps name -> [list of IDs] mapping
@@ -27,7 +31,7 @@ const MarkerManager = (function() {
     
     // Set icon
     try {
-      if (typeof GroupManager !== 'undefined' && GroupManager.getIcon) {
+      if (GroupManager && GroupManager.getIcon) {
         const icon = GroupManager.getIcon(group);
         if (icon && icon.options && icon.options.iconUrl) {
           popupIcon.src = icon.options.iconUrl;
@@ -578,7 +582,7 @@ const MarkerManager = (function() {
     // Create marker
     let markerIcon;
     try {
-      if (typeof GroupManager !== 'undefined' && GroupManager.getIcon) {
+      if (GroupManager && GroupManager.getIcon) {
         markerIcon = GroupManager.getIcon(group);
       } else {
         console.warn(`[Marker] GroupManager not available, using default icon for ${name}`);
@@ -603,7 +607,7 @@ const MarkerManager = (function() {
     
     // Add to appropriate layer
     try {
-      if (typeof MapManager !== 'undefined' && MapManager.getMarkerLayer) {
+      if (MapManager && MapManager.getMarkerLayer) {
         marker.addTo(MapManager.getMarkerLayer(layer));
       } else {
         console.error(`[Marker] MapManager not available, cannot add marker ${name} to layer ${layer}`);

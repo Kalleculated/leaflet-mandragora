@@ -1,5 +1,7 @@
+import { CONFIG } from './config.js';
+
 // Map initialization and management
-const MapManager = (function() {
+export const MapManager = (() => {
   let map = null;
   let markerLayers = {};
   let imageLayers = {};

@@ -1,5 +1,5 @@
 // js/markers/chest.js - Chest markers with item contents
-const ChestMarkers = [
+export const ChestMarkers = [
     // {
     //   name: 'Forest Chest', 
     //   coords: [1200, 4000], 
