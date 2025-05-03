@@ -96,12 +96,38 @@ const VendorMarkers = [
             dexterity: "S",
             spirit: "S+"
           },
-        },
         ability: "Resonance",
         abilityDescription: "Increases damage by 10% for each enemy hit, up to 50%.",
         passives: [
           "+13% poison chance",
-        ]
+          ]
+        }
+      },
+      {
+        name: 'Dragonfly',
+        type: 'weapon',
+        image: 'assets/items/leather_armor.jpg',
+        price: 6400,
+        stats: {
+          speed: 3.41,
+          weight: 3.9,
+          stagger: 60,
+          stamina: 2,
+          damage: {
+            physical: 65,
+            wyld: 75,
+          },
+          scaling: {
+            dexterity: "A+",
+            spirit: "A+"
+          },
+        ability: "Blade Dance",
+        abilityDescription: "Increases damage by 10% for each enemy hit, up to 50%.",
+        passives: [
+          "+8% Root Chance",
+          "+10% Poison Chance"
+          ]
+      }
       }
     ],
   }
