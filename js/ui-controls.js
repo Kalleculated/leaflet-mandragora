@@ -127,6 +127,9 @@ export const UIControls = (() => {
           
           if (MapManager && MapManager.setActiveLayer) {
             MapManager.setActiveLayer(layerConfig.id);
+            
+            // Add this line to apply filters after layer change
+            updateVisibleMarkers(visibleGroups, visibleItemTypes);
           } else {
             console.error('[UI] MapManager not available or missing setActiveLayer method');
           }
