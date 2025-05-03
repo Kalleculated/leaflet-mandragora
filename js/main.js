@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
       ...BossMarkers,
       ...WoodMarkers,
       ...NestMarkers,
+      ...CatMarkers,
       ...AltarMarkers
       // Add any additional group markers
     ];
