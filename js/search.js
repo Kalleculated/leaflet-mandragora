@@ -199,7 +199,7 @@ export const SearchManager = (() => {
         <div style="font-weight:500;">${item.name}</div>
         <div style="color:#aaa;font-size:0.9em;">
           ${coordStr} (${layerName})
-          ${matchedItemName ? `<br>Sells: <span style="color:#c9a100">${matchedItemName}</span>` : ''}
+          ${matchedItemName ? `<br>Has: <span style="color:#c9a100">${matchedItemName}</span>` : ''}
           ${matchedCraftableItemName ? `<br>Crafts: <span style="color:#4caf50">${matchedCraftableItemName}</span>` : ''}
         </div>
       `;

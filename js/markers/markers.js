@@ -79,7 +79,7 @@ export const MarkerManager = (() => {
       itemsHeader.className = 'items-section-header';
       
       // Set header text based on group type
-      if (group === 'chest') {
+      if (group === 'chest' | group === 'item') {
         itemsHeader.textContent = 'Contains:';
       } else if (group === 'boss') {
         itemsHeader.textContent = 'Drops:';

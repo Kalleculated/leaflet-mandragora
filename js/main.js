@@ -7,7 +7,6 @@ import { UIControls } from './ui-controls.js';
 // Marker data imports
 import { WitchstoneMarkers } from './markers/witchstone.js';
 import { HerbMarkers } from './markers/herb.js';
-import { LockpickMarkers } from './markers/lockpick.js';
 import { DiagramMarkers } from './markers/diagram.js';
 import { MapMarkers } from './markers/map.js';
 import { OreMarkers } from './markers/ore.js';
@@ -18,6 +17,7 @@ import { WoodMarkers } from './markers/wood.js';
 import { NestMarkers } from './markers/nest.js';
 import { AltarMarkers } from './markers/altar.js';
 import { CatMarkers } from './markers/cat.js';
+import { ItemMarkers } from './markers/item.js';
 
 // Main application initialization
 document.addEventListener('DOMContentLoaded', function() {
@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
       ...HerbMarkers,
       ...OreMarkers,
       ...MapMarkers,
-      ...LockpickMarkers,
       ...DiagramMarkers,
       ...ChestMarkers,
       ...VendorMarkers,
@@ -42,7 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
       ...WoodMarkers,
       ...NestMarkers,
       ...CatMarkers,
-      ...AltarMarkers
+      ...AltarMarkers,
+      ...ItemMarkers
       // Add any additional group markers
     ];
     console.log(`[Main] Combined ${allMarkers.length} markers`);

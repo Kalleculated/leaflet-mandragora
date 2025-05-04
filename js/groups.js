@@ -7,7 +7,6 @@ export const GroupManager = (() => {
     default: 'assets/pins/pin.png',
     diagram: 'assets/pins/pin_diagram.png',
     herb: 'assets/pins/pin_Herb.png',
-    lockpick: 'assets/pins/pin_lockpick.png',
     map: 'assets/pins/pin_map.png',
     ore: 'assets/pins/pin_ore.png',
     witchstone: 'assets/pins/pin.png',
@@ -18,6 +17,7 @@ export const GroupManager = (() => {
     nest: 'assets/pins/pin.png',
     altar: 'assets/pins/pin.png',
     cat: 'assets/pins/pin.png',
+    item: 'assets/pins/pin.png'
     // Add more groups and their icon paths here
   };
 
