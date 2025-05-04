@@ -86,6 +86,18 @@ export const ItemMarkers = [
     },
     {
       name: 'Diagram Location',
+      coords: [1443, 1748],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        { 
+          name: "Runestone of Adrenaline",
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Diagram Location',
       coords: [1518, 2208],
       group: 'item',
       layer: 'layer1',
