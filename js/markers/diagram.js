@@ -66,5 +66,17 @@ export const DiagramMarkers = [
     group: 'diagram',
     layer: 'layer1'  // Specify layer
   },
+  {
+    name: 'Venomous Oil', 
+    coords: [2096, 9201], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
+  {
+    name: "Furion's Protection", 
+    coords: [2096, 9191], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
   // Add more markers as needed
 ];
