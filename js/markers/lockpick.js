@@ -12,5 +12,11 @@ export const LockpickMarkers = [
     group: 'lockpick',
     layer: 'layer1'  // Specify layer
   },
+  {
+    name: 'Lockpick', 
+    coords: [1900, 9118], 
+    group: 'lockpick',
+    layer: 'layer1'  // Specify layer
+  },
   // Add more markers as needed
 ];
