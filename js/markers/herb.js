@@ -1,5 +1,5 @@
 // js/markers/waypoint.js - Update marker definitions
-const HerbMarkers = [
+export const HerbMarkers = [
   {
     name: 'Calendula', 
     coords: [1211, 3937], 
@@ -40,7 +40,10 @@ const HerbMarkers = [
   },
   {
     name: 'Sage', 
-    coords: [1057, 2976], 
+    coords: [
+      [1057, 2976],
+      [1400, 3590]
+    ], 
     group: 'herb',
     layer: 'layer1'  // Specify layer
   },

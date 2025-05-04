@@ -1,5 +1,11 @@
+import { CONFIG } from './config.js';
+import { MarkerManager } from './markers/markers.js';
+import { MapManager } from './map.js';
+import { GroupManager } from './groups.js';
+import { UIControls } from './ui-controls.js';
+
 // Independent search functionality with direct DOM control
-const SearchManager = (function() {
+export const SearchManager = (() => {
   // Store references to DOM elements
   let searchInput = null;
   let resultsContainer = null;
@@ -105,7 +111,6 @@ const SearchManager = (function() {
   }
   
   // Display search results
-  // Display search results
   function displayResults(items, searchText) {
     // Ensure container exists
     if (!resultsContainer) {
@@ -194,7 +199,7 @@ const SearchManager = (function() {
         <div style="font-weight:500;">${item.name}</div>
         <div style="color:#aaa;font-size:0.9em;">
           ${coordStr} (${layerName})
-          ${matchedItemName ? `<br>Sells: <span style="color:#c9a100">${matchedItemName}</span>` : ''}
+          ${matchedItemName ? `<br>Has: <span style="color:#c9a100">${matchedItemName}</span>` : ''}
           ${matchedCraftableItemName ? `<br>Crafts: <span style="color:#4caf50">${matchedCraftableItemName}</span>` : ''}
         </div>
       `;
@@ -271,13 +276,11 @@ const SearchManager = (function() {
     }
   }
   
-  
-  
   // Close all sidebars
   function closeSidebars() {
     try {
       // Try UIControls method if available
-      if (typeof UIControls !== 'undefined' && UIControls.closeSidebars) {
+      if (UIControls && UIControls.closeSidebars) {
         UIControls.closeSidebars();
         return;
       }

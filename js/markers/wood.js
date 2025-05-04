@@ -1,5 +1,5 @@
 // js/markers/waypoint.js - Update marker definitions
-const WoodMarkers = [
+export const WoodMarkers = [
     {
       name: 'Wood', // umbral mushroom
       coords: [

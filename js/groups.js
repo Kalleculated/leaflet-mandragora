@@ -1,11 +1,11 @@
+import { CONFIG } from './config.js';
+
 // Group management module
-const GroupManager = (function() {
+export const GroupManager = (() => {
   // Define paths for different pin images
   const iconPaths = {
     default: 'assets/pins/pin.png',
-    diagram: 'assets/pins/pin_diagram.png',
     herb: 'assets/pins/pin_Herb.png',
-    lockpick: 'assets/pins/pin_lockpick.png',
     map: 'assets/pins/pin_map.png',
     ore: 'assets/pins/pin_ore.png',
     witchstone: 'assets/pins/pin.png',
@@ -15,6 +15,8 @@ const GroupManager = (function() {
     wood: 'assets/pins/pin.png',
     nest: 'assets/pins/pin.png',
     altar: 'assets/pins/pin.png',
+    cat: 'assets/pins/pin.png',
+    item: 'assets/pins/pin.png'
     // Add more groups and their icon paths here
   };
 

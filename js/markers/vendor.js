@@ -5,7 +5,7 @@ const { RESONANCE, DISCHARGE, BLADE_DANCE, INNER_STRENGTH } = ItemData.ABILITIES
 const { WEAPON, RELIC, OFFHAND, ARMOR } = ItemData.ITEM_TYPES;
 const { GREAT_HAMMER, GREAT_SWORD, DAGGERS, ONE_HANDED_MACE, ONE_HANDED_SWORD, TOWER_SHIELD, PLATE, LEATHER, CLOTH, FIRE, WYLD } = ItemData.ITEM_CLASSES;
 
-const VendorMarkers = [
+const const VendorMarkers = [
   {
     name: 'Deeydre and Aille', 
     coords: [1786, 1940], 
