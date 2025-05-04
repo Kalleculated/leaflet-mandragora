@@ -53,13 +53,13 @@ export const MarkerManager = (() => {
     // Set type/region based on group
     if (popupRegion) {
       if (group === 'chest') {
-        popupRegion.textContent = 'placeholder';  // Changed from 'Chest Contents:'
+        popupRegion.textContent = 'placeholder'; 
       } else if (group === 'vendor') {
         popupRegion.textContent = 'placeholder';
       } else if (group === 'waypoint') {
         popupRegion.textContent = 'placeholder';
       } else if (group === 'boss') {
-        popupRegion.textContent = 'placeholder';  // Added specific text for boss
+        popupRegion.textContent = 'placeholder'; 
       } else if (group === 'altar') {
         popupRegion.textContent = 'Offers powerful blessings';
       } else {

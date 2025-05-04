@@ -19,7 +19,7 @@ export const ItemMarkers = [
         {
           name: 'Lockpick',
           type: 'lockpick',
-          amount: '1',
+          quantity: 1,
         },
       ]
     },
