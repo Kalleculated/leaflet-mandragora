@@ -8,6 +8,12 @@ export const LockpickMarkers = [
   },
   {
     name: 'Lockpick', 
+    coords: [982, 445], 
+    group: 'lockpick',
+    layer: 'layer1'  // Specify layer
+  },
+  {
+    name: 'Lockpick', 
     coords: [1633, 6279], 
     group: 'lockpick',
     layer: 'layer1'  // Specify layer
