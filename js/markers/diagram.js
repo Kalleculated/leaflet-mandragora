@@ -36,5 +36,11 @@ export const DiagramMarkers = [
     group: 'diagram',
     layer: 'layer1'  // Specify layer
   },
+  {
+    name: 'Gold Heart Ring', 
+    coords: [1519, 7698], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
   // Add more markers as needed
 ];
