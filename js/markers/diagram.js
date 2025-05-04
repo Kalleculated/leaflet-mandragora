@@ -1,6 +1,12 @@
 // js/markers/waypoint.js - Update marker definitions
 export const DiagramMarkers = [
   {
+    name: "Potion of Absorption", 
+    coords: [368, 1172], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: "Ring of Rage", 
     coords: [520, 1251], 
     group: 'diagram',
