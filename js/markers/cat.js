@@ -14,6 +14,12 @@ export const CatMarkers = [
       },
     {
       name: 'Cat',
+      coords: [1479, 2171],
+      group: 'cat',
+      layer: 'layer1',
+      },
+    {
+      name: 'Cat',
       coords: [1748, 8163],
       group: 'cat',
       layer: 'layer1',
