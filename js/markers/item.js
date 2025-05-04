@@ -53,6 +53,22 @@ export const ItemMarkers = [
     },
     {
       name: 'Diagram Location',
+      coords: [1208, 1786],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        { 
+          name: "Ring of the Elders",
+          type: 'diagram'
+        },
+        { 
+          name: "Illustrous Battlehammer",
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Diagram Location',
       coords: [1288, 2671],
       group: 'item',
       layer: 'layer1',
