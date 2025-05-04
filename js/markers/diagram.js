@@ -1,6 +1,18 @@
 // js/markers/waypoint.js - Update marker definitions
 export const DiagramMarkers = [
   {
+    name: "Champion's Grace", 
+    coords: [787, 4584], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
+  {
+    name: 'Gutrender', 
+    coords: [787, 4589], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: 'Runestone of Alacrity', 
     coords: [366, 5201], 
     group: 'diagram',
