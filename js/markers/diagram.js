@@ -1,6 +1,18 @@
 // js/markers/waypoint.js - Update marker definitions
 export const DiagramMarkers = [
   {
+    name: "Pandemonium", 
+    coords: [481, 1749], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
+  {
+    name: "Innervating Band", 
+    coords: [481, 1749], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: "Beacon of the Faithless", 
     coords: [289, 1363], 
     group: 'diagram',
