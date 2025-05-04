@@ -24,6 +24,18 @@ export const ItemMarkers = [
     },
     {
       name: 'Diagram Location',
+      coords: [944, 2554],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Lykan Dae Fury Fang of Friken',
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Diagram Location',
       coords: [556, 937],
       group: 'item',
       layer: 'layer1',
