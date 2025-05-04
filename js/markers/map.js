@@ -28,19 +28,19 @@ export const MapMarkers = [
     name: 'Braer Castle Garden', 
     coords: [1437, 7123], 
     group: 'map',
-    layer: 'layer2'  // Specify layer
+    layer: 'layer1'  // Specify layer
   },
   {
     name: 'Drakkenden Citadel', 
     coords: [1980, 9080], 
     group: 'map',
-    layer: 'layer2'  // Specify layer
+    layer: 'layer1'  // Specify layer
   },
   {
     name: 'Frostbite Pass', 
     coords: [1902, 8466], 
     group: 'map',
-    layer: 'layer2'  // Specify layer
+    layer: 'layer1'  // Specify layer
   },
   // Add more markers as needed
 ];
