@@ -54,6 +54,18 @@ export const ItemMarkers = [
     },
     {
       name: 'Diagram Location',
+      coords: [1558, 1979],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        { 
+          name: "Runestone of Stamina",
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Diagram Location',
       coords: [1633, 1710],
       group: 'item',
       layer: 'layer1',
