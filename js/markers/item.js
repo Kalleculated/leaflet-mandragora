@@ -86,6 +86,18 @@ export const ItemMarkers = [
     },
     {
       name: 'Diagram Location',
+      coords: [1518, 2208],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        { 
+          name: "Major Magic Potion",
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Diagram Location',
       coords: [1326, 2247],
       group: 'item',
       layer: 'layer1',
