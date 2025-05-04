@@ -1,6 +1,12 @@
 // js/markers/waypoint.js - Update marker definitions
 export const DiagramMarkers = [
   {
+    name: "Coil of Wicked Renewal", 
+    coords: [480, 596], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: "Inquisitor Set", 
     coords: [635, 981], 
     group: 'diagram',
