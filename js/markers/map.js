@@ -24,5 +24,11 @@ export const MapMarkers = [
     group: 'map',
     layer: 'layer2'  // Specify layer
   },
+  {
+    name: 'Frostbite Pass', 
+    coords: [1902, 8466], 
+    group: 'map',
+    layer: 'layer2'  // Specify layer
+  },
   // Add more markers as needed
 ];
