@@ -1,6 +1,12 @@
 // js/markers/waypoint.js - Update marker definitions
 export const DiagramMarkers = [
   {
+    name: "Inquisitor Set", 
+    coords: [635, 981], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: "Warmage Armor Set", 
     coords: [673, 1135], 
     group: 'diagram',
