@@ -7,6 +7,12 @@ export const MapMarkers = [
     layer: 'layer1'  // Specify layer
   },
   {
+    name: 'Inner City', 
+    coords: [1326, 2514], 
+    group: 'map',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: 'Forsaken Mine', 
     coords: [521, 1322], 
     group: 'map',
