@@ -24,5 +24,11 @@ export const DiagramMarkers = [
     group: 'diagram',
     layer: 'layer1'  // Specify layer
   },
+  {
+    name: 'Plague Doctor Armor Set', 
+    coords: [1061, 5549], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
   // Add more markers as needed
 ];
