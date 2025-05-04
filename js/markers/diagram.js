@@ -1,6 +1,12 @@
 // js/markers/waypoint.js - Update marker definitions
 export const DiagramMarkers = [
   {
+    name: "Warmage Armor Set", 
+    coords: [673, 1135], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: "Astral Runestone", 
     coords: [827, 862], 
     group: 'diagram',
