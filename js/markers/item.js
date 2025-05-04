@@ -23,6 +23,18 @@ export const ItemMarkers = [
       ]
     },
     {
+      name: 'Relic Location',
+      coords: [747, 213],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Abyssal Relic',
+          type: 'relic'
+        },
+      ]
+    },
+    {
       name: 'Diagram Location',
       coords: [2015, 1898],
       group: 'item',
