@@ -90,5 +90,17 @@ export const DiagramMarkers = [
     group: 'diagram',
     layer: 'layer1'  // Specify layer
   },
+  {
+    name: "Ring of the Unstoppable", 
+    coords: [1823, 9045], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
+  {
+    name: "Draco Tuatha D'Amara's Set", 
+    coords: [1823, 9040], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
   // Add more markers as needed
 ];
