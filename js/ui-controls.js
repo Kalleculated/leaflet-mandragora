@@ -5,6 +5,12 @@ import { GroupManager } from './groups.js';
 
 // UI Controls for navigation, search and filters
 export const UIControls = (() => {
+    // Store visibility state for groups and item types
+    let visibleGroups = {};
+    let visibleItemTypes = {};
+    // Add filter mode variable
+    let filterMode = 'OR';
+    
     // Initialize UI elements and event listeners
     function initialize() {
       console.log('[UI] Initializing UI controls');
@@ -207,16 +213,12 @@ export const UIControls = (() => {
         });
     }
 
-    // Store visibility state for groups and item types
-    let visibleGroups = {};
-    let visibleItemTypes = {};
-    
     // Initialize filter groups
     function initializeFilterGroups() {
         const groupsContainer = document.getElementById('group-filters');
         if (!groupsContainer) {
-        console.error('[UI] Group filters container not found');
-        return;
+            console.error('[UI] Group filters container not found');
+            return;
         }
         
         console.log('[UI] Initializing filter groups');
@@ -234,7 +236,7 @@ export const UIControls = (() => {
         filterControls.style.borderBottom = '1px solid #444';
         filterControls.style.paddingBottom = '20px';
         
-        // Create "All" and "None" buttons (keep existing implementation)
+        // Create "All" and "None" buttons
         const allButton = document.createElement('button');
         allButton.textContent = 'All';
         allButton.style.fontStyle = 'italic';
@@ -255,18 +257,18 @@ export const UIControls = (() => {
         noneButton.style.borderRadius = '4px';
         noneButton.style.cursor = 'pointer';
         
-        // Add hover effects (keep existing implementation)
+        // Add hover effects
         allButton.addEventListener('mouseover', function() {
-        this.style.backgroundColor = 'rgba(198, 158, 0, 0.896)';
+            this.style.backgroundColor = 'rgba(198, 158, 0, 0.896)';
         });
         allButton.addEventListener('mouseout', function() {
-        this.style.backgroundColor = 'rgba(26,26,26,255)';
+            this.style.backgroundColor = 'rgba(26,26,26,255)';
         });
         noneButton.addEventListener('mouseover', function() {
-        this.style.backgroundColor = 'rgba(198, 158, 0, 0.896)';
+            this.style.backgroundColor = 'rgba(198, 158, 0, 0.896)';
         });
         noneButton.addEventListener('mouseout', function() {
-        this.style.backgroundColor = 'rgba(26,26,26,255)';
+            this.style.backgroundColor = 'rgba(26,26,26,255)';
         });
         
         // Add buttons to filter controls
@@ -276,10 +278,125 @@ export const UIControls = (() => {
         // Insert filter controls at the top
         groupsContainer.appendChild(filterControls);
         
+        // Add filter mode controls
+        const filterModeContainer = document.createElement('div');
+        filterModeContainer.style.margin = '20px 0';
+        filterModeContainer.style.padding = '10px';
+        filterModeContainer.style.backgroundColor = 'rgba(26,26,26,255)';
+        filterModeContainer.style.borderRadius = '4px';
+
+        const filterModeLabel = document.createElement('div');
+        filterModeLabel.textContent = 'FILTER MODE';
+        filterModeLabel.style.color = 'rgba(198, 158, 0, 0.896)';
+        filterModeLabel.style.marginBottom = '10px';
+        filterModeLabel.style.fontWeight = 'bold';
+        filterModeLabel.style.backgroundColor = 'rgba(26,26,26,255)';
+        filterModeContainer.appendChild(filterModeLabel);
+
+        const filterModeDescription = document.createElement('div');
+        filterModeDescription.style.fontSize = '12px';
+        filterModeDescription.style.color = '#aaa';
+        filterModeDescription.style.marginBottom = '10px';
+        filterModeDescription.textContent = 'Choose how filters are combined:';
+        filterModeDescription.style.backgroundColor = 'rgba(26,26,26,255)';
+        filterModeContainer.appendChild(filterModeDescription);
+
+        // Button container for horizontal layout
+        const buttonContainer = document.createElement('div');
+        buttonContainer.style.display = 'flex';
+        buttonContainer.style.gap = '5px'; // 5px spacing between buttons
+        buttonContainer.style.justifyContent = 'start';
+
+        const orButton = document.createElement('button');
+        orButton.textContent = 'Match Any (OR)';
+        orButton.className = 'filter-mode-btn active';
+        orButton.dataset.mode = 'OR';
+
+        const andButton = document.createElement('button');
+        andButton.textContent = 'Match All (AND)';
+        andButton.className = 'filter-mode-btn';
+        andButton.dataset.mode = 'AND';
+
+        // Style buttons
+        [orButton, andButton].forEach(btn => {
+            btn.style.padding = '10px'; // Increased padding (5px extra)
+            btn.style.backgroundColor = btn.classList.contains('active') ? 
+                'rgba(198, 158, 0, 0.7)' : 'rgba(40, 40, 40, 0.8)';
+            btn.style.color = 'white';
+            btn.style.border = '1px solid #444';
+            btn.style.borderRadius = '4px';
+            btn.style.cursor = 'pointer';
+            btn.style.flex = '1'; // Make buttons equal width
+            
+            // Add hover effects
+            btn.addEventListener('mouseover', function() {
+                if (!this.classList.contains('active')) {
+                    this.style.backgroundColor = 'rgba(60, 60, 60, 0.8)';
+                }
+            });
+            btn.addEventListener('mouseout', function() {
+                if (!this.classList.contains('active')) {
+                    this.style.backgroundColor = 'rgba(40, 40, 40, 0.8)';
+                }
+            });
+            
+            // Add click handler
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-mode-btn').forEach(b => {
+                    b.classList.remove('active');
+                    b.style.backgroundColor = 'rgba(40, 40, 40, 0.8)';
+                });
+                this.classList.add('active');
+                this.style.backgroundColor = 'rgba(198, 158, 0, 0.7)';
+                filterMode = this.dataset.mode;
+                updateVisibleMarkers(visibleGroups, visibleItemTypes);
+            });
+        });
+
+        // Add buttons to the button container
+        buttonContainer.appendChild(orButton);
+        buttonContainer.appendChild(andButton);
+        filterModeContainer.appendChild(buttonContainer);
+        
+        // Add explanations for each mode
+        const explanationsContainer = document.createElement('div');
+        explanationsContainer.style.marginTop = '10px';
+        explanationsContainer.style.fontSize = '11px';
+        
+        const orExplanation = document.createElement('div');
+        orExplanation.id = 'or-explanation';
+        orExplanation.style.display = 'block';
+        orExplanation.style.color = '#aaa';
+        orExplanation.innerHTML = '<b>Match Any:</b> Shows markers if either their group OR item type is selected';
+        
+        const andExplanation = document.createElement('div');
+        andExplanation.id = 'and-explanation';
+        andExplanation.style.display = 'none';
+        andExplanation.style.color = '#aaa';
+        andExplanation.innerHTML = '<b>Match All:</b> Shows markers only if BOTH their group AND item type are selected';
+        
+        explanationsContainer.appendChild(orExplanation);
+        explanationsContainer.appendChild(andExplanation);
+        filterModeContainer.appendChild(explanationsContainer);
+        
+        // Update explanation visibility when mode changes
+        orButton.addEventListener('click', function() {
+            document.getElementById('or-explanation').style.display = 'block';
+            document.getElementById('and-explanation').style.display = 'none';
+        });
+        
+        andButton.addEventListener('click', function() {
+            document.getElementById('or-explanation').style.display = 'none';
+            document.getElementById('and-explanation').style.display = 'block';
+        });
+        
+        // Insert filter mode container after the filter controls
+        groupsContainer.insertBefore(filterModeContainer, filterControls.nextSibling);
+        
         // Check if GroupManager is available
         if (!GroupManager || !GroupManager.getAllGroups) {
-        console.error('[UI] GroupManager not available or missing getAllGroups method');
-        return;
+            console.error('[UI] GroupManager not available or missing getAllGroups method');
+            return;
         }
         
         // Create section header for Groups
@@ -298,7 +415,7 @@ export const UIControls = (() => {
         
         // Initialize all groups as visible
         filterableGroups.forEach(group => {
-        visibleGroups[group] = true;
+            visibleGroups[group] = true;
         });
         
         // Create filter checkboxes for groups
@@ -306,66 +423,65 @@ export const UIControls = (() => {
         
         // Add a section for item types if available
         if (typeof GroupManager.getAllItemTypes === 'function') {
-        const itemTypes = GroupManager.getAllItemTypes();
-        
-        if (itemTypes && itemTypes.length > 0) {
-            // Create section header for Item Types
-            const itemHeader = document.createElement('h4');
-            itemHeader.textContent = 'ITEM TYPES';
-            itemHeader.style.marginTop = '30px';
-            itemHeader.style.color = 'rgba(198, 158, 0, 0.896)';
-            itemHeader.style.borderBottom = '1px solid #444';
-            itemHeader.style.paddingBottom = '5px';
-            groupsContainer.appendChild(itemHeader);
+            const itemTypes = GroupManager.getAllItemTypes();
             
-            // Initialize all item types as visible
-            itemTypes.forEach(type => {
-            visibleItemTypes[type] = true;
-            });
-            
-            // Create filter checkboxes for item types
-            createFilterCheckboxes(groupsContainer, itemTypes, false, true);
+            if (itemTypes && itemTypes.length > 0) {
+                // Create section header for Item Types
+                const itemHeader = document.createElement('h4');
+                itemHeader.textContent = 'ITEM TYPES';
+                itemHeader.style.marginTop = '30px';
+                itemHeader.style.color = 'rgba(198, 158, 0, 0.896)';
+                itemHeader.style.borderBottom = '1px solid #444';
+                itemHeader.style.paddingBottom = '5px';
+                groupsContainer.appendChild(itemHeader);
+                
+                // Initialize all item types as visible
+                itemTypes.forEach(type => {
+                    visibleItemTypes[type] = true;
+                });
+                
+                // Create filter checkboxes for item types
+                createFilterCheckboxes(groupsContainer, itemTypes, false, true);
+            }
         }
-        }
-        
         
         // Add event listeners to the All/None buttons
         allButton.addEventListener('click', function() {
-        console.log('[UI] Select All filters clicked');
-        document.querySelectorAll('#group-filters input[type="checkbox"]').forEach(checkbox => {
-            checkbox.checked = true;
-        });
-        
-        // Update all groups and item types to be visible
-        Object.keys(visibleGroups).forEach(group => {
-            visibleGroups[group] = true;
-        });
-        
-        Object.keys(visibleItemTypes).forEach(type => {
-            visibleItemTypes[type] = true;
-        });
-        
-        // Update markers visibility
-        updateVisibleMarkers(visibleGroups, visibleItemTypes);
+            console.log('[UI] Select All filters clicked');
+            document.querySelectorAll('#group-filters input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = true;
+            });
+            
+            // Update all groups and item types to be visible
+            Object.keys(visibleGroups).forEach(group => {
+                visibleGroups[group] = true;
+            });
+            
+            Object.keys(visibleItemTypes).forEach(type => {
+                visibleItemTypes[type] = true;
+            });
+            
+            // Update markers visibility
+            updateVisibleMarkers(visibleGroups, visibleItemTypes);
         });
         
         noneButton.addEventListener('click', function() {
-        console.log('[UI] Select None filters clicked');
-        document.querySelectorAll('#group-filters input[type="checkbox"]').forEach(checkbox => {
-            checkbox.checked = false;
-        });
-        
-        // Update all groups and item types to be hidden
-        Object.keys(visibleGroups).forEach(group => {
-            visibleGroups[group] = false;
-        });
-        
-        Object.keys(visibleItemTypes).forEach(type => {
-            visibleItemTypes[type] = false;
-        });
-        
-        // Update markers visibility
-        updateVisibleMarkers(visibleGroups, visibleItemTypes);
+            console.log('[UI] Select None filters clicked');
+            document.querySelectorAll('#group-filters input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            
+            // Update all groups and item types to be hidden
+            Object.keys(visibleGroups).forEach(group => {
+                visibleGroups[group] = false;
+            });
+            
+            Object.keys(visibleItemTypes).forEach(type => {
+                visibleItemTypes[type] = false;
+            });
+            
+            // Update markers visibility
+            updateVisibleMarkers(visibleGroups, visibleItemTypes);
         });
         
         console.log('[UI] Filter groups initialized');
@@ -373,53 +489,66 @@ export const UIControls = (() => {
     
     // Update marker visibility based on filters
     function updateVisibleMarkers(visibleGroups, visibleItemTypes) {
-      if (!MarkerManager || !MarkerManager.getMarkersMap) {
-          console.error('[UI] MarkerManager not available or missing getMarkersMap method');
-          return;
-      }
-      
-      const markersMap = MarkerManager.getMarkersMap();
-      const activeLayer = MapManager.getActiveLayerId();
-      
-      // Loop through all markers and update visibility
-      markersMap.forEach((entry, key) => {
-          const marker = entry.marker;
-          const data = entry.data;
-          const group = data.group;
-          
-          let shouldBeVisible = visibleGroups[group];
-          
-          // If marker has regular items, check if any item type matches visible types
-          if (!shouldBeVisible && data.items && Array.isArray(data.items)) {
-              const hasVisibleItemType = data.items.some(item => 
-                  item.type && visibleItemTypes[item.type]
-              );
-              shouldBeVisible = hasVisibleItemType;
-          }
-          
-          // If marker has craftable items, check if any item type matches visible types
-          if (!shouldBeVisible && data.craftableItems && Array.isArray(data.craftableItems)) {
-              const hasVisibleCraftableType = data.craftableItems.some(item =>
-                  item.type && visibleItemTypes[item.type]
-              );
-              shouldBeVisible = hasVisibleCraftableType;
-          }
-          
-          if (shouldBeVisible) {
-              // Get current layer
-              const markerLayer = MapManager.getMarkerLayer(data.layer);
-              
-              // Only add marker if it's not already on the map
-              if (!marker._map && data.layer === activeLayer) {
-                  marker.addTo(markerLayer);
-              }
-          } else {
-              // Completely remove marker from map
-              if (marker._map) {
-                  marker.removeFrom(marker._map);
-              }
-          }
-      });
+        if (!MarkerManager || !MarkerManager.getMarkersMap) {
+            console.error('[UI] MarkerManager not available or missing getMarkersMap method');
+            return;
+        }
+        
+        const markersMap = MarkerManager.getMarkersMap();
+        const activeLayer = MapManager.getActiveLayerId();
+        
+        // Loop through all markers and update visibility
+        markersMap.forEach((entry, key) => {
+            const marker = entry.marker;
+            const data = entry.data;
+            const group = data.group;
+            
+            // Check if group is visible
+            const groupIsVisible = visibleGroups[group];
+            
+            // Check if any item type matches visible types
+            let hasVisibleItemType = false;
+            
+            // Check regular items
+            if (data.items && Array.isArray(data.items)) {
+                hasVisibleItemType = data.items.some(item => 
+                    item.type && visibleItemTypes[item.type]
+                );
+            }
+            
+            // Check craftable items
+            if (!hasVisibleItemType && data.craftableItems && Array.isArray(data.craftableItems)) {
+                hasVisibleItemType = data.craftableItems.some(item =>
+                    item.type && visibleItemTypes[item.type]
+                );
+            }
+            
+            // Determine visibility based on filter mode
+            let shouldBeVisible = false;
+            
+            if (filterMode === 'OR') {
+                // Show if EITHER group OR item type is visible
+                shouldBeVisible = groupIsVisible || hasVisibleItemType;
+            } else if (filterMode === 'AND') {
+                // Show ONLY if BOTH group AND item type are visible
+                shouldBeVisible = groupIsVisible && hasVisibleItemType;
+            }
+            
+            if (shouldBeVisible) {
+                // Get current layer
+                const markerLayer = MapManager.getMarkerLayer(data.layer);
+                
+                // Only add marker if it's not already on the map
+                if (!marker._map && data.layer === activeLayer) {
+                    marker.addTo(markerLayer);
+                }
+            } else {
+                // Remove marker from map
+                if (marker._map) {
+                    marker.removeFrom(marker._map);
+                }
+            }
+        });
     }
     
     // Public API
