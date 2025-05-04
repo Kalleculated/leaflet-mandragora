@@ -719,6 +719,82 @@ export const MarkerManager = (() => {
     });
   }
   
+  // Keep track of pulsating circle
+  let pulsingCircle = null;
+  let pulseTimer = null;
+
+  // Add pulsating circle to marker
+  function addPulsingCircle(marker) {
+    // Clear any existing pulse
+    removePulsingCircle();
+    
+    if (!marker) {
+      console.warn('[Marker] Cannot add pulse to null marker');
+      return;
+    }
+    
+    // Add small delay to allow map to finish zooming
+    setTimeout(() => {
+      try {
+        const map = MapManager.getMap();
+        if (!map) {
+          console.error('[Marker] Map not available');
+          return;
+        }
+        
+        const position = marker.getLatLng();
+        
+        // Create pulsing circle as a separate layer
+        pulsingCircle = L.circleMarker(position, {
+          radius: 15,
+          weight: 3,
+          color: 'rgba(198, 158, 0, 0.9)',
+          fillColor: 'rgba(198, 158, 0, 0.5)',
+          fillOpacity: 0.5
+        }).addTo(map);
+        
+        // Apply animation using CSS
+        const element = pulsingCircle._path;
+        if (element) {
+          // Apply animation
+          element.style.animation = 'pulse 1.5s ease-out infinite';
+          // Make sure SVG elements can be animated
+          element.style.transformOrigin = 'center';
+          element.style.transformBox = 'fill-box';
+        } else {
+          console.warn('[Marker] Could not find circle element');
+        }
+        
+        console.log('[Marker] Added pulsing circle at', position);
+        
+        // Auto-remove after 3 seconds
+        pulseTimer = setTimeout(removePulsingCircle, 3000);
+      } catch (error) {
+        console.error('[Marker] Error adding pulsing circle:', error);
+      }
+    }, 100); // 0.1 second delay
+  }
+
+  // Remove pulsing circle
+  function removePulsingCircle() {
+    if (pulseTimer) {
+      clearTimeout(pulseTimer);
+      pulseTimer = null;
+    }
+    
+    if (pulsingCircle) {
+      try {
+        const map = MapManager.getMap();
+        if (map) {
+          map.removeLayer(pulsingCircle);
+        }
+        pulsingCircle = null;
+        console.log('[Marker] Removed pulsing circle');
+      } catch (error) {
+        console.error('[Marker] Error removing pulsing circle:', error);
+      }
+    }
+  }
   
   // Public API
   return {
@@ -741,6 +817,9 @@ export const MarkerManager = (() => {
     addMarker: addMarker,
     
     processMarkers: processMarkers,
+
+    addPulsingCircle: addPulsingCircle,
+    removePulsingCircle: removePulsingCircle,
     
     getMarker: function(nameOrId) {
       if (!nameOrId) {
@@ -823,7 +902,6 @@ export const MarkerManager = (() => {
         .map(entry => entry.data);
     },
     
-    // Show popup programmatically (for search results)
     showPopupForMarker: function(name) {
       const markerData = this.getMarkerData(name);
       if (!markerData) return;
@@ -834,8 +912,12 @@ export const MarkerManager = (() => {
       // Temporarily disable document click handler
       document.onmousedown = null;
       
+      // Show popup for the marker
       showBottomPopup(markerData.name, markerData.group, markerData);
       activePopupMarker = this.getMarker(name);
+      
+      // Add pulsing circle to the marker
+      addPulsingCircle(activePopupMarker);
       
       // Restore click handler after a delay
       setTimeout(() => {
