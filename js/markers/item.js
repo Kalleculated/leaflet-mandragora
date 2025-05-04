@@ -23,6 +23,18 @@ export const ItemMarkers = [
       ]
     },
     {
+      name: 'Diagram Location',
+      coords: [904, 668],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Wyld Runestone',
+          type: 'diagram'
+        },
+      ]
+    },
+    {
       name: 'Relic Location',
       coords: [747, 213],
       group: 'item',
