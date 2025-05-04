@@ -54,5 +54,17 @@ export const DiagramMarkers = [
     group: 'diagram',
     layer: 'layer1'  // Specify layer
   },
+  {
+    name: 'Astral Oil', 
+    coords: [2019, 8582], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
+  {
+    name: 'Ring of Protection', 
+    coords: [2016, 8582], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
   // Add more markers as needed
 ];
