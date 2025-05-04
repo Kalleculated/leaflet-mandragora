@@ -1,11 +1,13 @@
 // js/markers/vendor.js
+import { ItemData } from '../constants/item-data.js';
+
 const { POISON_CHANCE, ROOT_CHANCE, SMASH_CHANCE, MANA, BURN_CHANCE, LIGHTBRAND_CHANCE, HEALING_EFFECTIVENESS, MAGIC_CRIT_CHANCE, WEAKNESS_CHANCE } = ItemData.PASSIVES;
 const { EQUIP_LOAD, COMBAT_MASTERY, FIRE_MASTERY, WYLD_MASTERY, SPIRIT } = ItemData.REQUIREMENTS;
 const { RESONANCE, DISCHARGE, BLADE_DANCE, INNER_STRENGTH } = ItemData.ABILITIES;
 const { WEAPON, RELIC, OFFHAND, ARMOR } = ItemData.ITEM_TYPES;
 const { GREAT_HAMMER, GREAT_SWORD, DAGGERS, ONE_HANDED_MACE, ONE_HANDED_SWORD, TOWER_SHIELD, PLATE, LEATHER, CLOTH, FIRE, WYLD } = ItemData.ITEM_CLASSES;
 
-const const VendorMarkers = [
+export const VendorMarkers = [
   {
     name: 'Deeydre and Aille', 
     coords: [1786, 1940], 

@@ -1,5 +1,5 @@
 // js/constants/item-data.js
-const ItemData = (function() {
+export const ItemData = (function() {
     const ABILITIES = {
       RESONANCE: {
         name: "Resonance",
