@@ -114,5 +114,17 @@ export const DiagramMarkers = [
     group: 'diagram',
     layer: 'layer1'  // Specify layer
   },
+  {
+    name: "Gladiator Band", 
+    coords: [2170, 9160], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
+  {
+    name: "Burning Oil", 
+    coords: [2170, 9155], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
   // Add more markers as needed
 ];
