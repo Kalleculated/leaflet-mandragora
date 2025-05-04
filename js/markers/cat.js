@@ -5,6 +5,12 @@ export const CatMarkers = [
       coords: [1518, 8125],
       group: 'cat',
       layer: 'layer1',
+      },
+    {
+      name: 'Cat',
+      coords: [1748, 8163],
+      group: 'cat',
+      layer: 'layer1',
       },  // Specify layer
     // Add more markers as needed
   ];
