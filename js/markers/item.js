@@ -24,6 +24,18 @@ export const ItemMarkers = [
     },
     {
       name: 'Diagram Location',
+      coords: [556, 937],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Fire Runestone',
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Diagram Location',
       coords: [904, 668],
       group: 'item',
       layer: 'layer1',
