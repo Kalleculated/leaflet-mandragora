@@ -199,18 +199,6 @@ export const DiagramMarkers = [
     layer: 'layer1'  // Specify layer
   },
   {
-    name: 'Venomous Oil', 
-    coords: [2096, 9201], 
-    group: 'diagram',
-    layer: 'layer1'  // Specify layer
-  },
-  {
-    name: "Furion's Protection", 
-    coords: [2096, 9191], 
-    group: 'diagram',
-    layer: 'layer1'  // Specify layer
-  },
-  {
     name: "Ring of Magic Protection", 
     coords: [2094, 8928], 
     group: 'diagram',
@@ -255,18 +243,6 @@ export const DiagramMarkers = [
   {
     name: "Burning Oil", 
     coords: [2170, 9155], 
-    group: 'diagram',
-    layer: 'layer1'  // Specify layer
-  },
-  {
-    name: "Ring of Stability", 
-    coords: [1899, 9311], 
-    group: 'diagram',
-    layer: 'layer1'  // Specify layer
-  },
-  {
-    name: "Shield Ring", 
-    coords: [1556, 9311], 
     group: 'diagram',
     layer: 'layer1'  // Specify layer
   },

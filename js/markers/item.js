@@ -18,10 +18,45 @@ export const ItemMarkers = [
       items: [
         {
           name: 'Lockpick',
-          type: 'lockpick',
-          quantity: 1,
+          type: 'lockpick'
         },
       ]
     },
+    {
+      name: 'Diagram Location',
+      coords: [1899, 9311],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Ring of Stablity',
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Diagram Location',
+      coords: [1556, 9311],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Shield Ring',
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Diagram Location',
+      coords: [1556, 9311],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Shield Ring',
+          type: 'diagram'
+        },
+      ]
+    }
     // Add more markers as needed
   ];
