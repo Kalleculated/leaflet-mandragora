@@ -132,5 +132,11 @@ export const DiagramMarkers = [
     group: 'diagram',
     layer: 'layer1'  // Specify layer
   },
+  {
+    name: "Shield Ring", 
+    coords: [1556, 9311], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
   // Add more markers as needed
 ];
