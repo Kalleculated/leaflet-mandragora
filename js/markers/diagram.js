@@ -7,6 +7,12 @@ export const DiagramMarkers = [
     layer: 'layer1'  // Specify layer
   },
   {
+    name: 'Runestone of Brutality', 
+    coords: [1291, 3976], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: 'Ring of Shattering', 
     coords: [1710, 8469], 
     group: 'diagram',
