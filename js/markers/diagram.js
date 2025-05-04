@@ -1,6 +1,12 @@
 // js/markers/waypoint.js - Update marker definitions
 export const DiagramMarkers = [
   {
+    name: 'Runestone of Alacrity', 
+    coords: [366, 5201], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: 'Bramblegrasp', 
     coords: [368, 5548], 
     group: 'diagram',
