@@ -7,6 +7,12 @@ export const DiagramMarkers = [
     layer: 'layer1'  // Specify layer
   },
   {
+    name: 'Ring of Shattering', 
+    coords: [1710, 8469], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: 'Blade of Despair', 
     coords: [1477, 5666], 
     group: 'diagram',
