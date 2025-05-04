@@ -23,6 +23,18 @@ export const ItemMarkers = [
       ]
     },
     {
+      name: 'Flask Upgrade Location',
+      coords: [1865, 1749],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Naceaïa',
+          type: 'flask upgrade'
+        },
+      ]
+    },
+    {
       name: 'Diagram Location',
       coords: [1940, 2055],
       group: 'item',
@@ -33,7 +45,6 @@ export const ItemMarkers = [
           type: 'diagram'
         },
       ]
-    },
     },
     {
       name: 'Diagram Location',
