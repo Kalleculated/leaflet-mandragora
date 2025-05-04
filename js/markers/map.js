@@ -18,5 +18,11 @@ export const MapMarkers = [
     group: 'map',
     layer: 'layer2'  // Specify layer
   },
+  {
+    name: 'Drakkenden Citadel', 
+    coords: [1980, 9080], 
+    group: 'map',
+    layer: 'layer2'  // Specify layer
+  },
   // Add more markers as needed
 ];
