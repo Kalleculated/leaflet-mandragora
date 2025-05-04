@@ -54,6 +54,18 @@ export const ItemMarkers = [
     },
     {
       name: 'Diagram Location',
+      coords: [1670, 2054],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        { 
+          name: "Oathsworn",
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Diagram Location',
       coords: [1558, 1979],
       group: 'item',
       layer: 'layer1',
