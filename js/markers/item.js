@@ -28,6 +28,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [1248, 2017],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'The Whispering Bud',
+          type: 'Diagram'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
         [1327, 2557],
       ],
       group: 'item',
