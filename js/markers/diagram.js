@@ -126,5 +126,11 @@ export const DiagramMarkers = [
     group: 'diagram',
     layer: 'layer1'  // Specify layer
   },
+  {
+    name: "Ring of Stability", 
+    coords: [1899, 9311], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
   // Add more markers as needed
 ];
