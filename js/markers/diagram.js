@@ -1,6 +1,12 @@
 // js/markers/waypoint.js - Update marker definitions
 export const DiagramMarkers = [
   {
+    name: "Melancholy", 
+    coords: [905, 2749], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: "Champion's Grace", 
     coords: [787, 4584], 
     group: 'diagram',
