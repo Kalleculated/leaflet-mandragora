@@ -52,6 +52,18 @@ export const ItemMarkers = [
     },
     {
       name: 'Diagram Location',
+      coords: [1326, 2247],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        { 
+          name: "Penumbra Armor Set",
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Diagram Location',
       coords: [1364, 5624],
       group: 'item',
       layer: 'layer1',
