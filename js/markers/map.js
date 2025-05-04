@@ -1,6 +1,12 @@
 // js/markers/waypoint.js - Update marker definitions
 export const MapMarkers = [
   {
+    name: 'Tombstone Hollows', 
+    coords: [635, 4359], 
+    group: 'map',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: 'Braer Castle Dungeon', 
     coords: [1439, 5743], 
     group: 'map',
