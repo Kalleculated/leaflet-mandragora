@@ -23,6 +23,18 @@ export const ItemMarkers = [
       ]
     },
     {
+      name: 'Item Location',
+      coords: [1096, 5318],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Equilibrium',
+          type: 'ring'
+        },
+      ]
+    },
+    {
       name: 'Diagram Location',
       coords: [944, 2554],
       group: 'item',
