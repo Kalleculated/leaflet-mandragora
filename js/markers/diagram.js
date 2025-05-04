@@ -1,6 +1,12 @@
 // js/markers/waypoint.js - Update marker definitions
 export const DiagramMarkers = [
   {
+    name: 'Bramblegrasp', 
+    coords: [368, 5548], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: 'Retributor Armor Set', 
     coords: [442, 4050], 
     group: 'diagram',
