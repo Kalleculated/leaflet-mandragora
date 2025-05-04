@@ -23,7 +23,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Chaos Runestone',
+      name: 'Diagram Location',
       coords: [2015, 1898],
       group: 'item',
       layer: 'layer1',
@@ -35,9 +35,21 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Map of Faelduum',
+      name: 'Diagram Location',
+      coords: [1785, 1367],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Pheasant Feas',
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Quest Item Location',
       coords: [1749, 1787],
-      group: 'quest item',
+      group: 'item',
       layer: 'layer1',
       items: [
         { 
