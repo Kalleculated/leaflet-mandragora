@@ -26,6 +26,20 @@ export const ItemMarkers = [
       ]
     },
     {
+      name: 'Lockpick Location',
+      coords: [
+        [1556, 2554],
+      ],
+      group: 'item',
+      layer: 'layer2',
+      items: [
+        {
+          name: 'Lockpick',
+          type: 'lockpick'
+        },
+      ]
+    },
+    {
       name: 'Item Location',
       coords: [1402, 2785],
       group: 'item',
