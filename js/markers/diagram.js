@@ -1,6 +1,12 @@
 // js/markers/waypoint.js - Update marker definitions
 export const DiagramMarkers = [
   {
+    name: "Pulsing Turmoil", 
+    coords: [905, 134], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: "Cosmic Balance", 
     coords: [1097, 403], 
     group: 'diagram',
