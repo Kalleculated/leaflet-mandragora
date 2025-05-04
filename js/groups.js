@@ -5,7 +5,6 @@ export const GroupManager = (() => {
   // Define paths for different pin images
   const iconPaths = {
     default: 'assets/pins/pin.png',
-    diagram: 'assets/pins/pin_diagram.png',
     herb: 'assets/pins/pin_Herb.png',
     map: 'assets/pins/pin_map.png',
     ore: 'assets/pins/pin_ore.png',

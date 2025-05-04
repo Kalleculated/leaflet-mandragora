@@ -7,7 +7,6 @@ import { UIControls } from './ui-controls.js';
 // Marker data imports
 import { WitchstoneMarkers } from './markers/witchstone.js';
 import { HerbMarkers } from './markers/herb.js';
-import { DiagramMarkers } from './markers/diagram.js';
 import { MapMarkers } from './markers/map.js';
 import { OreMarkers } from './markers/ore.js';
 import { ChestMarkers } from './markers/chest.js';
@@ -34,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
       ...HerbMarkers,
       ...OreMarkers,
       ...MapMarkers,
-      ...DiagramMarkers,
       ...ChestMarkers,
       ...VendorMarkers,
       ...BossMarkers,
