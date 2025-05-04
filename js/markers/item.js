@@ -24,6 +24,22 @@ export const ItemMarkers = [
     },
     {
       name: 'Item Location',
+      coords: [1402, 2785],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Astralforged Gavel',
+          type: 'weapon'
+        },
+        { 
+          name: "Lightweaver's Accord",
+          type: 'relic'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
       coords: [1096, 5318],
       group: 'item',
       layer: 'layer1',
