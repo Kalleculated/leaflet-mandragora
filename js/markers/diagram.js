@@ -1,6 +1,12 @@
 // js/markers/waypoint.js - Update marker definitions
 export const DiagramMarkers = [
   {
+    name: "Beacon of the Faithless", 
+    coords: [289, 1363], 
+    group: 'diagram',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: "Potion of Absorption", 
     coords: [368, 1172], 
     group: 'diagram',
