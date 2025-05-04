@@ -23,6 +23,18 @@ export const ItemMarkers = [
       ]
     },
     {
+      name: 'Map of Faelduum',
+      coords: [1749, 1787],
+      group: 'quest item',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Naceaïa',
+          type: 'quest item'
+        },
+      ]
+    },
+    {
       name: 'Flask Upgrade Location',
       coords: [1865, 1749],
       group: 'item',
