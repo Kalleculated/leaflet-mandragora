@@ -153,22 +153,6 @@ export const ItemMarkers = [
     },
     {
       name: 'Diagram Location',
-      coords: [1288, 2671],
-      group: 'item',
-      layer: 'layer1',
-      items: [
-        { 
-          name: "Band of the Berserker",
-          type: 'diagram'
-        },
-        { 
-          name: "Swiftblade",
-          type: 'diagram'
-        },
-      ]
-    },
-    {
-      name: 'Diagram Location',
       coords: [1443, 1748],
       group: 'item',
       layer: 'layer1',

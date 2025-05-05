@@ -223,7 +223,17 @@ export const ChestMarkers = [
       { name: 'Gladiator Band', type: 'diagram' },
       { name: 'Burning Oil', type: 'diagram' }
     ]
+  },
+    // NOT SURE IF THE NEXT ENTRY IS CORRECT, PLEASE VALIDATE
+  {
+    name: 'Chest',
+    coords: [1168, 2674],
+    group: 'chest',
+    layer: 'layer1',
+    items: [
+      { name: 'Band of the Berserker', type: 'diagram' },
+      { name: 'Swiftblade', type: 'diagram' }
+    ]
   }
-  
     // Add more chest markers as needed
   ];
