@@ -28,7 +28,7 @@ export const BossMarkers = [
     //   ]
     // }
     {
-      name: 'Name?',
+      name: 'The Inquisitors',
       coords: [1402, 2785],
       group: 'boss',
       layer: 'layer1',
