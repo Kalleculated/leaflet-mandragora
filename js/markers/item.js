@@ -72,6 +72,20 @@ export const ItemMarkers = [
       ]
     },
     {
+      name: 'Skill Location',
+      coords: [
+        [1328, 3629],
+      ],
+      group: 'skill',
+      layer: 'layer2',
+      items: [
+        {
+          name: 'Prism',
+          type: 'skill'
+        },
+      ]
+    },
+    {
       name: 'Item Location',
       coords: [
         [1133, 3208],
