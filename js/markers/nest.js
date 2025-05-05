@@ -10,6 +10,7 @@ export const NestMarkers = [
         [1248, 3977],
         [1135, 5243],
         [827, 944],
+        [1096, 3093],
       ],
       group: 'nest',
       layer: 'layer1'  // Specify layer
