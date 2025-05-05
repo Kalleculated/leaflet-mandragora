@@ -40,12 +40,16 @@ export const ItemData = (function() {
       HEALING_EFFECTIVENESS: (value) => `+${value}% Healing Effectiveness`,
       MAGIC_CRIT_CHANCE: (value) => `+${value}% Magic Critical Chance`,
       WEAKNESS_CHANCE: (value) => `+${value}% Weakness Chance`,
+      ARMOR_PENETRATION: (value) => `${value}% Armor Penetration`,
+      ARMOR_PASSIVE: (value) => `${value} Armor`,
     };
 
     const REQUIREMENTS = {
       COMBAT_MASTERY: `Combat Mastery`,
       FIRE_MASTERY: `Fire Mastery`,
       WYLD_MASTERY: `Wyld Mastery`,
+      CHAOS_MASTERY: `Chaos Mastery`,
+      ASTRAL_MASTERY: `Astral Mastery`,
       CHAOS_MASTERY: `Chaos Mastery`,
       EQUIP_LOAD: (value) => `Less than ${value}% Equip Load`,
       SPIRIT: (value) => `${value} Spirit`,
@@ -56,6 +60,7 @@ export const ItemData = (function() {
       RELIC: 'relic',
       OFFHAND: 'offhand',
       ARMOR: 'armor',
+      CONSUMABLE: 'consumable',
     };
 
     const ITEM_CLASSES = {
@@ -70,7 +75,16 @@ export const ItemData = (function() {
       TOWER_SHIELD: 'Tower Shield',
       FIRE: 'Fire',
       WYLD: 'Wyld',
+      LIGHT_SHIELD: 'Light Shield',
+      ASTRAL: 'Astral',
+      CHAOS: 'Chaos',
+      POTION: 'Potion',
     };
+
+    const EFFECTS = {
+      RESTORE_HEALTH: (value) => `Restores ${value} Health`,
+      RESTORE_MANA: (value) => `Restores ${value} Mana`,
+    }
   
     return {
       ABILITIES,
@@ -78,5 +92,6 @@ export const ItemData = (function() {
       REQUIREMENTS,
       ITEM_TYPES,
       ITEM_CLASSES,
+      EFFECTS,
     };
   })();

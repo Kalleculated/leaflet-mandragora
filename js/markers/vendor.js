@@ -1,11 +1,17 @@
 // js/markers/vendor.js
 import { ItemData } from '../constants/item-data.js';
 
-const { POISON_CHANCE, ROOT_CHANCE, SMASH_CHANCE, MANA, BURN_CHANCE, LIGHTBRAND_CHANCE, HEALING_EFFECTIVENESS, MAGIC_CRIT_CHANCE, WEAKNESS_CHANCE } = ItemData.PASSIVES;
-const { EQUIP_LOAD, COMBAT_MASTERY, FIRE_MASTERY, WYLD_MASTERY, SPIRIT } = ItemData.REQUIREMENTS;
-const { RESONANCE, DISCHARGE, BLADE_DANCE, INNER_STRENGTH } = ItemData.ABILITIES;
-const { WEAPON, RELIC, OFFHAND, ARMOR } = ItemData.ITEM_TYPES;
-const { GREAT_HAMMER, GREAT_SWORD, DAGGERS, ONE_HANDED_MACE, ONE_HANDED_SWORD, TOWER_SHIELD, PLATE, LEATHER, CLOTH, FIRE, WYLD } = ItemData.ITEM_CLASSES;
+const { 
+  POISON_CHANCE, ROOT_CHANCE, SMASH_CHANCE, MANA, BURN_CHANCE, LIGHTBRAND_CHANCE, HEALING_EFFECTIVENESS
+  , MAGIC_CRIT_CHANCE, WEAKNESS_CHANCE, ARMOR_PENETRATION, ARMOR_PASSIVE
+} = ItemData.PASSIVES;
+const { EQUIP_LOAD, COMBAT_MASTERY, FIRE_MASTERY, WYLD_MASTERY, SPIRIT, ASTRAL_MASTERY, CHAOS_MASTERY, } = ItemData.REQUIREMENTS;
+const { RESONANCE, DISCHARGE, BLADE_DANCE, INNER_STRENGTH, PARRY } = ItemData.ABILITIES;
+const { WEAPON, RELIC, OFFHAND, ARMOR, CONSUMABLE } = ItemData.ITEM_TYPES;
+const { GREAT_HAMMER, GREAT_SWORD, DAGGERS, ONE_HANDED_MACE, ONE_HANDED_SWORD, TOWER_SHIELD, PLATE
+  , LEATHER, CLOTH, FIRE, WYLD, LIGHT_SHIELD, ASTRAL, CHAOS, POTION, 
+} = ItemData.ITEM_CLASSES;
+const { RESTORE_HEALTH, RESTORE_MANA } = ItemData.EFFECTS;
 
 export const VendorMarkers = [
   {
@@ -421,6 +427,194 @@ export const VendorMarkers = [
             WEAKNESS_CHANCE(7),
           ],
         }
+      },
+    ]
+  },
+  {
+    name: 'Sam', 
+    coords: [1095, 2171], 
+    group: 'vendor',
+    layer: 'layer1',
+    items: [
+      {
+        name: 'Barbaric Warhammer',
+        type: WEAPON,
+        class: GREAT_HAMMER,
+        image: 'assets/items/barbaric_warhammer.jpg',
+        price: 2440,
+        stats: {
+          damage: {
+            physical: 185,
+          },
+          scaling: {
+            strength: "B",
+          },
+          ability: RESONANCE.name,
+          abilityDescription: RESONANCE.description,
+          weight: 5,
+          speed: 0.71,
+          stagger: 130,
+          stamina: 1.75,
+          passives: [
+            SMASH_CHANCE(20),
+            ARMOR_PENETRATION(10),
+          ]
+        }
+      },
+      {
+        name: 'Claymore',
+        type: WEAPON,
+        class: GREAT_SWORD,
+        image: 'assets/items/claymore.jpg',
+        price: 2200,
+        stats: {
+          damage: {
+            physical: 165,
+          },
+          scaling: {
+            strength: "B",
+            dexterity: "D",
+          },
+          ability: RESONANCE.name,
+          abilityDescription: RESONANCE.description,
+          weight: 3,
+          speed: 1.11,
+          stagger: 120,
+          stamina: 1.6,
+        }
+      },
+      {
+        name: 'Starburnt Scepter',
+        type: WEAPON,
+        class: ONE_HANDED_MACE,
+        image: 'assets/items/starburnt_scepter.jpg',
+        price: 1875,
+        stats: {
+          damage: {
+            physical: 20,
+            astral: 50,
+            fire: 45,
+          },
+          scaling: {
+            strength: "D",
+            power: "B",
+            spirit: "B",
+          },
+          weight: 1.6,
+          speed: 1.75,
+          stagger: 70,
+          stamina: 1.4,
+          passives: [
+            MAGIC_CRIT_CHANCE(20),
+          ]
+        }
+      },
+      {
+        name: 'Heretic Shield',
+        type: OFFHAND,
+        class: LIGHT_SHIELD,
+        image: 'assets/items/heretic_shield.jpg',
+        price: 1450,
+        stats: {
+          damage: {
+            physical: 20,
+            fire: 50,
+          },
+          scaling: {
+            strength: "D",
+            power: "B",
+            spirit: "C+",
+          },
+          weight: 5,
+          poise: 5.5,
+          balance: 40,
+          ability: PARRY.name,
+          abilityDescription: PARRY.description,
+          defense: {
+            physical: 100,
+            burn: 45,
+            frost: 45,
+            wyld: 45,
+            chaos: 45,
+            // there's an extra +25% burn on this shield that I don't understand
+          },
+          passives: [
+            ARMOR_PASSIVE(10),
+          ],
+        }
+      },
+      {
+        name: "Astral Solution",
+        type: RELIC,
+        class: ASTRAL,
+        image: 'assets/items/astral_solution.jpg',
+        price: 1300,
+        stats: {
+          weight: 1.15,
+          spell_buff: 10,
+          requires: [
+            ASTRAL_MASTERY,
+          ],
+          passives: [
+            MANA(20),
+          ],
+          ability: DISCHARGE.name,
+          abilityDescription: DISCHARGE.description,
+        }
+      },
+      {
+        name: "Chaos Splinters",
+        type: RELIC,
+        class: CHAOS,
+        image: 'assets/items/chaos_splinters.jpg',
+        price: 1300,
+        stats: {
+          weight: 1.15,
+          spell_buff: 10,
+          requires: [
+            CHAOS_MASTERY,
+          ],
+          passives: [
+            MANA(20),
+          ],
+          ability: DISCHARGE.name,
+          abilityDescription: DISCHARGE.description,
+        }
+      },
+      {
+        name: "Glyph of the Pyromancer",
+        type: RELIC,
+        class: FIRE,
+        image: 'assets/items/glyph_of_the_pyromancer.jpg',
+        price: 1300,
+        stats: {
+          weight: 1.15,
+          spell_buff: 10,
+          requires: [
+            FIRE_MASTERY,
+          ],
+          passives: [
+            MANA(20),
+          ],
+          ability: DISCHARGE.name,
+          abilityDescription: DISCHARGE.description,
+        }
+      },
+      {
+        name: "Weak Health Potion",
+        type: CONSUMABLE,
+        class: POTION,
+        image: 'assets/items/weak_health_potion.jpg',
+        price: 115,
+        effect: RESTORE_HEALTH(90),
+      },
+      {
+        name: "Weak Mana Potion",
+        type: CONSUMABLE,
+        class: POTION,
+        image: 'assets/items/weak_mana_potion.jpg',
+        price: 115,
+        effect: RESTORE_MANA(60),
       },
     ]
   }
