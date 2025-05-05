@@ -110,7 +110,7 @@ export const ItemMarkers = [
       items: [
         {
           name: 'Torn Teddy Bear',
-          type: 'Quest Item'
+          type: 'quest item'
         },
       ]
     },
@@ -124,7 +124,7 @@ export const ItemMarkers = [
       items: [
         {
           name: 'Railgate Key',
-          type: 'Key'
+          type: 'key'
         },
       ]
     },
