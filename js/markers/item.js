@@ -30,6 +30,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [1133, 3208],
+      ],
+      group: 'item',
+      layer: 'layer2',
+      items: [
+        {
+          name: 'Focus Ring',
+          type: 'Ring'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
         [1250, 3859],
       ],
       group: 'item',
