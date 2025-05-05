@@ -46,6 +46,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [1291, 3784],
+      ],
+      group: 'item',
+      layer: 'layer2',
+      items: [
+        {
+          name: 'Torn Teddy Bear',
+          type: 'Quest Item'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
         [941, 2174],
       ],
       group: 'item',
