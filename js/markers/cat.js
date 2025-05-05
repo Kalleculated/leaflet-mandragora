@@ -7,7 +7,6 @@ export const CatMarkers = [
       layer: 'layer1',
       },
     {
-    {
       name: 'Cat',
       coords: [982, 5244],
       group: 'cat',
