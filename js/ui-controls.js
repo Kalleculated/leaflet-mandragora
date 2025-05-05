@@ -510,17 +510,18 @@ export const UIControls = (() => {
             let hasVisibleItemType = false;
             
             // Check regular items
+            // Check regular items
             if (data.items && Array.isArray(data.items)) {
-                hasVisibleItemType = data.items.some(item => 
-                    item.type && visibleItemTypes[item.type]
-                );
+              hasVisibleItemType = data.items.some(item => 
+                  item.type && visibleItemTypes[item.type] === true
+              );
             }
-            
+
             // Check craftable items
             if (!hasVisibleItemType && data.craftableItems && Array.isArray(data.craftableItems)) {
-                hasVisibleItemType = data.craftableItems.some(item =>
-                    item.type && visibleItemTypes[item.type]
-                );
+              hasVisibleItemType = data.craftableItems.some(item =>
+                  item.type && visibleItemTypes[item.type] === true
+              );
             }
             
             // Determine visibility based on filter mode

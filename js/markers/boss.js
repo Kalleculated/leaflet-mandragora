@@ -27,5 +27,21 @@ export const BossMarkers = [
     //     }
     //   ]
     // }
+    {
+      name: 'Name?',
+      coords: [1402, 2785],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Astralforged Gavel',
+          type: 'weapon'
+        },
+        { 
+          name: "Lightweaver's Accord",
+          type: 'relic'
+        },
+      ]
+    },
     // Add more vendor markers as needed
   ];

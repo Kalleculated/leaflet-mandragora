@@ -137,7 +137,7 @@ export const ItemMarkers = [
       items: [
         {
           name: 'Ring of Energy',
-          type: 'Ring'
+          type: 'ring'
         },
       ]
     },
@@ -254,22 +254,6 @@ export const ItemMarkers = [
         {
           name: 'Lockpick',
           type: 'lockpick'
-        },
-      ]
-    },
-    {
-      name: 'Item Location',
-      coords: [1402, 2785],
-      group: 'item',
-      layer: 'layer1',
-      items: [
-        { 
-          name: 'Astralforged Gavel',
-          type: 'weapon'
-        },
-        { 
-          name: "Lightweaver's Accord",
-          type: 'relic'
         },
       ]
     },
