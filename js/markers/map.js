@@ -1,6 +1,12 @@
 // js/markers/waypoint.js - Update marker definitions
 export const MapMarkers = [
   {
+    name: 'Old Wickham Monastery', 
+    coords: [1020, 3476], 
+    group: 'map',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: 'Sewers', 
     coords: [1054, 2132], 
     group: 'map',
