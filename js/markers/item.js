@@ -137,7 +137,7 @@ export const ItemMarkers = [
       items: [
         {
           name: 'Ring of Energy',
-          type: 'Ring'
+          type: 'ring'
         },
       ]
     },
