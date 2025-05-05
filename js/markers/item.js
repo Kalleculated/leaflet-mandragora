@@ -29,6 +29,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [1250, 3859],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Ring of Energy',
+          type: 'Ring'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
         [1248, 2017],
       ],
       group: 'item',
