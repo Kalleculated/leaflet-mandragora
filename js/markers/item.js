@@ -123,7 +123,7 @@ export const ItemMarkers = [
       items: [
         {
           name: 'Focus Ring',
-          type: 'Ring'
+          type: 'ring'
         },
       ]
     },
