@@ -30,6 +30,34 @@ export const ItemMarkers = [
       ]
     },
     {
+      name: 'Key Location',
+      coords: [
+        [941, 3361],
+      ],
+      group: 'key',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Skeleton Key',
+          type: 'key'
+        },
+      ]
+    },
+    {
+      name: 'Skill Location',
+      coords: [
+        [941, 3361],
+      ],
+      group: 'skill',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Bear Trap',
+          type: 'Assassination Skill'
+        },
+      ]
+    },
+    {
       name: 'Skill Location',
       coords: [
         [827, 2403],
