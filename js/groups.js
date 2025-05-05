@@ -16,7 +16,8 @@ export const GroupManager = (() => {
     nest: 'assets/pins/pin.png',
     altar: 'assets/pins/pin.png',
     cat: 'assets/pins/pin_cat.png',
-    item: 'assets/pins/pin.png'
+    item: 'assets/pins/pin.png',
+    goblin: 'assets/pins/pin.png',
     // Add more groups and their icon paths here
   };
 
