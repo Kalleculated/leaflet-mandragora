@@ -14,6 +14,10 @@ export const ItemMarkers = [
         [1174, 2559],
         [1517, 2324],
         [1554, 2091],
+        [1438, 3935],
+        [1285, 3518],
+        [866, 1714],
+        [982, 2055],
         [1673, 9353]
       ],
       group: 'item',
@@ -22,6 +26,188 @@ export const ItemMarkers = [
         {
           name: 'Lockpick',
           type: 'lockpick'
+        },
+      ]
+    },
+    {
+      name: 'Key Location',
+      coords: [
+        [941, 3361],
+      ],
+      group: 'key',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Skeleton Key',
+          type: 'key'
+        },
+      ]
+    },
+    {
+      name: 'Skill Location',
+      coords: [
+        [941, 3361],
+      ],
+      group: 'skill',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Bear Trap',
+          type: 'Assassination Skill'
+        },
+      ]
+    },
+    {
+      name: 'Skill Location',
+      coords: [
+        [827, 2403],
+      ],
+      group: 'skill',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Shadow Shard',
+          type: 'Chaos Skill'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [1291, 3784],
+      ],
+      group: 'item',
+      layer: 'layer2',
+      items: [
+        {
+          name: 'Torn Teddy Bear',
+          type: 'Quest Item'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [941, 2174],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Railgate Key',
+          type: 'Key'
+        },
+      ]
+    },
+    {
+      name: 'Skill Location',
+      coords: [
+        [1328, 3629],
+      ],
+      group: 'skill',
+      layer: 'layer2',
+      items: [
+        {
+          name: 'Prism',
+          type: 'skill'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [1133, 3208],
+      ],
+      group: 'item',
+      layer: 'layer2',
+      items: [
+        {
+          name: 'Focus Ring',
+          type: 'Ring'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [1250, 3859],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Ring of Energy',
+          type: 'Ring'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [1059, 3708],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Rabit Broth',
+          type: 'Diagram'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [942, 3283],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Signet of the Wolf',
+          type: 'Diagram'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [1248, 3822],
+      ],
+      group: 'item',
+      layer: 'layer2',
+      items: [
+        {
+          name: 'Briar Set',
+          type: 'Diagram'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [1210, 3859],
+      ],
+      group: 'item',
+      layer: 'layer2',
+      items: [
+        {
+          name: 'The Illuminator',
+          type: 'Diagram'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [1019, 2170],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Minor Stoneskin Potion',
+          type: 'Diagram'
         },
       ]
     },
