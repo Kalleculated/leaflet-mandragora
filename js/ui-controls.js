@@ -215,276 +215,302 @@ export const UIControls = (() => {
 
     // Initialize filter groups
     function initializeFilterGroups() {
-        const groupsContainer = document.getElementById('group-filters');
-        if (!groupsContainer) {
-            console.error('[UI] Group filters container not found');
-            return;
-        }
-        
-        console.log('[UI] Initializing filter groups');
-        
-        // Clear existing filters
-        groupsContainer.innerHTML = '';
-        
-        // Add control buttons at the top
-        const filterControls = document.createElement('div');
-        filterControls.className = 'filter-controls';
-        filterControls.style.display = 'flex';
-        filterControls.style.justifyContent = 'center';
-        filterControls.style.gap = '10px';
-        filterControls.style.marginBottom = '15px';
-        filterControls.style.borderBottom = '1px solid #444';
-        filterControls.style.paddingBottom = '20px';
-        
-        // Create "All" and "None" buttons
-        const allButton = document.createElement('button');
-        allButton.textContent = 'All';
-        allButton.style.fontStyle = 'italic';
-        allButton.style.padding = '6px 12px';
-        allButton.style.backgroundColor = 'rgba(26,26,26,255)';
-        allButton.style.color = 'white';
-        allButton.style.border = '1px solid #444';
-        allButton.style.borderRadius = '4px';
-        allButton.style.cursor = 'pointer';
-        
-        const noneButton = document.createElement('button');
-        noneButton.textContent = 'None';
-        noneButton.style.fontStyle = 'italic';
-        noneButton.style.padding = '6px 12px';
-        noneButton.style.backgroundColor = 'rgba(26,26,26,255)';
-        noneButton.style.color = 'white';
-        noneButton.style.border = '1px solid #444';
-        noneButton.style.borderRadius = '4px';
-        noneButton.style.cursor = 'pointer';
-        
-        // Add hover effects
-        allButton.addEventListener('mouseover', function() {
-            this.style.backgroundColor = 'rgba(198, 158, 0, 0.896)';
-        });
-        allButton.addEventListener('mouseout', function() {
-            this.style.backgroundColor = 'rgba(26,26,26,255)';
-        });
-        noneButton.addEventListener('mouseover', function() {
-            this.style.backgroundColor = 'rgba(198, 158, 0, 0.896)';
-        });
-        noneButton.addEventListener('mouseout', function() {
-            this.style.backgroundColor = 'rgba(26,26,26,255)';
-        });
-        
-        // Add buttons to filter controls
-        filterControls.appendChild(allButton);
-        filterControls.appendChild(noneButton);
-        
-        // Insert filter controls at the top
-        groupsContainer.appendChild(filterControls);
-        
-        // Add filter mode controls
-        const filterModeContainer = document.createElement('div');
-        filterModeContainer.style.margin = '20px 0';
-        filterModeContainer.style.padding = '10px';
-        filterModeContainer.style.backgroundColor = 'rgba(26,26,26,255)';
-        filterModeContainer.style.borderRadius = '4px';
+      const groupsContainer = document.getElementById('group-filters');
+      if (!groupsContainer) {
+          console.error('[UI] Group filters container not found');
+          return;
+      }
+      
+      console.log('[UI] Initializing filter groups');
+      
+      // Clear existing filters
+      groupsContainer.innerHTML = '';
+      
+      // Add control buttons at the top
+      const filterControls = document.createElement('div');
+      filterControls.className = 'filter-controls';
+      filterControls.style.display = 'flex';
+      filterControls.style.justifyContent = 'center';
+      filterControls.style.gap = '10px';
+      filterControls.style.marginBottom = '15px';
+      filterControls.style.borderBottom = '1px solid #444';
+      filterControls.style.paddingBottom = '20px';
+      
+      // Create "All" and "None" buttons
+      const allButton = document.createElement('button');
+      allButton.textContent = 'All';
+      allButton.style.fontStyle = 'italic';
+      allButton.style.padding = '6px 12px';
+      allButton.style.backgroundColor = 'rgba(26,26,26,255)';
+      allButton.style.color = 'white';
+      allButton.style.border = '1px solid #444';
+      allButton.style.borderRadius = '4px';
+      allButton.style.cursor = 'pointer';
+      
+      const noneButton = document.createElement('button');
+      noneButton.textContent = 'None';
+      noneButton.style.fontStyle = 'italic';
+      noneButton.style.padding = '6px 12px';
+      noneButton.style.backgroundColor = 'rgba(26,26,26,255)';
+      noneButton.style.color = 'white';
+      noneButton.style.border = '1px solid #444';
+      noneButton.style.borderRadius = '4px';
+      noneButton.style.cursor = 'pointer';
+      
+      // Add hover effects
+      allButton.addEventListener('mouseover', function() {
+          this.style.backgroundColor = 'rgba(198, 158, 0, 0.896)';
+      });
+      allButton.addEventListener('mouseout', function() {
+          this.style.backgroundColor = 'rgba(26,26,26,255)';
+      });
+      noneButton.addEventListener('mouseover', function() {
+          this.style.backgroundColor = 'rgba(198, 158, 0, 0.896)';
+      });
+      noneButton.addEventListener('mouseout', function() {
+          this.style.backgroundColor = 'rgba(26,26,26,255)';
+      });
+      
+      // Add buttons to filter controls
+      filterControls.appendChild(allButton);
+      filterControls.appendChild(noneButton);
+      
+      // Insert filter controls at the top
+      groupsContainer.appendChild(filterControls);
+      
+      // Add filter mode controls
+      const filterModeContainer = document.createElement('div');
+      filterModeContainer.style.margin = '20px 0';
+      filterModeContainer.style.padding = '10px';
+      filterModeContainer.style.backgroundColor = 'rgba(26,26,26,255)';
+      filterModeContainer.style.borderRadius = '4px';
 
-        const filterModeLabel = document.createElement('div');
-        filterModeLabel.textContent = 'FILTER MODE';
-        filterModeLabel.style.color = 'rgba(198, 158, 0, 0.896)';
-        filterModeLabel.style.marginBottom = '10px';
-        filterModeLabel.style.fontWeight = 'bold';
-        filterModeLabel.style.backgroundColor = 'rgba(26,26,26,255)';
-        filterModeContainer.appendChild(filterModeLabel);
+      const filterModeLabel = document.createElement('div');
+      filterModeLabel.textContent = 'FILTER MODE';
+      filterModeLabel.style.color = 'rgba(198, 158, 0, 0.896)';
+      filterModeLabel.style.marginBottom = '10px';
+      filterModeLabel.style.fontWeight = 'bold';
+      filterModeLabel.style.backgroundColor = 'rgba(26,26,26,255)';
+      filterModeContainer.appendChild(filterModeLabel);
 
-        const filterModeDescription = document.createElement('div');
-        filterModeDescription.style.fontSize = '12px';
-        filterModeDescription.style.color = '#aaa';
-        filterModeDescription.style.marginBottom = '10px';
-        filterModeDescription.textContent = 'Choose how filters are combined:';
-        filterModeDescription.style.backgroundColor = 'rgba(26,26,26,255)';
-        filterModeContainer.appendChild(filterModeDescription);
+      const filterModeDescription = document.createElement('div');
+      filterModeDescription.style.fontSize = '12px';
+      filterModeDescription.style.color = '#aaa';
+      filterModeDescription.style.marginBottom = '10px';
+      filterModeDescription.textContent = 'Choose how filters are combined:';
+      filterModeDescription.style.backgroundColor = 'rgba(26,26,26,255)';
+      filterModeContainer.appendChild(filterModeDescription);
 
-        // Button container for horizontal layout
-        const buttonContainer = document.createElement('div');
-        buttonContainer.style.display = 'flex';
-        buttonContainer.style.gap = '5px'; // 5px spacing between buttons
-        buttonContainer.style.justifyContent = 'start';
+      // Button container for horizontal layout
+      const buttonContainer = document.createElement('div');
+      buttonContainer.style.display = 'flex';
+      buttonContainer.style.gap = '5px'; // 5px spacing between buttons
+      buttonContainer.style.justifyContent = 'start';
 
-        const orButton = document.createElement('button');
-        orButton.textContent = 'Match Any (OR)';
-        orButton.className = 'filter-mode-btn active';
-        orButton.dataset.mode = 'OR';
+      const orButton = document.createElement('button');
+      orButton.textContent = 'Match Any (OR)';
+      orButton.className = 'filter-mode-btn active';
+      orButton.dataset.mode = 'OR';
 
-        const andButton = document.createElement('button');
-        andButton.textContent = 'Match All (AND)';
-        andButton.className = 'filter-mode-btn';
-        andButton.dataset.mode = 'AND';
+      const andButton = document.createElement('button');
+      andButton.textContent = 'Match All (AND)';
+      andButton.className = 'filter-mode-btn';
+      andButton.dataset.mode = 'AND';
 
-        // Style buttons
-        [orButton, andButton].forEach(btn => {
-            btn.style.padding = '10px'; // Increased padding (5px extra)
-            btn.style.backgroundColor = btn.classList.contains('active') ? 
-                'rgba(198, 158, 0, 0.7)' : 'rgba(40, 40, 40, 0.8)';
-            btn.style.color = 'white';
-            btn.style.border = '1px solid #444';
-            btn.style.borderRadius = '4px';
-            btn.style.cursor = 'pointer';
-            btn.style.flex = '1'; // Make buttons equal width
-            
-            // Add hover effects
-            btn.addEventListener('mouseover', function() {
-                if (!this.classList.contains('active')) {
-                    this.style.backgroundColor = 'rgba(60, 60, 60, 0.8)';
-                }
-            });
-            btn.addEventListener('mouseout', function() {
-                if (!this.classList.contains('active')) {
-                    this.style.backgroundColor = 'rgba(40, 40, 40, 0.8)';
-                }
-            });
-            
-            // Add click handler
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.filter-mode-btn').forEach(b => {
-                    b.classList.remove('active');
-                    b.style.backgroundColor = 'rgba(40, 40, 40, 0.8)';
-                });
-                this.classList.add('active');
-                this.style.backgroundColor = 'rgba(198, 158, 0, 0.7)';
-                filterMode = this.dataset.mode;
-                updateVisibleMarkers(visibleGroups, visibleItemTypes);
-            });
-        });
+      // Style buttons
+      [orButton, andButton].forEach(btn => {
+          btn.style.padding = '10px'; // Increased padding (5px extra)
+          btn.style.backgroundColor = btn.classList.contains('active') ? 
+              'rgba(198, 158, 0, 0.7)' : 'rgba(40, 40, 40, 0.8)';
+          btn.style.color = 'white';
+          btn.style.border = '1px solid #444';
+          btn.style.borderRadius = '4px';
+          btn.style.cursor = 'pointer';
+          btn.style.flex = '1'; // Make buttons equal width
+          
+          // Add hover effects
+          btn.addEventListener('mouseover', function() {
+              if (!this.classList.contains('active')) {
+                  this.style.backgroundColor = 'rgba(60, 60, 60, 0.8)';
+              }
+          });
+          btn.addEventListener('mouseout', function() {
+              if (!this.classList.contains('active')) {
+                  this.style.backgroundColor = 'rgba(40, 40, 40, 0.8)';
+              }
+          });
+          
+          // Add click handler
+          btn.addEventListener('click', function() {
+              document.querySelectorAll('.filter-mode-btn').forEach(b => {
+                  b.classList.remove('active');
+                  b.style.backgroundColor = 'rgba(40, 40, 40, 0.8)';
+              });
+              this.classList.add('active');
+              this.style.backgroundColor = 'rgba(198, 158, 0, 0.7)';
+              filterMode = this.dataset.mode;
+              updateVisibleMarkers(visibleGroups, visibleItemTypes);
+          });
+      });
 
-        // Add buttons to the button container
-        buttonContainer.appendChild(orButton);
-        buttonContainer.appendChild(andButton);
-        filterModeContainer.appendChild(buttonContainer);
-        
-        // Add explanations for each mode
-        const explanationsContainer = document.createElement('div');
-        explanationsContainer.style.marginTop = '10px';
-        explanationsContainer.style.fontSize = '11px';
-        
-        const orExplanation = document.createElement('div');
-        orExplanation.id = 'or-explanation';
-        orExplanation.style.display = 'block';
-        orExplanation.style.color = '#aaa';
-        orExplanation.innerHTML = '<b>Match Any:</b> Shows markers if either their group OR item type is selected';
-        
-        const andExplanation = document.createElement('div');
-        andExplanation.id = 'and-explanation';
-        andExplanation.style.display = 'none';
-        andExplanation.style.color = '#aaa';
-        andExplanation.innerHTML = '<b>Match All:</b> Shows markers only if BOTH their group AND item type are selected';
-        
-        explanationsContainer.appendChild(orExplanation);
-        explanationsContainer.appendChild(andExplanation);
-        filterModeContainer.appendChild(explanationsContainer);
-        
-        // Update explanation visibility when mode changes
-        orButton.addEventListener('click', function() {
-            document.getElementById('or-explanation').style.display = 'block';
-            document.getElementById('and-explanation').style.display = 'none';
-        });
-        
-        andButton.addEventListener('click', function() {
-            document.getElementById('or-explanation').style.display = 'none';
-            document.getElementById('and-explanation').style.display = 'block';
-        });
-        
-        // Insert filter mode container after the filter controls
-        groupsContainer.insertBefore(filterModeContainer, filterControls.nextSibling);
-        
-        // Check if GroupManager is available
-        if (!GroupManager || !GroupManager.getAllGroups) {
-            console.error('[UI] GroupManager not available or missing getAllGroups method');
-            return;
-        }
-        
-        // Create section header for Groups
-        const groupHeader = document.createElement('h4');
-        groupHeader.textContent = 'MAP PINS';
-        groupHeader.style.marginTop = '30px';
-        groupHeader.style.color = 'rgba(198, 158, 0, 0.896)';
-        groupHeader.style.borderBottom = '1px solid #444';
-        groupHeader.style.paddingBottom = '5px';
-        groupsContainer.appendChild(groupHeader);
-        
-        const allGroups = GroupManager.getAllGroups();
-        
-        // Filter out the default group
-        const filterableGroups = allGroups.filter(group => group !== 'default');
-        
-        // Initialize all groups as visible
-        filterableGroups.forEach(group => {
-            visibleGroups[group] = true;
-        });
-        
-        // Create filter checkboxes for groups
-        createFilterCheckboxes(groupsContainer, filterableGroups, true);
-        
-        // Add a section for item types if available
-        if (typeof GroupManager.getAllItemTypes === 'function') {
-            const itemTypes = GroupManager.getAllItemTypes();
-            
-            if (itemTypes && itemTypes.length > 0) {
-                // Create section header for Item Types
-                const itemHeader = document.createElement('h4');
-                itemHeader.textContent = 'ITEM TYPES';
-                itemHeader.style.marginTop = '30px';
-                itemHeader.style.color = 'rgba(198, 158, 0, 0.896)';
-                itemHeader.style.borderBottom = '1px solid #444';
-                itemHeader.style.paddingBottom = '5px';
-                groupsContainer.appendChild(itemHeader);
-                
-                // Initialize all item types as visible
-                itemTypes.forEach(type => {
-                    visibleItemTypes[type] = true;
-                });
-                
-                // Create filter checkboxes for item types
-                createFilterCheckboxes(groupsContainer, itemTypes, false, true);
-            }
-        }
-        
-        // Add event listeners to the All/None buttons
-        allButton.addEventListener('click', function() {
-            console.log('[UI] Select All filters clicked');
-            document.querySelectorAll('#group-filters input[type="checkbox"]').forEach(checkbox => {
-                checkbox.checked = true;
-            });
-            
-            // Update all groups and item types to be visible
-            Object.keys(visibleGroups).forEach(group => {
-                visibleGroups[group] = true;
-            });
-            
-            Object.keys(visibleItemTypes).forEach(type => {
-                visibleItemTypes[type] = true;
-            });
-            
-            // Update markers visibility
-            updateVisibleMarkers(visibleGroups, visibleItemTypes);
-        });
-        
-        noneButton.addEventListener('click', function() {
-            console.log('[UI] Select None filters clicked');
-            document.querySelectorAll('#group-filters input[type="checkbox"]').forEach(checkbox => {
-                checkbox.checked = false;
-            });
-            
-            // Update all groups and item types to be hidden
-            Object.keys(visibleGroups).forEach(group => {
-                visibleGroups[group] = false;
-            });
-            
-            Object.keys(visibleItemTypes).forEach(type => {
-                visibleItemTypes[type] = false;
-            });
-            
-            // Update markers visibility
-            updateVisibleMarkers(visibleGroups, visibleItemTypes);
-        });
-        
-        console.log('[UI] Filter groups initialized');
+      // Add buttons to the button container
+      buttonContainer.appendChild(orButton);
+      buttonContainer.appendChild(andButton);
+      filterModeContainer.appendChild(buttonContainer);
+      
+      // Add explanations for each mode
+      const explanationsContainer = document.createElement('div');
+      explanationsContainer.style.marginTop = '10px';
+      explanationsContainer.style.fontSize = '11px';
+      
+      const orExplanation = document.createElement('div');
+      orExplanation.id = 'or-explanation';
+      orExplanation.style.display = 'block';
+      orExplanation.style.color = '#aaa';
+      orExplanation.innerHTML = '<b>Match Any:</b> Shows markers if either their group OR item type is selected';
+      
+      const andExplanation = document.createElement('div');
+      andExplanation.id = 'and-explanation';
+      andExplanation.style.display = 'none';
+      andExplanation.style.color = '#aaa';
+      andExplanation.innerHTML = '<b>Match All:</b> Shows markers only if BOTH their group AND item type are selected';
+      
+      explanationsContainer.appendChild(orExplanation);
+      explanationsContainer.appendChild(andExplanation);
+      filterModeContainer.appendChild(explanationsContainer);
+      
+      // Update explanation visibility when mode changes
+      orButton.addEventListener('click', function() {
+          document.getElementById('or-explanation').style.display = 'block';
+          document.getElementById('and-explanation').style.display = 'none';
+      });
+      
+      andButton.addEventListener('click', function() {
+          document.getElementById('or-explanation').style.display = 'none';
+          document.getElementById('and-explanation').style.display = 'block';
+      });
+      
+      // Insert filter mode container after the filter controls
+      groupsContainer.insertBefore(filterModeContainer, filterControls.nextSibling);
+      
+      // Check if GroupManager is available
+      if (!GroupManager || !GroupManager.getAllGroups) {
+          console.error('[UI] GroupManager not available or missing getAllGroups method');
+          return;
+      }
+      
+      // Create a horizontal container for MAP PINS and ITEM TYPES
+      const horizontalContainer = document.createElement('div');
+      horizontalContainer.style.display = 'flex';
+      horizontalContainer.style.justifyContent = 'space-between';
+      horizontalContainer.style.gap = '15px';
+      horizontalContainer.style.marginTop = '20px';
+
+      // Create left column for MAP PINS
+      const pinsColumn = document.createElement('div');
+      pinsColumn.style.flex = '1';
+      pinsColumn.style.minWidth = '0'; // Prevent flex items from overflowing
+
+      // Create right column for ITEM TYPES
+      const typesColumn = document.createElement('div');
+      typesColumn.style.flex = '1';
+      typesColumn.style.minWidth = '0'; // Prevent flex items from overflowing
+
+      // Add columns to horizontal container
+      horizontalContainer.appendChild(pinsColumn);
+      horizontalContainer.appendChild(typesColumn);
+
+      // Add horizontal container to the groups container
+      groupsContainer.appendChild(horizontalContainer);
+
+      // Create section header for Groups (MAP PINS)
+      const groupHeader = document.createElement('h4');
+      groupHeader.textContent = 'MAP PINS';
+      groupHeader.style.color = 'rgba(198, 158, 0, 0.896)';
+      groupHeader.style.borderBottom = '1px solid #444';
+      groupHeader.style.paddingBottom = '5px';
+      groupHeader.style.marginTop = '0';
+      groupHeader.style.backgroundColor = 'rgba(10,10,10,255)';
+      pinsColumn.appendChild(groupHeader);
+
+      const allGroups = GroupManager.getAllGroups();
+
+      // Filter out the default group
+      const filterableGroups = allGroups.filter(group => group !== 'default');
+
+      // Initialize all groups as visible
+      filterableGroups.forEach(group => {
+          visibleGroups[group] = true;
+      });
+
+      // Create filter checkboxes for groups
+      createFilterCheckboxes(pinsColumn, filterableGroups, true);
+
+      // Add a section for item types if available
+      if (typeof GroupManager.getAllItemTypes === 'function') {
+          const itemTypes = GroupManager.getAllItemTypes();
+          
+          if (itemTypes && itemTypes.length > 0) {
+              // Create section header for Item Types
+              const itemHeader = document.createElement('h4');
+              itemHeader.textContent = 'ITEM TYPES';
+              itemHeader.style.color = 'rgba(198, 158, 0, 0.896)';
+              itemHeader.style.borderBottom = '1px solid #444';
+              itemHeader.style.paddingBottom = '5px';
+              itemHeader.style.marginTop = '0';
+              itemHeader.style.backgroundColor = 'rgba(10,10,10,255)';
+              typesColumn.appendChild(itemHeader);
+              
+              // Initialize all item types as visible
+              itemTypes.forEach(type => {
+                  visibleItemTypes[type] = true;
+              });
+              
+              // Create filter checkboxes for item types
+              createFilterCheckboxes(typesColumn, itemTypes, false, true);
+          }
+      }
+
+      // Add event listeners to the All/None buttons
+      allButton.addEventListener('click', function() {
+          console.log('[UI] Select All filters clicked');
+          document.querySelectorAll('#group-filters input[type="checkbox"]').forEach(checkbox => {
+              checkbox.checked = true;
+          });
+          
+          // Update all groups and item types to be visible
+          Object.keys(visibleGroups).forEach(group => {
+              visibleGroups[group] = true;
+          });
+          
+          Object.keys(visibleItemTypes).forEach(type => {
+              visibleItemTypes[type] = true;
+          });
+          
+          // Update markers visibility
+          updateVisibleMarkers(visibleGroups, visibleItemTypes);
+      });
+
+      noneButton.addEventListener('click', function() {
+          console.log('[UI] Select None filters clicked');
+          document.querySelectorAll('#group-filters input[type="checkbox"]').forEach(checkbox => {
+              checkbox.checked = false;
+          });
+          
+          // Update all groups and item types to be hidden
+          Object.keys(visibleGroups).forEach(group => {
+              visibleGroups[group] = false;
+          });
+          
+          Object.keys(visibleItemTypes).forEach(type => {
+              visibleItemTypes[type] = false;
+          });
+          
+          // Update markers visibility
+          updateVisibleMarkers(visibleGroups, visibleItemTypes);
+      });
+
+      console.log('[UI] Filter groups initialized');
     }
     
     // Update marker visibility based on filters
