@@ -79,11 +79,19 @@ export const ItemData = (function() {
       ASTRAL: 'Astral',
       CHAOS: 'Chaos',
       POTION: 'Potion',
+      FOOD: 'Food',
     };
 
     const EFFECTS = {
       RESTORE_HEALTH: (value) => `Restores ${value} Health`,
       RESTORE_MANA: (value) => `Restores ${value} Mana`,
+      MAX_MANA_MPS_NO_COMBAT: (max_mana, max_restore, length_in_minutes) => `Increases maximum Mana by ${max_mana} and restores ${max_restore} 
+        Mana per second outside of combat for ${length_in_minutes} minutes`,
+      MAX_HEALTH_HPS_NO_COMBAT: (max_health, max_restore, length_in_minutes) => `Increases maximum Health by ${max_health} and restores ${max_restore}
+          Health per second outside of combat for ${length_in_minutes} minutes`,
+      MAX_STAMINA_MOVE_SPEED_LENGTH: (max_stamina, move_speed, length_in_minutes) => `Increases maximum Stamina by ${max_stamina} and Movement Speed by ${move_speed}% for
+        ${length_in_minutes} minutes`,
+      RESTORE_HEALTH_MANA_LENGTH: (health, mana, length_in_minutes) => `Restores ${health} Health and ${mana} Mana over ${length_in_minutes} minutes`,
     }
   
     return {

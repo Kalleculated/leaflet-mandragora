@@ -9,9 +9,9 @@ const { EQUIP_LOAD, COMBAT_MASTERY, FIRE_MASTERY, WYLD_MASTERY, SPIRIT, ASTRAL_M
 const { RESONANCE, DISCHARGE, BLADE_DANCE, INNER_STRENGTH, PARRY } = ItemData.ABILITIES;
 const { WEAPON, RELIC, OFFHAND, ARMOR, CONSUMABLE } = ItemData.ITEM_TYPES;
 const { GREAT_HAMMER, GREAT_SWORD, DAGGERS, ONE_HANDED_MACE, ONE_HANDED_SWORD, TOWER_SHIELD, PLATE
-  , LEATHER, CLOTH, FIRE, WYLD, LIGHT_SHIELD, ASTRAL, CHAOS, POTION, 
+  , LEATHER, CLOTH, FIRE, WYLD, LIGHT_SHIELD, ASTRAL, CHAOS, POTION, FOOD,
 } = ItemData.ITEM_CLASSES;
-const { RESTORE_HEALTH, RESTORE_MANA } = ItemData.EFFECTS;
+const { RESTORE_HEALTH, RESTORE_MANA, MAX_MANA_MPS_NO_COMBAT, MAX_HEALTH_HPS_NO_COMBAT, MAX_STAMINA_MOVE_SPEED_LENGTH, RESTORE_HEALTH_MANA_LENGTH } = ItemData.EFFECTS;
 
 export const VendorMarkers = [
   {
@@ -617,5 +617,45 @@ export const VendorMarkers = [
         effect: RESTORE_MANA(60),
       },
     ]
-  }
+  },
+  {
+    name: 'Rosalie', 
+    coords: [1096, 2211], 
+    group: 'vendor',
+    layer: 'layer2',
+    items: [
+      {
+        name: "Mushroom Stew",
+        type: CONSUMABLE,
+        class: FOOD,
+        image: 'assets/items/mushroom_stew.jpg',
+        price: 50,
+        effect: MAX_MANA_MPS_NO_COMBAT(30, 0.5, 10),
+      },
+      {
+        name: "Rabbit Broth",
+        type: CONSUMABLE,
+        class: FOOD,
+        image: 'assets/items/rabbit_broth.jpg',
+        price: 50,
+        effect: MAX_HEALTH_HPS_NO_COMBAT(50, 1, 10),
+      },
+      {
+        name: "Bread",
+        type: CONSUMABLE,
+        class: FOOD,
+        image: 'assets/items/bread.jpg',
+        price: 45,
+        effect: MAX_STAMINA_MOVE_SPEED_LENGTH(10, 3, 10),
+      },
+      {
+        name: "Cabbage Dumpling",
+        type: CONSUMABLE,
+        class: FOOD,
+        image: 'assets/items/cabbage_dumpling.jpg',
+        price: 45,
+        effect: RESTORE_HEALTH_MANA_LENGTH(50, 50, 2),
+      },
+    ]
+  },
 ];
