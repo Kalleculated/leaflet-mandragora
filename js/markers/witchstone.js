@@ -1,6 +1,12 @@
 // js/markers/waypoint.js - Update marker definitions
 export const WitchstoneMarkers = [
   {
+    name: 'Braer Castle Left Wing', 
+    coords: [1517, 6126], 
+    group: 'witchstone',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: 'Lakeshore', 
     coords: [1440, 7895], 
     group: 'witchstone',
