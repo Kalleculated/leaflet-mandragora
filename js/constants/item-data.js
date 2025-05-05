@@ -42,6 +42,11 @@ export const ItemData = (function() {
       WEAKNESS_CHANCE: (value) => `+${value}% Weakness Chance`,
       ARMOR_PENETRATION: (value) => `${value}% Armor Penetration`,
       ARMOR_PASSIVE: (value) => `${value} Armor`,
+      CRIT_CHANCE: (value) => `+${value}% Physical Critical Chance`,
+      BLEED_CHANCE: (value) => `+${value}% Bleed Chance`,
+      BLEED_DURATION: (value) => `+${value} second(s) Bleed duration`,
+      PHYSICAL_DAMAGE: (value) => `+${value}% Physical Damage`,
+      WYLD_DAMAGE: (value) => `+${value}% Wyld Damage`,
     };
 
     const REQUIREMENTS = {

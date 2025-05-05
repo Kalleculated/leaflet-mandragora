@@ -3,7 +3,8 @@ import { ItemData } from '../constants/item-data.js';
 
 const { 
   POISON_CHANCE, ROOT_CHANCE, SMASH_CHANCE, MANA, BURN_CHANCE, LIGHTBRAND_CHANCE, HEALING_EFFECTIVENESS
-  , MAGIC_CRIT_CHANCE, WEAKNESS_CHANCE, ARMOR_PENETRATION, ARMOR_PASSIVE
+  , MAGIC_CRIT_CHANCE, WEAKNESS_CHANCE, ARMOR_PENETRATION, ARMOR_PASSIVE, CRIT_CHANCE, BLEED_CHANCE, BLEED_DURATION
+  , PHYSICAL_DAMAGE, WYLD_DAMAGE,
 } = ItemData.PASSIVES;
 const { EQUIP_LOAD, COMBAT_MASTERY, FIRE_MASTERY, WYLD_MASTERY, SPIRIT, ASTRAL_MASTERY, CHAOS_MASTERY, } = ItemData.REQUIREMENTS;
 const { RESONANCE, DISCHARGE, BLADE_DANCE, INNER_STRENGTH, PARRY } = ItemData.ABILITIES;
@@ -655,6 +656,340 @@ export const VendorMarkers = [
         image: 'assets/items/cabbage_dumpling.jpg',
         price: 45,
         effect: RESTORE_HEALTH_MANA_LENGTH(50, 50, 2),
+      },
+    ]
+  },
+  {
+    name: 'Bjorn Vanbelleghem', 
+    coords: [2018, 4938], 
+    group: 'vendor',
+    layer: 'layer2',
+    items: [
+    ]
+  },
+  {
+    name: 'Tim Vanbelleghem', 
+    coords: [2016, 4974], 
+    group: 'vendor',
+    layer: 'layer2',
+    items: [
+      {
+        name: `Champion's Defender`,
+        type: OFFHAND,
+        class: LIGHT_SHIELD,
+        image: 'assets/items/champions_defender.jpg',
+        price: 2230,
+        stats: {
+          damage: {
+            physical: 125,
+          },
+          scaling: {
+            strength: "C+",
+            dexterity: "D+",
+          },
+          weight: 7.5,
+          poise: 8,
+          balance: 55,
+          ability: PARRY.name,
+          abilityDescription: PARRY.description,
+          defense: {
+            physical: 100,
+            burn: 55,
+            frost: 55,
+            wyld: 55,
+            chaos: 55,
+          },
+          passives: [
+            ARMOR_PASSIVE(16),
+          ],
+        }
+      },
+      {
+        name: "Firebrand Sigil",
+        type: RELIC,
+        class: FIRE,
+        image: 'assets/items/firebrand_sigil.jpg',
+        price: 2200,
+        stats: {
+          weight: 1.35,
+          spell_buff: 35,
+          requires: [
+            FIRE_MASTERY,
+          ],
+          passives: [
+            MANA(45),
+            MAGIC_CRIT_CHANCE(10),
+          ],
+          ability: DISCHARGE.name,
+          abilityDescription: DISCHARGE.description,
+        }
+      },
+      {
+        name: "Groveborn Charm",
+        type: RELIC,
+        class: WYLD,
+        image: 'assets/items/groveborn_charm.jpg',
+        price: 2200,
+        stats: {
+          weight: 1.3,
+          spell_buff: 40,
+          requires: [
+            WYLD_MASTERY,
+          ],
+          passives: [
+            MANA(60),
+          ],
+          ability: DISCHARGE.name,
+          abilityDescription: DISCHARGE.description,
+        }
+      },
+      {
+        name: "Luminary Alignment",
+        type: RELIC,
+        class: ASTRAL,
+        image: 'assets/items/luminary_alignment.jpg',
+        price: 2200,
+        stats: {
+          weight: 1.35,
+          spell_buff: 40,
+          requires: [
+            ASTRAL_MASTERY,
+          ],
+          passives: [
+            MAGIC_CRIT_CHANCE(8),
+            LIGHTBRAND_CHANCE(8),
+          ],
+          ability: DISCHARGE.name,
+          abilityDescription: DISCHARGE.description,
+        }
+      },
+      {
+        name: "Shiver of Chaos",
+        type: RELIC,
+        class: CHAOS,
+        image: 'assets/items/shiver_of_chaos.jpg',
+        price: 2200,
+        stats: {
+          weight: 1.35,
+          spell_buff: 35,
+          requires: [
+            CHAOS_MASTERY,
+          ],
+          passives: [
+            MAGIC_CRIT_CHANCE(8),
+            WEAKNESS_CHANCE(8),
+          ],
+          ability: DISCHARGE.name,
+          abilityDescription: DISCHARGE.description,
+        }
+      },
+      {
+        name: 'Azurewrath',
+        type: WEAPON,
+        class: ONE_HANDED_SWORD,
+        image: 'assets/items/azurewrath.jpg',
+        price: 3900,
+        stats: {
+          speed: 2.03,
+          weight: 2.5,
+          stagger: 70,
+          stamina: 1.4,
+          damage: {
+            physical: 55,
+            wyld: 90,
+          },
+          scaling: {
+            dexterity: "C+",
+            spirit: "B",
+          },
+          passives: [
+            POISON_CHANCE(5),
+            ROOT_CHANCE(5),
+          ]
+        }
+      },
+      {
+        name: 'Battle Star',
+        type: WEAPON,
+        class: ONE_HANDED_MACE,
+        image: 'assets/items/battle_star.jpg',
+        price: 4100,
+        stats: {
+          speed: 1.66,
+          weight: 3.2,
+          stagger: 85,
+          stamina: 1.65,
+          damage: {
+            physical: 145,
+          },
+          scaling: {
+            strength: "A",
+          },
+          passives: [
+            CRIT_CHANCE(10),
+            SMASH_CHANCE(25)
+          ]
+        }
+      },
+      {
+        name: 'Endbringer',
+        type: WEAPON,
+        class: GREAT_HAMMER,
+        image: 'assets/items/endbringer.jpg',
+        price: 5580,
+        stats: {
+          damage: {
+            physical: 255,
+          },
+          scaling: {
+            strength: "B",
+            dexterity: "B",
+          },
+          ability: RESONANCE.name,
+          abilityDescription: RESONANCE.description,
+          weight: 14,
+          speed: 0.71,
+          stagger: 165,
+          stamina: 2.2,
+        }
+      },
+      {
+        name: `Illina's Blade of Revenge`,
+        type: WEAPON,
+        class: GREAT_SWORD,
+        image: 'assets/items/illinas_blade_of_revenge.jpg',
+        price: 5500,
+        stats: {
+          speed: 1.22,
+          weight: 6,
+          stagger: 155,
+          stamina: 2,
+          damage: {
+            physical: 175,
+            astral: 85
+          },
+          scaling: {
+            strength: "B+",
+            dexterity: "C",
+            spirit: "B"
+          },
+          ability: RESONANCE.name,
+          abilityDescription: RESONANCE.description,
+          passives: [
+            MAGIC_CRIT_CHANCE(12),
+            LIGHTBRAND_CHANCE(7),
+          ]
+        }
+      },
+      {
+        name: `Allemag Cavalier's Helm`,
+        type: ARMOR,
+        class: PLATE,
+        image: 'assets/items/allemag_cavaliers_helm.jpg',
+        price: 1840,
+        stats: {
+          armor: 6.5,
+          weight: 3.8,
+          poise: 6.2,
+          passives: [
+            BLEED_CHANCE(7),
+            BLEED_DURATION(4)
+          ],
+        }
+      },
+      {
+        name: `Hunter Headpiece`,
+        type: ARMOR,
+        class: LEATHER,
+        image: 'assets/items/hunter_headpiece.jpg',
+        price: 1715,
+        stats: {
+          armor: 2.9,
+          weight: 2.75,
+          poise: 3.7,
+          passives: [
+            PHYSICAL_DAMAGE(7),
+            WYLD_DAMAGE(8)
+          ],
+        }
+      },
+      {
+        name: `Allemag Cavalier's Breastplate`,
+        type: ARMOR,
+        class: PLATE,
+        image: 'assets/items/allemag_cavaliers_breastplate.jpg',
+        price: 3125,
+        stats: {
+          armor: 22,
+          weight: 9.5,
+          poise: 15.5,
+          strength: 3,
+          dexterity: 4,
+          defense: 4,
+        }
+      },
+      {
+        name: `Allemag Cavalier's Gloves`,
+        type: ARMOR,
+        class: PLATE,
+        image: 'assets/items/allemag_cavaliers_gloves.jpg',
+        price: 1400,
+        stats: {
+          armor: 3,
+          weight: 1.55,
+          poise: 3,
+          passives: [
+            BLEED_CHANCE(5),
+            BLEED_DURATION(2)
+          ],
+        }
+      },
+      {
+        name: `Hunter Gloves`,
+        type: ARMOR,
+        class: LEATHER,
+        image: 'assets/items/hunter_gloves.jpg',
+        price: 1320,
+        stats: {
+          armor: 1.45,
+          weight: 0.95,
+          poise: 1.8,
+          passives: [
+            PHYSICAL_DAMAGE(5),
+            WYLD_DAMAGE(5)
+          ],
+        }
+      },
+      {
+        name: `Allemag Cavalier's Breeches`,
+        type: ARMOR,
+        class: PLATE,
+        image: 'assets/items/allemag_cavaliers_breeches.jpg',
+        price: 2375,
+        stats: {
+          armor: 11,
+          weight: 5.5,
+          poise: 9.3,
+          strength: 3,
+          dexterity: 3,
+          defense: 3,
+        }
+      },
+      {
+        name: "Weak Health Potion",
+        type: CONSUMABLE,
+        class: POTION,
+        image: 'assets/items/weak_health_potion.jpg',
+        price: 115,
+        effect: RESTORE_HEALTH(90),
+      },
+      {
+        name: "Weak Mana Potion",
+        type: CONSUMABLE,
+        class: POTION,
+        image: 'assets/items/weak_mana_potion.jpg',
+        price: 115,
+        effect: RESTORE_MANA(60),
       },
     ]
   },
