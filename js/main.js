@@ -17,6 +17,7 @@ import { NestMarkers } from './markers/nest.js';
 import { AltarMarkers } from './markers/altar.js';
 import { CatMarkers } from './markers/cat.js';
 import { ItemMarkers } from './markers/item.js';
+import { GoblinMarkers } from './markers/goblin.js';
 
 // Main application initialization
 document.addEventListener('DOMContentLoaded', function() {
@@ -40,7 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
       ...NestMarkers,
       ...CatMarkers,
       ...AltarMarkers,
-      ...ItemMarkers
+      ...ItemMarkers,
+      ...GoblinMarkers
       // Add any additional group markers
     ];
     console.log(`[Main] Combined ${allMarkers.length} markers`);
