@@ -151,7 +151,7 @@ export const ItemMarkers = [
       items: [
         {
           name: 'Rabit Broth',
-          type: 'Diagram'
+          type: 'diagram'
         },
       ]
     },
@@ -165,7 +165,7 @@ export const ItemMarkers = [
       items: [
         {
           name: 'Signet of the Wolf',
-          type: 'Diagram'
+          type: 'diagram'
         },
       ]
     },
@@ -179,7 +179,7 @@ export const ItemMarkers = [
       items: [
         {
           name: 'Briar Set',
-          type: 'Diagram'
+          type: 'diagram'
         },
       ]
     },
@@ -193,7 +193,7 @@ export const ItemMarkers = [
       items: [
         {
           name: 'The Illuminator',
-          type: 'Diagram'
+          type: 'diagram'
         },
       ]
     },
@@ -207,7 +207,7 @@ export const ItemMarkers = [
       items: [
         {
           name: 'Minor Stoneskin Potion',
-          type: 'Diagram'
+          type: 'diagram'
         },
       ]
     },
@@ -221,7 +221,7 @@ export const ItemMarkers = [
       items: [
         {
           name: 'The Whispering Bud',
-          type: 'Diagram'
+          type: 'diagram'
         },
       ]
     },
@@ -235,7 +235,7 @@ export const ItemMarkers = [
       items: [
         {
           name: 'Nacreous Amends',
-          type: 'Diagram'
+          type: 'diagram'
         },
         {
           name: 'Infernal Talisman',
@@ -286,7 +286,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [1670, 2054],
       group: 'item',
       layer: 'layer1',
@@ -298,7 +298,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [1558, 1979],
       group: 'item',
       layer: 'layer1',
@@ -310,7 +310,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [1633, 1710],
       group: 'item',
       layer: 'layer1',
@@ -322,7 +322,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [1208, 1786],
       group: 'item',
       layer: 'layer1',
@@ -338,23 +338,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
-      coords: [1288, 2671],
-      group: 'item',
-      layer: 'layer1',
-      items: [
-        { 
-          name: "Band of the Berserker",
-          type: 'diagram'
-        },
-        { 
-          name: "Swiftblade",
-          type: 'diagram'
-        },
-      ]
-    },
-    {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [1443, 1748],
       group: 'item',
       layer: 'layer1',
@@ -366,7 +350,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [1518, 2208],
       group: 'item',
       layer: 'layer1',
@@ -378,7 +362,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [1326, 2247],
       group: 'item',
       layer: 'layer1',
@@ -390,7 +374,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [1288, 2671],
       group: 'item',
       layer: 'layer1',
@@ -402,7 +386,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [1364, 5624],
       group: 'item',
       layer: 'layer1',
@@ -414,7 +398,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [944, 2554],
       group: 'item',
       layer: 'layer1',
@@ -426,7 +410,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [556, 937],
       group: 'item',
       layer: 'layer1',
@@ -438,7 +422,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [904, 668],
       group: 'item',
       layer: 'layer1',
@@ -462,7 +446,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [2015, 1898],
       group: 'item',
       layer: 'layer1',
@@ -474,7 +458,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [1785, 1367],
       group: 'item',
       layer: 'layer1',
@@ -510,7 +494,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [1940, 2055],
       group: 'item',
       layer: 'layer1',
@@ -522,7 +506,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [1899, 9311],
       group: 'item',
       layer: 'layer1',
@@ -534,7 +518,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [1556, 9311],
       group: 'item',
       layer: 'layer1',
@@ -546,7 +530,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [1519, 7698],
       group: 'item',
       layer: 'layer1',
@@ -558,7 +542,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [366, 5201],
       group: 'item',
       layer: 'layer1',
@@ -570,7 +554,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [1709, 6010],
       group: 'item',
       layer: 'layer1',
@@ -582,7 +566,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [1061, 5549],
       group: 'item',
       layer: 'layer1',
@@ -594,7 +578,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [368, 5548],
       group: 'item',
       layer: 'layer1',
@@ -606,7 +590,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [1291, 3976],
       group: 'item',
       layer: 'layer1',
@@ -618,7 +602,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [863, 4051],
       group: 'item',
       layer: 'layer1',
@@ -630,7 +614,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [905, 2749],
       group: 'item',
       layer: 'layer1',
@@ -642,7 +626,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [905, 134],
       group: 'item',
       layer: 'layer1',
@@ -654,7 +638,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [827, 862],
       group: 'item',
       layer: 'layer1',
@@ -666,7 +650,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [289, 1363],
       group: 'item',
       layer: 'layer1',
@@ -678,7 +662,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [400, 1016],
       group: 'item',
       layer: 'layer1',
@@ -690,7 +674,7 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Diagram Location',
+      name: 'diagram Location',
       coords: [520, 1251],
       group: 'item',
       layer: 'layer1',
