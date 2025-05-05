@@ -184,7 +184,7 @@ export const WitchstoneMarkers = [
     name: 'Secret Loft', 
     coords: [1940, 4782],
     group: 'witchstone',
-    layer: 'layer1'  // Specify layer
+    layer: 'layer2'  // Specify layer
   },
   {
     name: 'Boathouse', 
