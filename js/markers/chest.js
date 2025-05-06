@@ -13,6 +13,22 @@ export const ChestMarkers = [
       ]
     },
     {
+      name: 'Gold Chest', //There are wood, bronze, silver and gold chests
+      coords: [978, 4053], 
+      group: 'chest',
+      layer: 'layer2',
+      items: [
+        {
+          name: "Hechima's Claws",
+          type: 'diagram',
+        },
+        {
+          name: "Wyldhearth",
+          type: 'diagram'
+        }
+      ]
+  },
+    {
       name: 'Silver Chest', //There are wood, bronze, silver and gold chests
       coords: [710, 4590], 
       group: 'chest',
