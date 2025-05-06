@@ -74,6 +74,15 @@ export const ChestMarkers = [
   },
   {
     name: 'Chest',
+    coords: [676, 4399],
+    group: 'chest',
+    layer: 'layer1',
+    items: [
+      { name: 'Minor Magic Potion', type: 'diagram' }
+    ]
+  },
+  {
+    name: 'Chest',
     coords: [635, 981],
     group: 'chest',
     layer: 'layer1',
