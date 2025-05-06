@@ -46,6 +46,15 @@ export const ChestMarkers = [
   },
   {
     name: 'Chest',
+    coords: [827, 4474],
+    group: 'chest',
+    layer: 'layer1',
+    items: [
+      { name: 'Assassin Ring', type: 'diagram' },
+    ]
+  },
+  {
+    name: 'Chest',
     coords: [481, 1749],
     group: 'chest',
     layer: 'layer1',
