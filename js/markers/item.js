@@ -31,6 +31,20 @@ export const ItemMarkers = [
       ]
     },
     {
+      name: 'Item Location',
+      coords: [
+        [676, 4704],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Shield of Honor',
+          type: 'shield'
+        },
+      ]
+    },
+    {
       name: 'Key Location',
       coords: [
         [941, 3361],
