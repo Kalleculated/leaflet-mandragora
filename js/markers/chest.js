@@ -14,6 +14,22 @@ export const ChestMarkers = [
     },
     {
       name: 'Silver Chest', //There are wood, bronze, silver and gold chests
+      coords: [710, 4590], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Magic Runestone",
+          type: 'diagram',
+        },
+        {
+          name: "Arcanist Ring",
+          type: 'diagram'
+        }
+      ]
+  },
+    {
+      name: 'Silver Chest', //There are wood, bronze, silver and gold chests
       coords: [2096, 9201], 
       group: 'chest',
       layer: 'layer1',
