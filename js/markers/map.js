@@ -1,6 +1,12 @@
 // js/markers/waypoint.js - Update marker definitions
 export const MapMarkers = [
   {
+    name: 'Forgotten Catacombs', 
+    coords: [406, 5048], 
+    group: 'map',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: 'Gloomroot Woods', 
     coords: [1018, 554], 
     group: 'map',
