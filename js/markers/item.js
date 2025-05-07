@@ -146,6 +146,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [674, 5090],
+      ],
+      group: 'quest item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Runed Leg Bone',
+          type: 'quest item'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
         [905, 3050],
       ],
       group: 'quest item',
