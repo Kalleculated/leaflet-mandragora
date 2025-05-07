@@ -33,6 +33,20 @@ export const ItemMarkers = [
       ]
     },
     {
+      name: 'Skill Location',
+      coords: [
+        [828, 5124],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Dark Echo',
+          type: 'chaos skill'
+        },
+      ]
+    },
+    {
       name: 'Item Location',
       coords: [
         [1251, 1286],
