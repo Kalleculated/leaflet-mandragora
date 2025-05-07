@@ -34,6 +34,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [1251, 1286],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Golden Prism',
+          type: 'astral relic'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
         [1056, 1325],
       ],
       group: 'item',
