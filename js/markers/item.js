@@ -63,6 +63,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [1366, 4587],
+      ],
+      group: 'item',
+      layer: 'layer2',
+      items: [
+        {
+          name: "Cayloe's Embrace Set",
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
         [827, 2744],
       ],
       group: 'item',
