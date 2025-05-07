@@ -44,6 +44,22 @@ export const BossMarkers = [
           ]
     },
     {
+      name: 'Plague Guardian',
+      coords: [96, 5014],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Toxic Shiv',
+          type: 'assassination skill'
+        },
+        { 
+          name: 'Plague Seal',
+          type: 'quest item'
+        },
+          ]
+    },
+    {
       name: 'Forest Giant',
       coords: [1020, 595],
       group: 'boss',
