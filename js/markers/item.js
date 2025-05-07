@@ -47,6 +47,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [865, 2785],
+      ],
+      group: 'ring',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Grip of Gardan",
+          type: 'ring'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
         [866, 3245],
       ],
       group: 'diagram',
