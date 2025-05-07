@@ -43,5 +43,17 @@ export const BossMarkers = [
         },
       ]
     },
+    {
+      name: 'Pepper',
+      coords: [825, 1940],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Ground Slam',
+          type: 'special action'
+        },
+      ]
+    },
     // Add more vendor markers as needed
   ];
