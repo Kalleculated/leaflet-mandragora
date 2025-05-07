@@ -45,6 +45,20 @@ export const ItemMarkers = [
       ]
     },
     {
+      name: 'Item Location',
+      coords: [
+        [866, 3245],
+      ],
+      group: 'diagram',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Justicar's Blades",
+          type: 'diagram'
+        },
+      ]
+    },
+    {
       name: 'Key Location',
       coords: [
         [941, 3361],
