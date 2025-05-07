@@ -2,6 +2,18 @@
 export const ChestMarkers = [
     {
       name: 'Silver Chest', //There are wood, bronze, silver and gold chests
+      coords: [1862, 5090], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Invoker set",
+          type: 'diagram',
+        },
+          ]
+      },
+    {
+      name: 'Silver Chest', //There are wood, bronze, silver and gold chests
       coords: [1901, 4859], 
       group: 'chest',
       layer: 'layer1',
