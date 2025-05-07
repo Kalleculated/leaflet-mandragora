@@ -28,6 +28,18 @@ export const BossMarkers = [
     //   ]
     // }
     {
+      name: 'Wraith',
+      coords: [1672, 4819],
+      group: 'boss',
+      layer: 'layer2',
+      items: [
+        { 
+          name: "Arbiter's Fury",
+          type: 'astral skill'
+        },
+          ]
+    },
+    {
       name: 'The Necromancer',
       coords: [289, 4666],
       group: 'boss',
