@@ -28,6 +28,22 @@ export const BossMarkers = [
     //   ]
     // }
     {
+      name: 'Blood Guardian',
+      coords: [559, 4857],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Wall of Flame',
+          type: 'wyld skill'
+        },
+        { 
+          name: 'Blood Seal',
+          type: 'quest item'
+        },
+          ]
+    },
+    {
       name: 'Forest Giant',
       coords: [1020, 595],
       group: 'boss',
