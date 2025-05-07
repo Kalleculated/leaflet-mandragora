@@ -31,6 +31,20 @@ export const ItemMarkers = [
       ]
     },
     {
+      name: 'Skill Location',
+      coords: [
+        [1096, 1822],
+      ],
+      group: 'skill',
+      layer: 'layer2',
+      items: [
+        {
+          name: 'Celestial Hammers',
+          type: 'astral skill'
+        },
+      ]
+    },
+    {
       name: 'Item Location',
       coords: [
         [905, 3050],
