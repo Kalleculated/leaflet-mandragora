@@ -30,6 +30,7 @@ export const ChestMarkers = [
           name: 'Tyrannic Reaver',
           type: 'weapon',
         },
+          ]
       },
     {
       name: 'Silver Chest', //There are wood, bronze, silver and gold chests
