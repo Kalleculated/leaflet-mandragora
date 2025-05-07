@@ -400,6 +400,20 @@ export const ItemMarkers = [
     {
       name: 'Skill Location',
       coords: [
+        [944, 1669],
+      ],
+      group: 'skill',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Shadow Step',
+          type: 'Assassination Skill'
+        },
+      ]
+    },
+    {
+      name: 'Skill Location',
+      coords: [
         [941, 3361],
       ],
       group: 'skill',
