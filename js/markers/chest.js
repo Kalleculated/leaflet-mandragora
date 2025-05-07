@@ -2,6 +2,18 @@
 export const ChestMarkers = [
     {
       name: 'Silver Chest', //There are wood, bronze, silver and gold chests
+      coords: 635, 5050], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Chaos Shard',
+          type: 'diagram',
+        },
+      ]
+    },
+    {
+      name: 'Silver Chest', //There are wood, bronze, silver and gold chests
       coords: [828, 5050], 
       group: 'chest',
       layer: 'layer1',
