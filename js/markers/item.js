@@ -35,6 +35,20 @@ export const ItemMarkers = [
     {
       name: 'Skill Location',
       coords: [
+        [2018, 4861],
+      ],
+      group: 'item',
+      layer: 'layer2',
+      items: [
+        {
+          name: 'Grappling Hook',
+          type: 'special action'
+        },
+      ]
+    },
+    {
+      name: 'Skill Location',
+      coords: [
         [828, 5124],
       ],
       group: 'item',
