@@ -31,6 +31,20 @@ export const ItemMarkers = [
       ]
     },
     {
+      name: 'Item Location',
+      coords: [
+        [1056, 1325],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Shattered Flamecore',
+          type: 'diagram'
+        },
+      ]
+    },
+    {
       name: 'Skill Location',
       coords: [
         [1096, 1822],
