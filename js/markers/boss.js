@@ -28,6 +28,18 @@ export const BossMarkers = [
     //   ]
     // }    
     {
+      name: 'Ferryman',
+      coords: [1520, 6011],
+      group: 'boss',
+      layer: 'layer2',
+      items: [
+        { 
+          name: 'Consecration',
+          type: 'Astral Skill'
+        },
+          ]
+    },
+    {
       name: 'Caretaker',
       coords: [1059, 4244],
       group: 'boss',
