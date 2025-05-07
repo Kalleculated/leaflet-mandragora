@@ -28,6 +28,18 @@ export const BossMarkers = [
     //   ]
     // }
     {
+      name: 'The Necromancer',
+      coords: [289, 4666],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Splintering Sparks',
+          type: 'chaos skill'
+        },
+          ]
+    },
+    {
       name: 'Blood Guardian',
       coords: [559, 4857],
       group: 'boss',
