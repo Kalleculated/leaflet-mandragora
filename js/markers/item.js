@@ -61,6 +61,20 @@ export const ItemMarkers = [
     {
       name: 'Key Location',
       coords: [
+        [866, 2672],
+      ],
+      group: 'key',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Iron Gate Key',
+          type: 'key'
+        },
+      ]
+    },
+    {
+      name: 'Key Location',
+      coords: [
         [941, 3361],
       ],
       group: 'key',
