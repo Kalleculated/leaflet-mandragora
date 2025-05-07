@@ -52,6 +52,22 @@ export const BossMarkers = [
           ]
     },
     {
+      name: 'Corrupted Rat',
+      coords: [1479, 5242],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Chaos Storm',
+          type: 'chaos skill'
+        },
+        { 
+          name: 'Inner Gate Key',
+          type: 'quest item'
+        },
+          ]
+    },
+    {
       name: 'Blood Guardian',
       coords: [559, 4857],
       group: 'boss',
