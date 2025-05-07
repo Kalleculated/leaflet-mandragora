@@ -28,6 +28,18 @@ export const BossMarkers = [
     //   ]
     // }    
     {
+      name: 'Caretaker',
+      coords: [1059, 4244],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Heavy Attack',
+          type: 'Combat Skill'
+        },
+          ]
+    },
+    {
       name: 'Bandit Captain',
       coords: [941, 3361],
       group: 'boss',
