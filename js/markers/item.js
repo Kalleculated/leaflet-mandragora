@@ -694,7 +694,10 @@ export const ItemMarkers = [
     },
     {
       name: 'Flask Upgrade Location',
-      coords: [1865, 1749],
+      coords: [
+          [1865, 1749],
+          [1207, 1097]
+          ]
       group: 'item',
       layer: 'layer1',
       items: [
