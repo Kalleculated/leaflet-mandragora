@@ -28,6 +28,26 @@ export const BossMarkers = [
     //   ]
     // }
     {
+      name: 'Fang Executor',
+      coords: [1250, 1482],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Backlash',
+          type: 'assassination skill'
+        },
+        { 
+          name: "West Wickham Key",
+          type: 'key'
+        },
+        { 
+          name: "Sanguine Kiss",
+          type: 'weapon'
+        },
+      ]
+    },
+    {
       name: 'The Inquisitors',
       coords: [1402, 2785],
       group: 'boss',
