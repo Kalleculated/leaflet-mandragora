@@ -59,6 +59,20 @@ export const ItemMarkers = [
       ]
     },
     {
+      name: 'Skill Location',
+      coords: [
+        [980, 1326],
+      ],
+      group: 'skill',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Incinerate',
+          type: 'fire skill'
+        },
+      ]
+    },
+    {
       name: 'Item Location',
       coords: [
         [905, 3050],
