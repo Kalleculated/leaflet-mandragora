@@ -14,6 +14,7 @@ export const ChestMarkers = [
           name: 'The Scissors',
           type: 'diagram',
         },
+          ]
       },
     {
       name: 'Bronze Chest', //There are wood, bronze, silver and gold chests
