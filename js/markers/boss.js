@@ -26,7 +26,23 @@ export const BossMarkers = [
     //       }
     //     }
     //   ]
-    // }
+    // }    
+    {
+      name: 'Bandit Captain',
+      coords: [941, 3361],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Bear Trap',
+          type: 'Assassination Skill'
+        },
+        { 
+          name: 'Key',
+          type: 'key'
+        },
+          ]
+    },
     {
       name: 'Wraith',
       coords: [1672, 4819],
