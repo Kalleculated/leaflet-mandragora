@@ -28,6 +28,17 @@ export const BossMarkers = [
     //   ]
     // }
     {
+      name: 'Forest Giant',
+      coords: [1020, 595],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Wyld Seed',
+          type: 'wyld skill'
+        },
+    },
+    {
       name: 'Fang Executor',
       coords: [1250, 1482],
       group: 'boss',
