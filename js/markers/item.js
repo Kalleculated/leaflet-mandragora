@@ -48,6 +48,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [827, 2744],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Verdant Flameblade',
+          type: 'weapon'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
         [1208, 945],
       ],
       group: 'item',
