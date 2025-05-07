@@ -573,6 +573,7 @@ export const ItemMarkers = [
       coords: [
         [1556, 2554],
         [1096, 5280],
+        [1632, 5046],
       ],
       group: 'item',
       layer: 'layer2',
