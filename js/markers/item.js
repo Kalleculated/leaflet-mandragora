@@ -204,6 +204,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [982, 1746],
+      ],
+      group: 'quest item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Denochian Copper Coin',
+          type: 'quest item'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
         [442, 5125],
       ],
       group: 'quest item',
