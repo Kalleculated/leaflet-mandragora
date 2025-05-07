@@ -90,6 +90,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [1059, 1785],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Mercenary Set',
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
         [788, 2247],
       ],
       group: 'item',
