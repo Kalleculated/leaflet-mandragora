@@ -37,6 +37,7 @@ export const BossMarkers = [
           name: 'Wyld Seed',
           type: 'wyld skill'
         },
+          ]
     },
     {
       name: 'Fang Executor',
