@@ -52,7 +52,7 @@ export const BossMarkers = [
           ]
     },
     {
-      name: 'Corrupted Rat',
+      name: 'Corrupted Vermin',
       coords: [1479, 5242],
       group: 'boss',
       layer: 'layer1',
