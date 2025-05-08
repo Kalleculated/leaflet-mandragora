@@ -1,6 +1,278 @@
 // js/markers/chest.js - Chest markers with item contents
 export const ChestMarkers = [
     {
+      name: 'Bronze Chest', //There are wood, bronze, silver and gold chests
+      coords: [1172, 520], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Ring of Bravery",
+          type: 'diagram',
+        },
+          ]
+      },
+    {
+      name: 'Silver Chest', //There are wood, bronze, silver and gold chests
+      coords: [941, 1594], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Itinerant Armor set",
+          type: 'diagram',
+        },
+          ]
+      },
+    {
+      name: 'Silver Chest', //There are wood, bronze, silver and gold chests
+      coords: [1862, 5090], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Invoker set",
+          type: 'diagram',
+        },
+          ]
+      },
+    {
+      name: 'Silver Chest', //There are wood, bronze, silver and gold chests
+      coords: [1901, 4859], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Veilwalker set",
+          type: 'diagram',
+        },
+          ]
+      },
+    {
+      name: 'Bronze Chest', //There are wood, bronze, silver and gold chests
+      coords: [1441, 4666], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Cruste Rolle",
+          type: 'diagram',
+        },
+          ]
+      },
+    {
+      name: 'Bronze Chest', //There are wood, bronze, silver and gold chests
+      coords: [1597, 4745], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Cleansing Potion",
+          type: 'diagram',
+        },
+          ]
+      },
+    {
+      name: 'Wood Chest', //There are wood, bronze, silver and gold chests
+      coords: [1135, 672], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Gerald's Treasure",
+          type: 'quest item',
+        },
+          ]
+      },
+    {
+      name: 'Silver Chest', //There are wood, bronze, silver and gold chests
+      coords: [97, 4935], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Inscribed Set',
+          type: 'diagram',
+        },
+          ]
+      },
+    {
+      name: 'Gold Chest', //There are wood, bronze, silver and gold chests
+      coords: [519, 5090], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Celestial Beacon',
+          type: 'diagram',
+        },
+        {
+          name: 'The Scissors',
+          type: 'diagram',
+        },
+          ]
+      },
+    {
+      name: 'Bronze Chest', //There are wood, bronze, silver and gold chests
+      coords: [365, 4553], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Charred Alexandrite',
+          type: 'diagram',
+        },
+        {
+          name: 'Tyrannic Reaver',
+          type: 'weapon',
+        },
+          ]
+      },
+    {
+      name: 'Silver Chest', //There are wood, bronze, silver and gold chests
+      coords: [674, 5166], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Ember Veil',
+          type: 'diagram',
+        },
+        {
+          name: 'Bonecrusher',
+          type: 'diagram',
+        },
+      ]
+    },
+    {
+      name: 'Silver Chest', //There are wood, bronze, silver and gold chests
+      coords: [635, 5050], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Chaos Shard',
+          type: 'diagram',
+        },
+      ]
+    },
+    {
+      name: 'Silver Chest', //There are wood, bronze, silver and gold chests
+      coords: [828, 5050], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Amberfall Set',
+          type: 'diagram',
+        },
+      ]
+    },
+    {
+      name: 'Bronze Chest', //There are wood, bronze, silver and gold chests
+      coords: [941, 5128], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Minor Rage Potion',
+          type: 'diagram',
+        },
+      ]
+    },
+    {
+      name: 'Silver Chest', //There are wood, bronze, silver and gold chests
+      coords: [941, 5204], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Raider Set',
+          type: 'diagram',
+        },
+      ]
+    },
+    {
+      name: 'Silver Chest', //There are wood, bronze, silver and gold chests
+      coords: [1018, 1208], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Targe',
+          type: 'diagram',
+        },
+      ]
+    },
+    {
+      name: 'Wood Chest', //There are wood, bronze, silver and gold chests
+      coords: [1210, 1595], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Haste Potion',
+          type: 'diagram',
+        },
+      ]
+    },
+    {
+      name: 'Silver Chest', //There are wood, bronze, silver and gold chests
+      coords: [1287, 1287], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Scarlet Militia Set',
+          type: 'diagram',
+        },
+      ]
+    },
+    {
+      name: 'Gold Chest', //There are wood, bronze, silver and gold chests
+      coords: [786, 2092], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Bronze Armor Set',
+          type: 'diagram',
+        },
+        {
+          name: 'Amnesia',
+          type: 'weapon',
+        },
+      ]
+    },
+    {
+      name: 'Wood Chest', //There are wood, bronze, silver and gold chests
+      coords: [1134, 1323], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Tart of Onions',
+          type: 'diagram',
+        },
+      ]
+    },
+    {
+      name: 'Silver Chest', //There are wood, bronze, silver and gold chests
+      coords: [865, 3361], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Crystal Flask',
+          type: 'flask',
+        },
+        {
+          name: 'Havocburst',
+          type: 'diagram',
+        },
+      ]
+    },
+    {
       name: 'Common Chest', //There are wood, bronze, silver and gold chests
       coords: [1360, 3940], 
       group: 'chest',
@@ -12,6 +284,38 @@ export const ChestMarkers = [
         },
       ]
     },
+    {
+      name: 'Gold Chest', //There are wood, bronze, silver and gold chests
+      coords: [978, 4053], 
+      group: 'chest',
+      layer: 'layer2',
+      items: [
+        {
+          name: "Hechima's Claws",
+          type: 'diagram',
+        },
+        {
+          name: "Wyldhearth",
+          type: 'diagram'
+        }
+      ]
+  },
+    {
+      name: 'Silver Chest', //There are wood, bronze, silver and gold chests
+      coords: [710, 4590], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Magic Runestone",
+          type: 'diagram',
+        },
+        {
+          name: "Arcanist Ring",
+          type: 'diagram'
+        }
+      ]
+  },
     {
       name: 'Silver Chest', //There are wood, bronze, silver and gold chests
       coords: [2096, 9201], 
@@ -27,6 +331,15 @@ export const ChestMarkers = [
           type: 'diagram'
         }
       ]
+  },
+  {
+    name: 'Chest',
+    coords: [827, 4474],
+    group: 'chest',
+    layer: 'layer1',
+    items: [
+      { name: 'Assassin Ring', type: 'diagram' },
+    ]
   },
   {
     name: 'Chest',
@@ -54,6 +367,15 @@ export const ChestMarkers = [
     layer: 'layer1',
     items: [
       { name: 'Coil of Wicked Renewal', type: 'diagram' }
+    ]
+  },
+  {
+    name: 'Chest',
+    coords: [676, 4399],
+    group: 'chest',
+    layer: 'layer1',
+    items: [
+      { name: 'Minor Magic Potion', type: 'diagram' }
     ]
   },
   {

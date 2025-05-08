@@ -26,7 +26,151 @@ export const BossMarkers = [
     //       }
     //     }
     //   ]
-    // }
+    // }    
+    {
+      name: 'Ferryman',
+      coords: [1520, 6011],
+      group: 'boss',
+      layer: 'layer2',
+      items: [
+        { 
+          name: 'Consecration',
+          type: 'Astral Skill'
+        },
+          ]
+    },
+    {
+      name: 'Caretaker',
+      coords: [1059, 4244],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Heavy Attack',
+          type: 'Combat Skill'
+        },
+          ]
+    },
+    {
+      name: 'Bandit Captain',
+      coords: [941, 3361],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Bear Trap',
+          type: 'Assassination Skill'
+        },
+        { 
+          name: 'Key',
+          type: 'key'
+        },
+          ]
+    },
+    {
+      name: 'Wraith',
+      coords: [1672, 4819],
+      group: 'boss',
+      layer: 'layer2',
+      items: [
+        { 
+          name: "Arbiter's Fury",
+          type: 'astral skill'
+        },
+          ]
+    },
+    {
+      name: 'The Necromancer',
+      coords: [289, 4666],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Splintering Sparks',
+          type: 'chaos skill'
+        },
+          ]
+    },
+    {
+      name: 'Corrupted Vermin',
+      coords: [1479, 5242],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Chaos Storm',
+          type: 'chaos skill'
+        },
+        { 
+          name: 'Inner Gate Key',
+          type: 'quest item'
+        },
+          ]
+    },
+    {
+      name: 'Blood Guardian',
+      coords: [559, 4857],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Wall of Flame',
+          type: 'wyld skill'
+        },
+        { 
+          name: 'Blood Seal',
+          type: 'quest item'
+        },
+          ]
+    },
+    {
+      name: 'Plague Guardian',
+      coords: [96, 5014],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Toxic Shiv',
+          type: 'assassination skill'
+        },
+        { 
+          name: 'Plague Seal',
+          type: 'quest item'
+        },
+          ]
+    },
+    {
+      name: 'Forest Giant',
+      coords: [1020, 595],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Wyld Seed',
+          type: 'wyld skill'
+        },
+          ]
+    },
+    {
+      name: 'Fang Executor',
+      coords: [1250, 1482],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Backlash',
+          type: 'assassination skill'
+        },
+        { 
+          name: "West Wickham Key",
+          type: 'key'
+        },
+        { 
+          name: "Sanguine Kiss",
+          type: 'weapon'
+        },
+      ]
+    },
     {
       name: 'The Inquisitors',
       coords: [1402, 2785],
@@ -40,6 +184,18 @@ export const BossMarkers = [
         { 
           name: "Lightweaver's Accord",
           type: 'relic'
+        },
+      ]
+    },
+    {
+      name: 'Pepper',
+      coords: [825, 1940],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Ground Slam',
+          type: 'special action'
         },
       ]
     },

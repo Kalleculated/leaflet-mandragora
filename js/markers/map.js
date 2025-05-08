@@ -1,6 +1,30 @@
 // js/markers/waypoint.js - Update marker definitions
 export const MapMarkers = [
   {
+    name: 'Lochmuir Village', 
+    coords: [1751, 5125], 
+    group: 'map',
+    layer: 'layer1'  // Specify layer
+  },
+  {
+    name: 'Forgotten Catacombs', 
+    coords: [406, 5048], 
+    group: 'map',
+    layer: 'layer1'  // Specify layer
+  },
+  {
+    name: 'Gloomroot Woods', 
+    coords: [1018, 554], 
+    group: 'map',
+    layer: 'layer1'  // Specify layer
+  },
+  {
+    name: 'West Wickham', 
+    coords: [1059, 1668], 
+    group: 'map',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: 'Dilapidated Mausoleum', 
     coords: [673, 4747], 
     group: 'map',

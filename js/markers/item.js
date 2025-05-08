@@ -4,6 +4,10 @@ export const ItemMarkers = [
       name: 'Lockpick Location',
       coords: [
         [446, 981],
+        [1828, 5089],
+        [1708, 5048],
+        [212, 5047],
+        [979, 1517],
         [405, 5280],
         [982, 445],
         [1633, 6279],
@@ -27,6 +31,328 @@ export const ItemMarkers = [
         {
           name: 'Lockpick',
           type: 'lockpick'
+        },
+      ]
+    },
+    {
+      name: 'Skill Location',
+      coords: [
+        [2018, 4861],
+      ],
+      group: 'item',
+      layer: 'layer2',
+      items: [
+        {
+          name: 'Grappling Hook',
+          type: 'special action'
+        },
+      ]
+    },
+    {
+      name: 'Skill Location',
+      coords: [
+        [828, 5124],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Dark Echo',
+          type: 'chaos skill'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [1251, 1286],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Golden Prism',
+          type: 'astral relic'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [1366, 4587],
+      ],
+      group: 'item',
+      layer: 'layer2',
+      items: [
+        {
+          name: "Cayloe's Embrace Set",
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [827, 2744],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Verdant Flameblade',
+          type: 'weapon'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [1060, 3704],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Delicate Silver Ring',
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [1208, 945],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Cornucopia',
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [1056, 788],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Ruination',
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [1212, 1555],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Royal Scepter',
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [1056, 1325],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Shattered Flamecore',
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Skill Location',
+      coords: [
+        [1096, 1822],
+      ],
+      group: 'skill',
+      layer: 'layer2',
+      items: [
+        {
+          name: 'Celestial Hammers',
+          type: 'astral skill'
+        },
+      ]
+    },
+    {
+      name: 'Skill Location',
+      coords: [
+        [980, 1326],
+      ],
+      group: 'skill',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Incinerate',
+          type: 'fire skill'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [92, 5280],
+      ],
+      group: 'quest item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Runed Ribcage',
+          type: 'quest item'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [982, 1746],
+      ],
+      group: 'quest item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Denochian Copper Coin',
+          type: 'quest item'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [442, 5125],
+      ],
+      group: 'quest item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Runed Arm Bone',
+          type: 'quest item'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [674, 5090],
+      ],
+      group: 'quest item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Runed Leg Bone',
+          type: 'quest item'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [905, 3050],
+      ],
+      group: 'quest item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Strange Ore',
+          type: 'quest item'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [1059, 1785],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Mercenary Set',
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [788, 2247],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Dire Crusher',
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [676, 4704],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Shield of Honor',
+          type: 'shield'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [865, 2785],
+      ],
+      group: 'ring',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Grip of Gardan",
+          type: 'ring'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [866, 3245],
+      ],
+      group: 'diagram',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Justicar's Blades",
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Key Location',
+      coords: [
+        [866, 2672],
+      ],
+      group: 'key',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Iron Gate Key',
+          type: 'key'
         },
       ]
     },
@@ -73,15 +399,43 @@ export const ItemMarkers = [
       ]
     },
     {
+      name: 'Flask Location',
+      coords: [
+        [1785, 5166],
+      ],
+      group: 'flask',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Crystal Flask',
+          type: 'Crystal Flask'
+        },
+      ]
+    },
+    {
       name: 'Skill Location',
       coords: [
-        [941, 3361],
+        [978, 4053],
+      ],
+      group: 'skill',
+      layer: 'layer2',
+      items: [
+        {
+          name: 'Ball Lightning',
+          type: 'Wyld Skill'
+        },
+      ]
+    },
+    {
+      name: 'Skill Location',
+      coords: [
+        [944, 1669],
       ],
       group: 'skill',
       layer: 'layer1',
       items: [
         {
-          name: 'Bear Trap',
+          name: 'Shadow Step',
           type: 'Assassination Skill'
         },
       ]
@@ -277,6 +631,7 @@ export const ItemMarkers = [
       coords: [
         [1556, 2554],
         [1096, 5280],
+        [1632, 5046],
       ],
       group: 'item',
       layer: 'layer2',
@@ -497,7 +852,10 @@ export const ItemMarkers = [
     },
     {
       name: 'Flask Upgrade Location',
-      coords: [1865, 1749],
+      coords: [
+          [1865, 1749],
+          [1207, 1097]
+          ],
       group: 'item',
       layer: 'layer1',
       items: [
