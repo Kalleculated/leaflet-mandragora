@@ -430,6 +430,20 @@ export const ItemMarkers = [
     {
       name: 'Flask Location',
       coords: [
+        [1711, 5630],
+      ],
+      group: 'flask',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Crystal Flask',
+          type: 'Crystal Flask'
+        },
+      ]
+    },
+    {
+      name: 'Flask Location',
+      coords: [
         [1136, 4591],
       ],
       group: 'flask',
