@@ -52,6 +52,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [1749, 5707],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Runestone of Poison',
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
         [1595, 5972],
       ],
       group: 'item',
