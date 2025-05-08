@@ -28,6 +28,26 @@ export const BossMarkers = [
     //   ]
     // }    
     {
+      name: 'Lord Auberon',
+      coords: [2132, 6280],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Flame Slash',
+          type: 'Fire Skill'
+        },
+        { 
+          name: 'Nightfall',
+          type: 'weapon'
+        },
+        { 
+          name: 'Library Tower Key',
+          type: 'key'
+        },
+          ]
+    },
+    {
       name: 'Slave Master',
       coords: [1557, 6779],
       group: 'boss',
