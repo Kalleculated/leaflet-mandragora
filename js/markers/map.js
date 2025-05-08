@@ -1,6 +1,12 @@
 // js/markers/waypoint.js - Update marker definitions
 export const MapMarkers = [
   {
+    name: 'Braer Castle Left Wing', 
+    coords: [1748, 6241], 
+    group: 'map',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: 'Lochmuir Village', 
     coords: [1751, 5125], 
     group: 'map',
