@@ -28,6 +28,22 @@ export const BossMarkers = [
     //   ]
     // }    
     {
+      name: 'Slave Master',
+      coords: [1557, 6779],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Infernal Tornado',
+          type: 'Fire Skill'
+        },
+        { 
+          name: 'Steam Machine Lever',
+          type: 'quest item'
+        },
+          ]
+    },
+    {
       name: 'Caretaker',
       coords: [1671, 5897],
       group: 'boss',
