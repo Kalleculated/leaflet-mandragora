@@ -2,6 +2,22 @@
 export const ChestMarkers = [
     {
       name: 'Gold Chest', //There are wood, bronze, silver and gold chests
+      coords: [1285, 6511], 
+      group: 'chest',
+      layer: 'layer2',
+      items: [
+        {
+          name: "Wyldwood Peripat",
+          type: 'diagram',
+        },
+        {
+          name: "Essence Prism Signet",
+          type: 'item',
+        },
+          ]
+      },
+    {
+      name: 'Gold Chest', //There are wood, bronze, silver and gold chests
       coords: [1323, 6433], 
       group: 'chest',
       layer: 'layer1',
