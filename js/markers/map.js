@@ -79,7 +79,7 @@ export const MapMarkers = [
     layer: 'layer1'  // Specify layer
   },
   {
-    name: 'Braer Castle Dungeon', 
+    name: 'Braer Castle Dungeons', 
     coords: [1439, 5743], 
     group: 'map',
     layer: 'layer1'  // Specify layer
