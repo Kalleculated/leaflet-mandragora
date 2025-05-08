@@ -4,6 +4,7 @@ export const ItemMarkers = [
       name: 'Lockpick Location',
       coords: [
         [446, 981],
+        [1786, 6240],
         [1672, 5742],
         [1828, 5089],
         [1708, 5048],
