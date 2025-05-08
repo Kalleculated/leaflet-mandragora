@@ -2,6 +2,18 @@
 export const ChestMarkers = [
     {
       name: 'Bronze Chest', //There are wood, bronze, silver and gold chests
+      coords: [1748, 6434], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Runesmith Compendium",
+          type: 'diagram',
+        },
+          ]
+      },
+    {
+      name: 'Bronze Chest', //There are wood, bronze, silver and gold chests
       coords: [1671, 6280], 
       group: 'chest',
       layer: 'layer1',
