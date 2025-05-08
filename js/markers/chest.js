@@ -1,6 +1,18 @@
 // js/markers/chest.js - Chest markers with item contents
 export const ChestMarkers = [
     {
+      name: 'Gold Chest', //There are wood, bronze, silver and gold chests
+      coords: [1323, 6433], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: "King's Facade",
+          type: 'diagram',
+        },
+          ]
+      },
+    {
       name: 'Wood Chest', //There are wood, bronze, silver and gold chests
       coords: [1441, 6203], 
       group: 'chest',
