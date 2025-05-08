@@ -48,7 +48,6 @@ export const ItemMarkers = [
         },
       ]
     },
-    },
     {
       name: 'Item Location',
       coords: [
