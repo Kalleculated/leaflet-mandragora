@@ -35,6 +35,20 @@ export const ItemMarkers = [
       ]
     },
     {
+      name: 'Item Location',
+      coords: [
+        [1595, 5972],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Ring of Might',
+          type: 'diagram'
+        },
+      ]
+    },
+    {
       name: 'Skill Location',
       coords: [
         [2018, 4861],
