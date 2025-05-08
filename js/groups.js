@@ -92,11 +92,13 @@ export const GroupManager = (() => {
     },
     
     getAllGroups: function() {
-      return Object.keys(iconPaths);
+      // Return the keys sorted alphabetically
+      return Object.keys(iconPaths).sort();
     },
     
     getAllItemTypes: function() {
-      return Array.from(itemTypes);
+      // Return the item types sorted alphabetically
+      return Array.from(itemTypes).sort();
     },
   };
 })();

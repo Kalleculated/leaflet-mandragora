@@ -433,7 +433,7 @@ export const UIControls = (() => {
       groupHeader.style.backgroundColor = 'rgba(10,10,10,255)';
       pinsColumn.appendChild(groupHeader);
 
-      const allGroups = GroupManager.getAllGroups();
+      const allGroups = GroupManager.getAllGroups(); // Already sorted in GroupManager
 
       // Filter out the default group
       const filterableGroups = allGroups.filter(group => group !== 'default');
@@ -448,7 +448,7 @@ export const UIControls = (() => {
 
       // Add a section for item types if available
       if (typeof GroupManager.getAllItemTypes === 'function') {
-          const itemTypes = GroupManager.getAllItemTypes();
+          const itemTypes = GroupManager.getAllItemTypes(); // Already sorted in GroupManager
           
           if (itemTypes && itemTypes.length > 0) {
               // Create section header for Item Types
