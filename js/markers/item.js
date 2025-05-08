@@ -304,6 +304,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [1517, 6547],
+      ],
+      group: 'quest item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Epicurian Delights',
+          type: 'quest item'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
         [1366, 5970],
       ],
       group: 'quest item',
@@ -311,7 +325,7 @@ export const ItemMarkers = [
       items: [
         {
           name: 'Key with Strange Symbol',
-          type: 'quest item'
+          type: 'key'
         },
       ]
     },
