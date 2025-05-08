@@ -44,6 +44,18 @@ export const BossMarkers = [
           ]
     },
     {
+      name: 'Corrupted Vermin',
+      coords: [1517, 6512],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Dark Orb',
+          type: 'Chaos Skill'
+        },
+          ]
+    },
+    {
       name: 'Ferryman',
       coords: [1520, 6011],
       group: 'boss',
