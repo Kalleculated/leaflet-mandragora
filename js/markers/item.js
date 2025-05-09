@@ -193,6 +193,20 @@ export const ItemMarkers = [
     {
       name: 'Skill Location',
       coords: [
+        [1708, 9237],
+      ],
+      group: 'item',
+      layer: 'layer2',
+      items: [
+        {
+          name: 'Thorn Dance',
+          type: 'wyld skill'
+        },
+      ]
+    },
+    {
+      name: 'Skill Location',
+      coords: [
         [1286, 6512],
       ],
       group: 'item',
