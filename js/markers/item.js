@@ -361,6 +361,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [2095, 7200],
+      ],
+      group: 'quest item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Mysterious Grimoire',
+          type: 'quest item'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
         [1517, 6547],
       ],
       group: 'quest item',
