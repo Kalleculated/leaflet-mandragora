@@ -6,8 +6,18 @@ export const AltarMarkers = [
       group: 'altar',
       layer: 'layer1',
       requires: {
-        item: 'Whatever', // Specify required item
+        item: 'To be confirmed', // Specify required item
         quantity: 1 // Specify required quantity
+      }  // Specify layer
+    },
+    {
+      name: 'Altar',
+      coords: [1441, 8700],
+      group: 'altar',
+      layer: 'layer1',
+      requires: {
+        item: 'Umbral Mushroom', // Specify required item
+        quantity: 15 // Specify required quantity
       }  // Specify layer
     },
     // Add more markers as needed
