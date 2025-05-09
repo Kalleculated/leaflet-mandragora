@@ -1255,6 +1255,6 @@ export const ItemMarkers = [
           type: 'diagram'
         }
       ]
-    }        
+    },        
     // Add more markers as needed
   ]
