@@ -67,6 +67,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [1361, 6240],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Minor Potion of Absorption',
+          type: 'diagram'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
         [1592, 6778],
       ],
       group: 'item',
