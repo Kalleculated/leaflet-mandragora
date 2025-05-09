@@ -432,6 +432,10 @@ export const ItemMarkers = [
           name: "Last Wish of Isla Braer",
           type: 'quest item'
         },
+        {
+          name: "Blessed weapon",
+          type: 'astral skill'
+        },
       ]
     },
     {
