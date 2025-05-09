@@ -23,7 +23,7 @@ export const ChestMarkers = [
       layer: 'layer1',
       items: [
         {
-          name: "Legionnaire Armor Set",
+          name: "Burning Legionnaire Armor Set",
           type: 'diagram',
         },
           ]
