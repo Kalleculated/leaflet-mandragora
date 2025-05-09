@@ -28,6 +28,26 @@ export const BossMarkers = [
     //   ]
     // }    
     {
+      name: 'To be confirmed',
+      coords: [1632, 9007],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Vortez',
+          type: 'Choas Skill'
+        },
+        { 
+          name: 'Discordance',
+          type: 'relic'
+        },
+        { 
+          name: "Rhys' Book Volume II",
+          type: 'quest item'
+        },
+          ]
+    },
+    {
       name: 'Jotun',
       coords: [2017, 9237],
       group: 'boss',
