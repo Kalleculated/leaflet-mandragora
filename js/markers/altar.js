@@ -12,6 +12,16 @@ export const AltarMarkers = [
     },
     {
       name: 'Altar',
+      coords: [1787, 8430],
+      group: 'altar',
+      layer: 'layer1',
+      requires: {
+        item: 'Cardinal Leaf', // Specify required item
+        quantity: 15 // Specify required quantity
+      }  // Specify layer
+    },
+    {
+      name: 'Altar',
       coords: [1441, 8700],
       group: 'altar',
       layer: 'layer1',
