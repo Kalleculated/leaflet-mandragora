@@ -50,6 +50,8 @@ export const ItemMarkers = [
           name: "Santa's Hat",
           type: 'item'
         },
+      ]
+      },
     {
       name: 'Item Location',
       coords: [
@@ -62,7 +64,9 @@ export const ItemMarkers = [
           name: 'Ring of Purity',
           type: 'diagram'
         },
-    {
+      ]
+    },
+        {
       name: 'Item Location',
       coords: [
         [1948, 6895],
@@ -1398,4 +1402,3 @@ export const ItemMarkers = [
     },        
     // Add more markers as needed
   ]
-    }
