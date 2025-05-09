@@ -28,6 +28,18 @@ export const BossMarkers = [
     //   ]
     // }    
     {
+      name: 'Marionettes',
+      coords: [1671, 6819],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Impale and Execute',
+          type: 'Combat Skill'
+        },
+          ]
+    },
+    {
       name: 'Lord Auberon',
       coords: [2132, 6280],
       group: 'boss',
