@@ -1099,6 +1099,18 @@ export const ItemMarkers = [
     },
     {
       name: 'Quest Item Location',
+      coords: [2093, 8777],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Ornate Violin',
+          type: 'quest item'
+        },
+      ]
+    },
+    {
+      name: 'Quest Item Location',
       coords: [1749, 1787],
       group: 'item',
       layer: 'layer1',
