@@ -370,6 +370,10 @@ export const ItemMarkers = [
           name: "Isla Braer' Remains",
           type: 'quest item'
         },
+        {
+          name: "Last Wish of Isla Braer",
+          type: 'quest item'
+        },
       ]
     },
     {
