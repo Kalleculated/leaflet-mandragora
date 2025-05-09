@@ -731,7 +731,7 @@ export const ChestMarkers = [
     name: 'Chest',
     coords: [1709, 9237],
     group: 'chest',
-    layer: 'layer1',
+    layer: 'layer2',
     items: [
       { name: 'Scout Set', type: 'diagram' }
     ]
