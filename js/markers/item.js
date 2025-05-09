@@ -1257,4 +1257,4 @@ export const ItemMarkers = [
       ]
     },        
     // Add more markers as needed
-  ]
+  ];
