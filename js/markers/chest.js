@@ -1,6 +1,22 @@
 // js/markers/chest.js - Chest markers with item contents
 export const ChestMarkers = [
     {
+      name: 'Gold Chest', //There are wood, bronze, silver and gold chests
+      coords: [1785, 6895], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Mind Breaker",
+          type: 'diagram',
+        },
+        {
+          name: "Minor Runestone of Brutality",
+          type: 'diagram',
+        },
+          ]
+      },
+    {
       name: 'Silver Chest', //There are wood, bronze, silver and gold chests
       coords: [1864, 6859], 
       group: 'chest',
