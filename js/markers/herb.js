@@ -87,7 +87,7 @@ export const HerbMarkers = [
     layer: 'layer1'  // Specify layer
   },
   {
-    name: 'Unknown Herb', 
+    name: 'Naceaia', 
     coords: [
       [1210, 1097], 
       [1440, 8393],
