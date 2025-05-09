@@ -419,6 +419,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [1634, 9159],
+      ],
+      group: 'quest item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Bell Part 3',
+          type: 'quest item'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
         [2172, 9311],
       ],
       group: 'quest item',
