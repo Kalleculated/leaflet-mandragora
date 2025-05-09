@@ -717,13 +717,14 @@ export const ChestMarkers = [
     ]
   },
   {
-    name: 'Chest',
+    name: 'Gold Chest',
     coords: [1823, 9045],
     group: 'chest',
     layer: 'layer1',
     items: [
       { name: "Ring of the Unstoppable", type: 'diagram' },
       { name: "Draco Tuatha D'Amara's Set", type: 'diagram' }
+      { name: "Sparkling Diamond", type: 'diagram' }
     ]
   },
   {
