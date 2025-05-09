@@ -28,6 +28,18 @@ export const BossMarkers = [
     //   ]
     // }    
     {
+      name: 'Cthonic Stalker',
+      coords: [1708, 8469],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Detonate Toxin',
+          type: 'Assassination Skill'
+        },
+          ]
+    },
+    {
       name: 'To be confirmed',
       coords: [1632, 9007],
       group: 'boss',
