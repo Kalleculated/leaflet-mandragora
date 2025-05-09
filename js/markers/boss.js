@@ -28,6 +28,18 @@ export const BossMarkers = [
     //   ]
     // }    
     {
+      name: 'Tome Mistress',
+      coords: [2093, 7240],
+      group: 'boss',
+      layer: 'layer2',
+      items: [
+        { 
+          name: 'Ornate Door Key',
+          type: 'key'
+        },
+          ]
+    },
+    {
       name: 'Bloodfiend',
       coords: [1593, 6779],
       group: 'boss',
