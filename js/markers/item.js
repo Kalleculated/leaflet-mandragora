@@ -361,6 +361,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [1558, 7240],
+      ],
+      group: 'quest item',
+      layer: 'layer2',
+      items: [
+        {
+          name: "Isla Braer' Remains",
+          type: 'quest item'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
         [2095, 7200],
       ],
       group: 'quest item',
