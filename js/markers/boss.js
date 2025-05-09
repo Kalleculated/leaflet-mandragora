@@ -279,7 +279,7 @@ export const BossMarkers = [
       items: [
         { 
           name: 'Wall of Flame',
-          type: 'wyld skill'
+          type: 'fire skill'
         },
         { 
           name: 'Blood Seal',
