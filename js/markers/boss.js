@@ -28,6 +28,22 @@ export const BossMarkers = [
     //   ]
     // }    
     {
+      name: 'Jotun',
+      coords: [1710, 8354],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Whirlwind',
+          type: 'Combat Skill'
+        },
+        { 
+          name: 'Jotun Hammer',
+          type: 'weapon'
+        },
+          ]
+    },
+    {
       name: 'Tome Mistress',
       coords: [2093, 7240],
       group: 'boss',
