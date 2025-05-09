@@ -723,7 +723,7 @@ export const ChestMarkers = [
     layer: 'layer1',
     items: [
       { name: "Ring of the Unstoppable", type: 'diagram' },
-      { name: "Draco Tuatha D'Amara's Set", type: 'diagram' }
+      { name: "Draco Tuatha D'Amara's Set", type: 'diagram' },
       { name: "Sparkling Diamond", type: 'diagram' }
     ]
   },
