@@ -41,6 +41,18 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [1635, 7239],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: 'Ring of Purity',
+          type: 'diagram'
+        },
+    {
+      name: 'Item Location',
+      coords: [
         [1948, 6895],
       ],
       group: 'item',
