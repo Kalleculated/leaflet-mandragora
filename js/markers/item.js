@@ -455,6 +455,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [1211, 748],
+      ],
+      group: 'quest item',
+      layer: 'layer2',
+      items: [
+        {
+          name: "Dryad Oken Flute",
+          type: 'quest item'
+        },
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
         [1788, 9503],
       ],
       group: 'quest item',
