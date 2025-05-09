@@ -35,7 +35,7 @@ export const BossMarkers = [
       items: [
         { 
           name: 'Detonate Toxin',
-          type: 'Assassination Skill'
+          type: 'assassination skill'
         },
           ]
     },
@@ -47,7 +47,7 @@ export const BossMarkers = [
       items: [
         { 
           name: 'Vortez',
-          type: 'Choas Skill'
+          type: 'chaos skill'
         },
         { 
           name: 'Discordance',
@@ -67,7 +67,7 @@ export const BossMarkers = [
       items: [
         { 
           name: 'Storm Call',
-          type: 'Wyld Skill'
+          type: 'wyld skill'
         },
         { 
           name: 'Jotun Hammer',
@@ -83,7 +83,7 @@ export const BossMarkers = [
       items: [
         { 
           name: 'Whirlwind',
-          type: 'Combat Skill'
+          type: 'combat skill'
         },
         { 
           name: 'Jotun Hammer',
@@ -111,7 +111,7 @@ export const BossMarkers = [
       items: [
         { 
           name: 'Heavenly Aegis',
-          type: 'Astral Skill'
+          type: 'astral skill'
         },
           ]
     },
@@ -123,7 +123,7 @@ export const BossMarkers = [
       items: [
         { 
           name: 'Impale and Execute',
-          type: 'Combat Skill'
+          type: 'combat skill'
         },
           ]
     },
@@ -135,7 +135,7 @@ export const BossMarkers = [
       items: [
         { 
           name: 'Flame Slash',
-          type: 'Fire Skill'
+          type: 'fire skill'
         },
         { 
           name: 'Nightfall',
@@ -155,7 +155,7 @@ export const BossMarkers = [
       items: [
         { 
           name: 'Infernal Tornado',
-          type: 'Fire Skill'
+          type: 'fire skill'
         },
         { 
           name: 'Steam Machine Lever',
@@ -171,7 +171,7 @@ export const BossMarkers = [
       items: [
         { 
           name: 'Sunder',
-          type: 'Combat Skill'
+          type: 'combat skill'
         },
         { 
           name: 'Dungeon Key',
@@ -187,7 +187,7 @@ export const BossMarkers = [
       items: [
         { 
           name: 'Dark Orb',
-          type: 'Chaos Skill'
+          type: 'chaos skill'
         },
           ]
     },
@@ -199,7 +199,7 @@ export const BossMarkers = [
       items: [
         { 
           name: 'Consecration',
-          type: 'Astral Skill'
+          type: 'astral skill'
         },
           ]
     },
@@ -223,7 +223,7 @@ export const BossMarkers = [
       items: [
         { 
           name: 'Bear Trap',
-          type: 'Assassination Skill'
+          type: 'assassination skill'
         },
         { 
           name: 'Key',
