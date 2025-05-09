@@ -28,6 +28,18 @@ export const BossMarkers = [
     //   ]
     // }    
     {
+      name: 'Bloodfiend',
+      coords: [1593, 6779],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Heavenly Aegis',
+          type: 'Astral Skill'
+        },
+          ]
+    },
+    {
       name: 'Marionettes',
       coords: [1671, 6819],
       group: 'boss',
