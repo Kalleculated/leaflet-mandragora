@@ -752,7 +752,7 @@ export const ItemMarkers = [
       items: [
         {
           name: 'Ball Lightning',
-          type: 'Wyld Skill'
+          type: 'wyld skill'
         },
       ]
     },
