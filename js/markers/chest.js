@@ -652,7 +652,7 @@ export const ChestMarkers = [
     ]
   },
   {
-    name: 'Chest',
+    name: 'Silver Chest',
     coords: [1594, 8623],
     group: 'chest',
     layer: 'layer1',
