@@ -72,6 +72,18 @@ export const BossMarkers = [
           ]
     },
     {
+      name: 'Bloodfiend',
+      coords: [2018, 9508],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Avatar of Fire',
+          type: 'fire skill'
+        },
+          ]
+    },
+    {
       name: 'To be confirmed',
       coords: [1632, 9007],
       group: 'boss',
