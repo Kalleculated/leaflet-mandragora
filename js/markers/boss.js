@@ -28,6 +28,38 @@ export const BossMarkers = [
     //   ]
     // }    
     {
+      name: 'Pyromancer',
+      coords: [2018, 9507],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Dragon Hearth',
+          type: 'quest item'
+        },
+        { 
+          name: 'Dragon Eye',
+          type: 'quest item'
+        },
+        { 
+          name: 'Double Jump',
+          type: 'special action'
+        },
+        { 
+          name: 'Wailing Inferno',
+          type: 'item'
+        },
+        { 
+          name: 'Scorching Bludgeon',
+          type: 'weapon'
+        },
+        { 
+          name: 'Fiery Rush',
+          type: 'fire skill'
+        },
+          ]
+    },
+    {
       name: 'Cthonic Stalker',
       coords: [1708, 8469],
       group: 'boss',
