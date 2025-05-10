@@ -8,6 +8,7 @@ export const GoblinMarkers = [
         [1406, 5161],
         [1787, 9197],
         [1979, 6818],
+        [407, 893],
       ],
       group: 'goblin',
       layer: 'layer1'  // Specify layer
