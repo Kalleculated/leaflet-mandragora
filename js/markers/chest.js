@@ -584,7 +584,7 @@ export const ChestMarkers = [
     ]
   },
   {
-    name: 'Chest',
+    name: 'Wood Chest',
     coords: [368, 1172],
     group: 'chest',
     layer: 'layer1',
