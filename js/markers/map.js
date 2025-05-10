@@ -80,7 +80,7 @@ export const MapMarkers = [
   },
   {
     name: 'Forsaken Mine', 
-    coords: [521, 1322], 
+    coords: [602, 1133], 
     group: 'map',
     layer: 'layer1'  // Specify layer
   },
