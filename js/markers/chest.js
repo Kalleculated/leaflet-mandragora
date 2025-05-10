@@ -27,6 +27,22 @@ export const ChestMarkers = [
           type: 'diagram',
         },
           ]
+      },    
+    {
+      name: 'Gold Chest', //There are wood, bronze, silver and gold chests
+      coords: [1327, 2557], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+          {
+          name: 'Nacreous Amends',
+          type: 'diagram'
+        },
+        {
+          name: 'Infernal Talisman',
+          type: 'relic'
+        },
+          ]
       },
     {
       name: 'Silver Chest', //There are wood, bronze, silver and gold chests
