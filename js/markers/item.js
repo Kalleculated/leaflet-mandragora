@@ -72,6 +72,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [1212, 2096],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Roast Pheasant",
+          type: 'diagram'
+        },
+      ]
+      },
+    {
+      name: 'Item Location',
+      coords: [
         [1787, 1903],
       ],
       group: 'item',
