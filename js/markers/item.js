@@ -1060,24 +1060,6 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Item Location',
-      coords: [
-        [1327, 2557],
-      ],
-      group: 'item',
-      layer: 'layer1',
-      items: [
-        {
-          name: 'Nacreous Amends',
-          type: 'diagram'
-        },
-        {
-          name: 'Infernal Talisman',
-          type: 'relic'
-        },
-      ]
-    },
-    {
       name: 'Lockpick Location',
       coords: [
         [1556, 2554],
