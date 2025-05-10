@@ -4,6 +4,7 @@ export const ItemMarkers = [
       name: 'Lockpick Location',
       coords: [
         [1670, 7013],
+        [559, 1322],
         [1671, 7277],
         [446, 981],
         [1786, 6240],
@@ -38,6 +39,20 @@ export const ItemMarkers = [
         },
       ]
     },
+    {
+      name: 'Item Location',
+      coords: [
+        [634, 1169],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Purity in death",
+          type: 'diagram'
+        },
+      ]
+      },
     {
       name: 'Item Location',
       coords: [
