@@ -52,21 +52,23 @@ export const MarkerManager = (() => {
     
     // Set type/region based on group
     if (popupRegion) {
+      // Get coordinates string
+      const coordStr = data.coords ? `[${data.coords[0]}, ${data.coords[1]}]` : '';
+      
       if (group === 'chest') {
-        popupRegion.textContent = 'placeholder'; 
+        popupRegion.textContent = `placeholder • ${coordStr}`; 
       } else if (group === 'vendor') {
-        popupRegion.textContent = 'placeholder';
+        popupRegion.textContent = `placeholder • ${coordStr}`;
       } else if (group === 'waypoint') {
-        popupRegion.textContent = 'placeholder';
+        popupRegion.textContent = `placeholder • ${coordStr}`;
       } else if (group === 'boss') {
-        popupRegion.textContent = 'placeholder'; 
+        popupRegion.textContent = `placeholder • ${coordStr}`; 
       } else if (group === 'altar') {
-        popupRegion.textContent = 'Offers powerful blessings';
+        popupRegion.textContent = `Offers powerful blessings • ${coordStr}`;
       } else {
-        popupRegion.textContent = 'placeholder';
+        popupRegion.textContent = `placeholder • ${coordStr}`;
       }
     }
-    
     // Clear existing items if element exists
     if (popupItems) {
       popupItems.innerHTML = '';
