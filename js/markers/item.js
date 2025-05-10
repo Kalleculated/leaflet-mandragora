@@ -72,6 +72,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [1787, 1903],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Glide",
+          type: 'special action'
+        },
+      ]
+      },
+    {
+      name: 'Item Location',
+      coords: [
         [1596, 9504],
       ],
       group: 'item',
