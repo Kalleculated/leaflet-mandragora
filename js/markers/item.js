@@ -892,20 +892,6 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Skill Location',
-      coords: [
-        [827, 2403],
-      ],
-      group: 'skill',
-      layer: 'layer1',
-      items: [
-        {
-          name: 'Shadow Shard',
-          type: 'Chaos Skill'
-        },
-      ]
-    },
-    {
       name: 'Item Location',
       coords: [
         [1291, 3784],
