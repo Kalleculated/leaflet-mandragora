@@ -28,6 +28,18 @@ export const BossMarkers = [
     //   ]
     // }    
     {
+      name: 'Wraith',
+      coords:  [1328, 3629],
+      group: 'boss',
+      layer: 'layer2',
+      items: [
+        { 
+          name: 'Prism',
+          type: 'astral skill'
+        },
+          ]
+    },
+    {
       name: 'Corrupted Vermin',
       coords: [827, 2403],
       group: 'boss',
