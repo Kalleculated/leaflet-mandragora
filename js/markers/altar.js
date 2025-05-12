@@ -2,6 +2,16 @@
 export const AltarMarkers = [
     {
       name: 'Altar',
+      coords: [906, 5474],
+      group: 'altar',
+      layer: 'layer1',
+      requires: {
+        item: 'Bogberry', // Specify required item
+        quantity: 5 // Specify required quantity
+      }  // Specify layer
+    },
+    {
+      name: 'Altar',
       coords: [1861, 9658],
       group: 'altar',
       layer: 'layer1',
