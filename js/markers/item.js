@@ -1269,18 +1269,6 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Quest Item Location',
-      coords: [1749, 1787],
-      group: 'item',
-      layer: 'layer1',
-      items: [
-        { 
-          name: 'Map of Faelduum',
-          type: 'quest item'
-        },
-      ]
-    },
-    {
       name: 'Flask Upgrade Location',
       coords: [
           [1865, 1749],
