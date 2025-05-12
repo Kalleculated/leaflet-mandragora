@@ -28,6 +28,18 @@ export const BossMarkers = [
     //   ]
     // }    
     {
+      name: 'Corrupted Vermin',
+      coords: [827, 2403],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Shadow Shards',
+          type: 'chaos skill'
+        },
+          ]
+    },
+    {
       name: 'Pyromancer',
       coords: [2018, 9507],
       group: 'boss',
