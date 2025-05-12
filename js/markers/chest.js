@@ -1,5 +1,17 @@
 // js/markers/chest.js - Chest markers with item contents
-export const ChestMarkers = [    
+export const ChestMarkers = [       
+    {
+      name: 'Wood Chest', //There are wood, bronze, silver and gold chests
+      coords: [1749, 1787], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Map of Faelduum',
+          type: 'quest item'
+        },
+          ]
+      },
     {
       name: 'Gold Chest', //There are wood, bronze, silver and gold chests
       coords: [1208, 1786], 
