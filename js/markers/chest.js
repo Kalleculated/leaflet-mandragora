@@ -56,7 +56,7 @@ export const ChestMarkers = [
       name: 'Gold Chest', //There are wood, bronze, silver and gold chests
       coords: [1327, 2557], 
       group: 'chest',
-      layer: 'layer1',
+      layer: 'layer2',
       items: [
           {
           name: 'Nacreous Amends',
