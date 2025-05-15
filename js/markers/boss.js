@@ -232,7 +232,7 @@ export const BossMarkers = [
           ]
     },
     {
-      name: 'Caretaker',
+      name: 'Dungeon Keeper',
       coords: [1671, 5897],
       group: 'boss',
       layer: 'layer1',
