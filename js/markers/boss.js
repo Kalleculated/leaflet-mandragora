@@ -28,6 +28,17 @@ export const BossMarkers = [
     //   ]
     // }    
     {
+      name: 'Darkfire Demon',
+      coords:  [861, 1631],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+         
+        },
+          ]
+    },
+    {
       name: 'Bloodfiend',
       coords:  [290, 1480],
       group: 'boss',
