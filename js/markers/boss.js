@@ -96,6 +96,16 @@ export const BossMarkers = [
           ]
     },
     {
+      name: 'Cthonic Stalker',
+      coords: [362, 5242],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+        },
+          ]
+    },
+    {
       name: 'Bloodfiend',
       coords: [2018, 9508],
       group: 'boss',
