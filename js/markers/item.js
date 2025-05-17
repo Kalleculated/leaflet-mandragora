@@ -517,7 +517,7 @@ export const ItemMarkers = [
         [1211, 748],
       ],
       group: 'quest item',
-      layer: 'layer2',
+      layer: 'layer1',
       items: [
         {
           name: "Dryad Oken Flute",
