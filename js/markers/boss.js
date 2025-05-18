@@ -28,6 +28,17 @@ export const BossMarkers = [
     //   ]
     // }    
     {
+      name: 'King Priest',
+      coords:  [1712, 2936],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+         
+        },
+          ]
+    },
+    {
       name: 'Wraith',
       coords:  [1326, 1901],
       group: 'boss',
