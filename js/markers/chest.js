@@ -7,7 +7,7 @@ export const ChestMarkers = [
       layer: 'layer1',
       items: [
         {
-          name: "Minor Stoneskin Potion",
+          name: "Minor Stone Skin Potion",
           type: "diagram"
         },
           ]
