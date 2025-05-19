@@ -7,7 +7,7 @@ export const ChestMarkers = [
       layer: 'layer1',
       items: [
         {
-          name: "TBD",
+          name: "Mushroom Stew",
           type: "diagram"
         },
           ]
