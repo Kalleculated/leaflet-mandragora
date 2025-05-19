@@ -964,20 +964,6 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
-        [942, 3283],
-      ],
-      group: 'item',
-      layer: 'layer1',
-      items: [
-        {
-          name: 'Signet of the Wolf',
-          type: 'diagram'
-        },
-      ]
-    },
-    {
-      name: 'Item Location',
-      coords: [
         [1210, 3859],
       ],
       group: 'item',
