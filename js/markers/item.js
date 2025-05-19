@@ -992,20 +992,6 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
-        [1019, 2170],
-      ],
-      group: 'item',
-      layer: 'layer1',
-      items: [
-        {
-          name: 'Minor Stoneskin Potion',
-          type: 'diagram'
-        },
-      ]
-    },
-    {
-      name: 'Item Location',
-      coords: [
         [1248, 2017],
       ],
       group: 'item',
