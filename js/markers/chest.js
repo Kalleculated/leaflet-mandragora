@@ -2,6 +2,26 @@
 export const ChestMarkers = [       
     {
       name: 'Wood Chest', //There are wood, bronze, silver and gold chests
+      coords: [863, 5165], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+            name: "Deer Meat x2",
+            type: "material"
+        },
+        {
+            name: "Minor Health Potion x2",
+            type: "potion"
+        },
+        {
+            name: "Copper Throwing Knife x2",
+            type: "item"
+        },
+          ]
+      },
+    {
+      name: 'Wood Chest', //There are wood, bronze, silver and gold chests
       coords: [1019, 5320], 
       group: 'chest',
       layer: 'layer2',
