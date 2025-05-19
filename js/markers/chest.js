@@ -7,16 +7,6 @@ export const ChestMarkers = [
       layer: 'layer1',
       items: [
         {
-            name: "Deer Meat x2",
-            type: "material"
-        },
-        {
-            name: "Minor Health Potion x2",
-            type: "potion"
-        },
-        {
-            name: "Copper Throwing Knife x2",
-            type: "item"
         },
           ]
       },
