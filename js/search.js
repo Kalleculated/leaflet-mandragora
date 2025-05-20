@@ -54,39 +54,48 @@ export const SearchManager = (() => {
     
     // Filter matching markers
     const matches = allMarkers.filter(item => {
-      const name = (item.name || "").toLowerCase();
-      
-      // Check marker name
-      if (name.includes(searchText)) return true;
-      
-      // Check items within marker
-      if (item.items && Array.isArray(item.items)) {
-        if (item.items.some(subItem => 
-          subItem.name.toLowerCase().includes(searchText)
-        )) {
-          return true;
-        }
-      }
-      
-      // Check craftable items within marker
-      if (item.craftableItems && Array.isArray(item.craftableItems)) {
-        if (item.craftableItems.some(subItem => 
-          subItem.name.toLowerCase().includes(searchText) ||
-          (subItem.type && subItem.type.toLowerCase().includes(searchText))
-        )) {
-          return true;
+      try {
+        const name = (item.name || "").toLowerCase();
+        
+        // Check marker name
+        if (name.includes(searchText)) return true;
+        
+        // Check items within marker
+        if (item.items && Array.isArray(item.items)) {
+          if (item.items.some(subItem => {
+            if (!subItem.name) {
+              console.warn("[SM] Item without subitems:", item);
+              return false;
+            } else {
+              subItem.name.toLowerCase().includes(searchText)
+            }
+          })) {
+            return true;
+          }
         }
         
-        // Check materials within craftable items
-        for (const craftable of item.craftableItems) {
-          if (craftable.materials && Array.isArray(craftable.materials)) {
-            if (craftable.materials.some(material => 
-              material.name.toLowerCase().includes(searchText)
-            )) {
-              return true;
+        // Check craftable items within marker
+        if (item.craftableItems && Array.isArray(item.craftableItems)) {
+          if (item.craftableItems.some(subItem => 
+            subItem.name.toLowerCase().includes(searchText) ||
+            (subItem.type && subItem.type.toLowerCase().includes(searchText))
+          )) {
+            return true;
+          }
+          
+          // Check materials within craftable items
+          for (const craftable of item.craftableItems) {
+            if (craftable.materials && Array.isArray(craftable.materials)) {
+              if (craftable.materials.some(material => 
+                material.name.toLowerCase().includes(searchText)
+              )) {
+                return true;
+              }
             }
           }
         }
+      } catch (e) {
+        console.error(`[SM] Error processing marker with name ${item}:`, e);
       }
       
       return false;
