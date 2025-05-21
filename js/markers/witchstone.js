@@ -1,10 +1,16 @@
 // js/markers/waypoint.js - Update marker definitions
 export const WitchstoneMarkers = [
   {
+    name: 'Mining Outpost', 
+    coords: [751, 364], 
+    group: 'witchstone',
+    layer: 'layer1'  // Specify layer
+  },
+  {
     name: 'Vertical Shaft', 
     coords: [788, 1363], 
     group: 'witchstone',
-    layer: 'layer2'  // Specify layer
+    layer: 'layer1'  // Specify layer
   },
   {
     name: 'Throne Room', 
