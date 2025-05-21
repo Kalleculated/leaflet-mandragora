@@ -2,14 +2,16 @@
 export const HerbMarkers = [
   {
     name: 'Calendula', 
-    coords: [1211, 3937], 
+    coords: [
+          [1211, 3937],
+          [1212, 3476],
+            ], 
     group: 'herb',
     layer: 'layer1'  // Specify layer
   },
   {
     name: 'Umbral Mushroom', 
     coords: [
-      [1212, 3476],
       [670, 4859],
       [825, 4975],
       [1400, 5819],
