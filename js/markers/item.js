@@ -58,6 +58,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [596, 4781],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Bloodmoon",
+          type: 'diagram'
+        },
+      ]
+      },
+    {
+      name: 'Item Location',
+      coords: [
         [634, 1169],
       ],
       group: 'item',
