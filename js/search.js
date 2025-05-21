@@ -54,46 +54,55 @@ export const SearchManager = (() => {
     
     // Filter matching markers
     const matches = allMarkers.filter(item => {
-      const name = (item.name || "").toLowerCase();
-      
-      // Check marker name
-      if (name.includes(searchText)) return true;
-      
-      // Check items within marker
-      if (item.items && Array.isArray(item.items)) {
-        if (item.items.some(subItem => 
-          subItem.name.toLowerCase().includes(searchText)
-        )) {
-          return true;
-        }
-      }
-      
-      // Check craftable items within marker
-      if (item.craftableItems && Array.isArray(item.craftableItems)) {
-        if (item.craftableItems.some(subItem => 
-          subItem.name.toLowerCase().includes(searchText) ||
-          (subItem.type && subItem.type.toLowerCase().includes(searchText))
-        )) {
-          return true;
+      try {
+        const name = (item.name || "").toLowerCase();
+        
+        // Check marker name
+        if (name.includes(searchText)) return true;
+        
+        // Check items within marker
+        if (item.items && Array.isArray(item.items)) {
+          if (item.items.some(subItem => {
+            if (!subItem || !subItem.name) {
+              return false;
+            }
+            return subItem.name.toLowerCase().includes(searchText);
+          })) {
+            return true;
+          }
         }
         
-        // Check materials within craftable items
-        for (const craftable of item.craftableItems) {
-          if (craftable.materials && Array.isArray(craftable.materials)) {
-            if (craftable.materials.some(material => 
-              material.name.toLowerCase().includes(searchText)
-            )) {
-              return true;
+        // Check craftable items within marker
+        if (item.craftableItems && Array.isArray(item.craftableItems)) {
+          // Check item names and types
+          if (item.craftableItems.some(subItem => {
+            if (!subItem || !subItem.name) return false;
+            
+            return subItem.name.toLowerCase().includes(searchText) || 
+                  (subItem.type && subItem.type.toLowerCase().includes(searchText));
+          })) {
+            return true;
+          }
+          
+          // Check materials within craftable items
+          for (const craftable of item.craftableItems) {
+            if (craftable && craftable.materials && Array.isArray(craftable.materials)) {
+              if (craftable.materials.some(material => 
+                material && material.name && material.name.toLowerCase().includes(searchText)
+              )) {
+                return true;
+              }
             }
           }
         }
+      } catch (e) {
+        console.error(`[SM] Error processing marker ${item.name}:`, e);
       }
       
       return false;
     });
 
     console.log(`[SM] Found ${matches.length} matches for "${searchText}"`);
-    matches.forEach(m => console.log(`  - ${m.name}`));
     
     // Display results or no-results message
     if (matches.length > 0) {
