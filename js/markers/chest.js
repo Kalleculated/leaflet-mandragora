@@ -1,5 +1,133 @@
 // js/markers/chest.js - Chest markers with item contents
-export const ChestMarkers = [
+export const ChestMarkers = [       
+    {
+      name: 'Wood Chest', //There are wood, bronze, silver and gold chests
+      coords: [863, 5165], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+        },
+          ]
+      },
+    {
+      name: 'Wood Chest', //There are wood, bronze, silver and gold chests
+      coords: [1019, 5320], 
+      group: 'chest',
+      layer: 'layer2',
+      items: [
+        {
+        },
+          ]
+      },
+    {
+      name: 'Wood Chest', //There are wood, bronze, silver and gold chests
+      coords: [1018, 5206], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Mushroom Stew",
+          type: "diagram"
+        },
+          ]
+      },
+    {
+      name: 'Bronze Chest', //There are wood, bronze, silver and gold chests
+      coords: [942, 3283], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Signet of the Wolf",
+          type: "diagram"
+        },
+          ]
+      },
+    {
+      name: 'Bronze Chest', //There are wood, bronze, silver and gold chests
+      coords: [1019, 2170], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Minor Stone Skin Potion",
+          type: "diagram"
+        },
+          ]
+      },
+    {
+      name: 'Wood Chest', //There are wood, bronze, silver and gold chests
+      coords: [1213, 3438], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+        },
+          ]
+      },
+    {
+      name: 'Bronze Chest', //There are wood, bronze, silver and gold chests
+      coords: [1250, 3859], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Ring of Energy",
+          type: "ring"
+        },
+          ]
+      },
+    {
+      name: 'Wood Chest', //There are wood, bronze, silver and gold chests
+      coords: [1517, 3477], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        {
+        },
+          ]
+      },
+    {
+      name: 'Silver Chest', //There are wood, bronze, silver and gold chests
+      coords: [1248, 3822], 
+      group: 'chest',
+      layer: 'layer2',
+      items: [
+        {
+          name: 'Briar Set',
+          type: 'diagram'
+        },
+          ]
+      },
+    {
+      name: 'Wood Chest', //There are wood, bronze, silver and gold chests
+      coords: [1749, 1787], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Map of Faelduum',
+          type: 'quest item'
+        },
+          ]
+      },
+    {
+      name: 'Gold Chest', //There are wood, bronze, silver and gold chests
+      coords: [1208, 1786], 
+      group: 'chest',
+      layer: 'layer1',
+      items: [
+        { 
+          name: "Ring of the Elders",
+          type: 'diagram'
+        },
+        { 
+          name: "Illustrous Battlehammer",
+          type: 'diagram'
+        },
+          ]
+      },
     {
       name: 'Silver Chest', //There are wood, bronze, silver and gold chests
       coords: [749, 4858], 
@@ -9,6 +137,22 @@ export const ChestMarkers = [
         {
           name: "Flame's Embrace",
           type: 'diagram',
+        },
+          ]
+      },    
+    {
+      name: 'Gold Chest', //There are wood, bronze, silver and gold chests
+      coords: [1327, 2557], 
+      group: 'chest',
+      layer: 'layer2',
+      items: [
+          {
+          name: 'Nacreous Amends',
+          type: 'diagram'
+        },
+        {
+          name: 'Infernal Talisman',
+          type: 'relic'
         },
           ]
       },
@@ -110,7 +254,7 @@ export const ChestMarkers = [
       },
     {
       name: 'Silver Chest', //There are wood, bronze, silver and gold chests
-      coords: [1864, 6859], 
+      coords: [1712, 6741], 
       group: 'chest',
       layer: 'layer1',
       items: [
@@ -574,7 +718,7 @@ export const ChestMarkers = [
     ]
   },
   {
-    name: 'Chest',
+    name: 'Gold Chest',
     coords: [481, 1749],
     group: 'chest',
     layer: 'layer1',
@@ -584,7 +728,7 @@ export const ChestMarkers = [
     ]
   },
   {
-    name: 'Chest',
+    name: 'Wood Chest',
     coords: [368, 1172],
     group: 'chest',
     layer: 'layer1',
@@ -781,7 +925,7 @@ export const ChestMarkers = [
   },
     // NOT SURE IF THE NEXT ENTRY IS CORRECT, PLEASE VALIDATE
   {
-    name: 'Chest',
+    name: 'Gold Chest',
     coords: [1168, 2674],
     group: 'chest',
     layer: 'layer1',

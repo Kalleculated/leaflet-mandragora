@@ -4,7 +4,9 @@ export const ItemMarkers = [
       name: 'Lockpick Location',
       coords: [
         [1670, 7013],
-        [559, 1322],
+        [2133, 1863],
+        [1710, 942],
+        [637, 1132],
         [1671, 7277],
         [446, 981],
         [1786, 6240],
@@ -42,6 +44,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [2019, 1862],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Equinox",
+          type: 'diagram'
+        },
+      ]
+      },
+    {
+      name: 'Item Location',
+      coords: [
         [634, 1169],
       ],
       group: 'item',
@@ -50,6 +66,34 @@ export const ItemMarkers = [
         {
           name: "Purity in death",
           type: 'diagram'
+        },
+      ]
+      },
+    {
+      name: 'Item Location',
+      coords: [
+        [1212, 2096],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Roast Pheasant",
+          type: 'diagram'
+        },
+      ]
+      },
+    {
+      name: 'Item Location',
+      coords: [
+        [1787, 1903],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Glide",
+          type: 'special action'
         },
       ]
       },
@@ -322,20 +366,6 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
-        [1251, 1286],
-      ],
-      group: 'item',
-      layer: 'layer1',
-      items: [
-        {
-          name: 'Golden Prism',
-          type: 'astral relic'
-        },
-      ]
-    },
-    {
-      name: 'Item Location',
-      coords: [
         [1366, 4587],
       ],
       group: 'item',
@@ -487,7 +517,7 @@ export const ItemMarkers = [
         [1211, 748],
       ],
       group: 'quest item',
-      layer: 'layer2',
+      layer: 'layer1',
       items: [
         {
           name: "Dryad Oken Flute",
@@ -848,20 +878,6 @@ export const ItemMarkers = [
       ]
     },
     {
-      name: 'Skill Location',
-      coords: [
-        [827, 2403],
-      ],
-      group: 'skill',
-      layer: 'layer1',
-      items: [
-        {
-          name: 'Shadow Shard',
-          type: 'Chaos Skill'
-        },
-      ]
-    },
-    {
       name: 'Item Location',
       coords: [
         [1291, 3784],
@@ -948,34 +964,6 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
-        [942, 3283],
-      ],
-      group: 'item',
-      layer: 'layer1',
-      items: [
-        {
-          name: 'Signet of the Wolf',
-          type: 'diagram'
-        },
-      ]
-    },
-    {
-      name: 'Item Location',
-      coords: [
-        [1248, 3822],
-      ],
-      group: 'item',
-      layer: 'layer2',
-      items: [
-        {
-          name: 'Briar Set',
-          type: 'diagram'
-        },
-      ]
-    },
-    {
-      name: 'Item Location',
-      coords: [
         [1210, 3859],
       ],
       group: 'item',
@@ -983,20 +971,6 @@ export const ItemMarkers = [
       items: [
         {
           name: 'The Illuminator',
-          type: 'diagram'
-        },
-      ]
-    },
-    {
-      name: 'Item Location',
-      coords: [
-        [1019, 2170],
-      ],
-      group: 'item',
-      layer: 'layer1',
-      items: [
-        {
-          name: 'Minor Stoneskin Potion',
           type: 'diagram'
         },
       ]
@@ -1012,24 +986,6 @@ export const ItemMarkers = [
         {
           name: 'The Whispering Bud',
           type: 'diagram'
-        },
-      ]
-    },
-    {
-      name: 'Item Location',
-      coords: [
-        [1327, 2557],
-      ],
-      group: 'item',
-      layer: 'layer1',
-      items: [
-        {
-          name: 'Nacreous Amends',
-          type: 'diagram'
-        },
-        {
-          name: 'Infernal Talisman',
-          type: 'relic'
         },
       ]
     },
@@ -1094,22 +1050,6 @@ export const ItemMarkers = [
       items: [
         { 
           name: "Voidcrack",
-          type: 'diagram'
-        },
-      ]
-    },
-    {
-      name: 'diagram Location',
-      coords: [1208, 1786],
-      group: 'item',
-      layer: 'layer1',
-      items: [
-        { 
-          name: "Ring of the Elders",
-          type: 'diagram'
-        },
-        { 
-          name: "Illustrous Battlehammer",
           type: 'diagram'
         },
       ]
@@ -1254,18 +1194,6 @@ export const ItemMarkers = [
       items: [
         { 
           name: 'Ornate Violin',
-          type: 'quest item'
-        },
-      ]
-    },
-    {
-      name: 'Quest Item Location',
-      coords: [1749, 1787],
-      group: 'item',
-      layer: 'layer1',
-      items: [
-        { 
-          name: 'Map of Faelduum',
           type: 'quest item'
         },
       ]

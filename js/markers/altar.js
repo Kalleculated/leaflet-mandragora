@@ -2,6 +2,56 @@
 export const AltarMarkers = [
     {
       name: 'Altar',
+      coords: [1094, 4053],
+      group: 'altar',
+      layer: 'layer1',
+      requires: {
+        item: 'To be confirmed', // Specify required item
+        quantity: 2 // Specify required quantity
+      }  // Specify layer
+    },
+    {
+      name: 'Altar',
+      coords: [1288, 4166],
+      group: 'altar',
+      layer: 'layer1',
+      requires: {
+        item: 'To be confirmed', // Specify required item
+        quantity: 2 // Specify required quantity
+      }  // Specify layer
+    },
+    {
+      name: 'Altar',
+      coords: [1288, 404],
+      group: 'altar',
+      layer: 'layer1',
+      requires: {
+        item: 'Frost Lichen', // Specify required item
+        quantity: 15 // Specify required quantity
+      }  // Specify layer
+    },
+    {
+      name: 'Altar',
+      coords: [1403, 5434],
+      group: 'altar',
+      layer: 'layer1',
+      requires: {
+        item: 'Garlic', // Specify required item
+        quantity: 10 // Specify required quantity
+      }  // Specify layer
+    },
+    {
+      name: 'Altar',
+      coords: [906, 5474],
+      group: 'altar',
+      layer: 'layer1',
+      requires: {
+        item: 'Bogberry', // Specify required item
+        quantity: 5 // Specify required quantity
+      }  // Specify layer
+    },
+    {
+      name: 'Altar',
       coords: [1861, 9658],
       group: 'altar',
       layer: 'layer1',
@@ -16,8 +66,8 @@ export const AltarMarkers = [
       group: 'altar',
       layer: 'layer1',
       requires: {
-        item: 'To be confirmed', // Specify required item
-        quantity: 1 // Specify required quantity
+        item: 'Bloodmoss', // Specify required item
+        quantity: 15 // Specify required quantity
       }  // Specify layer
     },
     {

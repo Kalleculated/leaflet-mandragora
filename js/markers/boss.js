@@ -28,6 +28,162 @@ export const BossMarkers = [
     //   ]
     // }    
     {
+      name: 'Darkfire Demon',
+      coords:  [1670, 2668],
+      group: 'boss',
+      layer: 'layer2',
+      items: [
+        { 
+         
+        },
+          ]
+    },
+    {
+      name: 'Matron Layla',
+      coords:  [519, 1519],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+         
+        },
+          ]
+    },
+    {
+      name: 'Corrupted Vermin',
+      coords:  [1326, 2518],
+      group: 'boss',
+      layer: 'layer2',
+      items: [
+        { 
+         
+        },
+          ]
+    },
+    {
+      name: 'Corrupted Vermin',
+      coords:  [1327, 2477],
+      group: 'boss',
+      layer: 'layer2',
+      items: [
+        { 
+         
+        },
+          ]
+    },
+    {
+      name: 'Corrupted Vermin',
+      coords:  [673, 4512],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+         
+        },
+          ]
+    },
+    {
+      name: 'King Priest',
+      coords:  [1712, 2936],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+         
+        },
+          ]
+    },
+    {
+      name: 'Wraith',
+      coords:  [1326, 1901],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+         
+        },
+          ]
+    },
+    {
+      name: 'Wraith',
+      coords:  [1324, 1939],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+         
+        },
+          ]
+    },
+    {
+      name: 'Darkfire Demon',
+      coords:  [861, 1631],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+         
+        },
+          ]
+    },
+    {
+      name: 'Bloodfiend',
+      coords:  [290, 1480],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+         
+        },
+          ]
+    },
+    {
+      name: 'Forest Giant',
+      coords:  [1786, 1517],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+         
+        },
+          ]
+    },
+    {
+      name: 'Forest Giant',
+      coords:  [670, 1133],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+         
+        },
+          ]
+    },
+    {
+      name: 'Wraith',
+      coords:  [1328, 3629],
+      group: 'boss',
+      layer: 'layer2',
+      items: [
+        { 
+          name: 'Prism',
+          type: 'astral skill'
+        },
+          ]
+    },
+    {
+      name: 'Corrupted Vermin',
+      coords: [827, 2403],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Shadow Shards',
+          type: 'chaos skill'
+        },
+          ]
+    },
+    {
       name: 'Pyromancer',
       coords: [2018, 9507],
       group: 'boss',
@@ -61,6 +217,26 @@ export const BossMarkers = [
     },
     {
       name: 'Cthonic Stalker',
+      coords: [1325, 5588],              
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+        },
+          ]
+    },
+    {
+      name: 'Cthonic Stalker',
+      coords: [1326, 5664],              
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+        },
+          ]
+    },
+    {
+      name: 'Cthonic Stalker',
       coords: [1708, 8469],
       group: 'boss',
       layer: 'layer1',
@@ -68,6 +244,16 @@ export const BossMarkers = [
         { 
           name: 'Detonate Toxin',
           type: 'assassination skill'
+        },
+          ]
+    },
+    {
+      name: 'Cthonic Stalker',
+      coords: [362, 5242],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
         },
           ]
     },
@@ -208,7 +394,7 @@ export const BossMarkers = [
           ]
     },
     {
-      name: 'Caretaker',
+      name: 'Dungeon Keeper',
       coords: [1671, 5897],
       group: 'boss',
       layer: 'layer1',
