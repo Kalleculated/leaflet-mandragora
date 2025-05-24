@@ -6,8 +6,8 @@ export const AltarMarkers = [
       group: 'altar',
       layer: 'layer1',
       requires: {
-        item: 'To be confirmed', // Specify required item
-        quantity: 2 // Specify required quantity
+        item: 'Deadly Nightshade', // Specify required item
+        quantity: 15 // Specify required quantity
       }  // Specify layer
     },
     {
