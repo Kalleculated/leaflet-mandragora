@@ -172,6 +172,18 @@ export const BossMarkers = [
           ]
     },
     {
+      name: 'Darkfire Demon',
+      coords: [1864, 9622],
+      group: 'boss',
+      layer: 'layer1',
+      items: [
+        { 
+          name: 'Avatar of Fire',
+          type: 'fire skill'
+        },
+          ]
+    },
+    {
       name: 'Corrupted Vermin',
       coords: [827, 2403],
       group: 'boss',
