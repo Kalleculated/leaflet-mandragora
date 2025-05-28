@@ -44,6 +44,34 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [558, 4477],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Guild's Compliment",
+          type: 'ring'
+        },
+      ]
+      },
+    {
+      name: 'Item Location',
+      coords: [
+        [1787, 8854],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Frost Oil Diagram",
+          type: 'diagram'
+        },
+      ]
+      },
+    {
+      name: 'Item Location',
+      coords: [
         [2019, 1862],
       ],
       group: 'item',
@@ -51,6 +79,34 @@ export const ItemMarkers = [
       items: [
         {
           name: "Equinox",
+          type: 'diagram'
+        },
+      ]
+      },
+    {
+      name: 'Item Location',
+      coords: [
+        [903, 5089],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Minor Runestone of Ferocity",
+          type: 'diagram'
+        },
+      ]
+      },
+    {
+      name: 'Item Location',
+      coords: [
+        [481, 1824],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Frost Runestone",
           type: 'diagram'
         },
       ]
