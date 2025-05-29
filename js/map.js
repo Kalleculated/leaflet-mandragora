@@ -6,6 +6,37 @@ export const MapManager = (() => {
   let markerLayers = {};
   let imageLayers = {};
   let activeLayerId = null;
+
+  // Add grid overlay to map
+  function addGridOverlay(gridSize = 30, offsetX = 0, offsetY = 0) {
+    if (!map) return;
+    
+    const bounds = CONFIG.map.bounds;
+    const [minLat, minLng] = bounds[0];
+    const [maxLat, maxLng] = bounds[1];
+    
+    // Create grid lines
+    const gridLines = [];
+    
+    // Vertical lines
+    for (let x = minLng + offsetX; x <= maxLng; x += gridSize) {
+      gridLines.push([[minLat, x], [maxLat, x]]);
+    }
+    
+    // Horizontal lines
+    for (let y = minLat + offsetY; y <= maxLat; y += gridSize) {
+      gridLines.push([[y, minLng], [y, maxLng]]);
+    }
+    
+    // Add grid to map
+    const gridLayer = L.polyline(gridLines, {
+      color: 'rgba(128, 128, 128, 0.3)',
+      weight: 1,
+      interactive: false
+    }).addTo(map);
+    
+    return gridLayer;
+  }
   
   // Initialize the map with configuration
   function initializeMap() {
@@ -38,6 +69,9 @@ export const MapManager = (() => {
       setActiveLayer(CONFIG.map.defaultLayer);
       map.fitBounds(CONFIG.map.bounds);
       map.setZoom(CONFIG.map.initialZoom);
+      
+      // Add grid overlay (30x30 units, offset 15 from edges)
+      addGridOverlay(38.4, 0, 0);
       
       // Add click event to capture coordinates
       map.on('click', function(e) {
