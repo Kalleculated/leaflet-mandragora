@@ -58,6 +58,20 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [1097, 3591],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {
+          name: "Minor Magic runestone",
+          type: 'diagram'
+        },
+      ]
+      },
+    {
+      name: 'Item Location',
+      coords: [
         [1787, 8854],
       ],
       group: 'item',
