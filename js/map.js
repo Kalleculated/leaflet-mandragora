@@ -71,7 +71,7 @@ export const MapManager = (() => {
       map.setZoom(CONFIG.map.initialZoom);
       
       // Add grid overlay (30x30 units, offset 15 from edges)
-      addGridOverlay(38.4, 0, 0);
+      addGridOverlay(39, 0, 0);
       
       // Add click event to capture coordinates
       map.on('click', function(e) {
