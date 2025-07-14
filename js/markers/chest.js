@@ -42,6 +42,10 @@ export const ChestMarkers = [
           name: "Signet of the Wolf",
           type: "diagram"
         },
+        {
+          name: "Signet of the Wolf+",
+          type: "diagram"
+        },
           ]
       },
     {
@@ -118,14 +122,10 @@ export const ChestMarkers = [
       group: 'chest',
       layer: 'layer1',
       items: [
-        { 
-          name: "Ring of the Elders",
-          type: 'diagram'
-        },
-        { 
-          name: "Illustrous Battlehammer",
-          type: 'diagram'
-        },
+        {name: "Ring of the Elders", type: 'diagram'},
+        {name: "Illustrous Battlehammer", type: 'diagram'},
+        {name: "Ring of the Elders+", type: 'diagram'},
+        {name: "Illustrous Battlehammer+", type: 'diagram'},
           ]
       },
     {
@@ -134,10 +134,8 @@ export const ChestMarkers = [
       group: 'chest',
       layer: 'layer1',
       items: [
-        {
-          name: "Flame's Embrace",
-          type: 'diagram',
-        },
+        {name: "Flame's Embrace",type: 'diagram'},
+        {name: "Flame's Embrace+",type: 'diagram'},
           ]
       },    
     {
@@ -162,10 +160,8 @@ export const ChestMarkers = [
       group: 'chest',
       layer: 'layer1',
       items: [
-        {
-          name: "Ring of Corruption",
-          type: 'item',
-        },
+        {name: "Ring of Corruption", type: 'item',},
+        {name: "Ring of Corruption+", type: 'item',},
           ]
       },
     {
@@ -174,10 +170,8 @@ export const ChestMarkers = [
       group: 'chest',
       layer: 'layer2',
       items: [
-        {
-          name: "Gold Heart Ring",
-          type: 'diagram',
-        },
+        {name: "Gold Heart Ring", type: 'diagram'},
+        {name: "Gold Heart Ring+", type: 'diagram'},
           ]
       },
     {
@@ -318,10 +312,8 @@ export const ChestMarkers = [
       group: 'chest',
       layer: 'layer1',
       items: [
-        {
-          name: "Signet of Magic",
-          type: 'diagram',
-        },
+        {name: "Signet of Magic", type: 'diagram',},
+        {name: "Signet of Magic+", type: 'diagram',},
           ]
       },
     {
@@ -334,10 +326,8 @@ export const ChestMarkers = [
           name: "Wyldwood Peripat",
           type: 'diagram',
         },
-        {
-          name: "Essence Prism Signet",
-          type: 'item',
-        },
+        {name: "Essence Prism Signet", type: 'item'},
+        {name: "Essence Prism Signet+", type: 'item'},
           ]
       },
     {
@@ -618,6 +608,10 @@ export const ChestMarkers = [
           name: 'Amnesia',
           type: 'weapon',
         },
+        {
+          name: 'Amnesia+',
+          type: 'weapon',
+        },
       ]
     },
     {
@@ -689,6 +683,10 @@ export const ChestMarkers = [
         {
           name: "Arcanist Ring",
           type: 'diagram'
+        },
+        {
+          name: "Arcanist Ring+",
+          type: 'diagram'
         }
       ]
   },
@@ -715,6 +713,7 @@ export const ChestMarkers = [
     layer: 'layer1',
     items: [
       { name: 'Assassin Ring', type: 'diagram' },
+      { name: 'Assassin Ring+', type: 'diagram' },
     ]
   },
   {
@@ -724,6 +723,7 @@ export const ChestMarkers = [
     layer: 'layer1',
     items: [
       { name: 'Pandemonium', type: 'diagram' },
+      { name: 'Pandemonium+', type: 'diagram' },
       { name: 'Innervating Band', type: 'diagram' }
     ]
   },
@@ -778,7 +778,8 @@ export const ChestMarkers = [
     group: 'chest',
     layer: 'layer1',
     items: [
-      { name: 'Cosmic Balance', type: 'diagram' }
+      { name: 'Cosmic Balance', type: 'diagram' },
+      { name: 'Cosmic Balance+', type: 'diagram' },
     ]
   },
   {
@@ -816,7 +817,8 @@ export const ChestMarkers = [
     group: 'chest',
     layer: 'layer1',
     items: [
-      { name: 'Blade of Despair', type: 'diagram' }
+      { name: 'Blade of Despair', type: 'diagram' },
+      { name: 'Blade of Despair+', type: 'diagram' },
     ]
   },
   {
@@ -834,7 +836,8 @@ export const ChestMarkers = [
     group: 'chest',
     layer: 'layer1',
     items: [
-      { name: 'Oblivion', type: 'diagram' }
+      { name: 'Oblivion', type: 'diagram' },
+      { name: 'Oblivion+', type: 'diagram' },
     ]
   },
   {
@@ -861,7 +864,8 @@ export const ChestMarkers = [
     group: 'chest',
     layer: 'layer1',
     items: [
-      { name: 'Almôndegas', type: 'diagram' }
+      { name: 'Almôndegas', type: 'diagram' },
+      { name: 'Almôndegas+', type: 'diagram' },
     ]
   },
   {
@@ -881,6 +885,7 @@ export const ChestMarkers = [
     layer: 'layer1',
     items: [
       { name: 'Ring of Magic Protection', type: 'diagram' },
+      { name: 'Ring of Magic Protection+', type: 'diagram' },
       { name: 'Chaos Oil', type: 'diagram' }
     ]
   },
@@ -910,7 +915,8 @@ export const ChestMarkers = [
     group: 'chest',
     layer: 'layer1',
     items: [
-      { name: 'Milates of Rabbit', type: 'diagram' }
+      { name: 'Milates of Rabbit', type: 'diagram'},
+      { name: 'Milates of Rabbit+', type: 'diagram'},
     ]
   },
   {

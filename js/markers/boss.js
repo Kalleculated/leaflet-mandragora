@@ -213,14 +213,9 @@ export const BossMarkers = [
           name: 'Double Jump',
           type: 'special action'
         },
-        { 
-          name: 'Wailing Inferno',
-          type: 'item'
-        },
-        { 
-          name: 'Scorching Bludgeon',
-          type: 'weapon'
-        },
+        {name: 'Wailing Inferno',type: 'item'},
+        {name: 'Wailing Inferno+',type: 'item'},
+        {name: 'Scorching Bludgeon+', type: 'weapon'},
         { 
           name: 'Fiery Rush',
           type: 'fire skill'
@@ -311,10 +306,8 @@ export const BossMarkers = [
           name: 'Storm Call',
           type: 'wyld skill'
         },
-        { 
-          name: 'Jotun Hammer',
-          type: 'weapon'
-        },
+        {name: 'Jotun Hammer', type: 'weapon'},
+        {name: 'Jotun Hammer+', type: 'weapon'},
           ]
     },
     {
@@ -327,10 +320,8 @@ export const BossMarkers = [
           name: 'Whirlwind',
           type: 'combat skill'
         },
-        { 
-          name: 'Jotun Hammer',
-          type: 'weapon'
-        },
+        {name: 'Jotun Hammer', type: 'weapon'},
+        {name: 'Jotun Hammer+', type: 'weapon'},
           ]
     },
     {
@@ -379,10 +370,8 @@ export const BossMarkers = [
           name: 'Flame Slash',
           type: 'fire skill'
         },
-        { 
-          name: 'Nightfall',
-          type: 'weapon'
-        },
+        {name: 'Nightfall', type: 'weapon'},
+        {name: 'Nightfall+', type: 'weapon'},
         { 
           name: 'Library Tower Key',
           type: 'key'
@@ -583,14 +572,12 @@ export const BossMarkers = [
       group: 'boss',
       layer: 'layer1',
       items: [
-        { 
-          name: 'Astralforged Gavel',
-          type: 'weapon'
-        },
-        { 
-          name: "Lightweaver's Accord",
-          type: 'relic'
-        },
+        {name: 'Astralforged Gavel', type: 'weapon'},
+        {name: "Lightweaver's Accord", type: 'relic'},
+        {name: "Gothic Shield", type: 'shield'},
+        {name: 'Astralforged Gavel+', type: 'weapon'},
+        {name: "Lightweaver's Accord+", type: 'relic'},
+        {name: "Gothic Shield+", type: 'shield'},
       ]
     },
     {

@@ -58,6 +58,18 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
+        [[1496, 6746]],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {name: "Aurora", type: 'weapon'},
+        {name: "Aurora+", type: 'weapon'},
+      ]
+      },
+    {
+      name: 'Item Location',
+      coords: [
         [1097, 3591],
       ],
       group: 'item',
@@ -137,6 +149,10 @@ export const ItemMarkers = [
           name: "Bloodmoon",
           type: 'diagram'
         },
+        {
+          name: "Bloodmoon+",
+          type: 'diagram'
+        },
       ]
       },
     {
@@ -203,10 +219,8 @@ export const ItemMarkers = [
       group: 'item',
       layer: 'layer1',
       items: [
-        {
-          name: "Mothbark",
-          type: 'item'
-        },
+        {name: "Mothbark", type: 'item'},
+        {name: "Mothbark+", type: 'item'},
       ]
       },
     {
@@ -231,10 +245,8 @@ export const ItemMarkers = [
       group: 'item',
       layer: 'layer1',
       items: [
-        {
-          name: 'Ring of Purity',
-          type: 'diagram'
-        },
+        {name: 'Ring of Purity', type: 'diagram'},
+        {name: 'Ring of Purity+', type: 'diagram'},
       ]
     },
         {
@@ -259,10 +271,8 @@ export const ItemMarkers = [
       group: 'item',
       layer: 'layer1',
       items: [
-        {
-          name: 'Shield Ring',
-          type: 'diagram'
-        },
+        {name: 'Shield Ring', type: 'diagram'},
+        {name: 'Shield Ring+', type: 'diagram'},
       ]
     },
     {
@@ -357,10 +367,8 @@ export const ItemMarkers = [
       group: 'item',
       layer: 'layer1',
       items: [
-        {
-          name: 'Ring of Vitality',
-          type: 'diagram'
-        },
+        {name: 'Ring of Vitality', type: 'diagram'},
+        {name: 'Ring of Vitality+', type: 'diagram'},
       ]
     },
     {
@@ -385,10 +393,8 @@ export const ItemMarkers = [
       group: 'item',
       layer: 'layer1',
       items: [
-        {
-          name: 'Ring of Might',
-          type: 'diagram'
-        },
+        {name: 'Ring of Might',type: 'diagram'},
+        {name: 'Ring of Might+',type: 'diagram'},
       ]
     },
     {
@@ -469,10 +475,20 @@ export const ItemMarkers = [
       group: 'item',
       layer: 'layer1',
       items: [
-        {
-          name: 'Verdant Flameblade',
-          type: 'weapon'
-        },
+        {name: 'Verdant Flameblade', type: 'weapon'},
+        {name: 'Verdant Flameblade+', type: 'weapon'},
+      ]
+    },
+    {
+      name: 'Item Location',
+      coords: [
+        [671, 1553],
+      ],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {name: 'Crimson Slicer', type: 'weapon'},
+        {name: 'Crimson Slicer+', type: 'weapon'},
       ]
     },
     {
@@ -803,6 +819,10 @@ export const ItemMarkers = [
           name: 'Dire Crusher',
           type: 'diagram'
         },
+        {
+          name: 'Dire Crusher+',
+          type: 'diagram'
+        },
       ]
     },
     {
@@ -815,6 +835,10 @@ export const ItemMarkers = [
       items: [
         {
           name: 'Shield of Honor',
+          type: 'shield'
+        },
+        {
+          name: 'Shield of Honor+',
           type: 'shield'
         },
       ]
@@ -1204,10 +1228,8 @@ export const ItemMarkers = [
       group: 'item',
       layer: 'layer1',
       items: [
-        { 
-          name: 'Lykan Dae Fury Fang of Friken',
-          type: 'diagram'
-        },
+        {name: 'Lykan Dae Fury Fang of Friken', type: 'diagram'},
+        {name: 'Lykan Dae Fury Fang of Friken+', type: 'diagram'},
       ]
     },
     {
@@ -1240,10 +1262,8 @@ export const ItemMarkers = [
       group: 'item',
       layer: 'layer1',
       items: [
-        { 
-          name: 'Abyssal Relic',
-          type: 'relic'
-        },
+        {name: 'Abyssal Remannt', type: 'relic'},
+        {name: 'Abyssal Remannt+', type: 'relic'},
       ]
     },
     {
@@ -1363,10 +1383,8 @@ export const ItemMarkers = [
       group: 'item',
       layer: 'layer1',
       items: [
-        {
-          name: 'Apple Tart',
-          type: 'diagram'
-        }
+        {name: 'Apple Tart', type: 'diagram'},
+        {name: 'Apple Tart+', type: 'diagram'},
       ]
     },
     {
@@ -1387,10 +1405,8 @@ export const ItemMarkers = [
       group: 'item',
       layer: 'layer1',
       items: [
-        {
-          name: 'Bramblegrasp',
-          type: 'diagram'
-        }
+        {name: 'Bramblegrasp',type: 'diagram'},
+        {name: 'Bramblegrasp+',type: 'diagram'},
       ]
     },
     {
@@ -1435,10 +1451,8 @@ export const ItemMarkers = [
       group: 'item',
       layer: 'layer1',
       items: [
-        {
-          name: 'Pulsing Turmoil',
-          type: 'diagram'
-        }
+        {name: 'Pulsing Turmoil', type: 'diagram'},
+        {name: 'Pulsing Turmoil+', type: 'diagram'},
       ]
     },
     {
@@ -1487,6 +1501,16 @@ export const ItemMarkers = [
           name: 'Ring of Rage',
           type: 'diagram'
         }
+      ]
+    },        
+    {
+      name: 'diagram Location',
+      coords: [2211, 1779],
+      group: 'item',
+      layer: 'layer1',
+      items: [
+        {name: 'Reignbreaker', type: 'item'},
+        {name: 'Reignbreaker+', type: 'item'},
       ]
     },        
     // Add more markers as needed
