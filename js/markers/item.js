@@ -58,7 +58,7 @@ export const ItemMarkers = [
     {
       name: 'Item Location',
       coords: [
-        [[1496, 6746]],
+        [1496, 6746],
       ],
       group: 'item',
       layer: 'layer1',
