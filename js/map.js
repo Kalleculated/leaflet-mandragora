@@ -1,4 +1,5 @@
 import { CONFIG } from './config.js';
+const TILE_SIZE = 39
 
 // Map initialization and management
 export const MapManager = (() => {
@@ -40,24 +41,31 @@ export const MapManager = (() => {
       map.setZoom(CONFIG.map.initialZoom);
       
       // Add click event to capture coordinates
+      ;
+
       map.on('click', function(e) {
-        const coords = e.latlng;
-        
-        // Create temporary marker at click location
-        const tempMarker = L.marker(coords).addTo(map);
-        
-        // Popup with coordinates
-        const coordStr = `[${Math.round(coords.lat)}, ${Math.round(coords.lng)}]`;
-        tempMarker.bindPopup(`<b>Coordinates:</b><br>${coordStr}`).openPopup();
-        
-        // Log to console for copying
-        console.log(`[Map] Coordinates clicked: ${coordStr}`);
-        
-        // Auto-remove marker after 5 seconds
+        const raw = e.latlng;
+
+        // Convert to tile grid coordinates
+        const tileX = Math.floor(raw.lng / TILE_SIZE);
+        const tileY = Math.floor(raw.lat / TILE_SIZE);
+
+        // Get center of tile in pixel coords
+        const centerLng = tileX * TILE_SIZE + TILE_SIZE / 2;
+        const centerLat = tileY * TILE_SIZE + TILE_SIZE / 2;
+
+        const tempMarker = L.marker([centerLat, centerLng]).addTo(map);
+
+        const coordStr = `Grid [${tileX}, ${tileY}]`;
+        tempMarker.bindPopup(`<b>Tile:</b><br>${coordStr}`).openPopup();
+
+        console.log(`[Map] Clicked tile: ${coordStr} → Pixel center [${centerLat}, ${centerLng}]`);
+
         setTimeout(() => {
           map.removeLayer(tempMarker);
         }, 5000);
       });
+
       
       console.log('[Map] Map initialized successfully');
     } catch (error) {
@@ -139,6 +147,8 @@ export const MapManager = (() => {
       
       map.once('click', clickHandler);
       console.log('[Map] Click coordinates handler activated');
-    }
+    },
+
+    TILE_SIZE
   };
 })();

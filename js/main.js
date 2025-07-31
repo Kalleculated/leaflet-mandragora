@@ -51,8 +51,21 @@ document.addEventListener('DOMContentLoaded', function() {
     GroupManager.init(allMarkers);
     console.log('[Main] Group manager initialized with all markers');
     
+    function tileToLatLng(tileX, tileY) {
+    const TILE_SIZE = MapManager.TILE_SIZE;
+    const lat = tileY * TILE_SIZE + TILE_SIZE / 2;
+    const lng = tileX * TILE_SIZE + TILE_SIZE / 2;
+    return [lat, lng];
+  }
+
+  const allMarkersWithPixels = allMarkers.map(marker => ({
+    ...marker,
+    coords: tileToLatLng(marker.coords[0], marker.coords[1])
+  }));
+
+    
     // 4. Initialize markers with combined data
-    MarkerManager.init(allMarkers);
+    MarkerManager.init(allMarkersWithPixels);
     console.log('[Main] Markers initialized');
     
     // 5. Initialize search functionality

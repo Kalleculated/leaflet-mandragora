@@ -3,10 +3,10 @@ export const CONFIG = {
   // Map configuration
   map: {
     layers: [
-      { id: 'layer1', name: 'Layer 1', imagePath: 'assets/maps/Layer1.jpg' },
-      { id: 'layer2', name: 'Layer 2', imagePath: 'assets/maps/Layer2.jpg' }
+      { id: 'layer1', name: 'Layer 1', imagePath: 'assets/maps/Laver1_Pixel-Perfect.jpg' },
+      { id: 'layer2', name: 'Layer 2', imagePath: 'assets/maps/Laver2_Pixel-Perfect.jpg' }
     ],
-    bounds: [[0, 0], [2384, 9757]],
+    bounds: [[0, 0], [2418, 9906]],
     initialZoom: -2,
     minZoom: -5,
     maxZoom: 5,
